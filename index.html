@@ -268,25 +268,12 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
           <label><input type="radio" name="modo" value="l2n" data-s="modo"><span>Dal lordo al netto</span></label>
           <label><input type="radio" name="modo" value="n2l" data-s="modo"><span>Dal netto al lordo</span></label>
         </div>
-        <div class="seg-ctl full" role="radiogroup" aria-label="CCNL">
-          <label><input type="radio" name="ccnl" value="credito" data-s="ccnl"><span>Credito</span></label>
-          <label><input type="radio" name="ccnl" value="assicurazioni" data-s="ccnl"><span>Assicurazioni</span></label>
-          <label><input type="radio" name="ccnl" value="altro" data-s="ccnl"><span>Altro</span></label>
-        </div>
-        <p class="hint" id="ccnl-nota" style="margin:0"></p>
         <div id="blk-l2n" class="stack">
           <div class="field"><span class="lab">Come inserisci la retribuzione</span>
             <div class="seg-ctl full" role="radiogroup" aria-label="Inserimento">
               <label><input type="radio" name="ins" value="ral" data-s="inserimento"><span>RAL</span></label>
               <label><input type="radio" name="ins" value="mensile" data-s="inserimento"><span>Mensile</span></label>
-              <label><input type="radio" name="ins" value="livello" data-s="inserimento" id="opt-livello"><span>Livello ABI</span></label>
             </div>
-          </div>
-          <div id="blk-livello" class="fields">
-            <div class="field" style="grid-column:1/-1"><label for="f-livello">Inquadramento (minimi dal 1/3/2026)</label><select id="f-livello" data-s="livello"></select></div>
-            <div class="field"><label for="f-scatti">Scatti di anzianità</label><input id="f-scatti" inputmode="numeric" data-s="scatti" placeholder="0"></div>
-            <div class="field"><label for="f-altre">Altre voci fisse mensili</label><div class="suffix"><input id="f-altre" inputmode="decimal" data-s="altreFisse" placeholder="0"><span>€</span></div></div>
-            <p class="hint" id="liv-info" style="grid-column:1/-1;margin:0"></p>
           </div>
           <div id="blk-ral" class="field"><label for="f-ral">RAL (lordo annuo fisso)</label><div class="suffix big"><input id="f-ral" inputmode="decimal" data-s="ral" placeholder="es. 40.000"><span>€</span></div></div>
           <div id="blk-mensile" class="field"><label for="f-mensile">Lordo mensile</label><div class="suffix big"><input id="f-mensile" inputmode="decimal" data-s="mensile" placeholder="es. 3.000"><span>€</span></div></div>
@@ -297,7 +284,7 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
         </div>
         <div class="fields">
           <div class="field"><label for="f-regione">Regione di residenza al 1° gennaio</label><select id="f-regione" data-s="regione"></select></div>
-          <div class="field"><label for="f-mens">Mensilità</label><input id="f-mens" inputmode="numeric" data-s="mensilita"></div>
+          <div class="field"><span class="lab">Mensilità</span><div class="seg-ctl full" role="radiogroup" aria-label="Mensilità"><label><input type="radio" name="mens" value="13" data-s="mensilita"><span>13</span></label><label><input type="radio" name="mens" value="14" data-s="mensilita"><span>14</span></label></div></div>
         </div>
         <label class="check"><input type="checkbox" data-s="comScagl"> Il mio comune applica l'addizionale a scaglioni</label>
         <div id="com-flat" class="fields">
@@ -330,7 +317,6 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
             <div class="field"><label for="f-contratto">Contratto</label><select id="f-contratto" data-s="contratto"><option value="indet">Tempo indeterminato</option><option value="det">Tempo determinato</option></select></div>
             <div class="field"><label for="f-giorni">Giorni di lavoro nell'anno</label><input id="f-giorni" inputmode="numeric" data-s="giorni" placeholder="365"></div>
             <div class="field"><label for="f-inps">Contributi INPS dipendente</label><div class="suffix"><input id="f-inps" inputmode="decimal" data-s="inpsPct" placeholder="9,19"><span>%</span></div></div>
-            <div class="field"><label for="f-fondo">Fondo di solidarietà (tua quota)</label><div class="suffix"><input id="f-fondo" inputmode="decimal" data-s="fondoPct"><span>%</span></div></div>
             <div class="field"><label for="f-prevdip">Fondo pensione: tuo contributo</label><div class="suffix"><input id="f-prevdip" inputmode="decimal" data-s="prevDipPct" placeholder="0"><span>%</span></div></div>
             <div class="field"><label for="f-prevdat">Fondo pensione: contributo azienda</label><div class="suffix"><input id="f-prevdat" inputmode="decimal" data-s="prevDatPct" placeholder="0"><span>%</span></div></div>
             <div class="field"><label for="f-cassa">Cassa sanitaria: tua quota annua</label><div class="suffix"><input id="f-cassa" inputmode="decimal" data-s="cassaDip" placeholder="0"><span>€</span></div></div>
@@ -343,7 +329,7 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
         </details>
       </div>
 
-      <div class="card" id="s-wait"><p class="muted waiting" style="margin:0">Inserisci la RAL (o il lordo mensile, il livello ABI o il netto desiderato) per vedere il risultato.</p></div>
+      <div class="card" id="s-wait"><p class="muted waiting" style="margin:0">Inserisci la RAL (o il lordo mensile o il netto desiderato) per vedere il risultato.</p></div>
       <div id="s-out" class="stack" hidden>
         <div class="card" id="s-res" aria-live="polite"></div>
         <div class="card">
@@ -395,8 +381,8 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
       <ul>
         <li>Non sono considerati oneri detraibili al 19% e redditi diversi dal lavoro dipendente.</li>
         <li>Il costo aziendale usa un'aliquota datoriale stimata.</li>
-        <li>Nella sezione Tassazione contributi INPS al 9,19% senza fondo di solidarietà e senza familiari a carico.</li>
-        <li>Le tabelle ANIA per livello e classe non sono incluse: per le assicurazioni inserisci RAL o lordo mensile.</li>
+        <li>Contributi INPS calcolati al 9,19% (più 1% oltre la soglia), senza fondi di solidarietà di settore, che incidono per meno dello 0,1%.</li>
+        <li>Nella sezione Tassazione si ipotizza l'assenza di familiari a carico.</li>
         <li>L'aliquota TFR è stimata dalla RAL attuale; quella reale dipende dalla storia retributiva.</li>
       </ul>
       <h3>Fonti</h3>
@@ -406,7 +392,7 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
         <li>Cassazione: 8662/2019, 916/2020, 14842/2022, 8615/2023.</li>
         <li>D.Lgs. 23/2015 art. 6; L. 300/1970 art. 18; DL 34/2020 art. 150; DL 73/2021 art. 47-bis; INPS circ. 6/2026.</li>
         <li>Schede MEF addizionale regionale 2026; L.R. Lazio 20/2025, L.R. Umbria 2/2025, DPGR Puglia 3/2026, L.P. Trento 11/2025.</li>
-        <li>CCNL Credito ABI 23/11/2023 (minimi 1/3/2026); CCNL ANIA rinnovato il 13/5/2026.</li>
+        <li>Rinnovi contrattuali citati nella scheda sugli aumenti: CCNL Credito ABI 23/11/2023, CCNL ANIA 13/5/2026.</li>
       </ul>
     </div>
   </section>
@@ -1419,10 +1405,10 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
 
   /* ================= stato: solo in memoria, mai salvato ================= */
   const nuovoStip = () => ({
-    modo: 'l2n', ccnl: 'credito', inserimento: 'ral', livello: '', scatti: '', altreFisse: '', ral: '', mensile: '', mensilita: '', target: '', targetModo: 'medio',
+    modo: 'l2n', inserimento: 'ral', ral: '', mensile: '', mensilita: '13', target: '', targetModo: 'medio',
     regione: '', comAliq: '', comEsenz: '', comScagl: false, comSc: ['', '', '', ''],
     coniuge: false, figliU21: '', figli21: '', altriFam: '', prevDipPct: '', prevDatPct: '', cassaDip: '',
-    contratto: 'indet', giorni: '', inpsPct: '', fondoPct: '', massimale: false, redditoPrec: '', costoPct: '', inailPct: ''
+    contratto: 'indet', giorni: '', inpsPct: '', massimale: false, redditoPrec: '', costoPct: '', inailPct: ''
   });
   const nuovoCalc = () => ({ ral: '', imp: '', mode: 'lordo', regione: '', comAliq: '', mens: '13', wc: null, figli: false, bpVal: '', bpGg: '', bpCart: false, trImp: '', trGg: '', trEstero: false, aliqTfr: '' });
   let S = nuovoStip();
@@ -1430,8 +1416,6 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
   let UI = { cat: 'tutte', q: '' };
 
   /* ================= motore: input comuni ================= */
-  const livelli = () => (P.ccnl.credito && P.ccnl.credito.livelli) || [];
-  const ccnlCfg = () => P.ccnl[S.ccnl] || P.ccnl.altro;
   function aliqTfrOf(f, man) {
     const m = parseNum(man);
     if (m > 0) return { a: m / 100, rif: null, manuale: true };
@@ -1457,9 +1441,9 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
   /* ---- input per lo stipendio ---- */
   function stipInput(fisso) {
     return {
-      fisso, mensilita: num(S.mensilita, ccnlCfg().mensilita), voci: [], contratto: S.contratto,
+      fisso, mensilita: num(S.mensilita, 13), voci: [], contratto: S.contratto,
       giorni: Math.min(365, Math.max(1, num(S.giorni, 365))),
-      inpsPct: num(S.inpsPct, P.inps.dipendente), fondoPct: num(S.fondoPct, P.fondoSolidarieta[S.ccnl] || 0), massimale: !!S.massimale,
+      inpsPct: num(S.inpsPct, P.inps.dipendente), fondoPct: 0, massimale: !!S.massimale,
       prevDipPct: num(S.prevDipPct, 0), prevDatPct: num(S.prevDatPct, 0), cassaDip: num(S.cassaDip, 0),
       coniuge: !!S.coniuge, figliU21: num(S.figliU21, 0), figli21: num(S.figli21, 0), altriFam: num(S.altriFam, 0),
       redditoPrec: blank(S.redditoPrec) ? null : parseNum(S.redditoPrec),
@@ -1469,17 +1453,11 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
     };
   }
   function fissoStip() {
-    const m = num(S.mensilita, ccnlCfg().mensilita);
+    const m = num(S.mensilita, 13);
     if (S.modo === 'n2l') {
       if (!(parseNum(S.target) > 0)) return { fisso: 0 };
       const f = E.lordoDaNetto(stipInput(0), parseNum(S.target), S.targetModo, P);
       return { fisso: f, mese: f / m };
-    }
-    if (S.inserimento === 'livello' && S.ccnl === 'credito') {
-      const l = livelli().find((x) => x.id === S.livello); if (!l) return { fisso: 0 };
-      const sc = Math.min(num(S.scatti, 0), l.maxScatti);
-      const mese = l.stipendio + sc * l.scatto + num(S.altreFisse, 0);
-      return { fisso: mese * m, mese, livello: l, scatti: sc };
     }
     if (S.inserimento === 'mensile') return { fisso: parseNum(S.mensile) * m, mese: parseNum(S.mensile) };
     return { fisso: parseNum(S.ral), mese: parseNum(S.ral) / m };
@@ -1647,7 +1625,7 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
     }
     f += '</div>';
     if (nettoOk) f += `<div class="field" style="margin-top:12px"><span class="lab">L'importo che inserisco è</span><div class="seg-ctl full" role="radiogroup" aria-label="Lordo o netto"><label><input type="radio" name="c-mode" value="lordo" data-t="mode"${T.mode === 'lordo' ? ' checked' : ''}><span>Lordo: calcola il netto</span></label><label><input type="radio" name="c-mode" value="netto" data-t="mode"${T.mode === 'netto' ? ' checked' : ''}><span>Netto: calcola il lordo</span></label></div></div>`;
-    if (v.irpef === 'fissa') f += `<div class="fields" style="margin-top:12px"><div class="field"><label for="c-mens">Mensilità</label><select id="c-mens" data-t="mens"><option value="13"${T.mens == 13 ? ' selected' : ''}>13 (Credito)</option><option value="14"${T.mens == 14 ? ' selected' : ''}>14 (Assicurazioni)</option><option value="12"${T.mens == 12 ? ' selected' : ''}>12</option></select></div></div>`;
+    if (v.irpef === 'fissa') f += `<div class="fields" style="margin-top:12px"><div class="field"><label for="c-mens">Mensilità</label><select id="c-mens" data-t="mens"><option value="13"${T.mens == 13 ? ' selected' : ''}>13</option><option value="14"${T.mens == 14 ? ' selected' : ''}>14</option></select></div></div>`;
     if (v.irpef === 'buonipasto') f += `<label class="check"><input type="checkbox" data-t="bpCart"${T.bpCart ? ' checked' : ''}> Buoni cartacei</label>`;
     if (v.irpef === 'trasferta') f += `<label class="check"><input type="checkbox" data-t="trEstero"${T.trEstero ? ' checked' : ''}> Trasferta all'estero</label>`;
     if (v.irpef === 'fringe') f += `<label class="check"><input type="checkbox" data-t="figli"${T.figli ? ' checked' : ''}> Ho figli fiscalmente a carico (soglia 2.000 €)</label>`;
@@ -1717,8 +1695,6 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
     $('#s-out').hidden = !has;
     $('#s-wait').hidden = has;
     $('#pdf-stip').disabled = !has || !PDF_OK;
-    if (fx.livello) setText('liv-info', `${fx.livello.nome}: ${eur(fx.livello.stipendio)} + scatti da ${eur(fx.livello.scatto)} (massimo ${fx.livello.maxScatti})`);
-    else setText('liv-info', '');
     if (!has) { STIP = null; return; }
     const inp = stipInput(fx.fisso);
     const R = E.compute(inp, P);
@@ -1766,7 +1742,6 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
     const reg = regione(S.regione);
     const rows = [['Retribuzione lorda annua', eur(R.cashGross), 'strong']];
     rows.push(['Contributi INPS', neg(R.inps), '', `${fN.format(STIP.inp.inpsPct)}%` + (R.baseContr > P.inps.sogliaAggiuntiva ? ` + 1% oltre ${eur0(P.inps.sogliaAggiuntiva)}` : '')]);
-    if (R.fondo > 0) rows.push(['Fondo di solidarietà', neg(R.fondo), '', fN.format(STIP.inp.fondoPct) + '%']);
     if (R.prevDip > 0) rows.push(['Fondo pensione (tua quota)', neg(R.prevDip), '', 'deducibile']);
     if (R.cassaDip > 0) rows.push(['Cassa sanitaria', neg(R.cassaDip), '', 'deducibile']);
     rows.push(['Imponibile IRPEF', eur(R.imponibile), 'sub']);
@@ -1846,11 +1821,10 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
   function pdfStip() {
     if (!STIP) return;
     const { fx, inp, R, plan, marg, mens } = STIP;
-    const rep = new window.MiniPDF.Report('Busta Paga 2026 – Simulazione stipendio', `${ccnlCfg().nome} · calcolo del ${oggi()}`);
+    const rep = new window.MiniPDF.Report('Busta Paga 2026 – Simulazione stipendio', `${mens} mensilità · calcolo del ${oggi()}`);
     rep.h2('Dati inseriti');
     const dati = [];
     if (S.modo === 'n2l') dati.push(['Netto desiderato', `${eur(parseNum(S.target))} (${({ medio: 'medio al mese', mese: 'in busta mar–nov', annuo: 'annuo' })[S.targetModo]})`]);
-    else if (fx.livello) dati.push(['Inquadramento', `${fx.livello.nome}, ${fx.scatti} scatti${num(S.altreFisse, 0) ? ', altre voci fisse ' + eur(num(S.altreFisse, 0)) : ''}`]);
     else if (S.inserimento === 'mensile') dati.push(['Lordo mensile', eur(fx.mese)]);
     else dati.push(['RAL', eur(fx.fisso)]);
     dati.push(['Mensilità', String(mens)]);
@@ -1858,7 +1832,7 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
     dati.push(['Addizionale comunale', S.comScagl ? 'a scaglioni ' + S.comSc.map((x) => fN.format(num(x, 0)) + '%').join(' / ') : (blank(S.comAliq) ? 'stima 0,8%' : fN.format(parseNum(S.comAliq)) + '%') + (num(S.comEsenz, 0) ? `, esenzione fino a ${eur0(num(S.comEsenz, 0))}` : '')]);
     const fam = [S.coniuge ? 'coniuge' : '', inp.figliU21 ? inp.figliU21 + ' figli <21' : '', inp.figli21 ? inp.figli21 + ' figli 21–29' : '', inp.altriFam ? inp.altriFam + ' ascendenti' : ''].filter(Boolean).join(', ');
     if (fam) dati.push(['Familiari a carico', fam]);
-    dati.push(['Contributi', `INPS ${fN.format(inp.inpsPct)}%, fondo solidarietà ${fN.format(inp.fondoPct)}%`]);
+    dati.push(['Contributi INPS', `${fN.format(inp.inpsPct)}%`]);
     if (inp.prevDipPct || inp.prevDatPct) dati.push(['Fondo pensione', `tua quota ${fN.format(inp.prevDipPct)}%, azienda ${fN.format(inp.prevDatPct)}%`]);
     if (inp.cassaDip) dati.push(['Cassa sanitaria', eur(inp.cassaDip) + ' annui']);
     if (inp.contratto === 'det' || inp.giorni < 365) dati.push(['Rapporto', `${inp.contratto === 'det' ? 'tempo determinato' : 'tempo indeterminato'}, ${inp.giorni} giorni`]);
@@ -1894,8 +1868,7 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
       ['Fringe benefit esenti', `${eur0(P.fringeBenefit.soglia)} · ${eur0(P.fringeBenefit.sogliaFigli)} con figli`],
       ['Buoni pasto esenti', `${eur(P.buoniPasto.elettronico)} elettronici · ${eur(P.buoniPasto.cartaceo)} cartacei al giorno`],
       ['Trasferte', 'diaria esente 46,48 € al giorno in Italia, 77,47 € all\'estero'],
-      ['Previdenza complementare deducibile', eur(P.previdenzaComplementareMax)],
-      ['Fondo solidarietà (quota dipendente)', `credito ${fN.format(P.fondoSolidarieta.credito)}%, assicurazioni ${fN.format(P.fondoSolidarieta.assicurazioni)}%`]
+      ['Previdenza complementare deducibile', eur(P.previdenzaComplementareMax)]
     ].map(([k, v]) => `<tr><th scope="row">${k}</th><td>${v}</td></tr>`).join('');
     $('#p-reg tbody').innerHTML = P.regioni.map((r) => {
       const o = REGOV[r.id]; const ex = [];
@@ -1948,23 +1921,16 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
       else el.value = v == null ? '' : v;
     });
     $$('.com-sc').forEach((el, i) => { el.value = S.comSc[i]; });
-    const n2l = S.modo === 'n2l', cred = S.ccnl === 'credito';
-    if (!cred && S.inserimento === 'livello') { S.inserimento = 'ral'; $$('input[name="ins"]').forEach((el) => { el.checked = el.value === 'ral'; }); }
-    $('#opt-livello').disabled = !cred;
+    const n2l = S.modo === 'n2l';
     $('#blk-l2n').hidden = n2l; $('#blk-n2l').hidden = !n2l;
-    $('#blk-livello').hidden = S.inserimento !== 'livello' || !cred;
     $('#blk-ral').hidden = S.inserimento !== 'ral';
     $('#blk-mensile').hidden = S.inserimento !== 'mensile';
     $('#com-flat').hidden = !!S.comScagl; $('#com-scagl').hidden = !S.comScagl;
-    $('#f-mens').placeholder = String(ccnlCfg().mensilita);
-    $('#f-fondo').placeholder = fN.format(P.fondoSolidarieta[S.ccnl] || 0);
-    setText('ccnl-nota', ccnlCfg().nota || '');
   }
 
   let tmr; const later = (fn) => { clearTimeout(tmr); tmr = setTimeout(fn, 120); };
   function bind() {
     $('#f-regione').innerHTML = regOptions('');
-    $('#f-livello').innerHTML = '<option value="">Seleziona il livello</option>' + livelli().map((l) => `<option value="${l.id}">${l.nome}</option>`).join('');
     syncStip();
     $('#q').addEventListener('input', (e) => { UI.q = e.target.value; renderLista(); });
     $('#cats').addEventListener('click', (e) => { const b = e.target.closest('[data-cat]'); if (b) { UI.cat = b.dataset.cat; renderLista(); } });
@@ -2009,8 +1975,7 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
       if (el.type === 'checkbox') S[k] = el.checked;
       else if (el.type === 'radio') { if (!el.checked) return; S[k] = el.value; }
       else S[k] = el.value;
-      if (k === 'ccnl' && S.ccnl === 'credito' && S.inserimento === 'ral' && blank(S.ral)) S.inserimento = 'livello';
-      if (['ccnl', 'modo', 'inserimento', 'comScagl'].includes(k)) syncStip();
+      if (['modo', 'inserimento', 'comScagl'].includes(k)) syncStip();
       later(renderStipendio);
     };
     $('#form-stip').addEventListener('input', onStip);
