@@ -238,6 +238,11 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
 .opt-l { font-style: normal; font-weight: 400; color: var(--muted); }
 .field.wide { grid-column: 1 / -1; }
 .fnote { display: block; font-size: 12.5px; color: var(--muted); margin-top: 4px; line-height: 1.35; }
+.costo { margin-top: 16px; padding: 14px 14px 6px; border-radius: 12px; background: var(--paper); border: 1px solid var(--line); }
+.costo-h { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 4px; }
+.costo-h span { font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; font-weight: 600; }
+.costo-h b { font-size: 22px; }
+.costo .tbl { margin-top: 6px; }
 /* Testi normativi giustificati */
 #panel-info .prose p, #panel-info .prose li, #panel-info .hint, #panel-info .card > p, .breve, ul.att li, .norma, .intro p, .hint { text-align: justify; -webkit-hyphens: auto; hyphens: auto; }
 </style>
@@ -252,7 +257,7 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
 <main>
   <section class="panel" id="panel-tassazione" aria-label="Regime fiscale e contributivo">
     <div id="v-lista">
-      <div class="intro"><h2>Regime fiscale e contributivo delle somme</h2><p>Selezionare la voce per il trattamento IRPEF, contributivo e di addizionali, con determinazione del netto o lordizzazione.</p></div>
+      <div class="intro"><h2>Regime fiscale e contributivo delle somme</h2><p>Selezionare la voce per il trattamento IRPEF, contributivo e di addizionali, con determinazione del netto, lordizzazione e costo azienda.</p></div>
       <div class="search">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
         <input type="search" id="q" placeholder="es. esodo, transazione, CIGS, RITA, stock grant" aria-label="Cerca una voce" autocomplete="off">
@@ -300,6 +305,7 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
         <li>Aliquota TFR stimata sulla RAL corrente; l'aliquota effettiva dipende dalla dinamica retributiva e dall'anzianità di servizio.</li>
         <li>Previdenza complementare: imposta calcolata sull'importo indicato quale base imponibile; il montante maturato fino al 2006 segue la disciplina previgente.</li>
         <li>Lavoro autonomo occasionale: contribuzione stimata nell'ipotesi di unico committente nel periodo d'imposta.</li>
+        <li>Costo azienda: contribuzione c/datore stimata al 30% e premio INAIL allo 0,4% in assenza di indicazione (aliquote modificabili per singolo calcolo); quota TFR pari a 1/13,5 per le somme utili ai fini del TFR. Non sono considerati l'IRAP (costo del personale a tempo indeterminato deducibile), i contributi ai fondi di solidarietà, il contributo di solidarietà del 10% sulla previdenza complementare e gli oneri da contrattazione aziendale.</li>
       </ul>
       <h3>Perimetro del catalogo</h3>
       <p>Il catalogo comprende le erogazioni in denaro corrisposte in costanza di rapporto, alla cessazione e successivamente, nonché le prestazioni sostitutive della retribuzione. I compensi in natura (autoveicoli, fabbricati, prestiti, beni e servizi) sono ricondotti alla scheda Fringe benefit; welfare, mensa e buoni pasto alle schede dedicate. Restano esclusi i trattamenti pensionistici obbligatori, l'assegno unico universale e i compensi di lavoro autonomo professionale.</p>
@@ -741,7 +747,7 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
       id: 'mensilita-aggiuntive', esempio: 3000, cat: 'busta', nome: 'Mensilità aggiuntive (tredicesima e quattordicesima)',
       sinonimi: 'gratifica natalizia mensilità aggiuntiva 13a 14a',
       varianti: [{
-        irpef: 'ordinaria', contributi: true,
+        irpef: 'ordinaria', contributi: true, tfr: true,
         breve: 'Retribuzione differita a tassazione ordinaria e soggetta a contribuzione piena. Nel periodo di paga di erogazione la ritenuta è più elevata, poiché le detrazioni sono ragguagliate ai soli periodi ordinari; su base annua l\'imposta coincide con quella della retribuzione ordinaria.',
         attenzione: ['Le eventuali differenze tra ritenute mensili e imposta annua sono regolate in sede di conguaglio di fine anno.'],
         norma: 'Art. 51 c. 1 TUIR; art. 23 DPR 600/1973.'
@@ -803,7 +809,7 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
       id: 'voce-fissa', esempio: 100, cat: 'busta', nome: 'Voce retributiva fissa (superminimo, assegno ad personam, indennità)',
       sinonimi: 'aumento di stipendio assegno ad personam superminimo indennità di ruolo indennità di funzione indennità di cassa maneggio denaro indennità di mansione aumento di merito promozione',
       varianti: [{
-        irpef: 'fissa', contributi: true,
+        irpef: 'fissa', contributi: true, tfr: true,
         breve: 'Elemento continuativo corrisposto per tutte le mensilità: incrementa la retribuzione annua lorda a tassazione ordinaria e l\'imponibile previdenziale. Inserire l\'importo mensile.',
         attenzione: [
           'Nella fascia di decalage della detrazione ex art. 13 TUIR e dell\'ulteriore detrazione da cuneo fiscale l\'aliquota effettiva marginale può superare il 50%.',
@@ -860,13 +866,13 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
       ralNote: 'Indicare la sola retribuzione a carico del datore nel periodo d\'imposta, escluso il periodo coperto dall\'indennità.',
       varianti: [
         {
-          label: 'Quota anticipata per conto dell\'INPS', irpef: 'ordinaria', contributi: false,
+          label: 'Quota anticipata per conto dell\'INPS', irpef: 'ordinaria', contributi: false, carico: 'inps-anticipo',
           breve: 'Indennità sostitutive della retribuzione ex art. 6 c. 2 TUIR: reddito di lavoro dipendente a tassazione ordinaria, con spettanza delle detrazioni. Nessuna ritenuta previdenziale: il periodo è coperto da contribuzione figurativa.',
           attenzione: ['Anticipazione a conguaglio con il flusso UniEmens; in taluni casi il pagamento è diretto da parte dell\'INPS.', 'Medesimo regime per permessi L. 104/1992 e congedi parentali indennizzati.'],
           norma: 'Art. 6 c. 2 e art. 51 TUIR; art. 1 DL 663/1979.'
         },
         {
-          label: 'Integrazione a carico del datore', irpef: 'ordinaria', contributi: true,
+          label: 'Integrazione a carico del datore', irpef: 'ordinaria', contributi: true, tfr: true,
           breve: 'L\'integrazione contrattuale fino a concorrenza della retribuzione è retribuzione imponibile a tutti gli effetti: tassazione ordinaria e contribuzione piena.',
           attenzione: ['Stesso regime per i giorni di carenza retribuiti dal datore.'],
           norma: 'Art. 51 c. 1 TUIR; art. 12 L. 153/1969.'
@@ -880,19 +886,19 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
       ralNote: 'Indicare la sola retribuzione a carico del datore nel periodo d\'imposta, escluso il periodo coperto dall\'indennità.',
       varianti: [
         {
-          label: 'Indennità per inabilità temporanea assoluta', irpef: 'ordinaria', contributi: false,
+          label: 'Indennità per inabilità temporanea assoluta', irpef: 'ordinaria', contributi: false, carico: 'inail',
           breve: 'Indennità sostitutiva della retribuzione: reddito di lavoro dipendente a tassazione ordinaria, senza ritenute previdenziali.',
           attenzione: ['L\'integrazione datoriale fino al 100% è soggetta anche a contribuzione: v. variante dedicata.'],
           norma: 'Art. 6 c. 2 TUIR; art. 68 DPR 1124/1965.'
         },
         {
-          label: 'Integrazione a carico del datore', irpef: 'ordinaria', contributi: true,
+          label: 'Integrazione a carico del datore', irpef: 'ordinaria', contributi: true, tfr: true,
           breve: 'L\'integrazione dell\'indennità INAIL prevista dal CCNL costituisce retribuzione: tassazione ordinaria e contribuzione piena.',
           attenzione: ['Verificare misura e durata dell\'integrazione nel CCNL applicato.'],
           norma: 'Art. 51 c. 1 TUIR.'
         },
         {
-          label: 'Rendita o indennizzo in capitale per danno biologico permanente', irpef: 'esente', contributi: false,
+          label: 'Rendita o indennizzo in capitale per danno biologico permanente', irpef: 'esente', contributi: false, carico: 'inail',
           breve: 'Le prestazioni per menomazione dell\'integrità psicofisica hanno natura risarcitoria di un danno non patrimoniale: escluse da imposizione.',
           attenzione: ['Escluse altresì le somme per invalidità permanente o morte corrisposte a titolo risarcitorio o assicurativo.'],
           norma: 'Art. 6 c. 2 TUIR; art. 13 D.Lgs. 38/2000.'
@@ -905,7 +911,7 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
       ralLabel: 'RAL al netto delle ore integrate',
       ralNote: 'Indicare la sola retribuzione a carico del datore nel periodo d\'imposta, escluse le ore coperte da integrazione.',
       varianti: [{
-        irpef: 'ordinaria', contributi: false, riduzione: 5.84,
+        irpef: 'ordinaria', contributi: false, riduzione: 5.84, carico: 'cig',
         v: { irpef: ['Ordinaria', 'con detrazioni art. 13 TUIR', 'ord'], contr: ['Riduzione 5,84%', 'dip'], add: ['Sì', 'si'] },
         breve: 'Trattamenti sostitutivi della retribuzione: reddito di lavoro dipendente a tassazione ordinaria. In luogo della ritenuta previdenziale si applica la riduzione del 5,84% ex art. 26 L. 41/1986; il periodo è coperto da contribuzione figurativa.',
         attenzione: ['Importi soggetti ai massimali mensili rivalutati annualmente dall\'INPS.', 'Per l\'assegno ordinario del Fondo di solidarietà del credito valgono le misure e i massimali del relativo regolamento.'],
@@ -919,7 +925,7 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
       ralNote: 'La prestazione concorre al reddito complessivo con le retribuzioni percepite nell\'anno prima della cessazione. Valore ammesso: 0.',
       ralZeroOk: true,
       varianti: [{
-        irpef: 'ordinaria', contributi: false,
+        irpef: 'ordinaria', contributi: false, carico: 'inps',
         breve: 'Prestazione erogata direttamente dall\'INPS in qualità di sostituto d\'imposta: reddito sostitutivo di lavoro dipendente a tassazione ordinaria, con detrazioni su richiesta. Nessuna ritenuta previdenziale; contribuzione figurativa.',
         attenzione: [
           'Non è a carico del datore: la scheda consente di stimare il netto spettante dopo la cessazione.',
@@ -949,7 +955,7 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
       id: 'fondo-credito', esempio: 3000, cat: 'fine', nome: 'Assegno straordinario del Fondo di solidarietà del credito',
       sinonimi: 'esodo bancario accompagnamento alla pensione fondo esuberi assegno di sostegno al reddito bancari inps',
       varianti: [{
-        irpef: 'separata_tfr', contributi: false,
+        irpef: 'separata_tfr', contributi: false, carico: 'fondo-credito',
         breve: 'L\'assegno straordinario erogato dall\'INPS per conto del Fondo fino alla maturazione dei requisiti pensionistici è assoggettato a tassazione separata con l\'aliquota del TFR, a titolo definitivo: non è soggetto a riliquidazione.',
         attenzione: [
           'Nessuna ritenuta previdenziale: il Fondo versa la contribuzione correlata.',
@@ -963,7 +969,7 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
       id: 'tfr', esempio: 40000, cat: 'fine', nome: 'TFR e anticipazione del TFR',
       sinonimi: 'liquidazione trattamento di fine rapporto anticipazione tfr fondo di garanzia inps',
       varianti: [{
-        irpef: 'separata_tfr', contributi: false,
+        irpef: 'separata_tfr', contributi: false, carico: 'tfr',
         breve: 'Tassazione separata con l\'aliquota corrispondente al reddito di riferimento (TFR al netto delle rivalutazioni, diviso per gli anni di servizio e moltiplicato per 12). Nessuna ritenuta previdenziale.',
         attenzione: [
           'Le rivalutazioni annue sono già assoggettate a imposta sostitutiva del 17%: inserire la sola quota capitale.',
@@ -977,7 +983,7 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
       id: 'preavviso', esempio: 9000, cat: 'fine', nome: 'Indennità sostitutiva del preavviso',
       sinonimi: 'mancato preavviso preavviso non lavorato',
       varianti: [{
-        irpef: 'separata_tfr', contributi: true,
+        irpef: 'separata_tfr', contributi: true, tfr: true,
         breve: 'Natura retributiva ai fini previdenziali, con assoggettamento a contribuzione; ai fini fiscali tassazione separata con l\'aliquota del TFR in quanto connessa alla cessazione.',
         attenzione: [
           'Il preavviso lavorato è ordinaria retribuzione a tassazione ordinaria.',
@@ -1224,14 +1230,14 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
       sinonimi: 'previdenza complementare rita riscatto anticipazione prima casa spese sanitarie liquidazione fondo pensione capitale',
       varianti: [
         {
-          label: 'Prestazione in capitale, RITA, riscatto per invalidità, inoccupazione oltre 48 mesi o decesso, anticipazione per spese sanitarie', irpef: 'sostfissa', contributi: false, anni: true,
+          label: 'Prestazione in capitale, RITA, riscatto per invalidità, inoccupazione oltre 48 mesi o decesso, anticipazione per spese sanitarie', irpef: 'sostfissa', contributi: false, anni: true, carico: 'fondo',
           v: { irpef: ['Sostitutiva 15%', 'ridotta fino al 9%', 'sost'], contr: ['No', 'no'], add: ['No', 'no'] },
           breve: 'Ritenuta a titolo d\'imposta del 15%, ridotta di 0,30 punti percentuali per ogni anno di partecipazione eccedente il quindicesimo, con un minimo del 9%.',
           attenzione: ['Base imponibile: montante maturato dal 2007, al netto dei rendimenti già tassati e dei contributi non dedotti.', 'Il montante maturato fino al 2006 segue la disciplina previgente (tassazione separata).'],
           norma: 'Art. 11 c. 6 e art. 14 D.Lgs. 252/2005.'
         },
         {
-          label: 'Anticipazione per prima casa o ulteriori esigenze, riscatto per altre cause', irpef: 'sostfissa', contributi: false, aliquota: 23,
+          label: 'Anticipazione per prima casa o ulteriori esigenze, riscatto per altre cause', irpef: 'sostfissa', contributi: false, aliquota: 23, carico: 'fondo',
           v: { irpef: ['Sostitutiva 23%', 'ritenuta a titolo d\'imposta', 'sost'], contr: ['No', 'no'], add: ['No', 'no'] },
           breve: 'Ritenuta a titolo d\'imposta del 23%, indipendentemente dal reddito del percettore.',
           attenzione: ['Il riscatto per perdita dei requisiti di partecipazione senza i presupposti di inoccupazione di 12 o 48 mesi è tassato al 23%.'],
@@ -1568,7 +1574,7 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
   const regOptions = (sel) => `<option value="">Seleziona la regione</option>` + P.regioni.map((r) => `<option value="${r.id}"${r.id === sel ? ' selected' : ''}>${r.nome}</option>`).join('');
 
   /* ================= stato: solo in memoria, mai salvato ================= */
-  const nuovoCalc = () => ({ ral: '', imp: '', mode: 'lordo', regione: '', comAliq: '', mens: '13', wc: null, figli: false, bpVal: '', bpGg: '', bpCart: false, trImp: '', trGg: '', trEstero: false, aliqTfr: '', anni: '', copertura: true });
+  const nuovoCalc = () => ({ ral: '', imp: '', mode: 'lordo', regione: '', comAliq: '', mens: '13', wc: null, figli: false, bpVal: '', bpGg: '', bpCart: false, trImp: '', trGg: '', trEstero: false, aliqTfr: '', anni: '', copertura: true, datPct: '', inailPct: '', tfrOn: null });
   let T = nuovoCalc();
   let UI = { cat: 'tutte', q: '' };
 
@@ -1733,8 +1739,86 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
         r.note.push(`Importo da restituire circa ${eur(L - irpef)} in luogo di ${eur(L)}. Il dato puntuale è la ritenuta certificata nella CU del periodo di riferimento.`); break;
       }
     }
+    costoAzienda(v, r, uc);
     return r;
   }
+
+  /* ================= costo azienda ================= */
+  const CESSAZIONE = ['incentivo-esodo', 'transazione', 'licenziamento', 'conciliazione-jobs-act'];
+  const tfrOnOf = (v) => (T.tfrOn == null ? !!v.tfr : T.tfrOn);
+  /* Base imponibile previdenziale della somma (quota su cui il datore versa i contributi). */
+  function basePrev(v, r, uc) {
+    const L = r.lordo;
+    switch (v.irpef) {
+      case 'ordinaria': return v.riduzione ? 0 : (uc ? L : 0);
+      case 'fissa': case 'separata_tfr': case 'separata_arretrati': return uc ? L : 0;
+      case 'sost1': case 'sost15': case 'sost5': return L;
+      case 'fringe': return L > (T.figli ? P.fringeBenefit.sogliaFigli : P.fringeBenefit.soglia) ? L : 0;
+      case 'buonipasto': { const sg = T.bpCart ? P.buoniPasto.cartaceo : P.buoniPasto.elettronico; return Math.max(0, parseNum(T.bpVal) - sg) * parseNum(T.bpGg); }
+      case 'trasferta': { const sg = T.trEstero ? 77.47 : 46.48; return Math.max(0, parseNum(T.trImp) - sg) * parseNum(T.trGg); }
+      case 'azioni_gen': return Math.max(0, L - 2065.83);
+      case 'trasferimento': return L - Math.min(L * 0.5, T.trEstero ? 4648.11 : 1549.37);
+    }
+    return 0;
+  }
+  const tfrPossibile = (v) => !v.carico && ['ordinaria', 'fissa', 'separata_tfr', 'separata_arretrati', 'sost1', 'sost15', 'sost5'].includes(v.irpef) && v.contributi !== false;
+  function costoAzienda(v, r, uc) {
+    if (v.irpef.startsWith('restituzione')) return;
+    const L = r.lordo; const c = { righe: [], note: [], totale: L };
+    const datPct = num(T.datPct, 30), inail = num(T.inailPct, 0.4);
+    switch (v.carico) {
+      case 'inps-anticipo':
+        c.totale = 0; c.righe.push(['Anticipazione per conto dell\'INPS', L], ['Recupero a conguaglio (UniEmens)', -L]);
+        c.note.push('Prestazione a carico dell\'INPS, anticipata dal datore e recuperata mediante conguaglio con i contributi dovuti: nessun onere per l\'azienda.');
+        r.costo = c; return;
+      case 'inail':
+        c.totale = 0; c.righe.push(['Prestazione a carico dell\'INAIL', L]);
+        c.note.push('Prestazione a carico dell\'INAIL: nessun onere diretto per l\'azienda (salvo i primi giorni di carenza, retribuiti dal datore secondo il CCNL).');
+        r.costo = c; return;
+      case 'inps':
+        c.totale = 0; c.righe.push(['Prestazione erogata direttamente dall\'INPS', L]);
+        c.note.push('Prestazione non a carico del datore di lavoro.');
+        r.costo = c; return;
+      case 'cig': {
+        const persa = L / 0.8; const add = persa * 0.09;
+        c.totale = add; c.righe.push(['Integrazione a carico dell\'INPS', L], ['Contributo addizionale 9% sulla retribuzione persa (stimata in importo ÷ 0,8)', add]);
+        c.note.push('Contributo addizionale del 9% entro 52 settimane nel quinquennio mobile, 12% fino a 104 settimane, 15% oltre (art. 5 D.Lgs. 148/2015). Per l\'assegno dei fondi di solidarietà si applica il contributo addizionale previsto dal regolamento del fondo.');
+        r.costo = c; return;
+      }
+      case 'fondo':
+        c.totale = 0; c.righe.push(['Prestazione a carico della forma pensionistica complementare', L]);
+        c.note.push('Nessun onere per l\'azienda alla data di erogazione: i contributi datoriali sono stati versati nei periodi di contribuzione.');
+        r.costo = c; return;
+      case 'fondo-credito':
+        c.righe.push(['Provvista dell\'assegno straordinario versata al Fondo', L]);
+        c.note.push('Al costo dell\'assegno si aggiunge la contribuzione correlata, determinata sulla retribuzione di riferimento e versata al Fondo dall\'azienda: non stimabile dal solo importo dell\'assegno.');
+        r.costo = c; return;
+      case 'tfr':
+        c.righe.push(['Importo erogato', L]);
+        c.note.push('Onere già rilevato negli accantonamenti al fondo TFR degli esercizi di maturazione: l\'erogazione non genera un costo ulteriore a conto economico.');
+        r.costo = c; return;
+    }
+    c.righe.push(['Importo lordo', L]);
+    if (v.irpef === 'occasionale') {
+      const gsAl = T.copertura ? 24 : 33.72; const gs = Math.max(0, L - 5000) * gsAl / 100 * 2 / 3;
+      if (gs > 0) { c.righe.push([`Contributi Gestione separata, quota committente (2/3 del ${fN.format(gsAl)}%)`, gs]); c.totale += gs; }
+      c.note.push('Nessun accantonamento TFR né premio INAIL per il lavoro autonomo occasionale.');
+      r.costo = c; return;
+    }
+    const base = basePrev(v, r, uc);
+    if (base > 0) {
+      const contr = base * datPct / 100, inl = base * inail / 100;
+      c.righe.push([`Contributi previdenziali c/datore (${fN.format(datPct)}%${base < L - 0.005 ? ` su ${eur(base)}` : ''})`, contr]);
+      if (inl > 0) c.righe.push([`Premio INAIL (${fN.format(inail)}%)`, inl]);
+      c.totale += contr + inl;
+      c.note.push(blank(T.datPct) ? 'Aliquota contributiva c/datore stimata al 30%: indicare l\'aliquota effettiva della matricola INPS nei parametri del costo azienda.' : `Aliquota contributiva c/datore indicata: ${fN.format(datPct)}%.`);
+    } else c.note.push('Somma esclusa dall\'imponibile previdenziale: nessun contributo c/datore.');
+    if (tfrPossibile(v) && tfrOnOf(v)) { const q = L / 13.5; c.righe.push(['Quota TFR (importo ÷ 13,5)', q]); c.totale += q; }
+    if (v.irpef === 'fissa') c.note.push(`Costo medio per mensilità: ${eur(c.totale / num(T.mens, 13))}.`);
+    if (CESSAZIONE.includes(CUR.id) && v.irpef !== 'ordinaria') c.note.push('Escluso il contributo NASpI in caso di interruzione del rapporto (c.d. ticket di licenziamento, art. 2 c. 31 L. 92/2012): 41% del massimale mensile NASpI per ogni 12 mesi di anzianità negli ultimi tre anni (640,76 € per annualità nel 2025, importo rivalutato annualmente).');
+    r.costo = c;
+  }
+
   function solve(f, target) {
     let lo = 0, hi = Math.max(1000, target * 3);
     while (f(hi) < target && hi < 5e7) hi *= 2;
@@ -1809,6 +1893,9 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
     if (v.irpef === 'fringe') f += `<label class="check"><input type="checkbox" data-t="figli"${T.figli ? ' checked' : ''}> Figli fiscalmente a carico (soglia 2.000 €)</label>`;
     if (v.contributi === 'dipende') f += `<label class="check"><input type="checkbox" data-t="wc"${wcOf(v) ? ' checked' : ''}> Somma di natura retributiva: applica la contribuzione</label>`;
     if (LOCALI.includes(v.irpef)) f += `<details class="more"${T.regione || T.comAliq ? ' open' : ''}><summary>Domicilio fiscale (facoltativo, per le addizionali)</summary><div class="fields"><div class="field"><label for="c-reg">Regione</label><select id="c-reg" data-t="regione">${regOptions(T.regione)}</select></div><div class="field"><label for="c-com">Addizionale comunale</label><div class="suffix"><input id="c-com" data-t="comAliq" inputmode="decimal" placeholder="es. 0,8" value="${val(T.comAliq)}"><span>%</span></div></div></div></details>`;
+    if (!v.carico && !v.irpef.startsWith('restituzione') && !['sostfissa', 'occasionale', 'esente'].includes(v.irpef)) {
+      f += `<details class="more"${T.datPct || T.inailPct || T.tfrOn != null ? ' open' : ''}><summary>Parametri costo azienda</summary><div class="fields"><div class="field"><label for="c-dat">Contributi c/datore</label><div class="suffix"><input id="c-dat" data-t="datPct" inputmode="decimal" placeholder="30" value="${val(T.datPct)}"><span>%</span></div></div><div class="field"><label for="c-inail">Tasso INAIL</label><div class="suffix"><input id="c-inail" data-t="inailPct" inputmode="decimal" placeholder="0,4" value="${val(T.inailPct)}"><span>%</span></div></div></div>${tfrPossibile(v) ? `<label class="check"><input type="checkbox" data-t="tfrOn"${tfrOnOf(v) ? ' checked' : ''}> Somma utile ai fini del TFR (accantonamento 1/13,5)</label>` : ''}</details>`;
+    }
     if (v.irpef === 'separata_tfr') f += `<details class="more"${T.aliqTfr ? ' open' : ''}><summary>Aliquota TFR effettiva</summary><div class="fields"><div class="field"><label for="c-aliq">Aliquota dal cedolino del TFR o dalla CU</label><div class="suffix"><input id="c-aliq" data-t="aliqTfr" inputmode="decimal" placeholder="stimata" value="${val(T.aliqTfr)}"><span>%</span></div></div></div></details>`;
 
     $('#det').innerHTML = `
@@ -1848,7 +1935,12 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
     else if (v.irpef === 'restituzione_netto') head = `<div class="res"><div><span>Importo lordo</span><b>${eur(r.lordo)}</b></div><div class="res-n"><span>Da restituire</span><b>${eur(r.restituisci)}</b></div></div>`;
     else head = `<div class="res"><div><span>Lordo${v.irpef === 'fissa' ? ' annuo' : ''}</span><b>${eur(r.lordo)}</b></div><div class="res-n"><span>Netto${v.irpef === 'fissa' ? ' annuo' : ''}</span><b>${eur(r.netto)}</b></div></div><div class="keepbar" aria-hidden="true"><span style="width:${Math.max(0, Math.min(100, kept * 100))}%"></span></div><p class="kept">Rapporto netto/lordo <b>${pct(kept * 100, 1)}</b></p>`;
     const righe = r.righe.length ? `<table class="tbl"><tbody>${r.righe.map(([k, x]) => `<tr><th scope="row">${k}</th><td>${x >= 0 ? '− ' : '+ '}${eur(Math.abs(x))}</td></tr>`).join('')}</tbody></table>` : '';
-    out.innerHTML = head + righe + r.note.map((n) => `<p class="hint">${n}</p>`).join('');
+    let costo = '';
+    if (r.costo) {
+      const k = r.costo;
+      costo = `<div class="costo"><div class="costo-h"><span>Costo azienda</span><b>${eur(k.totale)}</b></div><table class="tbl"><tbody>${k.righe.map(([l, x], i) => `<tr><th scope="row">${l}</th><td>${i === 0 ? '' : (x >= 0 ? '+ ' : '− ')}${eur(Math.abs(x))}</td></tr>`).join('')}</tbody></table>${k.note.map((n) => `<p class="hint">${n}</p>`).join('')}</div>`;
+    }
+    out.innerHTML = head + righe + r.note.map((n) => `<p class="hint">${n}</p>`).join('') + costo;
   }
 
   /* ================= procedura guidata ================= */
@@ -1912,6 +2004,8 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
     if (v.irpef === 'fissa') dati.push(['Mensilità', String(num(T.mens, 13))]);
     if (LOCALI.includes(v.irpef)) { dati.push(['Regione', regione(T.regione).nome]); dati.push(['Addizionale comunale', blank(T.comAliq) ? 'stima 0,8%' : fN.format(parseNum(T.comAliq)) + '%']); }
     if (v.contributi === 'dipende') dati.push(['Contributi applicati', wcOf(v) ? 'sì' : 'no']);
+    if (res.r.costo && !v.carico && basePrev(v, res.r, useContr(v)) > 0) dati.push(['Contributi c/datore e INAIL', `${fN.format(num(T.datPct, 30))}% + ${fN.format(num(T.inailPct, 0.4))}%${blank(T.datPct) ? ' (stima)' : ''}`]);
+    if (res.r.costo && tfrPossibile(v)) dati.push(['Accantonamento TFR', tfrOnOf(v) ? 'sì' : 'no']);
     if (v.irpef === 'separata_tfr' && !blank(T.aliqTfr)) dati.push(['Aliquota TFR indicata', fN.format(parseNum(T.aliqTfr)) + '%']);
     rep.kv(dati);
     rep.h2('Esito del calcolo');
@@ -1920,6 +2014,12 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
     else rep.tiles([[v.irpef === 'fissa' ? 'Lordo annuo' : 'Lordo', eur(r.lordo)], [v.irpef === 'fissa' ? 'Netto annuo' : 'Netto', eur(r.netto), 1], ['Netto/lordo', pct(r.lordo > 0 ? r.netto / r.lordo * 100 : 0, 1)]]);
     if (r.righe.length) rep.kv(r.righe.map(([k, x]) => [k, (x >= 0 ? '− ' : '+ ') + eur(Math.abs(x))]));
     r.note.forEach((n) => rep.p(n.replace(' In presenza dell\'aliquota effettiva, indicarla qui sotto.', ''), { size: 9, color: '#5a6779', after: 2 }));
+    if (r.costo) {
+      rep.h2('Costo azienda');
+      const k = r.costo;
+      rep.kv(k.righe.map(([l, x], i) => [l, (i === 0 ? '' : (x >= 0 ? '+ ' : '− ')) + eur(Math.abs(x))]).concat([['Costo azienda', eur(k.totale), 'total']]));
+      k.note.forEach((n) => rep.p(n, { size: 9, color: '#5a6779', after: 2 }));
+    }
     rep.h2('Profili di attenzione');
     rep.bullets(v.attenzione.map(strip));
     rep.p('Riferimenti normativi: ' + strip(v.norma), { size: 9, color: '#5a6779' });
