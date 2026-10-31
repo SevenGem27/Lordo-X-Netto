@@ -1,5 +1,5 @@
 /* Service worker: app shell in cache, parametri fiscali sempre dalla rete quando possibile. */
-const CACHE = 'bustapaga-2026-v5';
+const CACHE = 'lordoxnetto-2026-v6';
 const SHELL = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './rates.json'];
 
 self.addEventListener('install', (e) => {
