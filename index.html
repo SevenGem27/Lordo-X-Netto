@@ -238,6 +238,8 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
 .opt-l { font-style: normal; font-weight: 400; color: var(--muted); }
 .field.wide { grid-column: 1 / -1; }
 .fnote { display: block; font-size: 12.5px; color: var(--muted); margin-top: 4px; line-height: 1.35; }
+/* Testi normativi giustificati */
+#panel-info .prose p, #panel-info .prose li, #panel-info .hint, #panel-info .card > p, .breve, ul.att li, .norma, .intro p, .hint { text-align: justify; -webkit-hyphens: auto; hyphens: auto; }
 </style>
 </head>
 <body>
@@ -248,14 +250,14 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
 </nav>
 
 <main>
-  <section class="panel" id="panel-tassazione" aria-label="Che tassazione ha">
+  <section class="panel" id="panel-tassazione" aria-label="Regime fiscale e contributivo">
     <div id="v-lista">
-      <div class="intro"><h2>Che tassazione ha questa somma?</h2><p>Cerca la voce o scegli dall'elenco: vedi subito IRPEF, contributi e quanto resta netto.</p></div>
+      <div class="intro"><h2>Regime fiscale e contributivo delle somme</h2><p>Selezionare la voce per il trattamento IRPEF, contributivo e di addizionali, con determinazione del netto o lordizzazione.</p></div>
       <div class="search">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-        <input type="search" id="q" placeholder="es. esodo, transazione, malattia, azioni" aria-label="Cerca una somma" autocomplete="off">
+        <input type="search" id="q" placeholder="es. esodo, transazione, CIGS, RITA, stock grant" aria-label="Cerca una voce" autocomplete="off">
       </div>
-      <a class="guide-cta" href="#guida" data-start-guide><span class="ico" aria-hidden="true">?</span><span><b>Non sai come classificarla?</b><span>Rispondi a 2 o 3 domande e ti porto alla scheda giusta</span></span></a>
+      <a class="guide-cta" href="#guida" data-start-guide><span class="ico" aria-hidden="true">?</span><span><b>Qualificazione guidata</b><span>Individuazione della fattispecie in tre passaggi: momento, titolo e natura dell'erogazione</span></span></a>
       <div class="cats" id="cats" role="group" aria-label="Categorie"></div>
       <div id="lista"></div>
     </div>
@@ -263,18 +265,18 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
     <div id="guida" hidden></div>
   </section>
 
-  <section class="panel stack" id="panel-info" aria-label="Regole e fonti" hidden>
-    <div class="intro"><h2>Regole e fonti</h2></div>
+  <section class="panel stack" id="panel-info" aria-label="Parametri e fonti" hidden>
+    <div class="intro"><h2>Parametri e fonti</h2></div>
     <div class="card">
-      <h3>Dati in uso</h3>
-      <p style="margin:0">Versione <b id="p-version"></b>, aggiornata al <span id="p-agg"></span>. A ogni apertura l'app controlla se c'è un file dei parametri più recente.</p>
-      <div class="btn-row"><button type="button" class="btn" id="btn-update">Controlla aggiornamenti</button></div>
+      <h3>Versione dei parametri</h3>
+      <p style="margin:0">Versione <b id="p-version"></b>, aggiornata al <span id="p-agg"></span>. A ogni avvio l'applicazione verifica la disponibilità di una versione più recente del file dei parametri.</p>
+      <div class="btn-row"><button type="button" class="btn" id="btn-update">Verifica aggiornamenti</button></div>
       <p class="hint" id="upd-state" aria-live="polite"></p>
     </div>
     <div class="card"><h3>Parametri principali 2026</h3><table class="tbl-p"><tbody id="p-param"></tbody></table></div>
     <div class="card"><h3>Addizionali regionali 2026</h3>
       <div class="scroll"><table class="tbl-p" id="p-reg"><thead><tr><th scope="col">Regione</th><th scope="col">Aliquote (15k · 28k · 50k · oltre)</th><th scope="col">Dato</th></tr></thead><tbody></tbody></table></div>
-      <h3 style="font-size:16px;margin:18px 0 8px">Correggi le aliquote di una regione</h3>
+      <h3 style="font-size:16px;margin:18px 0 8px">Rettifica delle aliquote regionali</h3>
       <div class="fields"><div class="field"><label for="ovr-reg">Regione</label><select id="ovr-reg"></select></div></div>
       <div id="ovr-box" hidden>
       <div class="ovr" style="margin-top:12px">
@@ -283,24 +285,24 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
         <div class="field"><label for="ov2">28–50.000</label><div class="suffix"><input id="ov2" class="ovr-in" inputmode="decimal"><span>%</span></div></div>
         <div class="field"><label for="ov3">oltre 50.000</label><div class="suffix"><input id="ov3" class="ovr-in" inputmode="decimal"><span>%</span></div></div>
       </div>
-      <div class="btn-row"><button type="button" class="btn" id="ovr-save">Salva aliquote</button><button type="button" class="btn" id="ovr-reset" hidden>Torna ai dati ufficiali</button></div>
+      <div class="btn-row"><button type="button" class="btn" id="ovr-save">Salva aliquote</button><button type="button" class="btn" id="ovr-reset" hidden>Ripristina i dati del dataset</button></div>
       </div>
-      <p class="hint">“Media” indica aliquote ricostruite da fonti secondarie: verificale sulla <a href="https://www.finanze.gov.it/it/fiscalita/fiscalita-regionale-e-locale/Addizionale-regionale-allIRPEF/" target="_blank" rel="noopener">pagina del Dipartimento Finanze</a>. Le correzioni restano su questo dispositivo.</p>
+      <p class="hint">Affidabilità “media”: aliquote ricostruite da fonti secondarie, da verificare sulla <a href="https://www.finanze.gov.it/it/fiscalita/fiscalita-regionale-e-locale/Addizionale-regionale-allIRPEF/" target="_blank" rel="noopener">pagina del Dipartimento Finanze</a>. Le rettifiche sono memorizzate esclusivamente su questo dispositivo.</p>
     </div>
     <div class="card prose">
-      <h3>Come leggere le schede</h3>
-      <p><b>Ordinaria</b>: la somma si aggiunge allo stipendio e paga IRPEF all'aliquota più alta che raggiungi, più addizionali. <b>Separata</b>: è tassata da sola, con l'aliquota del TFR o con la media degli ultimi due anni, senza addizionali; l'Agenzia delle Entrate può poi ricalcolare. <b>Sostitutiva</b>: una percentuale fissa al posto di IRPEF e addizionali. <b>Esente</b>: non è reddito.</p>
-      <p>Quando la natura di una somma è incerta conta come è scritta nell'accordo o nella sentenza: per i casi importanti confrontati con il consulente del lavoro.</p>
-      <h3>Limiti noti</h3>
+      <h3>Legenda dei regimi</h3>
+      <p><b>Ordinaria</b>: la somma concorre al reddito complessivo ed è assoggettata ad aliquota marginale IRPEF e addizionali, con effetti sulla detrazione ex art. 13 TUIR e sulle misure del cuneo fiscale. <b>Separata</b>: tassazione autonoma ex art. 17 TUIR con l'aliquota del TFR (art. 19) o con l'aliquota media del biennio precedente (art. 21), senza addizionali; l'Agenzia delle Entrate procede a successiva riliquidazione, salvo i casi di tassazione definitiva. <b>Sostitutiva</b>: imposta in misura fissa in luogo di IRPEF e addizionali. <b>Esclusa</b>: la somma non concorre alla formazione del reddito.</p>
+      <p>Ove la qualificazione della somma sia incerta, rileva il titolo risultante dall'accordo o dal provvedimento giudiziale: per le fattispecie di maggiore rilievo è opportuno il confronto con il consulente del lavoro o fiscale.</p>
+      <h3>Ipotesi di calcolo e limiti</h3>
       <ul>
-        <li>Il calcolo ipotizza l'assenza di familiari a carico, di oneri detraibili e di altri redditi oltre a quelli indicati.</li>
-        <li>Contributi INPS calcolati al 9,19% (più 1% oltre la soglia), senza fondi di solidarietà di settore, che incidono per meno dello 0,1%.</li>
-        <li>L'aliquota TFR è stimata dalla RAL attuale; quella reale dipende dalla storia retributiva.</li>
-        <li>Fondo pensione: l'imposta è calcolata sull'importo che indichi; la quota maturata prima del 2007 ha regole proprie.</li>
-        <li>Compensi occasionali: contributi stimati nell'ipotesi che sia l'unico compenso occasionale dell'anno.</li>
+        <li>Assenza di familiari a carico, di oneri deducibili e detraibili e di redditi ulteriori rispetto a quelli indicati.</li>
+        <li>Contribuzione c/lavoratore al 9,19%, maggiorata dell'1% oltre la prima fascia di retribuzione pensionabile; esclusi i contributi ai fondi di solidarietà di settore, di incidenza inferiore allo 0,1%.</li>
+        <li>Aliquota TFR stimata sulla RAL corrente; l'aliquota effettiva dipende dalla dinamica retributiva e dall'anzianità di servizio.</li>
+        <li>Previdenza complementare: imposta calcolata sull'importo indicato quale base imponibile; il montante maturato fino al 2006 segue la disciplina previgente.</li>
+        <li>Lavoro autonomo occasionale: contribuzione stimata nell'ipotesi di unico committente nel periodo d'imposta.</li>
       </ul>
-      <h3>Somme che non sono in denaro o non riguardano il dipendente</h3>
-      <p>Auto aziendale, alloggio, prestiti agevolati e beni in natura sono trattati nella scheda Fringe benefit; servizi welfare, mensa e buoni pasto nelle schede dedicate. Restano fuori le pensioni pubbliche, gli assegni familiari e l'assegno unico (pagati dall'INPS e non tassati in busta) e i compensi a lavoratori autonomi con partita IVA.</p>
+      <h3>Perimetro del catalogo</h3>
+      <p>Il catalogo comprende le erogazioni in denaro corrisposte in costanza di rapporto, alla cessazione e successivamente, nonché le prestazioni sostitutive della retribuzione. I compensi in natura (autoveicoli, fabbricati, prestiti, beni e servizi) sono ricondotti alla scheda Fringe benefit; welfare, mensa e buoni pasto alle schede dedicate. Restano esclusi i trattamenti pensionistici obbligatori, l'assegno unico universale e i compensi di lavoro autonomo professionale.</p>
       <h3>Fonti</h3>
       <ul>
         <li>TUIR artt. 6, 7, 10, 17, 19, 21, 51, 67; L. 199/2025 (Bilancio 2026); L. 207/2024 c. 386-389; L. 208/2015 c. 182-189; D.Lgs. 252/2005 artt. 11 e 14; DPR 600/1973 artt. 23 e 25; L. 41/1986 art. 26; art. 2122 c.c.</li>
@@ -308,12 +310,13 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
         <li>Cassazione: 8662/2019, 916/2020, 14842/2022, 8615/2023.</li>
         <li>D.Lgs. 23/2015 art. 6; L. 300/1970 art. 18; DL 34/2020 art. 150; DL 73/2021 art. 47-bis; INPS circ. 6/2026.</li>
         <li>Schede MEF addizionale regionale 2026; L.R. Lazio 20/2025, L.R. Umbria 2/2025, DPGR Puglia 3/2026, L.P. Trento 11/2025.</li>
-        <li>Rinnovi contrattuali citati nella scheda sugli aumenti: CCNL Credito ABI 23/11/2023, CCNL ANIA 13/5/2026.</li>
+        <li>Rinnovi contrattuali richiamati: CCNL Credito ABI 23/11/2023, CCNL ANIA 13/5/2026.</li>
+        <li>INPS: msg. 18850/2006; D.Lgs. 148/2015; D.Lgs. 22/2015; DPR 1124/1965; D.Lgs. 38/2000; L. 166/1991 art. 9-bis.</li>
       </ul>
     </div>
   </section>
 </main>
-<footer>Stime informative con le regole dell'anno d'imposta 2026.</footer>
+<footer>Elaborazioni a carattere informativo sulla base della disciplina vigente per il periodo d'imposta 2026.</footer>
 <div class="toast" id="toast" role="status"></div>
 
 <script type="application/json" id="rates-fallback">{"version": "2026.10.30", "anno": 2026, "aggiornato": "30/10/2026", "note": "Parametri per l'anno d'imposta 2026 (L. 199/2025 - Legge di Bilancio 2026). Addizionali regionali da schede MEF/leggi regionali dove disponibili; le righe con affidabilita 'media' sono ricostruite da piu fonti secondarie e vanno verificate sul sito del Dipartimento Finanze.", "irpef": {"scaglioni": [[28000, 23], [50000, 33], [null, 43]]}, "detrazioneLavoro": {"fino15000": 1955, "minIndet": 1380, "minDet": 690, "base28": 1910, "extra28": 1190, "maggiorazione25_35": 65}, "cuneo": {"bonusSoglia": 20000, "bonusFasce": [[8500, 7.1], [15000, 5.3], [20000, 4.8]], "ulteriorePiena": 1000, "ulteriorePienaFino": 32000, "ulterioreFino": 40000}, "trattamentoIntegrativo": {"importo": 1200, "pieno": 15000, "fino": 28000}, "inps": {"dipendente": 9.19, "aggiuntiva": 1.0, "sogliaAggiuntiva": 56224, "massimale": 122295}, "fondoSolidarieta": {"credito": 0.067, "assicurazioni": 0.1, "altro": 0}, "previdenzaComplementareMax": 5164.57, "cassaSanitariaMax": 3615.2, "sostitutive": {"premioProduttivita": {"aliquota": 1, "limite": 5000, "redditoMax": 80000}, "notturniFestivi": {"aliquota": 15, "limite": 1500, "redditoMax": 40000}, "rinnoviContrattuali": {"aliquota": 5, "redditoMax": 33000}}, "fringeBenefit": {"soglia": 1000, "sogliaFigli": 2000}, "buoniPasto": {"elettronico": 10, "cartaceo": 4}, "tfrDivisore": 13.5, "ccnl": {"credito": {"nome": "CCNL Credito (ABI)", "mensilita": 13, "tabellaDal": "01/03/2026", "livelli": [{"id": "qd4", "nome": "Quadro direttivo 4° livello", "stipendio": 5160.06, "scatto": 95.31, "maxScatti": 7}, {"id": "qd3", "nome": "Quadro direttivo 3° livello", "stipendio": 4396.88, "scatto": 95.31, "maxScatti": 7}, {"id": "qd2", "nome": "Quadro direttivo 2° livello", "stipendio": 3965.48, "scatto": 41.55, "maxScatti": 8}, {"id": "qd1", "nome": "Quadro direttivo 1° livello", "stipendio": 3743.21, "scatto": 41.55, "maxScatti": 8}, {"id": "a34", "nome": "3ª area professionale 4° livello", "stipendio": 3341.9, "scatto": 41.55, "maxScatti": 8}, {"id": "a33", "nome": "3ª area professionale 3° livello", "stipendio": 3059.49, "scatto": 41.55, "maxScatti": 8}, {"id": "a32", "nome": "3ª area professionale 2° livello", "stipendio": 2890.41, "scatto": 41.55, "maxScatti": 8}, {"id": "a31", "nome": "3ª area professionale 1° livello", "stipendio": 2742.34, "scatto": 41.55, "maxScatti": 8}, {"id": "au", "nome": "Area unificata (ex 1ª e 2ª area)", "stipendio": 2479.45, "scatto": 29.07, "maxScatti": 8}], "nota": "Minimi tabellari mensili in vigore dal 1/3/2026 (ultima tranche del rinnovo 23/11/2023, scaduto il 31/3/2026, trattativa per il rinnovo in corso). Il rinnovo del 23/11/2023 e' stato firmato prima del 2024: gli aumenti ABI non rientrano nella flat tax 5% sui rinnovi."}, "assicurazioni": {"nome": "CCNL Assicurazioni (ANIA)", "mensilita": 14, "nota": "13ª a dicembre e 14ª entro giugno/luglio. Rinnovo firmato il 13/5/2026 (vigenza fino al 31/5/2028): gli incrementi pagati nel 2026 possono rientrare nella flat tax 5% sui rinnovi se il reddito 2025 da lavoro dipendente non supera 33.000 €. Inserisci la retribuzione dalla lettera di assunzione o dal cedolino: le tabelle ANIA per livello/classe non sono incluse."}, "altro": {"nome": "Altro CCNL", "mensilita": 13}}, "regioni": [{"id": "abr", "nome": "Abruzzo", "scaglioni": [[28000, 1.67], [50000, 2.87], [null, 3.33]], "affidabilita": "media", "fonte": "Schema a 3 scaglioni; aliquote ricostruite da fonti secondarie"}, {"id": "bas", "nome": "Basilicata", "scaglioni": [[null, 1.23]], "affidabilita": "media", "fonte": "Aliquota unica secondo piu fonti"}, {"id": "bz", "nome": "Prov. aut. Bolzano", "scaglioni": [[50000, 1.23], [null, 1.73]], "detrazioni": [{"min": 0, "max": 90000, "importo": 430.5}], "perFiglio": {"importo": 252, "maxImp": 70000}, "affidabilita": "media", "fonte": "Scheda MEF 2026 (via PMI.it): detrazione 430,50 € fino a 90.000 €; non gestita la detrazione aggiuntiva oltre 50.000 €"}, {"id": "cal", "nome": "Calabria", "scaglioni": [[null, 1.73]], "affidabilita": "media", "fonte": "Aliquota unica 1,73%"}, {"id": "cam", "nome": "Campania", "scaglioni": [[15000, 1.73], [28000, 2.96], [50000, 3.2], [null, 3.33]], "affidabilita": "alta", "fonte": "Scheda MEF 2026"}, {"id": "emr", "nome": "Emilia-Romagna", "scaglioni": [[15000, 1.33], [28000, 1.93], [50000, 2.78], [null, 3.33]], "affidabilita": "alta", "fonte": "Scheda MEF 2026"}, {"id": "fvg", "nome": "Friuli-Venezia Giulia", "scaglioni": [[null, 1.23]], "intero": [{"max": 15000, "aliquota": 0.7}], "affidabilita": "alta", "fonte": "0,70% sull'intero imponibile fino a 15.000 €, altrimenti 1,23%"}, {"id": "laz", "nome": "Lazio", "scaglioni": [[15000, 1.73], [28000, 3.33], [50000, 3.33], [null, 3.33]], "intero": [{"max": 28000, "aliquota": 1.73}], "detrazioni": [{"min": 28000.01, "max": 30000, "importo": 60}], "affidabilita": "alta", "fonte": "Regione Lazio, L.R. 20/2025"}, {"id": "lig", "nome": "Liguria", "scaglioni": [[28000, 1.23], [50000, 3.18], [null, 3.23]], "affidabilita": "alta", "fonte": "Scheda MEF (3 scaglioni)"}, {"id": "lom", "nome": "Lombardia", "scaglioni": [[15000, 1.23], [28000, 1.58], [50000, 1.72], [null, 1.73]], "affidabilita": "alta", "fonte": "Scheda MEF 2026"}, {"id": "mar", "nome": "Marche", "scaglioni": [[15000, 1.23], [28000, 1.53], [50000, 1.7], [null, 1.73]], "affidabilita": "media", "fonte": "Ricostruita da fonti secondarie"}, {"id": "mol", "nome": "Molise", "scaglioni": [[15000, 2.03], [28000, 2.23], [50000, 3.63], [null, 3.63]], "affidabilita": "media", "fonte": "Ricostruita da fonti secondarie (include maggiorazione piano di rientro)"}, {"id": "pie", "nome": "Piemonte", "scaglioni": [[15000, 1.62], [28000, 2.68], [50000, 3.31], [null, 3.33]], "affidabilita": "alta", "fonte": "Scheda MEF 2026 (aumenti 2026-2027)"}, {"id": "pug", "nome": "Puglia", "scaglioni": [[15000, 1.33], [28000, 2.13], [50000, 3.23], [null, 3.33]], "affidabilita": "alta", "fonte": "DPGR Puglia n. 3/2026 (rideterminazione giugno 2026)"}, {"id": "sar", "nome": "Sardegna", "scaglioni": [[null, 1.23]], "affidabilita": "alta", "fonte": "Aliquota unica"}, {"id": "sic", "nome": "Sicilia", "scaglioni": [[null, 1.23]], "affidabilita": "alta", "fonte": "Regione Siciliana, anno 2026"}, {"id": "tos", "nome": "Toscana", "scaglioni": [[15000, 1.42], [28000, 1.43], [50000, 3.32], [null, 3.33]], "affidabilita": "alta", "fonte": "Scheda MEF 2026"}, {"id": "tn", "nome": "Prov. aut. Trento", "scaglioni": [[50000, 1.23], [null, 1.73]], "esenzione": 30000, "perFiglio": {"importo": 246, "maxImp": 50000}, "affidabilita": "alta", "fonte": "L.P. 11/2025: esenti fino a 30.000 €"}, {"id": "umb", "nome": "Umbria", "scaglioni": [[15000, 1.73], [28000, 3.02], [50000, 3.12], [null, 3.33]], "intero": [{"max": 28000, "aliquota": 1.23}], "detrazioni": [{"min": 28000.01, "max": 50000, "importo": 150}], "affidabilita": "alta", "fonte": "L.R. Umbria 2/2025 (anni 2025-2027)"}, {"id": "vda", "nome": "Valle d'Aosta", "scaglioni": [[null, 1.23]], "esenzione": 15000, "affidabilita": "media", "fonte": "1,23% con esenzione fino a 15.000 €"}, {"id": "ven", "nome": "Veneto", "scaglioni": [[null, 1.23]], "affidabilita": "alta", "fonte": "Regione Veneto (0,90% per disabili o con disabile a carico, non gestito)"}]}</script>
@@ -704,271 +707,44 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
   else root.PayEngine = api;
 })(typeof self !== 'undefined' ? self : this);
 </script>
-<script>/* Catalogo delle somme particolari: regime fiscale e contributivo (anno 2026). */
+<script>/* Catalogo delle somme erogabili: regime fiscale e contributivo (periodo d'imposta 2026). */
 (function (root) {
   'use strict';
   const CATS = [
-    { id: 'busta', nome: 'In busta paga' },
-    { id: 'assenze', nome: 'Malattia e ammortizzatori' },
-    { id: 'fine', nome: 'Fine del rapporto' },
-    { id: 'lite', nome: 'Cause, accordi e risarcimenti' },
-    { id: 'extra', nome: 'Azioni, previdenza, incarichi' },
-    { id: 'rimborsi', nome: 'Rimborsi e trasferimenti' }
+    { id: 'busta', nome: 'Retribuzione corrente' },
+    { id: 'assenze', nome: 'Prestazioni e ammortizzatori' },
+    { id: 'fine', nome: 'Cessazione del rapporto' },
+    { id: 'lite', nome: 'Contenzioso e risarcimenti' },
+    { id: 'extra', nome: 'Azionariato, previdenza, redditi diversi' },
+    { id: 'rimborsi', nome: 'Rimborsi, mobilità, indebiti' }
   ];
 
-  /* irpef: ordinaria | separata_tfr | separata_arretrati | esente | sost1 | sost15 | sost5 | fringe | buonipasto | trasferta | restituzione_lordo | restituzione_netto
+  /* irpef: ordinaria | fissa | separata_tfr | separata_arretrati | esente | sost1 | sost15 | sost5 | fringe | buonipasto | trasferta
+            | restituzione_lordo | restituzione_netto | azioni_gen | trasferimento | sostfissa | occasionale
      contributi: true | false | 'dipende' */
   const CASI = [
+    /* ===================== Retribuzione corrente ===================== */
     {
-      id: 'incentivo-esodo', esempio: 30000, cat: 'fine', nome: 'Incentivo all\'esodo',
-      sinonimi: 'buonuscita uscita incentivata esodo volontario prepensionamento risoluzione consensuale accordo di uscita',
-      varianti: [{
-        irpef: 'separata_tfr', contributi: false,
-        breve: 'Somma pagata una volta sola per favorire l\'uscita. Non si somma allo stipendio: è tassata a parte con la stessa aliquota del TFR e non paga contributi.',
-        attenzione: [
-          'L\'aliquota applicata dall\'azienda è provvisoria: l\'Agenzia delle Entrate poi riliquida con l\'aliquota media dei 5 anni precedenti e può chiedere una differenza o rimborsarla.',
-          'Resta a tassazione separata anche la parte pagata prima della cessazione, se è legata all\'uscita (interpello 177/2021).',
-          'Sopra 1 milione di euro complessivo la parte eccedente va a tassazione ordinaria.',
-          'Se viene versato al fondo pensione è comunque tassato prima (interpello 323/2022).'
-        ],
-        norma: 'Art. 17 c. 1 lett. a) e art. 19 c. 2 TUIR; esclusione dai contributi art. 6 c. 4 lett. b) D.Lgs. 314/1997.'
-      }]
-    },
-    {
-      id: 'fondo-credito', esempio: 3000, cat: 'fine', nome: 'Assegno straordinario Fondo di solidarietà del credito',
-      sinonimi: 'esodo bancario accompagnamento alla pensione fondo esuberi assegno di sostegno al reddito bancari inps',
-      varianti: [{
-        irpef: 'separata_tfr', contributi: false,
-        breve: 'L\'assegno che l\'INPS paga per conto del Fondo fino alla pensione è a tassazione separata con l\'aliquota del TFR. La tassazione è definitiva: l\'Agenzia non la ricalcola.',
-        attenzione: [
-          'Nessuna trattenuta contributiva: il Fondo versa la contribuzione correlata utile alla pensione.',
-          'Niente addizionali regionali e comunali.',
-          'L\'incentivo all\'esodo pagato dalla banca è una somma diversa: vedi la scheda Incentivo all\'esodo.'
-        ],
-        norma: 'Art. 47-bis c. 2 DL 73/2021; circolare Agenzia Entrate 10/E del 5/8/2021.'
-      }]
-    },
-    {
-      id: 'tfr', esempio: 40000, cat: 'fine', nome: 'TFR e anticipo del TFR',
-      sinonimi: 'liquidazione trattamento di fine rapporto anticipazione tfr',
-      varianti: [{
-        irpef: 'separata_tfr', contributi: false,
-        breve: 'Tassazione separata con un\'aliquota calcolata sul reddito di riferimento (TFR diviso gli anni di servizio, per 12). Nessun contributo a tuo carico.',
-        attenzione: [
-          'La rivalutazione annuale del TFR è già tassata a parte con l\'imposta sostitutiva del 17%: qui inserisci la sola quota capitale.',
-          'Il TFR versato al fondo pensione segue altre regole: alla prestazione si applica il 15%, che scende fino al 9% con gli anni di adesione.',
-          'L\'Agenzia delle Entrate riliquida poi con l\'aliquota media dei 5 anni precedenti.'
-        ],
-        norma: 'Art. 17 c. 1 lett. a) e art. 19 c. 1 TUIR.'
-      }]
-    },
-    {
-      id: 'preavviso', esempio: 9000, cat: 'fine', nome: 'Indennità sostitutiva del preavviso',
-      sinonimi: 'mancato preavviso preavviso non lavorato',
-      varianti: [{
-        irpef: 'separata_tfr', contributi: true,
-        breve: 'Paga il periodo di preavviso non lavorato: è retribuzione, quindi paga i contributi, ma si tassa a parte con l\'aliquota del TFR.',
-        attenzione: [
-          'Il preavviso lavorato è normale stipendio, a tassazione ordinaria.',
-          'Il periodo coperto dall\'indennità conta per la pensione.'
-        ],
-        norma: 'Art. 17 c. 1 lett. a) TUIR; art. 2118 c.c.'
-      }]
-    },
-    {
-      id: 'ferie', esempio: 2000, cat: 'fine', nome: 'Ferie e permessi non goduti pagati',
-      sinonimi: 'monetizzazione ferie residue rol ex festività indennità sostitutiva ferie',
-      varianti: [
-        {
-          label: 'Durante il rapporto (giorni oltre il minimo di legge, ROL, ex festività)', irpef: 'ordinaria', contributi: true,
-          breve: 'Le 4 settimane minime di legge non si possono pagare finché il rapporto prosegue; i giorni in più previsti dal CCNL, i ROL e le ex festività sì: tassazione ordinaria e contributi.',
-          attenzione: ['Le ferie minime di legge si possono monetizzare solo alla cessazione.'],
-          norma: 'Art. 10 D.Lgs. 66/2003; art. 51 TUIR.'
-        },
-        {
-          label: 'All\'uscita: maturati nell\'anno (o ancora entro 18 mesi)', irpef: 'ordinaria', contributi: true,
-          breve: 'Sono stipendio dell\'anno: tassazione ordinaria insieme alle altre voci e contributi pieni.',
-          attenzione: ['Dopo 18 mesi dalla fine dell\'anno di maturazione i contributi sono dovuti anche se le ferie non vengono pagate.'],
-          norma: 'Art. 51 TUIR.'
-        },
-        {
-          label: 'All\'uscita: di anni precedenti, non goduti per cause indipendenti dalle parti', irpef: 'separata_arretrati', contributi: true,
-          breve: 'Sono arretrati di anni passati: tassazione separata con l\'aliquota media dei due anni precedenti, contributi dovuti.',
-          attenzione: ['Se il rinvio delle ferie è stato concordato tra azienda e dipendente si torna alla tassazione ordinaria.'],
-          norma: 'Art. 17 c. 1 lett. b) e art. 21 TUIR.'
-        }
-      ]
-    },
-    {
-      id: 'non-concorrenza', esempio: 10000, cat: 'fine', nome: 'Patto di non concorrenza',
-      sinonimi: 'corrispettivo patto non concorrenza non sollecitazione',
-      varianti: [
-        {
-          label: 'Pagato durante il rapporto (ad esempio ogni mese)', irpef: 'ordinaria', contributi: true,
-          breve: 'Fa parte della retribuzione: tassazione ordinaria e contributi.',
-          attenzione: ['Se il corrispettivo è troppo basso rispetto al vincolo il patto rischia di essere nullo, e le somme restano comunque reddito.'],
-          norma: 'Art. 51 TUIR; art. 2125 c.c.'
-        },
-        {
-          label: 'Pagato all\'uscita o dopo', irpef: 'separata_tfr', contributi: true,
-          breve: 'Somma legata alla cessazione: tassazione separata con l\'aliquota del TFR. Per l\'orientamento prevalente i contributi sono dovuti.',
-          attenzione: ['Sui contributi delle somme pagate dopo la cessazione le posizioni non sono uniformi: verifica con l\'ufficio paghe.'],
-          norma: 'Art. 17 c. 1 lett. a) TUIR; Agenzia Entrate risposta 111/2025.'
-        }
-      ]
-    },
-    {
-      id: 'transazione', esempio: 20000, cat: 'lite', nome: 'Transazione o conciliazione',
-      sinonimi: 'proposta transattiva accordo transattivo transazione novativa verbale di conciliazione sede protetta rinuncia impugnazione accordo sindacale chiusura vertenza',
-      varianti: [
-        {
-          label: 'All\'uscita, per rinunciare a impugnare il licenziamento o ad altre pretese', irpef: 'separata_tfr', contributi: false,
-          breve: 'Somme di una transazione legata alla risoluzione del rapporto: tassazione separata con l\'aliquota del TFR. Se non pagano retribuzioni non subiscono contributi.',
-          attenzione: [
-            'Il verbale deve dire a che titolo è pagata ogni somma: senza indicazioni il Fisco tende a considerare tutto reddito di lavoro.',
-            'La transazione non vincola l\'INPS, che può chiedere i contributi sulle somme che in realtà pagano retribuzioni (Cass. 8662/2019).',
-            'Se c\'è l\'offerta del Jobs Act per gli assunti dal 7/3/2015, la parte di legge è esente: vedi la scheda dedicata.'
-          ],
-          norma: 'Art. 17 c. 1 lett. a) TUIR; circolare 29/E/2001; risoluzione 135/E/2009.'
-        },
-        {
-          label: 'All\'uscita, per differenze di stipendio, straordinari o arretrati', irpef: 'separata_tfr', contributi: true,
-          breve: 'Resta a tassazione separata perché legata alla cessazione, ma sono retribuzioni: i contributi sono dovuti.',
-          attenzione: ['Conviene distinguere nel verbale la parte retributiva da quella per la rinuncia a impugnare: cambia il calcolo dei contributi.'],
-          norma: 'Art. 17 c. 1 lett. a) TUIR; art. 12 L. 153/1969.'
-        },
-        {
-          label: 'Durante il rapporto (il lavoro continua)', irpef: 'ordinaria', contributi: 'dipende', contrDefault: true,
-          breve: 'Se il rapporto prosegue non c\'è tassazione separata: le somme si sommano al reddito dell\'anno, anche se chiamate "transazione generale e novativa".',
-          attenzione: ['Contributi dovuti sulle somme che pagano differenze retributive o arretrati.', 'Vale anche per arretrati di anni precedenti pagati con la transazione (risposte 343 e 344/2022).'],
-          norma: 'Art. 51 TUIR; Agenzia Entrate risposte 343 e 344 del 23/6/2022.'
-        }
-      ]
-    },
-    {
-      id: 'conciliazione-jobs-act', esempio: 20000, cat: 'lite', nome: 'Offerta di conciliazione del Jobs Act',
-      sinonimi: 'art. 6 d.lgs. 23/2015 tutele crescenti assegno circolare offerta conciliativa licenziamento',
-      varianti: [{
-        irpef: 'esente', contributi: false,
-        breve: 'Per chi è assunto a tempo indeterminato dal 7 marzo 2015: se l\'azienda offre in sede protetta, con assegno circolare, una mensilità di retribuzione utile al TFR per anno di servizio (da 3 a 27, dimezzate nelle piccole imprese) e il lavoratore accetta, la somma non è tassata e non paga contributi.',
-        attenzione: [
-          'È esente solo la somma calcolata con la formula di legge: le somme aggiunte per chiudere altre pretese seguono la propria tassazione, di solito separata.',
-          'L\'offerta va fatta entro il termine per impugnare il licenziamento (60 giorni) in una sede protetta.',
-          'Accettando si chiude ogni contestazione sul licenziamento; la NASpI resta possibile.'
-        ],
-        norma: 'Art. 6 D.Lgs. 23/2015 (importi aggiornati dal DL 87/2018).'
-      }]
-    },
-    {
-      id: 'licenziamento', esempio: 30000, cat: 'lite', nome: 'Indennità per licenziamento illegittimo',
-      sinonimi: 'sentenza licenziamento articolo 18 jobs act tutele crescenti reintegra indennità risarcitoria dirigente indennità supplementare',
-      varianti: [
-        {
-          label: 'Indennità senza reintegra (es. art. 3 D.Lgs. 23/2015, art. 18 c. 5-7)', irpef: 'separata_tfr', contributi: false,
-          breve: 'Il rapporto resta chiuso e il giudice liquida un\'indennità: tassazione separata con l\'aliquota del TFR, senza contributi.',
-          attenzione: ['Le spese legali riconosciute si scorporano dall\'imponibile.'],
-          norma: 'Art. 17 c. 1 lett. a) TUIR; art. 3 D.Lgs. 23/2015; art. 18 L. 300/1970.'
-        },
-        {
-          label: 'Reintegra: indennità per i mesi di estromissione', irpef: 'separata_arretrati', contributi: true,
-          breve: 'Con la reintegra l\'indennità sostituisce gli stipendi persi: contributi dovuti. La parte di anni precedenti va a tassazione separata, quella dell\'anno in corso in tassazione ordinaria.',
-          attenzione: ['Dall\'indennità si detrae quanto percepito da altri lavori nel periodo (aliunde perceptum).'],
-          norma: 'Art. 18 c. 2 e 4 L. 300/1970; art. 17 c. 1 lett. b) TUIR.'
-        },
-        {
-          label: 'Dirigenti: indennità supplementare prevista dal CCNL', irpef: 'separata_tfr', contributi: false,
-          breve: 'L\'indennità supplementare per licenziamento ingiustificato del dirigente è una somma legata alla cessazione: tassazione separata con l\'aliquota del TFR, senza contributi.',
-          attenzione: ['Se la somma è pagata in un accordo, conviene qualificarla espressamente come indennità supplementare o incentivo all\'esodo.'],
-          norma: 'Art. 17 c. 1 lett. a) TUIR; Cass. ord. 8031/2021.'
-        },
-        {
-          label: 'Indennità sostitutiva della reintegra (15 mensilità)', irpef: 'separata_tfr', contributi: false,
-          breve: 'Il lavoratore sceglie di non rientrare: tassazione separata con l\'aliquota del TFR, senza contributi.',
-          attenzione: ['Le spese legali riconosciute si scorporano dall\'imponibile.'],
-          norma: 'Art. 18 c. 3 L. 300/1970; art. 17 c. 1 lett. a) TUIR.'
-        }
-      ]
-    },
-    {
-      id: 'risarcimento', esempio: 15000, cat: 'lite', nome: 'Risarcimento del danno (sentenza o accordo)',
-      sinonimi: 'danni accertati in giudizio demansionamento mobbing danno biologico danno morale esistenziale perdita di chance danno professionale lucro cessante danno emergente',
-      varianti: [
-        {
-          label: 'Ripaga un reddito perso (lucro cessante)', irpef: 'separata_arretrati', contributi: 'dipende', contrDefault: false,
-          breve: 'Se il risarcimento sostituisce stipendi o guadagni non percepiti è tassato come il reddito che sostituisce: di solito tassazione separata, perché riferito ad anni passati.',
-          attenzione: [
-            'Se il danno riguarda l\'anno in corso si va in tassazione ordinaria.',
-            'Contributi dovuti se la somma corrisponde in realtà a retribuzioni non pagate.'
-          ],
-          norma: 'Art. 6 c. 2 TUIR; Cass. 14842/2022.'
-        },
-        {
-          label: 'Ripara un danno alla persona (biologico, morale, esistenziale, invalidità permanente)', irpef: 'esente', contributi: false,
-          breve: 'Non sostituisce un reddito: non è tassato e non paga contributi.',
-          attenzione: ['Sono sempre esenti le somme per invalidità permanente o morte, anche se calcolate sul reddito perso.', 'Il titolo deve risultare dalla sentenza o dall\'accordo.'],
-          norma: 'Art. 6 c. 2 TUIR.'
-        },
-        {
-          label: 'Ripara un danno al patrimonio o alla professionalità (danno emergente, perdita di chance)', irpef: 'esente', contributi: false,
-          breve: 'Il danno emergente non è reddito: ad esempio la lesione della professionalità da demansionamento o la perdita di chance, se provate.',
-          attenzione: [
-            'Serve che la natura del danno sia specificata e provata: senza indicazioni la Cassazione (ord. 8615/2023) ha considerato tassabile il risarcimento per demansionamento.',
-            'L\'Agenzia ha riconosciuto la non imponibilità della perdita di chance (risposta 185/2022).'
-          ],
-          norma: 'Art. 6 c. 2 TUIR; Agenzia Entrate risposta 185/2022; Cass. 8615/2023.'
-        }
-      ]
-    },
-    {
-      id: 'arretrati', esempio: 5000, cat: 'lite', nome: 'Arretrati di anni precedenti',
-      sinonimi: 'differenze retributive sentenza ricostruzione carriera inquadramento superiore mansioni superiori emolumenti arretrati',
-      varianti: [{
-        irpef: 'separata_arretrati', contributi: true,
-        breve: 'Stipendi di anni passati pagati in ritardo per cause non dipendenti dalle parti (sentenza, rinnovo contrattuale, ricostruzione di carriera): tassazione separata con l\'aliquota media dei due anni precedenti, contributi dovuti.',
-        attenzione: [
-          'Se il ritardo è fisiologico (ad esempio competenze di dicembre pagate entro il 12 gennaio) si resta in tassazione ordinaria.',
-          'Se gli arretrati sono pagati con una transazione mentre il rapporto prosegue, l\'Agenzia applica la tassazione ordinaria.',
-          'Interessi e rivalutazione hanno una scheda dedicata.'
-        ],
-        norma: 'Art. 17 c. 1 lett. b) e art. 21 TUIR.'
-      }]
-    },
-    {
-      id: 'interessi', esempio: 800, cat: 'lite', nome: 'Interessi e rivalutazione su crediti di lavoro',
-      sinonimi: 'interessi legali moratori rivalutazione monetaria accessori sentenza',
-      varianti: [
-        {
-          label: 'Interessi (legali o moratori)', irpef: 'separata_arretrati', contributi: false,
-          breve: 'Gli interessi su crediti di lavoro sono reddito della stessa categoria del credito: seguono la sua tassazione (di solito separata), senza contributi.',
-          attenzione: ['Se il credito principale è esente (ad esempio un danno alla persona) sono esenti anche gli interessi.'],
-          norma: 'Art. 6 c. 2 TUIR; Cass. ord. 916/2020.'
-        },
-        {
-          label: 'Rivalutazione monetaria', irpef: 'separata_arretrati', contributi: false,
-          breve: 'Nella prassi dei sostituti d\'imposta la rivalutazione segue la tassazione del credito principale. Alcune decisioni di merito l\'hanno ritenuta non tassabile: l\'orientamento non è univoco.',
-          attenzione: ['Caso da valutare con il consulente fiscale prima di decidere se trattenere le imposte.'],
-          norma: 'Art. 6 c. 2 TUIR; art. 429 c. 3 c.p.c.'
-        }
-      ]
-    },
-    {
-      id: 'spese-legali', esempio: 3000, cat: 'lite', nome: 'Spese legali riconosciute al lavoratore',
-      sinonimi: 'compenso avvocato parcella spese di lite liquidate dal giudice',
-      varianti: [{
-        irpef: 'esente', contributi: false,
-        breve: 'Il rimborso delle spese legali sostenute non è reddito. Nelle somme a tassazione separata (indennità di licenziamento, transazioni) le spese legali documentate si sottraggono dall\'imponibile.',
-        attenzione: ['Serve la documentazione (parcella o liquidazione del giudice); un importo forfettario non giustificato è tassato.'],
-        norma: 'Art. 6 c. 2 e art. 17 TUIR; prassi Agenzia Entrate.'
-      }]
-    },
-    {
-      id: 'straordinario', esempio: 500, cat: 'busta', nome: 'Straordinario',
+      id: 'straordinario', esempio: 500, cat: 'busta', nome: 'Lavoro straordinario e supplementare',
       sinonimi: 'lavoro straordinario ore extra banca ore liquidata supplementare part time',
       varianti: [{
         irpef: 'ordinaria', contributi: true,
-        breve: 'Si somma allo stipendio: contributi e IRPEF all\'aliquota marginale, più addizionali. Può ridurre detrazioni e taglio del cuneo.',
-        attenzione: ['Lo straordinario prestato di notte o nei giorni festivi rientra nel 2026 nella flat tax del 15% (circolare 3/E/2026): vedi la scheda Maggiorazioni per notturno, festivo, riposo e turni.', 'Vale anche per la banca ore liquidata.'],
-        norma: 'Art. 51 TUIR.'
+        breve: 'Elemento della retribuzione imponibile ex art. 51 c. 1 TUIR: concorre al reddito complessivo con assoggettamento ad aliquota marginale e addizionali, e integra l\'imponibile previdenziale. L\'incremento di reddito può ridurre la detrazione ex art. 13 TUIR e le misure del cuneo fiscale (L. 207/2024).',
+        attenzione: [
+          'Lo straordinario prestato in orario notturno o in giornate festive rientra, per il 2026, nell\'imposta sostitutiva del 15% (circ. AdE 3/E/2026): v. scheda Maggiorazioni per lavoro notturno, festivo e a turni.',
+          'Medesimo trattamento per la liquidazione della banca ore.'
+        ],
+        norma: 'Art. 51 c. 1 TUIR; art. 12 L. 153/1969.'
+      }]
+    },
+    {
+      id: 'mensilita-aggiuntive', esempio: 3000, cat: 'busta', nome: 'Mensilità aggiuntive (tredicesima e quattordicesima)',
+      sinonimi: 'gratifica natalizia mensilità aggiuntiva 13a 14a',
+      varianti: [{
+        irpef: 'ordinaria', contributi: true,
+        breve: 'Retribuzione differita a tassazione ordinaria e soggetta a contribuzione piena. Nel periodo di paga di erogazione la ritenuta è più elevata, poiché le detrazioni sono ragguagliate ai soli periodi ordinari; su base annua l\'imposta coincide con quella della retribuzione ordinaria.',
+        attenzione: ['Le eventuali differenze tra ritenute mensili e imposta annua sono regolate in sede di conguaglio di fine anno.'],
+        norma: 'Art. 51 c. 1 TUIR; art. 23 DPR 600/1973.'
       }]
     },
     {
@@ -976,33 +752,41 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
       sinonimi: 'vap premio di produttività premio aziendale accordo integrativo partecipazione agli utili',
       varianti: [{
         irpef: 'sost1', contributi: true,
-        breve: 'Nel 2026 e 2027 imposta sostitutiva dell\'1% fino a 5.000 € se il reddito da lavoro dipendente dell\'anno prima non supera 80.000 €. Contributi dovuti.',
-        attenzione: ['Serve un accordo aziendale o territoriale con obiettivi misurabili.', 'Convertito in welfare non è tassato e non paga contributi entro lo stesso limite di 5.000 €.', 'Oltre il limite, o senza requisiti, tassazione ordinaria.'],
+        breve: 'Per gli anni 2026 e 2027 imposta sostitutiva di IRPEF e addizionali pari all\'1%, entro 5.000 € lordi, per i titolari di reddito di lavoro dipendente non superiore a 80.000 € nell\'anno precedente. Contribuzione ordinaria.',
+        attenzione: [
+          'Presupposto: contratto collettivo aziendale o territoriale (art. 51 D.Lgs. 81/2015) con criteri di misurazione di incrementi di produttività, redditività, qualità, efficienza e innovazione, depositato telematicamente.',
+          'In caso di conversione in welfare ex art. 51 c. 2 e 3 TUIR, le prestazioni sono escluse da imposizione e contribuzione entro il medesimo limite.',
+          'Eccedenza o assenza dei requisiti: tassazione ordinaria.'
+        ],
         norma: 'Art. 1 c. 182-189 L. 208/2015; art. 1 c. 9 L. 199/2025.'
       }]
     },
     {
-      id: 'notturni', esempio: 1000, cat: 'busta', nome: 'Maggiorazioni per notturno, festivo, riposo e turni',
-      sinonimi: 'indennità turno lavoro notturno festivo domenicale reperibilità straordinario notturno straordinario festivo flat tax 15',
+      id: 'notturni', esempio: 1000, cat: 'busta', nome: 'Maggiorazioni per lavoro notturno, festivo e a turni',
+      sinonimi: 'indennità turno lavoro notturno festivo domenicale reperibilità straordinario notturno straordinario festivo flat tax 15 riposi',
       varianti: [{
         irpef: 'sost15', contributi: true,
-        breve: 'Solo per il 2026: imposta sostitutiva del 15% fino a 1.500 € se il reddito 2025 da lavoro dipendente non supera 40.000 €. Contributi dovuti.',
+        breve: 'Per il solo 2026 imposta sostitutiva del 15% sulle maggiorazioni e indennità per lavoro notturno, festivo, nei giorni di riposo settimanale e a turni previste dai CCNL, entro 1.500 € lordi, per i titolari di reddito di lavoro dipendente 2025 non superiore a 40.000 €. Contribuzione ordinaria.',
         attenzione: [
-          'Secondo le circolari 2/E e 3/E del 2026 rientrano anche il lavoro domenicale, le indennità di reperibilità previste dal CCNL e lo straordinario prestato di notte o nei festivi.',
-          'Lo straordinario diurno nei giorni feriali resta a tassazione ordinaria.',
-          'Oltre 1.500 € si torna alla tassazione ordinaria; il lavoratore può rinunciare per iscritto.'
+          'Secondo le circ. AdE 2/E e 3/E del 2026 vi rientrano anche il lavoro domenicale, le indennità di reperibilità previste dal CCNL e il lavoro straordinario prestato in orario notturno o festivo.',
+          'Lo straordinario diurno feriale resta a tassazione ordinaria.',
+          'Oltre la soglia si applica la tassazione ordinaria; il lavoratore può rinunciare al regime con comunicazione scritta al sostituto.'
         ],
-        norma: 'Art. 1 c. 10-11 L. 199/2025; circolari Agenzia Entrate 2/E e 3/E del 2026.'
+        norma: 'Art. 1 c. 10-11 L. 199/2025; circ. AdE 2/E e 3/E del 2026.'
       }]
     },
     {
-      id: 'rinnovo', esempio: 1200, cat: 'busta', nome: 'Aumenti da rinnovo del CCNL',
+      id: 'rinnovo', esempio: 1200, cat: 'busta', nome: 'Incrementi retributivi da rinnovo del CCNL',
       sinonimi: 'incrementi contrattuali rinnovo contratto flat tax 5 arretrati rinnovo',
       varianti: [{
         irpef: 'sost5', contributi: true,
-        breve: 'Imposta sostitutiva del 5% sugli incrementi pagati nel 2026 da rinnovi firmati tra il 2024 e il 2026, se il reddito 2025 non supera 33.000 €.',
-        attenzione: ['Il rinnovo ABI del 23/11/2023 è precedente al 2024 e non rientra; il rinnovo ANIA del 13/5/2026 sì.', 'La circolare 3/E/2026 include anche gli arretrati del rinnovo pagati nel 2026 e la loro incidenza su ferie e indennità di mansione.', 'Esclusi scatti di anzianità, somme una tantum e TFR.'],
-        norma: 'Art. 1 c. 7 L. 199/2025.'
+        breve: 'Imposta sostitutiva del 5% sugli incrementi retributivi corrisposti nel 2026 in attuazione di rinnovi contrattuali sottoscritti dal 1/1/2024 al 31/12/2026, per i titolari di reddito di lavoro dipendente 2025 non superiore a 33.000 €. Contribuzione ordinaria.',
+        attenzione: [
+          'Il rinnovo ABI del 23/11/2023 è anteriore al 2024 ed è escluso; vi rientra il rinnovo ANIA del 13/5/2026.',
+          'La circ. AdE 3/E/2026 include gli arretrati del rinnovo erogati nel 2026 e l\'incidenza dell\'incremento su ferie e indennità di mansione.',
+          'Esclusi scatti di anzianità, una tantum e quote di TFR.'
+        ],
+        norma: 'Art. 1 c. 7 L. 199/2025; circ. AdE 3/E/2026.'
       }]
     },
     {
@@ -1010,19 +794,22 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
       sinonimi: 'bonus manageriale mbo incentivo individuale gratifica premio individuale una tantum retention bonus bonus di ingresso sign on welcome bonus premio fedeltà premio anzianità di servizio vacanza contrattuale',
       varianti: [{
         irpef: 'ordinaria', contributi: true,
-        breve: 'Premi decisi individualmente e non legati a un accordo collettivo: tassazione ordinaria e contributi.',
-        attenzione: ['L\'una tantum prevista da un rinnovo contrattuale è comunque esclusa dalla flat tax del 5%.'],
-        norma: 'Art. 51 TUIR.'
+        breve: 'Erogazioni individuali o discrezionali non riconducibili a contrattazione di secondo livello: reddito di lavoro dipendente a tassazione ordinaria e soggetto a contribuzione.',
+        attenzione: ['L\'una tantum prevista dal rinnovo contrattuale è esclusa dall\'imposta sostitutiva del 5%.', 'Retention e sign-on bonus soggetti a clausola di restituzione: in caso di recupero v. scheda Restituzione di somme indebitamente erogate.'],
+        norma: 'Art. 51 c. 1 TUIR.'
       }]
     },
     {
-      id: 'voce-fissa', esempio: 100, cat: 'busta', nome: 'Voce fissa mensile (superminimo, ad personam, indennità)',
+      id: 'voce-fissa', esempio: 100, cat: 'busta', nome: 'Voce retributiva fissa (superminimo, assegno ad personam, indennità)',
       sinonimi: 'aumento di stipendio assegno ad personam superminimo indennità di ruolo indennità di funzione indennità di cassa maneggio denaro indennità di mansione aumento di merito promozione',
       varianti: [{
         irpef: 'fissa', contributi: true,
-        breve: 'Un importo che si ripete ogni mese, su tutte le mensilità: aumenta la retribuzione annua e segue la tassazione ordinaria. Inserisci l\'importo mensile.',
-        attenzione: ['Un aumento può farti perdere parte delle detrazioni e del taglio del cuneo: il netto in più può essere meno della metà del lordo.', 'Entra anche nella base del TFR e dei contributi per la pensione.'],
-        norma: 'Art. 51 TUIR.'
+        breve: 'Elemento continuativo corrisposto per tutte le mensilità: incrementa la retribuzione annua lorda a tassazione ordinaria e l\'imponibile previdenziale. Inserire l\'importo mensile.',
+        attenzione: [
+          'Nella fascia di decalage della detrazione ex art. 13 TUIR e dell\'ulteriore detrazione da cuneo fiscale l\'aliquota effettiva marginale può superare il 50%.',
+          'Concorre alla retribuzione utile ai fini del TFR, salvo diversa previsione del CCNL.'
+        ],
+        norma: 'Art. 51 c. 1 TUIR; art. 2120 c.c.'
       }]
     },
     {
@@ -1030,23 +817,27 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
       sinonimi: 'piattaforma welfare rimborso spese scolastiche asilo trasporto pubblico previdenza assistenza sanitaria',
       varianti: [{
         irpef: 'esente', contributi: false,
-        breve: 'Servizi e rimborsi previsti dall\'art. 51 c. 2 TUIR (istruzione, trasporto pubblico, assistenza familiari, cultura e simili) non sono tassati e non pagano contributi.',
+        breve: 'Opere, servizi e rimborsi di cui all\'art. 51 c. 2 TUIR (istruzione, trasporto pubblico, assistenza a familiari anziani o non autosufficienti, finalità di educazione, ricreazione e culto ex art. 100 TUIR) sono esclusi dal reddito di lavoro dipendente e dall\'imponibile previdenziale.',
         attenzione: [
-          'Buoni acquisto e utenze rientrano invece nei fringe benefit, con il limite di 1.000 o 2.000 €.',
-          'Contributi dell\'azienda al fondo pensione e alla cassa sanitaria sono esenti entro 5.164,57 € e 3.615,20 € l\'anno.',
-          'Polizze per non autosufficienza e gravi patologie sono esenti; altre polizze (vita, infortuni extraprofessionali) sono fringe benefit.',
-          'Le somme in denaro non sono welfare: un rimborso spese è esente solo se previsto dalla norma (istruzione, trasporto pubblico, assistenza ai familiari).'
+          'Buoni acquisto e rimborso utenze configurano fringe benefit, soggetti alla soglia di 1.000 € o 2.000 €.',
+          'Contributi datoriali a previdenza complementare e assistenza sanitaria integrativa: esclusi entro 5.164,57 € e 3.615,20 € annui; sui primi è dovuto il contributo di solidarietà del 10%.',
+          'Polizze LTC e per gravi patologie escluse dal reddito; le altre coperture assicurative costituiscono fringe benefit.',
+          'L\'erogazione in denaro è ammessa solo nei casi di rimborso espressamente previsti dalla norma.'
         ],
-        norma: 'Art. 51 c. 2 e 3 TUIR.'
+        norma: 'Art. 51 c. 2 e 3 TUIR; art. 9-bis L. 166/1991.'
       }]
     },
     {
-      id: 'fringe', esempio: 800, cat: 'busta', nome: 'Fringe benefit (buoni acquisto, utenze, affitto)',
-      sinonimi: 'buoni regalo gift card bollette affitto interessi mutuo auto aziendale',
+      id: 'fringe', esempio: 800, cat: 'busta', nome: 'Fringe benefit (buoni acquisto, utenze, canoni di locazione)',
+      sinonimi: 'buoni regalo gift card bollette affitto interessi mutuo auto aziendale beni in natura',
       varianti: [{
         irpef: 'fringe', contributi: true,
-        breve: 'Esenti fino a 1.000 € l\'anno, 2.000 € con figli a carico (2025-2027). Se si supera la soglia è tassato tutto l\'importo, non solo l\'eccedenza.',
-        attenzione: ['Il limite comprende tutti i benefit dell\'anno ricevuti dallo stesso datore.', 'Auto aziendale e prestiti agevolati hanno regole di valutazione proprie.'],
+        breve: 'Per il triennio 2025-2027 beni e servizi, compresi i rimborsi di utenze domestiche, locazione e interessi sul mutuo dell\'abitazione principale, sono esclusi fino a 1.000 € annui, elevati a 2.000 € per i dipendenti con figli fiscalmente a carico. Al superamento della soglia concorre a reddito l\'intero valore.',
+        attenzione: [
+          'La soglia è unica per periodo d\'imposta e comprende tutti i benefit erogati dal medesimo datore.',
+          'Autoveicoli, prestiti e fabbricati concessi in uso hanno criteri di valorizzazione propri (art. 51 c. 4 TUIR).',
+          'Ai fini contributivi vale la medesima soglia, in base al principio di armonizzazione delle basi imponibili.'
+        ],
         norma: 'Art. 51 c. 3 TUIR; art. 1 c. 390-391 L. 207/2024.'
       }]
     },
@@ -1055,266 +846,511 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
       sinonimi: 'ticket restaurant mensa',
       varianti: [{
         irpef: 'buonipasto', contributi: true,
-        breve: 'Dal 2026 esenti fino a 10 € al giorno se elettronici, 4 € se cartacei. Si tassa solo l\'eccedenza.',
-        attenzione: ['La soglia dei buoni pasto non si somma a quella dei fringe benefit.', 'La mensa aziendale e le convenzioni con ristoranti sono esenti senza limite di importo.'],
+        breve: 'Dal 2026 esclusi da reddito e contribuzione fino a 10 € giornalieri per i buoni in formato elettronico e 4 € per quelli cartacei; concorre all\'imponibile la sola eccedenza.',
+        attenzione: ['La soglia è autonoma rispetto a quella dei fringe benefit.', 'Mensa aziendale e convenzioni con esercizi di ristorazione sono escluse senza limite di valore.'],
         norma: 'Art. 51 c. 2 lett. c) TUIR; art. 1 c. 14 L. 199/2025.'
       }]
     },
-    {
-      id: 'trasferta', esempio: 1000, cat: 'rimborsi', nome: 'Trasferte e rimborsi spese',
-      sinonimi: 'diaria indennità di trasferta nota spese rimborso chilometrico vitto alloggio taxi',
-      varianti: [
-        {
-          label: 'Rimborso analitico (a piè di lista) o chilometrico', irpef: 'esente', contributi: false,
-          breve: 'Le spese documentate per trasferte di lavoro sono rimborsate senza tasse né contributi.',
-          attenzione: ['Vitto, alloggio, taxi e NCC in Italia devono essere pagati con strumenti tracciabili, altrimenti il rimborso è tassato (dal 2025).', 'Il rimborso chilometrico per l\'auto propria è esente se calcolato con le tabelle ACI e documentato.', 'Dentro il comune di lavoro sono esenti solo i rimborsi di spese di trasporto documentate.'],
-          norma: 'Art. 51 c. 5 TUIR; L. 207/2024; circolare Agenzia Entrate 15/E/2025.'
-        },
-        {
-          label: 'Indennità forfettaria (diaria)', irpef: 'trasferta', contributi: true,
-          breve: 'Esente fino a 46,48 € al giorno in Italia e 77,47 € all\'estero; l\'eccedenza è tassata e paga contributi.',
-          attenzione: ['Se insieme alla diaria si rimborsano anche vitto o alloggio, le soglie si riducono (rimborso misto).'],
-          norma: 'Art. 51 c. 5 TUIR.'
-        }
-      ]
-    },
-    {
-      id: 'restituzione', esempio: 1500, cat: 'rimborsi', nome: 'Restituzione di somme pagate per errore',
-      sinonimi: 'indebito recupero somme non dovute ripetizione storno trattenuta errore cedolino',
-      varianti: [
-        {
-          label: 'Somme dell\'anno in corso', irpef: 'restituzione_lordo', contributi: true,
-          breve: 'Si restituisce l\'importo lordo: l\'azienda ricalcola contributi e IRPEF nel conguaglio, quindi il costo effettivo per te è più basso del lordo.',
-          attenzione: ['Il recupero può essere rateizzato in busta paga con accordo.'],
-          norma: 'Art. 2033 c.c.; art. 23 DPR 600/1973.'
-        },
-        {
-          label: 'Somme tassate in anni precedenti', irpef: 'restituzione_netto', contributi: true,
-          breve: 'Dal 2020 si restituisce al netto delle ritenute IRPEF subite; la somma non è più deducibile e all\'azienda spetta un credito d\'imposta del 30%.',
-          attenzione: ['Per i provvedimenti di restituzione definiti prima del 19/5/2020 vale ancora la restituzione al lordo.', 'I contributi si regolano a parte con l\'INPS.'],
-          norma: 'Art. 10 c. 2-bis TUIR; art. 150 DL 34/2020; circolare Agenzia Entrate 8/E/2021.'
-        }
-      ]
-    },
-    {
-      id: 'mensilita-aggiuntive', esempio: 3000, cat: 'busta', nome: 'Tredicesima e quattordicesima',
-      sinonimi: 'gratifica natalizia mensilità aggiuntiva 13a 14a',
-      varianti: [{
-        irpef: 'ordinaria', contributi: true,
-        breve: 'Sono retribuzione: contributi e IRPEF ordinaria. Nel mese in cui sono pagate l\'IRPEF trattenuta è più alta perché non si applicano le detrazioni, ma su base annua la tassazione è quella dello stipendio.',
-        attenzione: ['La differenza tra le ritenute del mese e l\'imposta annua si sistema con il conguaglio di dicembre.'],
-        norma: 'Art. 51 TUIR; art. 23 DPR 600/1973.'
-      }]
-    },
+
+    /* ===================== Prestazioni e ammortizzatori ===================== */
     {
       id: 'malattia-maternita', esempio: 1500, cat: 'assenze', nome: 'Indennità di malattia, maternità e congedi',
-      sinonimi: 'malattia maternità paternità congedo parentale gravidanza a rischio donatori sangue legge 104 permessi indennità inps anticipata integrazione',
-      ralLabel: 'RAL al netto del periodo di assenza',
-      ralNote: 'L\'indennità sostituisce lo stipendio: indica come RAL la sola retribuzione pagata dall\'azienda nell\'anno, senza il periodo coperto dall\'indennità.',
+      sinonimi: 'malattia maternità paternità congedo parentale gravidanza a rischio donatori sangue legge 104 permessi indennità inps anticipata integrazione carenza',
+      ralLabel: 'RAL al netto del periodo indennizzato',
+      ralNote: 'Indicare la sola retribuzione a carico del datore nel periodo d\'imposta, escluso il periodo coperto dall\'indennità.',
       varianti: [
         {
-          label: 'Quota pagata per conto dell\'INPS', irpef: 'ordinaria', contributi: false,
-          breve: 'Le indennità INPS anticipate in busta paga sostituiscono la retribuzione: tassazione ordinaria con le detrazioni, nessuna trattenuta contributiva perché il periodo è coperto da contributi figurativi.',
-          attenzione: ['Il datore la anticipa e la recupera dall\'INPS; in alcuni casi l\'INPS paga direttamente.', 'I permessi della legge 104 e i congedi parentali indennizzati seguono la stessa regola.'],
-          norma: 'Art. 6 c. 2 e art. 51 TUIR.'
+          label: 'Quota anticipata per conto dell\'INPS', irpef: 'ordinaria', contributi: false,
+          breve: 'Indennità sostitutive della retribuzione ex art. 6 c. 2 TUIR: reddito di lavoro dipendente a tassazione ordinaria, con spettanza delle detrazioni. Nessuna ritenuta previdenziale: il periodo è coperto da contribuzione figurativa.',
+          attenzione: ['Anticipazione a conguaglio con il flusso UniEmens; in taluni casi il pagamento è diretto da parte dell\'INPS.', 'Medesimo regime per permessi L. 104/1992 e congedi parentali indennizzati.'],
+          norma: 'Art. 6 c. 2 e art. 51 TUIR; art. 1 DL 663/1979.'
         },
         {
-          label: 'Integrazione pagata dall\'azienda (fino al 100% della retribuzione)', irpef: 'ordinaria', contributi: true,
-          breve: 'La parte aggiunta dall\'azienda per arrivare alla retribuzione piena è retribuzione: contributi e tassazione ordinaria.',
-          attenzione: ['I primi giorni di malattia (carenza) pagati dall\'azienda seguono la stessa regola.'],
-          norma: 'Art. 51 TUIR.'
+          label: 'Integrazione a carico del datore', irpef: 'ordinaria', contributi: true,
+          breve: 'L\'integrazione contrattuale fino a concorrenza della retribuzione è retribuzione imponibile a tutti gli effetti: tassazione ordinaria e contribuzione piena.',
+          attenzione: ['Stesso regime per i giorni di carenza retribuiti dal datore.'],
+          norma: 'Art. 51 c. 1 TUIR; art. 12 L. 153/1969.'
         }
       ]
     },
     {
       id: 'infortunio', esempio: 2000, cat: 'assenze', nome: 'Infortunio e malattia professionale (INAIL)',
       sinonimi: 'inail infortunio sul lavoro inabilità temporanea rendita danno biologico malattia professionale',
-      ralLabel: 'RAL al netto del periodo di assenza',
-      ralNote: 'L\'indennità temporanea sostituisce lo stipendio: indica come RAL la sola retribuzione pagata dall\'azienda nell\'anno.',
+      ralLabel: 'RAL al netto del periodo indennizzato',
+      ralNote: 'Indicare la sola retribuzione a carico del datore nel periodo d\'imposta, escluso il periodo coperto dall\'indennità.',
       varianti: [
         {
-          label: 'Indennità per inabilità temporanea', irpef: 'ordinaria', contributi: false,
-          breve: 'L\'indennità giornaliera per inabilità temporanea sostituisce lo stipendio: è tassata come reddito di lavoro, senza trattenute contributive.',
-          attenzione: ['La parte integrata dall\'azienda fino al 100% paga anche i contributi: usa la variante dedicata.'],
-          norma: 'Art. 6 c. 2 TUIR; risposta del MEF in commissione Finanze del 29/6/2016.'
+          label: 'Indennità per inabilità temporanea assoluta', irpef: 'ordinaria', contributi: false,
+          breve: 'Indennità sostitutiva della retribuzione: reddito di lavoro dipendente a tassazione ordinaria, senza ritenute previdenziali.',
+          attenzione: ['L\'integrazione datoriale fino al 100% è soggetta anche a contribuzione: v. variante dedicata.'],
+          norma: 'Art. 6 c. 2 TUIR; art. 68 DPR 1124/1965.'
         },
         {
-          label: 'Integrazione dell\'azienda durante l\'infortunio', irpef: 'ordinaria', contributi: true,
-          breve: 'La parte pagata dall\'azienda in aggiunta all\'indennità INAIL è retribuzione: contributi e tassazione ordinaria.',
-          attenzione: ['Verifica nel CCNL la percentuale e la durata dell\'integrazione.'],
-          norma: 'Art. 51 TUIR.'
+          label: 'Integrazione a carico del datore', irpef: 'ordinaria', contributi: true,
+          breve: 'L\'integrazione dell\'indennità INAIL prevista dal CCNL costituisce retribuzione: tassazione ordinaria e contribuzione piena.',
+          attenzione: ['Verificare misura e durata dell\'integrazione nel CCNL applicato.'],
+          norma: 'Art. 51 c. 1 TUIR.'
         },
         {
-          label: 'Rendita o indennizzo per invalidità permanente (danno biologico)', irpef: 'esente', contributi: false,
-          breve: 'Rendite e indennizzi INAIL per invalidità permanente risarciscono un danno alla salute: non sono reddito.',
-          attenzione: ['Sono esenti anche le somme per invalidità permanente pagate da polizze o da sentenze.'],
-          norma: 'Art. 6 c. 2 TUIR (esclusione per invalidità permanente o morte).'
+          label: 'Rendita o indennizzo in capitale per danno biologico permanente', irpef: 'esente', contributi: false,
+          breve: 'Le prestazioni per menomazione dell\'integrità psicofisica hanno natura risarcitoria di un danno non patrimoniale: escluse da imposizione.',
+          attenzione: ['Escluse altresì le somme per invalidità permanente o morte corrisposte a titolo risarcitorio o assicurativo.'],
+          norma: 'Art. 6 c. 2 TUIR; art. 13 D.Lgs. 38/2000.'
         }
       ]
     },
     {
-      id: 'cassa-integrazione', esempio: 1200, cat: 'assenze', nome: 'Cassa integrazione e assegno dei fondi di solidarietà',
-      sinonimi: 'cig cigo cigs assegno di integrazione salariale fis assegno ordinario fondo credito contratto di solidarietà sospensione riduzione orario',
+      id: 'cassa-integrazione', esempio: 1200, cat: 'assenze', nome: 'Integrazioni salariali (CIGO, CIGS, assegno di integrazione salariale)',
+      sinonimi: 'cig cigo cigs assegno di integrazione salariale fis assegno ordinario fondo credito fondi di solidarietà contratto di solidarietà sospensione riduzione orario',
       ralLabel: 'RAL al netto delle ore integrate',
-      ralNote: 'Indica come RAL la sola retribuzione pagata dall\'azienda nell\'anno, senza le ore coperte dall\'integrazione.',
+      ralNote: 'Indicare la sola retribuzione a carico del datore nel periodo d\'imposta, escluse le ore coperte da integrazione.',
       varianti: [{
         irpef: 'ordinaria', contributi: false, riduzione: 5.84,
-        v: { irpef: ['Ordinaria', 'con le detrazioni', 'ord'], contr: ['Riduzione 5,84%', 'dip'], add: ['Sì', 'si'] },
-        breve: 'Le integrazioni salariali sostituiscono lo stipendio: tassazione ordinaria con le detrazioni. Al posto dei contributi si applica la riduzione del 5,84% prevista dalla legge.',
-        attenzione: ['Gli importi sono soggetti a massimali mensili aggiornati ogni anno dall\'INPS.', 'Per l\'assegno ordinario del Fondo di solidarietà del credito valgono massimali propri.'],
-        norma: 'Art. 6 c. 2 e art. 51 TUIR; art. 26 L. 41/1986.'
+        v: { irpef: ['Ordinaria', 'con detrazioni art. 13 TUIR', 'ord'], contr: ['Riduzione 5,84%', 'dip'], add: ['Sì', 'si'] },
+        breve: 'Trattamenti sostitutivi della retribuzione: reddito di lavoro dipendente a tassazione ordinaria. In luogo della ritenuta previdenziale si applica la riduzione del 5,84% ex art. 26 L. 41/1986; il periodo è coperto da contribuzione figurativa.',
+        attenzione: ['Importi soggetti ai massimali mensili rivalutati annualmente dall\'INPS.', 'Per l\'assegno ordinario del Fondo di solidarietà del credito valgono le misure e i massimali del relativo regolamento.'],
+        norma: 'Art. 6 c. 2 e art. 51 TUIR; art. 26 L. 41/1986; D.Lgs. 148/2015.'
       }]
     },
     {
-      id: 'naspi', esempio: 1300, cat: 'assenze', nome: 'NASpI (indennità di disoccupazione)',
+      id: 'naspi', esempio: 1300, cat: 'assenze', nome: 'NASpI',
       sinonimi: 'disoccupazione naspi dis-coll indennità inps perdita lavoro',
-      ralLabel: 'Altri redditi di lavoro nello stesso anno',
-      ralNote: 'La NASpI si somma agli altri redditi dell\'anno, ad esempio lo stipendio percepito prima della cessazione. Puoi indicare anche 0.',
+      ralLabel: 'Altri redditi di lavoro nel periodo d\'imposta',
+      ralNote: 'La prestazione concorre al reddito complessivo con le retribuzioni percepite nell\'anno prima della cessazione. Valore ammesso: 0.',
       ralZeroOk: true,
       varianti: [{
         irpef: 'ordinaria', contributi: false,
-        breve: 'La NASpI è pagata dall\'INPS e tassata come reddito di lavoro dipendente, con le detrazioni. Non ci sono trattenute contributive: il periodo è coperto da contributi figurativi.',
-        attenzione: ['Non la paga l\'azienda: è utile per stimare il netto dopo un\'uscita.', 'Chi riceve somme in un accordo di uscita può comunque chiedere la NASpI se la cessazione non è volontaria (o è una risoluzione in sede protetta nei casi previsti).'],
+        breve: 'Prestazione erogata direttamente dall\'INPS in qualità di sostituto d\'imposta: reddito sostitutivo di lavoro dipendente a tassazione ordinaria, con detrazioni su richiesta. Nessuna ritenuta previdenziale; contribuzione figurativa.',
+        attenzione: [
+          'Non è a carico del datore: la scheda consente di stimare il netto spettante dopo la cessazione.',
+          'Spetta in caso di cessazione involontaria, ivi compresa la risoluzione consensuale in sede di conciliazione ex art. 7 L. 604/1966, e non è preclusa dalla percezione di un incentivo all\'esodo.'
+        ],
         norma: 'Art. 6 c. 2 TUIR; D.Lgs. 22/2015.'
       }]
     },
+
+    /* ===================== Cessazione del rapporto ===================== */
     {
-      id: 'eredi', esempio: 15000, cat: 'fine', nome: 'Somme pagate agli eredi del dipendente',
-      ralLabel: 'RAL del dipendente',
-      sinonimi: 'decesso morte lavoratore eredi superstiti tfr eredi competenze di fine rapporto art. 2122',
+      id: 'incentivo-esodo', esempio: 30000, cat: 'fine', nome: 'Incentivo all\'esodo',
+      sinonimi: 'buonuscita uscita incentivata esodo volontario prepensionamento risoluzione consensuale accordo di uscita',
+      varianti: [{
+        irpef: 'separata_tfr', contributi: false,
+        breve: 'Altra indennità e somma percepita una tantum in relazione alla cessazione del rapporto: tassazione separata ex art. 17 c. 1 lett. a) TUIR con l\'aliquota determinata per il TFR (art. 19 c. 2). Esclusa dall\'imponibile previdenziale.',
+        attenzione: [
+          'L\'aliquota applicata dal sostituto è provvisoria: l\'AdE riliquida con l\'aliquota media del quinquennio precedente, con iscrizione a ruolo o rimborso della differenza.',
+          'La tassazione separata si applica anche alle quote corrisposte in costanza di rapporto, se causalmente connesse alla cessazione (risposta AdE 177/2021).',
+          'La parte eccedente 1 milione di euro complessivo concorre al reddito complessivo (art. 19 c. 2 TUIR).',
+          'Il conferimento a previdenza complementare non ne esclude la previa tassazione (risposta AdE 323/2022).'
+        ],
+        norma: 'Art. 17 c. 1 lett. a) e art. 19 c. 2 TUIR; art. 12 c. 4 lett. b) L. 153/1969.'
+      }]
+    },
+    {
+      id: 'fondo-credito', esempio: 3000, cat: 'fine', nome: 'Assegno straordinario del Fondo di solidarietà del credito',
+      sinonimi: 'esodo bancario accompagnamento alla pensione fondo esuberi assegno di sostegno al reddito bancari inps',
+      varianti: [{
+        irpef: 'separata_tfr', contributi: false,
+        breve: 'L\'assegno straordinario erogato dall\'INPS per conto del Fondo fino alla maturazione dei requisiti pensionistici è assoggettato a tassazione separata con l\'aliquota del TFR, a titolo definitivo: non è soggetto a riliquidazione.',
+        attenzione: [
+          'Nessuna ritenuta previdenziale: il Fondo versa la contribuzione correlata.',
+          'Non sono dovute addizionali regionali e comunali.',
+          'L\'incentivo all\'esodo erogato dal datore è somma distinta: v. scheda Incentivo all\'esodo.'
+        ],
+        norma: 'Art. 47-bis c. 2 DL 73/2021; circ. AdE 10/E/2021.'
+      }]
+    },
+    {
+      id: 'tfr', esempio: 40000, cat: 'fine', nome: 'TFR e anticipazione del TFR',
+      sinonimi: 'liquidazione trattamento di fine rapporto anticipazione tfr fondo di garanzia inps',
+      varianti: [{
+        irpef: 'separata_tfr', contributi: false,
+        breve: 'Tassazione separata con l\'aliquota corrispondente al reddito di riferimento (TFR al netto delle rivalutazioni, diviso per gli anni di servizio e moltiplicato per 12). Nessuna ritenuta previdenziale.',
+        attenzione: [
+          'Le rivalutazioni annue sono già assoggettate a imposta sostitutiva del 17%: inserire la sola quota capitale.',
+          'Il TFR conferito a previdenza complementare segue il regime delle prestazioni del fondo (15% ridotto fino al 9%).',
+          'Riliquidazione AdE con l\'aliquota media del quinquennio; stesso regime per il TFR erogato dal Fondo di garanzia INPS.'
+        ],
+        norma: 'Art. 17 c. 1 lett. a) e art. 19 c. 1 TUIR; art. 2120 c.c.'
+      }]
+    },
+    {
+      id: 'preavviso', esempio: 9000, cat: 'fine', nome: 'Indennità sostitutiva del preavviso',
+      sinonimi: 'mancato preavviso preavviso non lavorato',
+      varianti: [{
+        irpef: 'separata_tfr', contributi: true,
+        breve: 'Natura retributiva ai fini previdenziali, con assoggettamento a contribuzione; ai fini fiscali tassazione separata con l\'aliquota del TFR in quanto connessa alla cessazione.',
+        attenzione: [
+          'Il preavviso lavorato è ordinaria retribuzione a tassazione ordinaria.',
+          'Il periodo coperto dall\'indennità è utile ai fini pensionistici.'
+        ],
+        norma: 'Art. 17 c. 1 lett. a) TUIR; art. 2118 c.c.'
+      }]
+    },
+    {
+      id: 'ferie', esempio: 2000, cat: 'fine', nome: 'Indennità per ferie e permessi non goduti',
+      sinonimi: 'monetizzazione ferie residue rol ex festività indennità sostitutiva ferie',
       varianti: [
         {
-          label: 'TFR e indennità di preavviso (art. 2122 c.c.)', irpef: 'separata_tfr', contributi: false,
-          breve: 'TFR e indennità di preavviso spettano direttamente a coniuge, figli e parenti a carico: tassazione separata con l\'aliquota del TFR, come se fossero pagati al lavoratore.',
-          attenzione: ['L\'indennità di preavviso paga i contributi anche in caso di decesso.', 'Queste somme non entrano nell\'asse ereditario.'],
-          norma: 'Art. 17 c. 1 lett. a) TUIR; art. 2122 c.c.; risoluzione 61/E/2013.'
+          label: 'In costanza di rapporto (ferie eccedenti il minimo legale, ROL, ex festività)', irpef: 'ordinaria', contributi: true,
+          breve: 'Il periodo minimo di quattro settimane non è monetizzabile in costanza di rapporto; lo sono le ferie di fonte contrattuale eccedenti, i ROL e le ex festività: tassazione ordinaria e contribuzione.',
+          attenzione: ['La monetizzazione del minimo legale è ammessa solo alla cessazione del rapporto.'],
+          norma: 'Art. 10 D.Lgs. 66/2003; art. 51 c. 1 TUIR.'
         },
         {
-          label: 'Stipendio, ferie e mensilità maturati e non pagati', irpef: 'separata_arretrati', contributi: true,
-          breve: 'Le competenze maturate dal lavoratore e pagate agli eredi sono tassate separatamente in capo a ciascun erede, salvo opzione per la tassazione ordinaria in dichiarazione.',
-          attenzione: ['Il sostituto d\'imposta applica la ritenuta a ogni erede per la sua quota.'],
-          norma: 'Art. 7 c. 3 TUIR; art. 17 TUIR.'
+          label: 'Alla cessazione: maturate nell\'anno o entro i 18 mesi', irpef: 'ordinaria', contributi: true,
+          breve: 'Competenze del periodo d\'imposta: tassazione ordinaria e contribuzione piena.',
+          attenzione: ['Decorsi 18 mesi dal termine dell\'anno di maturazione la contribuzione è dovuta anche in assenza di erogazione (msg. INPS 18850/2006).'],
+          norma: 'Art. 51 c. 1 TUIR.'
+        },
+        {
+          label: 'Alla cessazione: di anni precedenti, per cause non dipendenti dalla volontà delle parti', irpef: 'separata_arretrati', contributi: true,
+          breve: 'Emolumenti arretrati: tassazione separata ex art. 17 c. 1 lett. b) TUIR con l\'aliquota media del biennio precedente; contribuzione dovuta.',
+          attenzione: ['Il differimento concordato tra le parti esclude il regime degli arretrati e comporta tassazione ordinaria.'],
+          norma: 'Art. 17 c. 1 lett. b) e art. 21 TUIR.'
         }
       ]
     },
     {
-      id: 'azioni', esempio: 2000, cat: 'extra', nome: 'Azioni assegnate ai dipendenti',
+      id: 'non-concorrenza', esempio: 10000, cat: 'fine', nome: 'Corrispettivo del patto di non concorrenza',
+      sinonimi: 'corrispettivo patto non concorrenza non sollecitazione',
+      varianti: [
+        {
+          label: 'Corrisposto in costanza di rapporto', irpef: 'ordinaria', contributi: true,
+          breve: 'Elemento della retribuzione: tassazione ordinaria e contribuzione.',
+          attenzione: ['Un corrispettivo incongruo rispetto all\'ampiezza del vincolo espone il patto a nullità, ferma la natura reddituale delle somme percepite.'],
+          norma: 'Art. 51 c. 1 TUIR; art. 2125 c.c.'
+        },
+        {
+          label: 'Corrisposto alla cessazione o successivamente', irpef: 'separata_tfr', contributi: true,
+          breve: 'Somma connessa alla cessazione: tassazione separata con l\'aliquota del TFR. Secondo l\'orientamento prevalente la contribuzione è dovuta.',
+          attenzione: ['L\'assoggettamento contributivo delle somme corrisposte post-cessazione non è pacifico: verificare la posizione adottata.'],
+          norma: 'Art. 17 c. 1 lett. a) TUIR; risposta AdE 111/2025.'
+        }
+      ]
+    },
+    {
+      id: 'eredi', esempio: 15000, cat: 'fine', nome: 'Somme corrisposte agli eredi del lavoratore',
+      ralLabel: 'RAL del de cuius',
+      sinonimi: 'decesso morte lavoratore eredi superstiti tfr eredi competenze di fine rapporto art. 2122 de cuius',
+      varianti: [
+        {
+          label: 'TFR e indennità sostitutiva del preavviso (art. 2122 c.c.)', irpef: 'separata_tfr', contributi: false,
+          breve: 'Spettano iure proprio ai superstiti indicati dall\'art. 2122 c.c.: tassazione separata con l\'aliquota del TFR determinata in capo al de cuius.',
+          attenzione: ['L\'indennità sostitutiva del preavviso resta soggetta a contribuzione anche in caso di decesso.', 'Le somme non rientrano nell\'asse ereditario.'],
+          norma: 'Art. 17 c. 1 lett. a) TUIR; art. 2122 c.c.; ris. AdE 61/E/2013.'
+        },
+        {
+          label: 'Retribuzioni, ferie e ratei maturati e non corrisposti', irpef: 'separata_arretrati', contributi: true,
+          breve: 'Redditi maturati dal de cuius e percepiti dagli eredi: tassazione separata in capo a ciascun erede pro quota, salvo opzione per la tassazione ordinaria in dichiarazione.',
+          attenzione: ['Il sostituto opera la ritenuta nei confronti di ciascun erede per la quota di spettanza.'],
+          norma: 'Art. 7 c. 3 e art. 17 TUIR.'
+        }
+      ]
+    },
+
+    /* ===================== Contenzioso e risarcimenti ===================== */
+    {
+      id: 'transazione', esempio: 20000, cat: 'lite', nome: 'Transazione e conciliazione',
+      sinonimi: 'proposta transattiva accordo transattivo transazione novativa verbale di conciliazione sede protetta rinuncia impugnazione accordo sindacale chiusura vertenza 2113',
+      varianti: [
+        {
+          label: 'Alla cessazione, a fronte della rinuncia all\'impugnazione del recesso o ad altre pretese', irpef: 'separata_tfr', contributi: false,
+          breve: 'Somme transattive connesse alla risoluzione del rapporto: tassazione separata con l\'aliquota del TFR. Escluse da contribuzione se prive di natura retributiva.',
+          attenzione: [
+            'Il verbale deve specificare il titolo di ciascuna somma; in difetto l\'Amministrazione presume la natura reddituale dell\'intero importo.',
+            'La transazione non è opponibile all\'INPS, che può accertare la contribuzione sulle quote di natura retributiva (Cass. 8662/2019).',
+            'Per i rapporti a tutele crescenti la quota pari all\'offerta ex art. 6 D.Lgs. 23/2015 è esente: v. scheda dedicata.'
+          ],
+          norma: 'Art. 17 c. 1 lett. a) TUIR; circ. AdE 29/E/2001; ris. AdE 135/E/2009.'
+        },
+        {
+          label: 'Alla cessazione, a titolo di differenze retributive o arretrati', irpef: 'separata_tfr', contributi: true,
+          breve: 'Tassazione separata in quanto connessa alla cessazione; trattandosi di somme di natura retributiva la contribuzione è dovuta.',
+          attenzione: ['La distinzione nel verbale tra quota retributiva e quota a titolo di rinuncia incide sulla base imponibile previdenziale.'],
+          norma: 'Art. 17 c. 1 lett. a) TUIR; art. 12 L. 153/1969.'
+        },
+        {
+          label: 'In costanza di rapporto', irpef: 'ordinaria', contributi: 'dipende', contrDefault: true,
+          breve: 'In assenza di cessazione non opera la tassazione separata: le somme concorrono al reddito del periodo d\'imposta, anche se qualificate come transazione generale e novativa.',
+          attenzione: ['Contribuzione dovuta sulle somme a titolo di differenze retributive o arretrati.', 'Il principio si estende agli arretrati di anni precedenti liquidati in via transattiva (risposte AdE 343 e 344/2022).'],
+          norma: 'Art. 51 TUIR; risposte AdE 343 e 344 del 23/6/2022.'
+        }
+      ]
+    },
+    {
+      id: 'conciliazione-jobs-act', esempio: 20000, cat: 'lite', nome: 'Offerta di conciliazione (art. 6 D.Lgs. 23/2015)',
+      sinonimi: 'art. 6 d.lgs. 23/2015 tutele crescenti assegno circolare offerta conciliativa licenziamento jobs act',
+      varianti: [{
+        irpef: 'esente', contributi: false,
+        breve: 'Per i lavoratori assunti a tempo indeterminato dal 7/3/2015: l\'importo offerto in sede protetta mediante assegno circolare, pari a una mensilità della retribuzione di riferimento per il TFR per anno di servizio (da 3 a 27, dimezzato per i datori sotto soglia), non costituisce reddito imponibile e non è soggetto a contribuzione.',
+        attenzione: [
+          'L\'esenzione è limitata all\'importo determinato secondo la formula legale; le somme ulteriori seguono il regime proprio, di norma la tassazione separata.',
+          'L\'offerta va formulata entro il termine di impugnazione stragiudiziale (60 giorni) in una delle sedi di cui all\'art. 2113 c. 4 c.c.',
+          'L\'accettazione comporta estinzione del rapporto e rinuncia all\'impugnazione; resta fermo il diritto alla NASpI.'
+        ],
+        norma: 'Art. 6 D.Lgs. 23/2015 (importi rideterminati dal DL 87/2018).'
+      }]
+    },
+    {
+      id: 'licenziamento', esempio: 30000, cat: 'lite', nome: 'Indennità per licenziamento illegittimo',
+      sinonimi: 'sentenza licenziamento articolo 18 jobs act tutele crescenti reintegra indennità risarcitoria dirigente indennità supplementare',
+      varianti: [
+        {
+          label: 'Tutela indennitaria (art. 3 D.Lgs. 23/2015, art. 18 c. 5-7 L. 300/1970)', irpef: 'separata_tfr', contributi: false,
+          breve: 'Estinto il rapporto, l\'indennità risarcitoria liquidata dal giudice è assoggettata a tassazione separata con l\'aliquota del TFR ed esclusa da contribuzione.',
+          attenzione: ['Le spese legali liquidate o documentate sono scomputate dall\'imponibile.'],
+          norma: 'Art. 17 c. 1 lett. a) TUIR; art. 3 D.Lgs. 23/2015; art. 18 L. 300/1970.'
+        },
+        {
+          label: 'Tutela reintegratoria: indennità per il periodo di estromissione', irpef: 'separata_arretrati', contributi: true,
+          breve: 'Con la reintegra l\'indennità ha natura retributiva-risarcitoria sostitutiva delle retribuzioni perdute ed è soggetta a contribuzione. La quota riferita ad anni precedenti è a tassazione separata ex art. 17 c. 1 lett. b); la quota dell\'anno in corso a tassazione ordinaria.',
+          attenzione: ['Dall\'indennità si detrae l\'aliunde perceptum (ed eventualmente l\'aliunde percipiendum).'],
+          norma: 'Art. 18 c. 2 e 4 L. 300/1970; art. 6 c. 2 e art. 17 c. 1 lett. b) TUIR.'
+        },
+        {
+          label: 'Dirigenti: indennità supplementare contrattuale', irpef: 'separata_tfr', contributi: false,
+          breve: 'L\'indennità supplementare per licenziamento ingiustificato del dirigente ha natura risarcitoria ed è connessa alla cessazione: tassazione separata con l\'aliquota del TFR, esclusa da contribuzione.',
+          attenzione: ['Se corrisposta in sede transattiva è opportuna la qualificazione espressa come indennità supplementare o incentivo all\'esodo.'],
+          norma: 'Art. 17 c. 1 lett. a) TUIR; Cass. ord. 8031/2021.'
+        },
+        {
+          label: 'Indennità sostitutiva della reintegrazione (15 mensilità)', irpef: 'separata_tfr', contributi: false,
+          breve: 'Opzione del lavoratore in luogo della reintegra: tassazione separata con l\'aliquota del TFR ed esclusione da contribuzione.',
+          attenzione: ['Le spese legali liquidate o documentate sono scomputate dall\'imponibile.'],
+          norma: 'Art. 18 c. 3 L. 300/1970; art. 2 c. 3 D.Lgs. 23/2015; art. 17 c. 1 lett. a) TUIR.'
+        }
+      ]
+    },
+    {
+      id: 'risarcimento', esempio: 15000, cat: 'lite', nome: 'Risarcimento del danno (giudiziale o transattivo)',
+      sinonimi: 'danni accertati in giudizio demansionamento mobbing danno biologico danno morale esistenziale perdita di chance danno professionale lucro cessante danno emergente',
+      varianti: [
+        {
+          label: 'Lucro cessante (redditi non percepiti)', irpef: 'separata_arretrati', contributi: 'dipende', contrDefault: false,
+          breve: 'Le indennità conseguite a titolo di risarcimento di danni consistenti nella perdita di redditi costituiscono redditi della stessa categoria di quelli sostituiti (art. 6 c. 2 TUIR); se riferite a periodi d\'imposta precedenti, tassazione separata.',
+          attenzione: [
+            'Se riferite al periodo d\'imposta in corso: tassazione ordinaria.',
+            'Contribuzione dovuta qualora la somma abbia natura di retribuzione non corrisposta.'
+          ],
+          norma: 'Art. 6 c. 2 TUIR; Cass. 14842/2022.'
+        },
+        {
+          label: 'Danno non patrimoniale (biologico, morale, esistenziale; invalidità permanente o morte)', irpef: 'esente', contributi: false,
+          breve: 'Risarcimento privo di funzione sostitutiva o integrativa di redditi: escluso da imposizione e da contribuzione.',
+          attenzione: ['Sono comunque escluse le somme per invalidità permanente o morte, anche se commisurate al reddito.', 'La qualificazione deve risultare dal titolo (sentenza o accordo).'],
+          norma: 'Art. 6 c. 2 TUIR.'
+        },
+        {
+          label: 'Danno emergente (lesione della professionalità, perdita di chance)', irpef: 'esente', contributi: false,
+          breve: 'Il risarcimento del danno emergente reintegra una perdita patrimoniale e non costituisce reddito: ad esempio il danno alla professionalità da demansionamento o la perdita di chance, se allegati e provati.',
+          attenzione: [
+            'L\'onere di provare la natura emergente del danno grava sul contribuente: in difetto la Cassazione (ord. 8615/2023) ha ritenuto imponibile il risarcimento da demansionamento.',
+            'L\'AdE ha riconosciuto la non imponibilità del risarcimento per perdita di chance (risposta 185/2022).'
+          ],
+          norma: 'Art. 6 c. 2 TUIR; risposta AdE 185/2022; Cass. 8615/2023.'
+        }
+      ]
+    },
+    {
+      id: 'arretrati', esempio: 5000, cat: 'lite', nome: 'Emolumenti arretrati di anni precedenti',
+      sinonimi: 'differenze retributive sentenza ricostruzione carriera inquadramento superiore mansioni superiori emolumenti arretrati',
+      varianti: [{
+        irpef: 'separata_arretrati', contributi: true,
+        breve: 'Emolumenti riferiti ad anni precedenti percepiti per effetto di leggi, contratti collettivi, sentenze o atti amministrativi sopravvenuti, o per altre cause non dipendenti dalla volontà delle parti: tassazione separata con l\'aliquota media del biennio precedente; contribuzione dovuta.',
+        attenzione: [
+          'I ritardi fisiologici nei tempi tecnici di erogazione (es. competenze di dicembre corrisposte entro il 12 gennaio) restano a tassazione ordinaria.',
+          'Gli arretrati liquidati in via transattiva in costanza di rapporto sono, per l\'AdE, a tassazione ordinaria.',
+          'Interessi e rivalutazione: v. scheda dedicata.'
+        ],
+        norma: 'Art. 17 c. 1 lett. b) e art. 21 TUIR.'
+      }]
+    },
+    {
+      id: 'interessi', esempio: 800, cat: 'lite', nome: 'Interessi e rivalutazione monetaria su crediti di lavoro',
+      sinonimi: 'interessi legali moratori rivalutazione monetaria accessori sentenza 429',
+      varianti: [
+        {
+          label: 'Interessi legali o moratori', irpef: 'separata_arretrati', contributi: false,
+          breve: 'Gli interessi per ritardato pagamento costituiscono redditi della stessa categoria del credito cui accedono (art. 6 c. 2 TUIR) e ne seguono il regime, di norma la tassazione separata; esclusi da contribuzione.',
+          attenzione: ['Se il credito principale non è imponibile (es. danno non patrimoniale) non lo sono neppure gli interessi.'],
+          norma: 'Art. 6 c. 2 TUIR; Cass. ord. 916/2020.'
+        },
+        {
+          label: 'Rivalutazione monetaria', irpef: 'separata_arretrati', contributi: false,
+          breve: 'Nella prassi dei sostituti d\'imposta la rivalutazione segue il regime del credito principale; parte della giurisprudenza di merito ne ha affermato la non imponibilità in quanto ristoro della svalutazione. Orientamento non univoco.',
+          attenzione: ['Fattispecie da valutare con il consulente fiscale prima di operare la ritenuta.'],
+          norma: 'Art. 6 c. 2 TUIR; art. 429 c. 3 c.p.c.'
+        }
+      ]
+    },
+    {
+      id: 'spese-legali', esempio: 3000, cat: 'lite', nome: 'Rimborso delle spese legali',
+      sinonimi: 'compenso avvocato parcella spese di lite liquidate dal giudice',
+      varianti: [{
+        irpef: 'esente', contributi: false,
+        breve: 'Il rimborso delle spese legali sostenute non costituisce reddito. Per le somme a tassazione separata (indennità per licenziamento, transazioni) le spese legali documentate sono scomputate dall\'imponibile.',
+        attenzione: ['Necessaria idonea documentazione (parcella o liquidazione giudiziale); importi forfettari non giustificati sono imponibili.'],
+        norma: 'Art. 6 c. 2 e art. 17 TUIR; prassi AdE.'
+      }]
+    },
+
+    /* ===================== Azionariato, previdenza, redditi diversi ===================== */
+    {
+      id: 'azioni', esempio: 2000, cat: 'extra', nome: 'Assegnazione di azioni ai dipendenti',
       sinonimi: 'azionariato diffuso stock grant bonus in azioni piani di incentivazione azionaria performance shares dividendi lta',
       varianti: [
         {
-          label: 'Offerte alla generalità dei dipendenti (azionariato diffuso)', irpef: 'azioni_gen', contributi: true,
-          breve: 'Il valore delle azioni offerte alla generalità dei dipendenti non è tassato fino a 2.065,83 € l\'anno, se non vengono cedute prima di 3 anni. Oltre la soglia l\'eccedenza è reddito di lavoro.',
-          attenzione: ['Se le azioni vengono vendute prima di 3 anni, il valore esente diventa tassabile nell\'anno della cessione.', 'L\'esclusione di alcune categorie (es. dirigenti strategici) non fa perdere l\'agevolazione (risposta 147/2025).'],
+          label: 'Offerta alla generalità dei dipendenti (azionariato diffuso)', irpef: 'azioni_gen', contributi: true,
+          breve: 'Il valore delle azioni offerte alla generalità o a categorie di dipendenti è escluso dal reddito entro 2.065,83 € per periodo d\'imposta, a condizione che non siano cedute prima di tre anni dalla percezione. L\'eccedenza costituisce reddito di lavoro dipendente.',
+          attenzione: ['La cessione anticipata determina l\'imponibilità del valore escluso nel periodo d\'imposta della cessione.', 'L\'esclusione di singole categorie (es. dirigenti con responsabilità strategiche) non pregiudica l\'agevolazione (risposta AdE 147/2025).'],
           norma: 'Art. 51 c. 2 lett. g) e c. 2-bis TUIR.'
         },
         {
-          label: 'Bonus o incentivo pagato in azioni a singoli dipendenti', irpef: 'ordinaria', contributi: 'dipende', contrDefault: false,
-          breve: 'Le azioni assegnate individualmente sono reddito di lavoro per il loro valore normale: tassazione ordinaria, con le imposte trattenute in busta. Per i contributi la prassi esclude di regola i piani azionari, ma dipende dal regolamento del piano.',
-          attenzione: ['Il valore si calcola alla data di assegnazione; le plusvalenze alla vendita sono redditi finanziari al 26%.', 'Con piani differiti (bonus bancari con quote in azioni) la tassazione scatta quando le azioni entrano nella disponibilità del dipendente.', 'Se il piano è in realtà un bonus in denaro convertito in azioni, i contributi sono dovuti: spunta la casella.'],
-          norma: 'Art. 51 c. 1 e c. 3 TUIR; art. 12 L. 153/1969.'
+          label: 'Assegnazione individuale (bonus o incentivo in azioni)', irpef: 'ordinaria', contributi: 'dipende', contrDefault: false,
+          breve: 'Le azioni assegnate a titolo individuale costituiscono reddito di lavoro dipendente per il loro valore normale (art. 9 TUIR) alla data di assegnazione, a tassazione ordinaria con ritenuta operata sulle retribuzioni monetarie. Ai fini contributivi la prassi esclude di regola i piani azionari; rileva il regolamento del piano.',
+          attenzione: ['Le plusvalenze realizzate alla successiva cessione sono redditi diversi di natura finanziaria al 26%.', 'Nei piani differiti (quote di remunerazione variabile in strumenti finanziari) l\'imposizione si verifica alla messa a disposizione dei titoli.', 'Se il piano costituisce conversione di un bonus monetario, la contribuzione è dovuta: selezionare la casella.'],
+          norma: 'Art. 9 c. 4 e art. 51 c. 1 e 3 TUIR; art. 12 L. 153/1969.'
         },
         {
-          label: 'Azioni ricevute al posto del premio di risultato', irpef: 'esente', contributi: false,
-          breve: 'Se il lavoratore sceglie azioni al posto del premio di risultato detassato, il loro valore non è tassato entro il limite del premio (5.000 € nel 2026), anche se non sono offerte a tutti.',
-          attenzione: ['Nel 2026 i dividendi di queste azioni sono tassati sul 50% del loro importo, fino a 1.500 € (art. 1 c. 13 L. 199/2025).'],
-          norma: 'Art. 1 c. 184 L. 208/2015; circolare 5/E/2018.'
+          label: 'Azioni in sostituzione del premio di risultato', irpef: 'esente', contributi: false,
+          breve: 'Le azioni ricevute per scelta del lavoratore in luogo del premio di risultato agevolato sono escluse da reddito entro il limite del premio (5.000 €), anche in deroga al requisito della generalità.',
+          attenzione: ['Per il 2026 i dividendi relativi a tali azioni concorrono a tassazione per il 50%, entro 1.500 € (art. 1 c. 13 L. 199/2025).'],
+          norma: 'Art. 1 c. 184 L. 208/2015; circ. AdE 5/E/2018.'
         }
       ]
     },
     {
-      id: 'fondo-pensione', esempio: 20000, cat: 'extra', nome: 'Fondo pensione: prestazioni, anticipazioni e riscatti',
+      id: 'fondo-pensione', esempio: 20000, cat: 'extra', nome: 'Previdenza complementare: prestazioni, anticipazioni e riscatti',
       sinonimi: 'previdenza complementare rita riscatto anticipazione prima casa spese sanitarie liquidazione fondo pensione capitale',
       varianti: [
         {
-          label: 'Pensione in capitale o RITA, riscatto per invalidità, disoccupazione oltre 48 mesi o decesso, anticipazione per spese sanitarie', irpef: 'sostfissa', contributi: false, anni: true,
-          v: { irpef: ['Sostitutiva 15%', 'scende fino al 9% con gli anni', 'sost'], contr: ['No', 'no'], add: ['No', 'no'] },
-          breve: 'Ritenuta a titolo d\'imposta del 15%, ridotta dello 0,30% per ogni anno di adesione oltre il quindicesimo, fino a un minimo del 9%.',
-          attenzione: ['Si applica sulla parte maturata dal 2007, al netto dei rendimenti già tassati e dei contributi non dedotti.', 'Per la parte maturata prima del 2007 valgono regole diverse (tassazione separata).'],
+          label: 'Prestazione in capitale, RITA, riscatto per invalidità, inoccupazione oltre 48 mesi o decesso, anticipazione per spese sanitarie', irpef: 'sostfissa', contributi: false, anni: true,
+          v: { irpef: ['Sostitutiva 15%', 'ridotta fino al 9%', 'sost'], contr: ['No', 'no'], add: ['No', 'no'] },
+          breve: 'Ritenuta a titolo d\'imposta del 15%, ridotta di 0,30 punti percentuali per ogni anno di partecipazione eccedente il quindicesimo, con un minimo del 9%.',
+          attenzione: ['Base imponibile: montante maturato dal 2007, al netto dei rendimenti già tassati e dei contributi non dedotti.', 'Il montante maturato fino al 2006 segue la disciplina previgente (tassazione separata).'],
           norma: 'Art. 11 c. 6 e art. 14 D.Lgs. 252/2005.'
         },
         {
-          label: 'Anticipazione per prima casa o altre esigenze, riscatto per altre cause', irpef: 'sostfissa', contributi: false, aliquota: 23,
+          label: 'Anticipazione per prima casa o ulteriori esigenze, riscatto per altre cause', irpef: 'sostfissa', contributi: false, aliquota: 23,
           v: { irpef: ['Sostitutiva 23%', 'ritenuta a titolo d\'imposta', 'sost'], contr: ['No', 'no'], add: ['No', 'no'] },
-          breve: 'Ritenuta a titolo d\'imposta del 23%, qualunque sia il reddito.',
-          attenzione: ['Il riscatto per perdita dei requisiti dopo un solo giorno di disoccupazione è tassato al 23%; dopo 12 o 48 mesi si torna al 15-9%.'],
+          breve: 'Ritenuta a titolo d\'imposta del 23%, indipendentemente dal reddito del percettore.',
+          attenzione: ['Il riscatto per perdita dei requisiti di partecipazione senza i presupposti di inoccupazione di 12 o 48 mesi è tassato al 23%.'],
           norma: 'Art. 11 c. 7 e art. 14 c. 5 D.Lgs. 252/2005.'
         }
       ]
     },
     {
-      id: 'occasionale', esempio: 2000, cat: 'extra', nome: 'Compenso per un incarico fuori dal rapporto di lavoro',
+      id: 'occasionale', esempio: 2000, cat: 'extra', nome: 'Lavoro autonomo occasionale (es. ex dipendente)',
       sinonimi: 'prestazione occasionale ex dipendente consulenza collaborazione occasionale ritenuta d\'acconto docenza incarico extra',
-      ralLabel: 'Altri redditi dell\'anno (stipendio, pensione)',
-      ralNote: 'Serve per stimare l\'IRPEF definitiva in dichiarazione. Puoi indicare anche 0.',
+      ralLabel: 'Altri redditi del periodo d\'imposta',
+      ralNote: 'Necessario per stimare l\'IRPEF definitiva in dichiarazione. Valore ammesso: 0.',
       ralZeroOk: true,
       varianti: [{
         irpef: 'occasionale', contributi: 'dipende',
-        v: { irpef: ['Ritenuta 20%', 'in acconto, poi IRPEF in dichiarazione', 'ord'], contr: ['Oltre 5.000 €', 'dip'], add: ['In dichiarazione', 'dip'] },
-        breve: 'Una prestazione occasionale (ad esempio per un ex dipendente) non è reddito di lavoro dipendente: il committente trattiene il 20% in acconto, poi l\'imposta definitiva si calcola in dichiarazione insieme agli altri redditi.',
+        v: { irpef: ['Ritenuta 20%', 'a titolo d\'acconto', 'ord'], contr: ['Oltre 5.000 €', 'dip'], add: ['In dichiarazione', 'dip'] },
+        breve: 'Reddito diverso ex art. 67 c. 1 lett. l) TUIR: il committente sostituto d\'imposta opera una ritenuta d\'acconto del 20%; l\'imposta definitiva è determinata in dichiarazione sul reddito complessivo.',
         attenzione: [
-          'Oltre 5.000 € di compensi occasionali nell\'anno scattano i contributi alla Gestione separata INPS sull\'eccedenza (1/3 a carico del prestatore).',
-          'Se l\'incarico è svolto da un dipendente per il proprio datore, di regola il compenso è reddito di lavoro dipendente e va in busta.',
-          'Attività abituali o continuative richiedono partita IVA.'
+          'Oltre 5.000 € annui di compensi da lavoro autonomo occasionale sorge l\'obbligo di iscrizione alla Gestione separata, con contribuzione sull\'eccedenza (1/3 a carico del prestatore).',
+          'Le prestazioni rese da un dipendente in favore del proprio datore sono di norma attratte nel reddito di lavoro dipendente.',
+          'L\'abitualità della prestazione configura reddito di lavoro autonomo professionale.'
         ],
-        norma: 'Art. 67 c. 1 lett. l) TUIR; art. 25 DPR 600/1973; art. 44 DL 269/2003.'
+        norma: 'Art. 67 c. 1 lett. l) e art. 71 TUIR; art. 25 DPR 600/1973; art. 44 c. 2 DL 269/2003.'
       }]
     },
+
+    /* ===================== Rimborsi, mobilità, indebiti ===================== */
     {
-      id: 'trasferimento', esempio: 5000, cat: 'rimborsi', nome: 'Indennità di trasferimento e prima sistemazione',
-      sinonimi: 'trasferimento sede trasloco prima sistemazione cambio sede relocation neoassunti affitto 100 km',
+      id: 'trasferta', esempio: 1000, cat: 'rimborsi', nome: 'Trasferta e rimborsi spese',
+      sinonimi: 'diaria indennità di trasferta nota spese rimborso chilometrico aci vitto alloggio taxi',
+      varianti: [
+        {
+          label: 'Rimborso analitico (a piè di lista) o chilometrico', irpef: 'esente', contributi: false,
+          breve: 'I rimborsi di spese documentate per trasferte fuori dal territorio comunale sono esclusi da reddito e contribuzione.',
+          attenzione: ['Dal 2025 le spese di vitto, alloggio, viaggio e trasporto con autoservizi pubblici non di linea sostenute in Italia sono escluse solo se pagate con strumenti tracciabili.', 'Il rimborso chilometrico per l\'utilizzo del veicolo proprio è escluso se determinato secondo le tabelle ACI e documentato.', 'Per le trasferte nel territorio comunale sono esclusi i soli rimborsi di spese di trasporto comprovate da documenti del vettore.'],
+          norma: 'Art. 51 c. 5 TUIR; art. 1 c. 81-83 L. 207/2024; circ. AdE 15/E/2025.'
+        },
+        {
+          label: 'Indennità forfettaria (diaria)', irpef: 'trasferta', contributi: true,
+          breve: 'Esclusa fino a 46,48 € giornalieri (77,47 € per le trasferte all\'estero); l\'eccedenza concorre all\'imponibile fiscale e previdenziale.',
+          attenzione: ['In caso di rimborso misto le soglie sono ridotte di un terzo (alloggio o vitto rimborsato) o di due terzi (entrambi).'],
+          norma: 'Art. 51 c. 5 TUIR.'
+        }
+      ]
+    },
+    {
+      id: 'trasferimento', esempio: 5000, cat: 'rimborsi', nome: 'Indennità di trasferimento e di prima sistemazione',
+      sinonimi: 'trasferimento sede trasloco prima sistemazione cambio sede relocation neoassunti affitto 100 km mobilità',
       varianti: [{
         irpef: 'trasferimento', contributi: true,
-        breve: 'Nel primo anno del trasferimento il 50% dell\'indennità è esente, fino a 1.549,37 € (trasferimento in Italia) o 4.648,11 € (verso o dall\'estero). Il resto è tassato come stipendio.',
+        breve: 'Le indennità di trasferimento, prima sistemazione ed equipollenti concorrono a reddito nella misura del 50%, per il solo primo anno, entro 1.549,37 € (trasferimenti nel territorio nazionale) o 4.648,11 € (da e verso l\'estero). La parte eccedente è imponibile.',
         attenzione: [
-          'I rimborsi documentati di viaggio, trasloco e spese di insediamento sono esenti per intero.',
-          'Per i neoassunti a tempo indeterminato nel 2025 che trasferiscono la residenza oltre 100 km (con reddito dell\'anno prima fino a 35.000 €), le somme per affitto e manutenzione della casa sono esenti fino a 5.000 € l\'anno per due anni.',
-          'Dal secondo anno l\'indennità è tassata per intero.'
+          'I rimborsi analitici delle spese di viaggio, anche dei familiari, e di trasporto delle cose sono esclusi per intero, così come le spese e gli oneri sostenuti per recesso dal contratto di locazione.',
+          'Per i neoassunti a tempo indeterminato nel 2025 con trasferimento della residenza oltre 100 km e reddito di lavoro dipendente nell\'anno precedente non superiore a 35.000 €, le somme per canoni di locazione e manutenzione dell\'immobile sono escluse fino a 5.000 € annui per i primi due anni.',
+          'Dal secondo anno l\'indennità è integralmente imponibile.'
         ],
         norma: 'Art. 51 c. 7 TUIR; art. 1 c. 386-389 L. 207/2024.'
       }]
+    },
+    {
+      id: 'restituzione', esempio: 1500, cat: 'rimborsi', nome: 'Restituzione di somme indebitamente erogate',
+      sinonimi: 'indebito recupero somme non dovute ripetizione storno trattenuta errore cedolino 2033',
+      varianti: [
+        {
+          label: 'Somme del periodo d\'imposta in corso', irpef: 'restituzione_lordo', contributi: true,
+          breve: 'Restituzione al lordo: il sostituto ricalcola contribuzione e ritenute in sede di conguaglio, sicché l\'onere effettivo per il lavoratore è inferiore all\'importo restituito.',
+          attenzione: ['Il recupero può essere rateizzato mediante trattenuta in busta paga previo accordo.'],
+          norma: 'Art. 2033 c.c.; art. 23 DPR 600/1973.'
+        },
+        {
+          label: 'Somme assoggettate a tassazione in periodi d\'imposta precedenti', irpef: 'restituzione_netto', contributi: true,
+          breve: 'Dal 2020 la restituzione avviene al netto delle ritenute subite; la somma non è più deducibile ex art. 10 c. 1 lett. d-bis) TUIR e al sostituto spetta un credito d\'imposta pari al 30% dell\'importo restituito.',
+          attenzione: ['Per le restituzioni definite anteriormente al 19/5/2020 resta ferma la restituzione al lordo.', 'La posizione contributiva è regolata separatamente con l\'INPS.'],
+          norma: 'Art. 10 c. 2-bis TUIR; art. 150 DL 34/2020; circ. AdE 8/E/2021.'
+        }
+      ]
     }
   ];
 
-  /* Domande della procedura guidata. */
+  /* Procedura guidata. */
   const GUIDA = [
-    { id: 'quando', domanda: 'Quando viene pagata la somma?', opzioni: [
-      { v: 'durante', t: 'Durante il rapporto di lavoro' },
-      { v: 'fine', t: 'All\'uscita o dopo la fine del rapporto' }
+    { id: 'quando', domanda: 'Momento dell\'erogazione', opzioni: [
+      { v: 'durante', t: 'In costanza di rapporto' },
+      { v: 'fine', t: 'Alla cessazione o successivamente' }
     ] },
-    { id: 'cosa', domanda: 'Per che cosa viene pagata?', opzioni: [
-      { v: 'lavoro', t: 'Lavoro svolto o stipendio non pagato' },
-      { v: 'uscita', t: 'Per l\'uscita (incentivo, accordo di esodo)' },
-      { v: 'lite', t: 'Per chiudere una lite o rinunciare a fare causa' },
-      { v: 'giudice', t: 'L\'ha decisa un giudice dopo un licenziamento' },
-      { v: 'danno', t: 'Per risarcire un danno' },
-      { v: 'accessori', t: 'Interessi o rivalutazione su somme arretrate' },
-      { v: 'assenza', t: 'Per malattia, maternità, infortunio o cassa integrazione' },
-      { v: 'extra', t: 'Azioni, fondo pensione o un incarico extra' },
-      { v: 'spese', t: 'Per rimborsare spese o un trasferimento' }
+    { id: 'cosa', domanda: 'Titolo dell\'erogazione', opzioni: [
+      { v: 'lavoro', t: 'Retribuzione per prestazione resa o competenze non corrisposte' },
+      { v: 'uscita', t: 'Incentivazione all\'esodo' },
+      { v: 'lite', t: 'Transazione o conciliazione' },
+      { v: 'giudice', t: 'Pronuncia giudiziale su licenziamento' },
+      { v: 'danno', t: 'Risarcimento del danno' },
+      { v: 'accessori', t: 'Interessi o rivalutazione su crediti di lavoro' },
+      { v: 'assenza', t: 'Indennità sostitutive (malattia, maternità, infortunio, integrazioni salariali)' },
+      { v: 'extra', t: 'Azioni, previdenza complementare o lavoro autonomo occasionale' },
+      { v: 'spese', t: 'Rimborso spese o mobilità' }
     ] },
     { id: 'dettaglio', domanda: '', opzioni: [] }
   ];
 
   function dettaglio(r) {
     switch (r.cosa) {
-      case 'lavoro': return { domanda: 'A quando si riferisce?', opzioni: [
-        { v: 'anno', t: 'All\'anno in corso' }, { v: 'prec', t: 'Ad anni precedenti' }, { v: 'mensilita', t: 'È la tredicesima o la quattordicesima' }, { v: 'ferie', t: 'Sono ferie o permessi non goduti' }, { v: 'preavviso', t: 'È il preavviso non lavorato' }, { v: 'eredi', t: 'Va agli eredi di un dipendente deceduto' }] };
-      case 'uscita': return { domanda: 'Chi la paga?', opzioni: [
-        { v: 'azienda', t: 'L\'azienda' }, { v: 'fondo', t: 'L\'INPS per il Fondo di solidarietà del credito' }] };
-      case 'lite': return { domanda: 'Che tipo di accordo è?', opzioni: [
-        { v: 'jobsact', t: 'Offerta del Jobs Act con assegno circolare (assunti dal 7/3/2015)' }, { v: 'rinuncia', t: 'Transazione per rinunciare a impugnare' }, { v: 'retrib', t: 'Transazione su differenze di stipendio' }] };
-      case 'giudice': return { domanda: 'Cosa ha deciso il giudice?', opzioni: [
-        { v: 'indennita', t: 'Solo un\'indennità, senza rientro' }, { v: 'reintegra', t: 'Il rientro al lavoro con indennità' }, { v: 'sostitutiva', t: 'Il lavoratore ha scelto le 15 mensilità al posto del rientro' }] };
-      case 'danno': return { domanda: 'Che cosa risarcisce?', opzioni: [
-        { v: 'reddito', t: 'Stipendi o guadagni persi' }, { v: 'persona', t: 'Salute, sofferenza, vita personale' }, { v: 'patrimonio', t: 'Professionalità, chance perse, spese sostenute' }] };
-      case 'accessori': return { domanda: 'Di cosa si tratta?', opzioni: [
-        { v: 'interessi', t: 'Interessi' }, { v: 'rivalutazione', t: 'Rivalutazione monetaria' }] };
-      case 'spese': return { domanda: 'Che cosa rimborsa?', opzioni: [
-        { v: 'trasferta', t: 'Trasferte di lavoro' }, { v: 'trasferimento', t: 'Un trasferimento di sede' }, { v: 'legali', t: 'Spese legali di una causa' }] };
-      case 'assenza': return { domanda: 'Di che cosa si tratta?', opzioni: [
-        { v: 'malattia', t: 'Malattia, maternità o congedi' }, { v: 'infortunio', t: 'Infortunio o malattia professionale' }, { v: 'cig', t: 'Cassa integrazione o assegno di un fondo' }, { v: 'naspi', t: 'NASpI dopo la fine del rapporto' }] };
-      case 'extra': return { domanda: 'Di che cosa si tratta?', opzioni: [
-        { v: 'azioni', t: 'Azioni della società' }, { v: 'fondo', t: 'Soldi dal fondo pensione' }, { v: 'occasionale', t: 'Un compenso per un incarico occasionale' }] };
+      case 'lavoro': return { domanda: 'Natura delle competenze', opzioni: [
+        { v: 'anno', t: 'Competenze del periodo d\'imposta in corso' }, { v: 'prec', t: 'Arretrati di anni precedenti' }, { v: 'mensilita', t: 'Mensilità aggiuntive' }, { v: 'ferie', t: 'Ferie e permessi non goduti' }, { v: 'preavviso', t: 'Indennità sostitutiva del preavviso' }, { v: 'eredi', t: 'Competenze spettanti agli eredi' }] };
+      case 'uscita': return { domanda: 'Soggetto erogatore', opzioni: [
+        { v: 'azienda', t: 'Datore di lavoro' }, { v: 'fondo', t: 'INPS per il Fondo di solidarietà del credito' }] };
+      case 'lite': return { domanda: 'Tipologia dell\'accordo', opzioni: [
+        { v: 'jobsact', t: 'Offerta ex art. 6 D.Lgs. 23/2015 (assunti dal 7/3/2015)' }, { v: 'rinuncia', t: 'Transazione a fronte di rinuncia all\'impugnazione' }, { v: 'retrib', t: 'Transazione su differenze retributive' }] };
+      case 'giudice': return { domanda: 'Tutela accordata', opzioni: [
+        { v: 'indennita', t: 'Tutela indennitaria' }, { v: 'reintegra', t: 'Tutela reintegratoria' }, { v: 'dirigente', t: 'Indennità supplementare del dirigente' }, { v: 'sostitutiva', t: 'Indennità sostitutiva della reintegrazione' }] };
+      case 'danno': return { domanda: 'Natura del danno', opzioni: [
+        { v: 'reddito', t: 'Lucro cessante' }, { v: 'persona', t: 'Danno non patrimoniale' }, { v: 'patrimonio', t: 'Danno emergente o perdita di chance' }] };
+      case 'accessori': return { domanda: 'Tipologia', opzioni: [
+        { v: 'interessi', t: 'Interessi legali o moratori' }, { v: 'rivalutazione', t: 'Rivalutazione monetaria' }] };
+      case 'spese': return { domanda: 'Oggetto del rimborso', opzioni: [
+        { v: 'trasferta', t: 'Trasferta' }, { v: 'trasferimento', t: 'Trasferimento di sede' }, { v: 'legali', t: 'Spese legali' }] };
+      case 'assenza': return { domanda: 'Prestazione', opzioni: [
+        { v: 'malattia', t: 'Malattia, maternità o congedi' }, { v: 'infortunio', t: 'Infortunio o malattia professionale' }, { v: 'cig', t: 'Integrazione salariale o assegno dei fondi' }, { v: 'naspi', t: 'NASpI' }] };
+      case 'extra': return { domanda: 'Fattispecie', opzioni: [
+        { v: 'azioni', t: 'Assegnazione di azioni' }, { v: 'fondo', t: 'Prestazioni di previdenza complementare' }, { v: 'occasionale', t: 'Lavoro autonomo occasionale' }] };
     }
     return null;
   }
@@ -1334,7 +1370,7 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
         if (r.dettaglio === 'jobsact') return { id: 'conciliazione-jobs-act', v: 0 };
         if (!fine) return { id: 'transazione', v: 2 };
         return { id: 'transazione', v: r.dettaglio === 'retrib' ? 1 : 0 };
-      case 'giudice': return { id: 'licenziamento', v: r.dettaglio === 'reintegra' ? 1 : (r.dettaglio === 'sostitutiva' ? 2 : 0) };
+      case 'giudice': return { id: 'licenziamento', v: { indennita: 0, reintegra: 1, dirigente: 2, sostitutiva: 3 }[r.dettaglio] || 0 };
       case 'danno': return { id: 'risarcimento', v: r.dettaglio === 'persona' ? 1 : (r.dettaglio === 'patrimonio' ? 2 : 0) };
       case 'accessori': return { id: 'interessi', v: r.dettaglio === 'rivalutazione' ? 1 : 0 };
       case 'spese': return r.dettaglio === 'legali' ? { id: 'spese-legali', v: 0 } : (r.dettaglio === 'trasferimento' ? { id: 'trasferimento', v: 0 } : { id: 'trasferta', v: 0 });
@@ -1346,8 +1382,8 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
 
   const api = { CATS, CASI, GUIDA, dettaglio, esito };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
-  else root.Casi = api;
-})(typeof self !== 'undefined' ? self : this);
+  root.Casi = api;
+})(typeof window !== 'undefined' ? window : globalThis);
 </script>
 <script>/* Generatore PDF minimo (Helvetica standard, WinAnsiEncoding), senza dipendenze. */
 (function (root) {
@@ -1390,7 +1426,9 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
     text(x, y, str, o) {
       o = o || {}; const size = o.size || 10;
       let xx = x; if (o.align === 'right') xx = x - width(str, size, o.bold); else if (o.align === 'center') xx = x - width(str, size, o.bold) / 2;
-      this.cur.push(`BT /${o.bold ? 'F2' : 'F1'} ${size} Tf ${rgb(o.color || '#14263f')} rg ${xx.toFixed(2)} ${(H - y).toFixed(2)} Td ${pdfStr(str)} Tj ET`);
+      let tw = '';
+      if (o.justify) { const sp = (String(str).match(/ /g) || []).length; const gap = o.justify - width(str, size, o.bold); if (sp && gap > 0 && gap < o.justify * 0.25) tw = `${(gap / sp).toFixed(3)} Tw `; }
+      this.cur.push(`BT /${o.bold ? 'F2' : 'F1'} ${size} Tf ${tw}${rgb(o.color || '#14263f')} rg ${xx.toFixed(2)} ${(H - y).toFixed(2)} Td ${pdfStr(str)} Tj ${tw ? '0 Tw ' : ''}ET`);
     }
     rect(x, y, w, h, fill) { this.cur.push(`${rgb(fill)} rg ${x.toFixed(2)} ${(H - y - h).toFixed(2)} ${w.toFixed(2)} ${h.toFixed(2)} re f`); }
     line(x1, y1, x2, y2, color, lw) { this.cur.push(`${rgb(color || '#d9dfe6')} RG ${(lw || 0.6)} w ${x1.toFixed(2)} ${(H - y1).toFixed(2)} m ${x2.toFixed(2)} ${(H - y2).toFixed(2)} l S`); }
@@ -1434,8 +1472,8 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
     }
     need(h) { if (this.y + h > H - 50) { this.d.addPage(); this.header(); } }
     h2(t) { this.need(40); this.y += 8; this.d.text(this.m, this.y, t, { size: 12.5, bold: true }); this.y += 6; this.d.line(this.m, this.y, this.m + this.w, this.y, '#14263f', 0.8); this.y += 14; }
-    p(t, o) { o = o || {}; const size = o.size || 10; for (const l of this.d.wrap(t, size, o.bold, this.w - (o.indent || 0))) { this.need(size + 4); this.d.text(this.m + (o.indent || 0), this.y, l, { size, bold: o.bold, color: o.color || '#14263f' }); this.y += size + 3.5; } this.y += o.after == null ? 4 : o.after; }
-    bullets(list) { for (const b of list) { const ls = this.d.wrap(b, 9.5, false, this.w - 14); this.need(14); this.d.text(this.m + 2, this.y, '-', { size: 9.5 }); ls.forEach((l) => { this.need(13); this.d.text(this.m + 14, this.y, l, { size: 9.5 }); this.y += 13; }); this.y += 2; } this.y += 4; }
+    p(t, o) { o = o || {}; const size = o.size || 10; const mw = this.w - (o.indent || 0); const ls = this.d.wrap(t, size, o.bold, mw); ls.forEach((l, i) => { this.need(size + 4); this.d.text(this.m + (o.indent || 0), this.y, l, { size, bold: o.bold, color: o.color || '#14263f', justify: i < ls.length - 1 ? mw : 0 }); this.y += size + 3.5; }); this.y += o.after == null ? 4 : o.after; }
+    bullets(list) { for (const b of list) { const ls = this.d.wrap(b, 9.5, false, this.w - 14); this.need(14); this.d.text(this.m + 2, this.y, '-', { size: 9.5 }); ls.forEach((l, i) => { this.need(13); this.d.text(this.m + 14, this.y, l, { size: 9.5, justify: i < ls.length - 1 ? this.w - 14 : 0 }); this.y += 13; }); this.y += 2; } this.y += 4; }
     kv(rows, o) {
       o = o || {};
       for (const [k, v, st] of rows) {
@@ -1561,23 +1599,23 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
   function verdetto(v) {
     const c = v.contributi === true ? ['Sì', 'si'] : v.contributi === false ? ['No', 'no'] : ['Dipende', 'dip'];
     const M = {
-      ordinaria: [['Ordinaria', 'si somma allo stipendio', 'ord'], c, ['Sì', 'si']],
-      fissa: [['Ordinaria', 'ogni mese con lo stipendio', 'ord'], c, ['Sì', 'si']],
-      separata_tfr: [['Separata', 'aliquota del TFR', 'sep'], c, ['No', 'no']],
-      separata_arretrati: [['Separata', 'aliquota media ultimi 2 anni', 'sep'], c, ['No', 'no']],
-      esente: [['Esente', 'non è reddito', 'ok'], c, ['No', 'no']],
-      sost1: [['1% sostitutiva', 'fino a 5.000 €', 'sost'], c, ['No', 'no']],
-      sost15: [['15% sostitutiva', 'fino a 1.500 €', 'sost'], c, ['No', 'no']],
-      sost5: [['5% sostitutiva', 'sugli aumenti', 'sost'], c, ['No', 'no']],
-      fringe: [['Esente fino a soglia', '1.000 € o 2.000 € con figli', 'ok'], ['Oltre soglia', 'dip'], ['Oltre soglia', 'dip']],
-      buonipasto: [['Esente fino a 10 €/giorno', '4 € se cartacei', 'ok'], ['Sull\'eccedenza', 'dip'], ['Sull\'eccedenza', 'dip']],
-      trasferta: [['Esente fino a 46,48 €/giorno', '77,47 € all\'estero', 'ok'], ['Sull\'eccedenza', 'dip'], ['Sull\'eccedenza', 'dip']],
-      restituzione_lordo: [['Restituisci il lordo', 'IRPEF ricalcolata a conguaglio', 'ord'], ['Ricalcolati', 'dip'], ['Ricalcolate', 'dip']],
-      restituzione_netto: [['Restituisci il netto', 'senza l\'IRPEF trattenuta', 'sep'], ['A parte', 'dip'], ['—', 'no']],
-      azioni_gen: [['Esente fino a 2.065,83 €', 'oltre: ordinaria', 'ok'], ['Oltre soglia', 'dip'], ['Oltre soglia', 'dip']],
-      trasferimento: [['Esente al 50%', 'entro 1.549,37 € o 4.648,11 €', 'ok'], ['Sulla parte tassata', 'dip'], ['Sulla parte tassata', 'dip']],
+      ordinaria: [['Ordinaria', 'cumulo nel reddito complessivo', 'ord'], c, ['Sì', 'si']],
+      fissa: [['Ordinaria', 'elemento continuativo', 'ord'], c, ['Sì', 'si']],
+      separata_tfr: [['Separata', 'aliquota TFR (art. 19 TUIR)', 'sep'], c, ['No', 'no']],
+      separata_arretrati: [['Separata', 'aliquota media biennio (art. 21 TUIR)', 'sep'], c, ['No', 'no']],
+      esente: [['Esclusa', 'non concorre al reddito', 'ok'], c, ['No', 'no']],
+      sost1: [['Sostitutiva 1%', 'entro 5.000 €', 'sost'], c, ['No', 'no']],
+      sost15: [['Sostitutiva 15%', 'entro 1.500 €', 'sost'], c, ['No', 'no']],
+      sost5: [['Sostitutiva 5%', 'sugli incrementi contrattuali', 'sost'], c, ['No', 'no']],
+      fringe: [['Esclusa entro soglia', '1.000 € o 2.000 € con figli a carico', 'ok'], ['Oltre soglia', 'dip'], ['Oltre soglia', 'dip']],
+      buonipasto: [['Esclusa entro 10 €/giorno', '4 € se cartacei', 'ok'], ['Sull\'eccedenza', 'dip'], ['Sull\'eccedenza', 'dip']],
+      trasferta: [['Esclusa entro 46,48 €/giorno', '77,47 € all\'estero', 'ok'], ['Sull\'eccedenza', 'dip'], ['Sull\'eccedenza', 'dip']],
+      restituzione_lordo: [['Restituzione al lordo', 'ritenute ricalcolate a conguaglio', 'ord'], ['A conguaglio', 'dip'], ['A conguaglio', 'dip']],
+      restituzione_netto: [['Restituzione al netto', 'art. 10 c. 2-bis TUIR', 'sep'], ['Regolati con l\'INPS', 'dip'], ['—', 'no']],
+      azioni_gen: [['Esclusa entro 2.065,83 €', 'eccedenza a tassazione ordinaria', 'ok'], ['Oltre soglia', 'dip'], ['Oltre soglia', 'dip']],
+      trasferimento: [['Imponibile al 50%', 'esclusione entro 1.549,37 € o 4.648,11 €', 'ok'], ['Sulla quota imponibile', 'dip'], ['Sulla quota imponibile', 'dip']],
       sostfissa: [['Sostitutiva', 'ritenuta a titolo d\'imposta', 'sost'], ['No', 'no'], ['No', 'no']],
-      occasionale: [['Ritenuta 20%', 'poi IRPEF in dichiarazione', 'ord'], ['Oltre 5.000 €', 'dip'], ['In dichiarazione', 'dip']]
+      occasionale: [['Ritenuta 20%', 'a titolo d\'acconto', 'ord'], ['Oltre 5.000 €', 'dip'], ['In dichiarazione', 'dip']]
     };
     const m = v.v ? [v.v.irpef, v.v.contr, v.v.add] : M[v.irpef];
     return { irpef: { t: m[0][0], s: m[0][1], tone: m[0][2] }, contr: { t: m[1][0], tone: m[1][1] }, add: { t: m[2][0], tone: m[2][1] } };
@@ -1585,7 +1623,7 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
   function chipLista(caso) {
     if (caso.varianti.length > 1) return `<span class="pill pill-dip">${caso.varianti.length} casi diversi</span>`;
     const v = caso.varianti[0]; const vd = verdetto(v);
-    const contr = v.contributi === false ? 'no INPS' : v.contributi === true ? 'INPS sì' : '';
+    const contr = v.contributi === false ? 'no contributi' : v.contributi === true ? 'contributi' : '';
     return `<span class="pill pill-${vd.irpef.tone}">${vd.irpef.t}</span>${contr && !v.v && !['fringe', 'buonipasto', 'trasferta', 'azioni_gen', 'trasferimento'].includes(v.irpef) ? `<span class="pill pill-plain">${contr}</span>` : ''}`;
   }
 
@@ -1604,13 +1642,13 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
     const uc = useContr(v);
     const ev = (voce, inp) => E.evalVoce(inp || cx.inp, Object.assign({ id: '__x' }, voce), P);
     const righeEv = (e) => {
-      if (Math.abs(e.contributi) > 0.005) r.righe.push(['Contributi INPS', e.contributi]);
+      if (Math.abs(e.contributi) > 0.005) r.righe.push(['Contributi previdenziali c/lavoratore', e.contributi]);
       if (Math.abs(e.sostitutive) > 0.005) r.righe.push(['Imposta sostitutiva', e.sostitutive]);
-      if (Math.abs(e.irpef) > 0.005) r.righe.push(['IRPEF (con effetto su detrazioni e cuneo)', e.irpef]);
+      if (Math.abs(e.irpef) > 0.005) r.righe.push(['IRPEF (inclusi effetti su detrazioni e cuneo)', e.irpef]);
       if (Math.abs(e.addizionali) > 0.005) r.righe.push(['Addizionali regionale e comunale', e.addizionali]);
     };
     const mens = num(T.mens, 13);
-    const locNote = () => { if (blank(T.regione) || blank(T.comAliq)) r.note.push('Addizionali stimate con valori medi (regionale 1,73%, comunale 0,8%): indica regione e comune per un calcolo preciso.'); };
+    const locNote = () => { if (blank(T.regione) || blank(T.comAliq)) r.note.push('Addizionali stimate su aliquote medie (regionale 1,73%, comunale 0,8%): indicare regione e aliquota comunale di residenza.'); };
     switch (v.irpef) {
       case 'ordinaria': {
         if (v.riduzione) {
@@ -1618,81 +1656,81 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
           const e = ev({ titolo: 'ordinarianc', lordo: L - rid }); r.netto = e.netto;
           r.righe.push([`Riduzione ${fN.format(v.riduzione)}% (art. 26 L. 41/1986)`, rid]); righeEv(e);
         } else { const e = ev({ titolo: uc ? 'straordinario' : 'ordinarianc', lordo: L }); r.netto = e.netto; righeEv(e); }
-        r.note.push(cx.fisso > 0 ? `Aggiunta a un reddito di ${eur0(cx.fisso)}: aliquota marginale IRPEF ${cx.R.aliquotaMarginale}%.` : 'Senza altri redditi nell\'anno: si applicano per intero detrazioni e cuneo fiscale.'); locNote(); break;
+        r.note.push(cx.fisso > 0 ? `Cumulo con una RAL di ${eur0(cx.fisso)}: aliquota marginale IRPEF ${cx.R.aliquotaMarginale}%. Il differenziale include gli effetti su detrazione art. 13 TUIR e cuneo fiscale.` : 'In assenza di altri redditi: detrazione art. 13 TUIR e misure del cuneo fiscale spettanti per intero.'); locNote(); break;
       }
       case 'fissa': { const e = ev({ titolo: 'fissa', lordo: L * mens }); r.lordo = L * mens; r.netto = e.netto; righeEv(e); r.note.push(`Al mese: ${eur(L)} lordi → ${eur(e.netto / mens)} netti in media (× ${mens} mensilità).`); locNote(); break; }
       case 'separata_tfr': case 'separata_arretrati': {
         const c = uc ? contrRate(cx) : 0; const contr = L * c;
         const al = v.irpef === 'separata_tfr' ? aliqTfrOf(cx.fisso, T.aliqTfr) : { a: aliqArr(cx) };
         const tax = (L - contr) * al.a; r.netto = L - contr - tax;
-        if (contr) r.righe.push(['Contributi INPS', contr]);
+        if (contr) r.righe.push(['Contributi previdenziali c/lavoratore', contr]);
         r.righe.push([`IRPEF a tassazione separata (${pct(al.a * 100, 2)})`, tax]);
-        if (v.irpef === 'separata_tfr') r.note.push(al.manuale ? 'Aliquota inserita da te.' : `Aliquota stimata dal reddito di riferimento di circa ${eur0(al.rif)} (RAL × 12 ÷ 13,5). Se conosci quella esatta inseriscila qui sotto.`);
-        else r.note.push('Aliquota stimata come media IRPEF della RAL indicata; la norma usa la media dei due anni precedenti.');
-        r.note.push('Niente addizionali regionali e comunali.'); break;
+        if (v.irpef === 'separata_tfr') r.note.push(al.manuale ? 'Aliquota indicata manualmente.' : `Aliquota stimata su un reddito di riferimento di circa ${eur0(al.rif)} (RAL × 12 ÷ 13,5). In presenza dell\'aliquota effettiva, indicarla qui sotto.`);
+        else r.note.push('Aliquota stimata come aliquota media IRPEF sulla RAL indicata; l\'art. 21 TUIR fa riferimento all\'aliquota media del biennio precedente.');
+        r.note.push('Addizionali regionale e comunale non dovute.'); break;
       }
-      case 'esente': r.note.push('Nessuna trattenuta: ricevi tutto l\'importo.'); break;
+      case 'esente': r.note.push('Nessuna ritenuta fiscale né contributiva: netto pari al lordo.'); break;
       case 'sostfissa': {
         const al = aliqFondo(v); const tax = L * al / 100; r.netto = L - tax;
         r.righe.push([`Imposta sostitutiva (${pct(al, 2)})`, tax]);
-        if (v.anni) r.note.push(blank(T.anni) ? 'Aliquota del 15%: indica gli anni di adesione per vedere la riduzione (0,30% per ogni anno oltre il quindicesimo, minimo 9%).' : `Con ${Math.floor(parseNum(T.anni))} anni di adesione l'aliquota è il ${pct(al, 2)}.`);
-        r.note.push('Calcolo sull\'importo tassabile: escludi la parte già tassata (rendimenti) e i contributi non dedotti. Niente addizionali.'); break;
+        if (v.anni) r.note.push(blank(T.anni) ? 'Aliquota base del 15%: indicare gli anni di partecipazione per applicare la riduzione (0,30 punti per anno oltre il quindicesimo, minimo 9%).' : `Con ${Math.floor(parseNum(T.anni))} anni di partecipazione l'aliquota è pari al ${pct(al, 2)}.`);
+        r.note.push('Indicare la sola base imponibile, al netto dei rendimenti già tassati e dei contributi non dedotti. Addizionali non dovute.'); break;
       }
       case 'azioni_gen': {
         const sg = 2065.83; const ecc = Math.max(0, L - sg);
         r.netto = L;
         if (ecc > 0) { const e = ev({ titolo: 'straordinario', lordo: ecc }); r.netto = L - ecc + e.netto; righeEv(e); }
-        r.note.push(ecc > 0 ? `Esenti ${eur(sg)}; tassati ${eur(ecc)} come stipendio. Le imposte sono trattenute in busta perché le azioni non sono denaro.` : `Entro ${eur(sg)}: esente, se le azioni non vengono cedute prima di 3 anni.`); locNote(); break;
+        r.note.push(ecc > 0 ? `Esclusi ${eur(sg)}; imponibile l'eccedenza di ${eur(ecc)}, con ritenute operate sulle retribuzioni monetarie.` : `Entro ${eur(sg)}: escluso, subordinatamente al vincolo triennale di indisponibilità.`); locNote(); break;
       }
       case 'trasferimento': {
         const cap = T.trEstero ? 4648.11 : 1549.37; const es = Math.min(L * 0.5, cap); const tass = L - es;
         const e = ev({ titolo: 'straordinario', lordo: tass }); r.netto = es + e.netto;
         righeEv(e);
-        r.note.push(`Esenti ${eur(es)} (50% dell'importo, al massimo ${eur(cap)}); tassati ${eur(tass)} come stipendio. Vale solo per il primo anno.`); locNote(); break;
+        r.note.push(`Quota esclusa ${eur(es)} (50% dell'importo, nel limite di ${eur(cap)}); quota imponibile ${eur(tass)}. Il regime opera per il solo primo anno.`); locNote(); break;
       }
       case 'occasionale': {
         const sog = 5000; const gsAl = T.copertura ? 24 : 33.72;
         const gs = Math.max(0, L - sog) * gsAl / 100 / 3;
         const rit = L * 0.2; r.netto = L - rit - gs;
-        if (gs > 0) r.righe.push([`Contributi Gestione separata (1/3 del ${fN.format(gsAl)}% oltre ${eur0(sog)})`, gs]);
+        if (gs > 0) r.righe.push([`Contributi Gestione separata, quota prestatore (1/3 del ${fN.format(gsAl)}% oltre ${eur0(sog)})`, gs]);
         r.righe.push(['Ritenuta d\'acconto 20%', rit]);
         const base = cx.R.imponibile; const add = Math.max(0, L - gs);
         const irpefDef = E.progressive(base + add, P.irpef.scaglioni) - E.progressive(base, P.irpef.scaglioni);
         const diff = irpefDef - rit;
-        r.note.push(`IRPEF definitiva stimata in dichiarazione: circa ${eur(irpefDef)} (escluse le addizionali), quindi ${diff >= 0 ? `circa ${eur(diff)} da versare in più` : `circa ${eur(-diff)} a credito`} rispetto alla ritenuta.`);
-        r.note.push(L > sog ? 'Calcolo nell\'ipotesi che sia l\'unico compenso occasionale dell\'anno; contributi indicativi.' : `Sotto ${eur0(sog)} di compensi occasionali nell'anno non si pagano contributi.`); break;
+        r.note.push(`IRPEF definitiva stimata in dichiarazione: circa ${eur(irpefDef)} (addizionali escluse), con ${diff >= 0 ? `un saldo a debito di circa ${eur(diff)}` : `un credito di circa ${eur(-diff)}`} rispetto alla ritenuta d'acconto.`);
+        r.note.push(L > sog ? 'Ipotesi: unico compenso da lavoro autonomo occasionale nel periodo d\'imposta; contribuzione indicativa.' : `Compensi occasionali entro ${eur0(sog)} annui: nessun obbligo contributivo.`); break;
       }
       case 'sost1': case 'sost15': case 'sost5': {
         const tit = { sost1: 'premio', sost15: 'notturno', sost5: 'rinnovo' }[v.irpef];
         const e = ev({ titolo: tit, lordo: L }); r.netto = e.netto; righeEv(e);
         const ok = { sost1: e.con.premioOk, sost15: e.con.nottOk, sost5: e.con.rinnOk }[v.irpef];
         const sg = { sost1: '80.000', sost15: '40.000', sost5: '33.000' }[v.irpef];
-        r.note.push(ok ? `Requisito di reddito rispettato (reddito stimato ${eur0(e.con.redPrec)}, soglia ${sg} €).` : `Con un reddito stimato di ${eur0(e.con.redPrec)} superi la soglia di ${sg} €: tassazione ordinaria.`); break;
+        r.note.push(ok ? `Requisito reddituale soddisfatto (reddito di lavoro dipendente stimato ${eur0(e.con.redPrec)}, soglia ${sg} €).` : `Reddito di lavoro dipendente stimato ${eur0(e.con.redPrec)}, superiore alla soglia di ${sg} €: tassazione ordinaria.`); break;
       }
       case 'fringe': {
         const inp = Object.assign({}, cx.inp, { figliU21: T.figli ? 1 : 0 });
         const e = ev({ titolo: 'fringe', lordo: L }, inp); r.netto = e.netto; righeEv(e);
         const sg = T.figli ? P.fringeBenefit.sogliaFigli : P.fringeBenefit.soglia;
-        r.note.push(L <= sg ? `Sotto la soglia di ${eur0(sg)}: esente.` : `Supera la soglia di ${eur0(sg)}: è tassato l'intero valore, con imposte trattenute dallo stipendio.`); locNote(); break;
+        r.note.push(L <= sg ? `Entro la soglia di ${eur0(sg)}: escluso da imposizione.` : `Superata la soglia di ${eur0(sg)}: concorre a reddito l'intero valore, con ritenute operate sulle retribuzioni monetarie.`); locNote(); break;
       }
       case 'buonipasto': {
         const val = parseNum(T.bpVal), gg = parseNum(T.bpGg); r.lordo = val * gg;
         const e = ev({ titolo: 'buonipasto', valore: val, giorni: gg, cartaceo: T.bpCart }); r.netto = e.netto; righeEv(e);
         const sg = T.bpCart ? P.buoniPasto.cartaceo : P.buoniPasto.elettronico;
-        r.note.push(val <= sg ? `Buono entro la soglia di ${eur(sg)}: esente.` : `Tassati ${eur(val - sg)} per buono oltre la soglia di ${eur(sg)}.`); break;
+        r.note.push(val <= sg ? `Valore nominale entro la soglia di ${eur(sg)}: escluso.` : `Imponibile l'eccedenza di ${eur(val - sg)} per buono oltre la soglia di ${eur(sg)}.`); break;
       }
       case 'trasferta': {
         const val = parseNum(T.trImp), gg = parseNum(T.trGg); r.lordo = val * gg;
         const e = ev({ titolo: 'trasferta', valore: val, giorni: gg, estero: T.trEstero }); r.netto = e.netto; righeEv(e);
         const sg = T.trEstero ? 77.47 : 46.48;
-        r.note.push(val > sg ? `Esenti ${eur(sg)} al giorno; tassati ${eur((val - sg) * gg)} di eccedenza.` : `Entro ${eur(sg)} al giorno: esente.`); break;
+        r.note.push(val > sg ? `Esclusi ${eur(sg)} giornalieri; imponibile l'eccedenza di ${eur((val - sg) * gg)}.` : `Entro ${eur(sg)} giornalieri: esclusa.`); break;
       }
-      case 'restituzione_lordo': { const e = ev({ titolo: 'straordinario', lordo: L }); r.netto = e.netto; r.restituisci = L; r.note.push(`Restituisci ${eur(L)}; con il conguaglio recuperi circa ${eur(L - e.netto)} tra contributi, IRPEF e addizionali. Il costo effettivo è circa ${eur(e.netto)}.`); break; }
+      case 'restituzione_lordo': { const e = ev({ titolo: 'straordinario', lordo: L }); r.netto = e.netto; r.restituisci = L; r.note.push(`Importo da restituire ${eur(L)}; a conguaglio il lavoratore recupera circa ${eur(L - e.netto)} tra contributi, IRPEF e addizionali. Onere netto effettivo circa ${eur(e.netto)}.`); break; }
       case 'restituzione_netto': {
         const irpef = L * (1 - contrRate(cx)) * cx.R.aliquotaMarginale / 100;
         r.restituisci = L - irpef; r.netto = L - irpef;
-        r.righe.push([`IRPEF trattenuta a suo tempo (stima al ${cx.R.aliquotaMarginale}%)`, irpef]);
-        r.note.push(`Da restituire circa ${eur(L - irpef)} invece di ${eur(L)}. Il valore esatto è la ritenuta indicata nella CU dell'anno.`); break;
+        r.righe.push([`Ritenute IRPEF subite (stima all\'aliquota marginale del ${cx.R.aliquotaMarginale}%)`, irpef]);
+        r.note.push(`Importo da restituire circa ${eur(L - irpef)} in luogo di ${eur(L)}. Il dato puntuale è la ritenuta certificata nella CU del periodo di riferimento.`); break;
       }
     }
     return r;
@@ -1707,11 +1745,11 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
   function risultatoCaso() {
     const caso = findCaso(CUR.id); const v = caso.varianti[CUR.v] || caso.varianti[0];
     const needRal = !SENZA_RAL.includes(v.irpef) && !caso.ralZeroOk;
-    if (needRal && !(parseNum(T.ral) > 0)) return { manca: 'Inserisci la tua RAL per calcolare imposte e contributi.' };
+    if (needRal && !(parseNum(T.ral) > 0)) return { manca: 'Indicare la RAL per determinare imposte e contributi.' };
     let L;
-    if (v.irpef === 'buonipasto') { if (!(parseNum(T.bpVal) > 0 && parseNum(T.bpGg) > 0)) return { manca: 'Inserisci valore del buono e numero di buoni.' }; L = 0; }
-    else if (v.irpef === 'trasferta') { if (!(parseNum(T.trImp) > 0 && parseNum(T.trGg) > 0)) return { manca: 'Inserisci diaria e giorni di trasferta.' }; L = 0; }
-    else { L = parseNum(T.imp); if (!(L > 0)) return { manca: 'Inserisci l\'importo da calcolare.' }; }
+    if (v.irpef === 'buonipasto') { if (!(parseNum(T.bpVal) > 0 && parseNum(T.bpGg) > 0)) return { manca: 'Indicare valore nominale e numero dei buoni.' }; L = 0; }
+    else if (v.irpef === 'trasferta') { if (!(parseNum(T.trImp) > 0 && parseNum(T.trGg) > 0)) return { manca: 'Indicare diaria giornaliera e giorni di trasferta.' }; L = 0; }
+    else { L = parseNum(T.imp); if (!(L > 0)) return { manca: 'Indicare l\'importo.' }; }
     const cx = ctxCalc();
     let input = L;
     if (T.mode === 'netto' && NETTO_OK.includes(v.irpef)) {
@@ -1740,7 +1778,7 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
       n += items.length;
       html += `<h3 class="grp">${cat.nome}</h3><ul class="cases">` + items.map((c) => `<li><a href="#c-${c.id}" class="case-row"><span class="case-name">${c.nome}</span><span class="case-pills">${chipLista(c)}</span><span class="chev" aria-hidden="true">›</span></a></li>`).join('') + '</ul>';
     }
-    $('#lista').innerHTML = n ? html : `<p class="empty">Nessuna scheda per “${esc(UI.q)}”. Prova un'altra parola o usa la procedura guidata.</p>`;
+    $('#lista').innerHTML = n ? html : `<p class="empty">Nessuna fattispecie per “${esc(UI.q)}”. Modificare la ricerca o utilizzare la procedura guidata.</p>`;
   }
 
   /* ================= dettaglio ================= */
@@ -1751,9 +1789,9 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
     const vd = verdetto(v);
     const nettoOk = NETTO_OK.includes(v.irpef);
     if (!nettoOk) T.mode = 'lordo';
-    const varHtml = caso.varianti.length > 1 ? `<fieldset class="variants"><legend>Qual è il tuo caso?</legend>${caso.varianti.map((x, i) => `<label class="variant${i === CUR.v ? ' on' : ''}"><input type="radio" name="variante" value="${i}"${i === CUR.v ? ' checked' : ''}><span>${x.label}</span></label>`).join('')}</fieldset>` : '';
+    const varHtml = caso.varianti.length > 1 ? `<fieldset class="variants"><legend>Fattispecie</legend>${caso.varianti.map((x, i) => `<label class="variant${i === CUR.v ? ' on' : ''}"><input type="radio" name="variante" value="${i}"${i === CUR.v ? ' checked' : ''}><span>${x.label}</span></label>`).join('')}</fieldset>` : '';
     let f = '<div class="fields">';
-    if (!SENZA_RAL.includes(v.irpef)) f += `<div class="field${caso.ralNote ? ' wide' : ''}"><label for="c-ral">${caso.ralLabel || 'La tua RAL'}${caso.ralZeroOk ? ' <em class="opt-l">(facoltativo)</em>' : ''}</label><div class="suffix"><input id="c-ral" data-t="ral" inputmode="decimal" placeholder="${caso.ralZeroOk ? 'es. 0' : 'es. 40.000'}" value="${val(T.ral)}"><span>€</span></div>${caso.ralNote ? `<small class="fnote">${caso.ralNote}</small>` : ''}</div>`;
+    if (!SENZA_RAL.includes(v.irpef)) f += `<div class="field${caso.ralNote ? ' wide' : ''}"><label for="c-ral">${caso.ralLabel || 'RAL'}${caso.ralZeroOk ? ' <em class="opt-l">(facoltativo)</em>' : ''}</label><div class="suffix"><input id="c-ral" data-t="ral" inputmode="decimal" placeholder="${caso.ralZeroOk ? 'es. 0' : 'es. 40.000'}" value="${val(T.ral)}"><span>€</span></div>${caso.ralNote ? `<small class="fnote">${caso.ralNote}</small>` : ''}</div>`;
     if (v.anni) f += `<div class="field"><label for="c-anni">Anni di adesione al fondo</label><input id="c-anni" data-t="anni" inputmode="numeric" placeholder="es. 20" value="${val(T.anni)}"></div>`;
     if (v.irpef === 'buonipasto') f += `<div class="field"><label for="c-bpval">Valore del buono</label><div class="suffix"><input id="c-bpval" data-t="bpVal" inputmode="decimal" placeholder="es. 8" value="${val(T.bpVal)}"><span>€</span></div></div><div class="field"><label for="c-bpgg">Buoni nell'anno</label><input id="c-bpgg" data-t="bpGg" inputmode="numeric" placeholder="es. 210" value="${val(T.bpGg)}"></div>`;
     else if (v.irpef === 'trasferta') f += `<div class="field"><label for="c-trimp">Diaria al giorno</label><div class="suffix"><input id="c-trimp" data-t="trImp" inputmode="decimal" placeholder="es. 60" value="${val(T.trImp)}"><span>€</span></div></div><div class="field"><label for="c-trgg">Giorni di trasferta</label><input id="c-trgg" data-t="trGg" inputmode="numeric" placeholder="es. 10" value="${val(T.trGg)}"></div>`;
@@ -1762,38 +1800,38 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
       f += `<div class="field"><label for="c-imp">${lab}</label><div class="suffix big"><input id="c-imp" data-t="imp" inputmode="decimal" placeholder="0" value="${val(T.imp)}"><span>€</span></div></div>`;
     }
     f += '</div>';
-    if (nettoOk) f += `<div class="field" style="margin-top:12px"><span class="lab">L'importo che inserisco è</span><div class="seg-ctl full" role="radiogroup" aria-label="Lordo o netto"><label><input type="radio" name="c-mode" value="lordo" data-t="mode"${T.mode === 'lordo' ? ' checked' : ''}><span>Lordo: calcola il netto</span></label><label><input type="radio" name="c-mode" value="netto" data-t="mode"${T.mode === 'netto' ? ' checked' : ''}><span>Netto: calcola il lordo</span></label></div></div>`;
+    if (nettoOk) f += `<div class="field" style="margin-top:12px"><span class="lab">Importo indicato</span><div class="seg-ctl full" role="radiogroup" aria-label="Lordo o netto"><label><input type="radio" name="c-mode" value="lordo" data-t="mode"${T.mode === 'lordo' ? ' checked' : ''}><span>Lordo → netto</span></label><label><input type="radio" name="c-mode" value="netto" data-t="mode"${T.mode === 'netto' ? ' checked' : ''}><span>Netto → lordo</span></label></div></div>`;
     if (v.irpef === 'fissa') f += `<div class="fields" style="margin-top:12px"><div class="field"><label for="c-mens">Mensilità</label><select id="c-mens" data-t="mens"><option value="13"${T.mens == 13 ? ' selected' : ''}>13</option><option value="14"${T.mens == 14 ? ' selected' : ''}>14</option></select></div></div>`;
-    if (v.irpef === 'buonipasto') f += `<label class="check"><input type="checkbox" data-t="bpCart"${T.bpCart ? ' checked' : ''}> Buoni cartacei</label>`;
+    if (v.irpef === 'buonipasto') f += `<label class="check"><input type="checkbox" data-t="bpCart"${T.bpCart ? ' checked' : ''}> Buoni in formato cartaceo</label>`;
     if (v.irpef === 'trasferta') f += `<label class="check"><input type="checkbox" data-t="trEstero"${T.trEstero ? ' checked' : ''}> Trasferta all'estero</label>`;
-    if (v.irpef === 'trasferimento') f += `<label class="check"><input type="checkbox" data-t="trEstero"${T.trEstero ? ' checked' : ''}> Trasferimento verso o dall'estero</label>`;
-    if (v.irpef === 'occasionale') f += `<label class="check"><input type="checkbox" data-t="copertura"${T.copertura ? ' checked' : ''}> Ha già un'altra copertura previdenziale (dipendente o pensionato)</label>`;
-    if (v.irpef === 'fringe') f += `<label class="check"><input type="checkbox" data-t="figli"${T.figli ? ' checked' : ''}> Ho figli fiscalmente a carico (soglia 2.000 €)</label>`;
-    if (v.contributi === 'dipende') f += `<label class="check"><input type="checkbox" data-t="wc"${wcOf(v) ? ' checked' : ''}> La somma paga retribuzioni: applica i contributi</label>`;
-    if (LOCALI.includes(v.irpef)) f += `<details class="more"${T.regione || T.comAliq ? ' open' : ''}><summary>Residenza (facoltativa, per le addizionali)</summary><div class="fields"><div class="field"><label for="c-reg">Regione</label><select id="c-reg" data-t="regione">${regOptions(T.regione)}</select></div><div class="field"><label for="c-com">Addizionale comunale</label><div class="suffix"><input id="c-com" data-t="comAliq" inputmode="decimal" placeholder="es. 0,8" value="${val(T.comAliq)}"><span>%</span></div></div></div></details>`;
-    if (v.irpef === 'separata_tfr') f += `<details class="more"${T.aliqTfr ? ' open' : ''}><summary>Conosci l'aliquota TFR esatta?</summary><div class="fields"><div class="field"><label for="c-aliq">Aliquota dal cedolino del TFR o dalla CU</label><div class="suffix"><input id="c-aliq" data-t="aliqTfr" inputmode="decimal" placeholder="stimata" value="${val(T.aliqTfr)}"><span>%</span></div></div></div></details>`;
+    if (v.irpef === 'trasferimento') f += `<label class="check"><input type="checkbox" data-t="trEstero"${T.trEstero ? ' checked' : ''}> Trasferimento da o verso l'estero</label>`;
+    if (v.irpef === 'occasionale') f += `<label class="check"><input type="checkbox" data-t="copertura"${T.copertura ? ' checked' : ''}> Prestatore già iscritto ad altra forma obbligatoria o pensionato (aliquota 24%)</label>`;
+    if (v.irpef === 'fringe') f += `<label class="check"><input type="checkbox" data-t="figli"${T.figli ? ' checked' : ''}> Figli fiscalmente a carico (soglia 2.000 €)</label>`;
+    if (v.contributi === 'dipende') f += `<label class="check"><input type="checkbox" data-t="wc"${wcOf(v) ? ' checked' : ''}> Somma di natura retributiva: applica la contribuzione</label>`;
+    if (LOCALI.includes(v.irpef)) f += `<details class="more"${T.regione || T.comAliq ? ' open' : ''}><summary>Domicilio fiscale (facoltativo, per le addizionali)</summary><div class="fields"><div class="field"><label for="c-reg">Regione</label><select id="c-reg" data-t="regione">${regOptions(T.regione)}</select></div><div class="field"><label for="c-com">Addizionale comunale</label><div class="suffix"><input id="c-com" data-t="comAliq" inputmode="decimal" placeholder="es. 0,8" value="${val(T.comAliq)}"><span>%</span></div></div></div></details>`;
+    if (v.irpef === 'separata_tfr') f += `<details class="more"${T.aliqTfr ? ' open' : ''}><summary>Aliquota TFR effettiva</summary><div class="fields"><div class="field"><label for="c-aliq">Aliquota dal cedolino del TFR o dalla CU</label><div class="suffix"><input id="c-aliq" data-t="aliqTfr" inputmode="decimal" placeholder="stimata" value="${val(T.aliqTfr)}"><span>%</span></div></div></div></details>`;
 
     $('#det').innerHTML = `
-      <button type="button" class="back" data-back>‹ Tutte le somme</button>
-      ${CUR.daGuida ? '<p class="from-guide">Risultato della procedura guidata. Se non ti ritrovi, cambia caso qui sotto.</p>' : ''}
+      <button type="button" class="back" data-back>‹ Elenco</button>
+      ${CUR.daGuida ? '<p class="from-guide">Esito della procedura guidata. Se la fattispecie non corrisponde, selezionare la variante corretta.</p>' : ''}
       <h2 class="det-title">${caso.nome}</h2>
       ${varHtml}
       <div class="verdict">
         <div class="vt vt-${vd.irpef.tone}"><span>IRPEF</span><b>${vd.irpef.t}</b><small>${vd.irpef.s}</small></div>
-        <div class="vt vt-${vd.contr.tone}"><span>Contributi INPS</span><b>${vd.contr.t}</b></div>
+        <div class="vt vt-${vd.contr.tone}"><span>Contributi</span><b>${vd.contr.t}</b></div>
         <div class="vt vt-${vd.add.tone}"><span>Addizionali</span><b>${vd.add.t}</b></div>
       </div>
       <p class="breve">${v.breve}</p>
       <section class="calc card" aria-label="Calcolo">
-        <h3>Calcola</h3>
+        <h3>Calcolo</h3>
         <form id="calc-form" autocomplete="off">${f}</form>
         <div id="calc-out" aria-live="polite"></div>
         <div class="btn-row"><button type="button" class="btn primary" data-pdf="caso" id="pdf-caso" disabled>Scarica PDF</button><button type="button" class="btn" data-reset="caso">Nuovo calcolo</button></div>
       </section>
       <section class="card">
-        <h3>Attenzione a</h3>
+        <h3>Profili di attenzione</h3>
         <ul class="att">${v.attenzione.map((a) => `<li>${a}</li>`).join('')}</ul>
-        <p class="norma"><b>Riferimenti:</b> ${v.norma}</p>
+        <p class="norma"><b>Riferimenti normativi:</b> ${v.norma}</p>
       </section>`;
     renderCalcOut();
   }
@@ -1806,9 +1844,9 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
     const { v, r } = res;
     const kept = r.lordo > 0 ? r.netto / r.lordo : 0;
     let head;
-    if (v.irpef === 'restituzione_lordo') head = `<div class="res"><div><span>Restituisci</span><b>${eur(r.restituisci)}</b></div><div class="res-n"><span>Costo effettivo per te</span><b>${eur(r.netto)}</b></div></div>`;
+    if (v.irpef === 'restituzione_lordo') head = `<div class="res"><div><span>Da restituire</span><b>${eur(r.restituisci)}</b></div><div class="res-n"><span>Onere netto effettivo</span><b>${eur(r.netto)}</b></div></div>`;
     else if (v.irpef === 'restituzione_netto') head = `<div class="res"><div><span>Importo lordo</span><b>${eur(r.lordo)}</b></div><div class="res-n"><span>Da restituire</span><b>${eur(r.restituisci)}</b></div></div>`;
-    else head = `<div class="res"><div><span>Lordo${v.irpef === 'fissa' ? ' annuo' : ''}</span><b>${eur(r.lordo)}</b></div><div class="res-n"><span>Netto${v.irpef === 'fissa' ? ' annuo' : ''}</span><b>${eur(r.netto)}</b></div></div><div class="keepbar" aria-hidden="true"><span style="width:${Math.max(0, Math.min(100, kept * 100))}%"></span></div><p class="kept">Ti resta il <b>${pct(kept * 100, 0)}</b> del lordo</p>`;
+    else head = `<div class="res"><div><span>Lordo${v.irpef === 'fissa' ? ' annuo' : ''}</span><b>${eur(r.lordo)}</b></div><div class="res-n"><span>Netto${v.irpef === 'fissa' ? ' annuo' : ''}</span><b>${eur(r.netto)}</b></div></div><div class="keepbar" aria-hidden="true"><span style="width:${Math.max(0, Math.min(100, kept * 100))}%"></span></div><p class="kept">Rapporto netto/lordo <b>${pct(kept * 100, 1)}</b></p>`;
     const righe = r.righe.length ? `<table class="tbl"><tbody>${r.righe.map(([k, x]) => `<tr><th scope="row">${k}</th><td>${x >= 0 ? '− ' : '+ '}${eur(Math.abs(x))}</td></tr>`).join('')}</tbody></table>` : '';
     out.innerHTML = head + righe + r.note.map((n) => `<p class="hint">${n}</p>`).join('');
   }
@@ -1820,10 +1858,10 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
     const det = G.r.cosa ? C.dettaglio(G.r) : null;
     if (det) steps.push(Object.assign({ id: 'dettaglio' }, det));
     const s = steps[G.step];
-    $('#guida').innerHTML = `<button type="button" class="back" data-back>‹ Tutte le somme</button>
+    $('#guida').innerHTML = `<button type="button" class="back" data-back>‹ Elenco</button>
       <p class="step-n">Domanda ${G.step + 1}</p><h2 class="det-title">${s.domanda}</h2>
       <div class="opts">${s.opzioni.map((o) => `<button type="button" class="opt" data-opt="${o.v}" data-k="${s.id}">${o.t}<span aria-hidden="true">›</span></button>`).join('')}</div>
-      ${G.step > 0 ? '<button type="button" class="linkbtn" data-gback>Torna alla domanda precedente</button>' : ''}`;
+      ${G.step > 0 ? '<button type="button" class="linkbtn" data-gback>Indietro</button>' : ''}`;
   }
 
   /* ================= PDF ================= */
@@ -1851,23 +1889,23 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
   const oggi = () => new Date().toLocaleDateString('it-IT', { day: '2-digit', month: '2-digit', year: 'numeric' });
   const oraFile = () => { const d = new Date(); return d.toISOString().slice(0, 10); };
   const slug = (s) => norm(s).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 40);
-  const FOOT = () => `Stima informativa, regole anno d'imposta 2026, parametri v${P.version}. Non sostituisce il cedolino o il parere del consulente.`;
+  const FOOT = () => `Elaborazione informativa, periodo d'imposta 2026, parametri v${P.version}. Non sostituisce il cedolino né il parere professionale.`;
 
   function pdfCaso() {
     const res = risultatoCaso(); if (res.manca) return;
     const { caso, v, r, cx } = res;
     const vd = verdetto(v);
-    const rep = new window.MiniPDF.Report('Lordo X Netto – Che tassazione ha', `${caso.nome} · calcolo del ${oggi()}`);
+    const rep = new window.MiniPDF.Report('Lordo X Netto – Regime fiscale e contributivo', `${caso.nome} · calcolo del ${oggi()}`);
     rep.h2(caso.nome);
     if (v.label) rep.p('Caso: ' + v.label, { bold: true });
-    rep.kv([['IRPEF', `${vd.irpef.t} (${vd.irpef.s})`], ['Contributi INPS', vd.contr.t], ['Addizionali', vd.add.t]]);
+    rep.kv([['IRPEF', `${vd.irpef.t} – ${vd.irpef.s}`], ['Contributi previdenziali', vd.contr.t], ['Addizionali', vd.add.t]]);
     rep.p(strip(v.breve));
-    rep.h2('Dati inseriti');
+    rep.h2('Dati di input');
     const dati = [];
     if (!SENZA_RAL.includes(v.irpef)) dati.push([caso.ralLabel || 'RAL', eur(parseNum(T.ral))]);
     if (v.anni) dati.push(['Anni di adesione', blank(T.anni) ? 'non indicati (15%)' : String(Math.floor(parseNum(T.anni)))]);
     if (v.irpef === 'trasferimento') dati.push(['Trasferimento', T.trEstero ? 'verso o dall\'estero' : 'in Italia']);
-    if (v.irpef === 'occasionale') dati.push(['Altra copertura previdenziale', T.copertura ? 'sì (24%)' : 'no (33,72%)']);
+    if (v.irpef === 'occasionale') dati.push(['Aliquota Gestione separata', T.copertura ? '24% (altra copertura obbligatoria)' : '33,72%']);
     if (v.irpef === 'buonipasto') dati.push(['Buoni pasto', `${T.bpGg} da ${eur(parseNum(T.bpVal))}${T.bpCart ? ', cartacei' : ', elettronici'}`]);
     else if (v.irpef === 'trasferta') dati.push(['Trasferta', `${T.trGg} giorni, diaria ${eur(parseNum(T.trImp))}${T.trEstero ? ', all\'estero' : ', in Italia'}`]);
     else dati.push([v.irpef === 'fissa' ? 'Importo mensile' : 'Importo', `${eur(res.input)} ${NETTO_OK.includes(v.irpef) ? (T.mode === 'netto' ? 'netti' : 'lordi') : ''}`]);
@@ -1876,15 +1914,15 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
     if (v.contributi === 'dipende') dati.push(['Contributi applicati', wcOf(v) ? 'sì' : 'no']);
     if (v.irpef === 'separata_tfr' && !blank(T.aliqTfr)) dati.push(['Aliquota TFR indicata', fN.format(parseNum(T.aliqTfr)) + '%']);
     rep.kv(dati);
-    rep.h2('Risultato');
-    if (v.irpef === 'restituzione_lordo') rep.tiles([['Restituisci', eur(r.restituisci)], ['Costo effettivo', eur(r.netto), 1]]);
+    rep.h2('Esito del calcolo');
+    if (v.irpef === 'restituzione_lordo') rep.tiles([['Da restituire', eur(r.restituisci)], ['Onere netto effettivo', eur(r.netto), 1]]);
     else if (v.irpef === 'restituzione_netto') rep.tiles([['Importo lordo', eur(r.lordo)], ['Da restituire', eur(r.restituisci), 1]]);
-    else rep.tiles([[v.irpef === 'fissa' ? 'Lordo annuo' : 'Lordo', eur(r.lordo)], [v.irpef === 'fissa' ? 'Netto annuo' : 'Netto', eur(r.netto), 1], ['Ti resta', pct(r.lordo > 0 ? r.netto / r.lordo * 100 : 0, 0)]]);
+    else rep.tiles([[v.irpef === 'fissa' ? 'Lordo annuo' : 'Lordo', eur(r.lordo)], [v.irpef === 'fissa' ? 'Netto annuo' : 'Netto', eur(r.netto), 1], ['Netto/lordo', pct(r.lordo > 0 ? r.netto / r.lordo * 100 : 0, 1)]]);
     if (r.righe.length) rep.kv(r.righe.map(([k, x]) => [k, (x >= 0 ? '− ' : '+ ') + eur(Math.abs(x))]));
-    r.note.forEach((n) => rep.p(n.replace(' Se conosci quella esatta inseriscila qui sotto.', ''), { size: 9, color: '#5a6779', after: 2 }));
-    rep.h2('Attenzione a');
+    r.note.forEach((n) => rep.p(n.replace(' In presenza dell\'aliquota effettiva, indicarla qui sotto.', ''), { size: 9, color: '#5a6779', after: 2 }));
+    rep.h2('Profili di attenzione');
     rep.bullets(v.attenzione.map(strip));
-    rep.p('Riferimenti: ' + strip(v.norma), { size: 9, color: '#5a6779' });
+    rep.p('Riferimenti normativi: ' + strip(v.norma), { size: 9, color: '#5a6779' });
     rep.footer(FOOT());
     salvaPdf(rep.bytes(), `tassazione-${slug(caso.nome)}-${oraFile()}.pdf`);
   }
@@ -1981,7 +2019,7 @@ textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; borde
       const rb = e.target.closest('[data-reset]');
       if (rb) {
         T = nuovoCalc(); renderDettaglio(); const f = $('#c-ral') || $('#c-imp'); if (f) f.focus();
-        toast('Campi svuotati');
+        toast('Campi azzerati');
       }
     });
 
