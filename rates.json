@@ -1,0 +1,90 @@
+{
+  "version": "2026.10.30",
+  "anno": 2026,
+  "aggiornato": "30/10/2026",
+  "note": "Parametri per l'anno d'imposta 2026 (L. 199/2025 - Legge di Bilancio 2026). Addizionali regionali da schede MEF/leggi regionali dove disponibili; le righe con affidabilita 'media' sono ricostruite da piu fonti secondarie e vanno verificate sul sito del Dipartimento Finanze.",
+  "irpef": {
+    "scaglioni": [[28000, 23], [50000, 33], [null, 43]]
+  },
+  "detrazioneLavoro": {
+    "fino15000": 1955,
+    "minIndet": 1380,
+    "minDet": 690,
+    "base28": 1910,
+    "extra28": 1190,
+    "maggiorazione25_35": 65
+  },
+  "cuneo": {
+    "bonusSoglia": 20000,
+    "bonusFasce": [[8500, 7.1], [15000, 5.3], [20000, 4.8]],
+    "ulteriorePiena": 1000,
+    "ulteriorePienaFino": 32000,
+    "ulterioreFino": 40000
+  },
+  "trattamentoIntegrativo": { "importo": 1200, "pieno": 15000, "fino": 28000 },
+  "inps": {
+    "dipendente": 9.19,
+    "aggiuntiva": 1.0,
+    "sogliaAggiuntiva": 56224,
+    "massimale": 122295
+  },
+  "fondoSolidarieta": { "credito": 0.067, "assicurazioni": 0.10, "altro": 0 },
+  "previdenzaComplementareMax": 5164.57,
+  "cassaSanitariaMax": 3615.20,
+  "sostitutive": {
+    "premioProduttivita": { "aliquota": 1, "limite": 5000, "redditoMax": 80000 },
+    "notturniFestivi": { "aliquota": 15, "limite": 1500, "redditoMax": 40000 },
+    "rinnoviContrattuali": { "aliquota": 5, "redditoMax": 33000 }
+  },
+  "fringeBenefit": { "soglia": 1000, "sogliaFigli": 2000 },
+  "buoniPasto": { "elettronico": 10, "cartaceo": 4 },
+  "tfrDivisore": 13.5,
+  "ccnl": {
+    "credito": {
+      "nome": "CCNL Credito (ABI)",
+      "mensilita": 13,
+      "tabellaDal": "01/03/2026",
+      "livelli": [
+        { "id": "qd4", "nome": "Quadro direttivo 4° livello", "stipendio": 5160.06, "scatto": 95.31, "maxScatti": 7 },
+        { "id": "qd3", "nome": "Quadro direttivo 3° livello", "stipendio": 4396.88, "scatto": 95.31, "maxScatti": 7 },
+        { "id": "qd2", "nome": "Quadro direttivo 2° livello", "stipendio": 3965.48, "scatto": 41.55, "maxScatti": 8 },
+        { "id": "qd1", "nome": "Quadro direttivo 1° livello", "stipendio": 3743.21, "scatto": 41.55, "maxScatti": 8 },
+        { "id": "a34", "nome": "3ª area professionale 4° livello", "stipendio": 3341.90, "scatto": 41.55, "maxScatti": 8 },
+        { "id": "a33", "nome": "3ª area professionale 3° livello", "stipendio": 3059.49, "scatto": 41.55, "maxScatti": 8 },
+        { "id": "a32", "nome": "3ª area professionale 2° livello", "stipendio": 2890.41, "scatto": 41.55, "maxScatti": 8 },
+        { "id": "a31", "nome": "3ª area professionale 1° livello", "stipendio": 2742.34, "scatto": 41.55, "maxScatti": 8 },
+        { "id": "au", "nome": "Area unificata (ex 1ª e 2ª area)", "stipendio": 2479.45, "scatto": 29.07, "maxScatti": 8 }
+      ],
+      "nota": "Minimi tabellari mensili in vigore dal 1/3/2026 (ultima tranche del rinnovo 23/11/2023, scaduto il 31/3/2026, trattativa per il rinnovo in corso). Il rinnovo del 23/11/2023 e' stato firmato prima del 2024: gli aumenti ABI non rientrano nella flat tax 5% sui rinnovi."
+    },
+    "assicurazioni": {
+      "nome": "CCNL Assicurazioni (ANIA)",
+      "mensilita": 14,
+      "nota": "13ª a dicembre e 14ª entro giugno/luglio. Rinnovo firmato il 13/5/2026 (vigenza fino al 31/5/2028): gli incrementi pagati nel 2026 possono rientrare nella flat tax 5% sui rinnovi se il reddito 2025 da lavoro dipendente non supera 33.000 €. Inserisci la retribuzione dalla lettera di assunzione o dal cedolino: le tabelle ANIA per livello/classe non sono incluse."
+    },
+    "altro": { "nome": "Altro CCNL", "mensilita": 13 }
+  },
+  "regioni": [
+    { "id": "abr", "nome": "Abruzzo", "scaglioni": [[28000, 1.67], [50000, 2.87], [null, 3.33]], "affidabilita": "media", "fonte": "Schema a 3 scaglioni; aliquote ricostruite da fonti secondarie" },
+    { "id": "bas", "nome": "Basilicata", "scaglioni": [[null, 1.23]], "affidabilita": "media", "fonte": "Aliquota unica secondo piu fonti" },
+    { "id": "bz", "nome": "Prov. aut. Bolzano", "scaglioni": [[50000, 1.23], [null, 1.73]], "detrazioni": [{ "min": 0, "max": 90000, "importo": 430.50 }], "perFiglio": { "importo": 252, "maxImp": 70000 }, "affidabilita": "media", "fonte": "Scheda MEF 2026 (via PMI.it): detrazione 430,50 € fino a 90.000 €; non gestita la detrazione aggiuntiva oltre 50.000 €" },
+    { "id": "cal", "nome": "Calabria", "scaglioni": [[null, 1.73]], "affidabilita": "media", "fonte": "Aliquota unica 1,73%" },
+    { "id": "cam", "nome": "Campania", "scaglioni": [[15000, 1.73], [28000, 2.96], [50000, 3.20], [null, 3.33]], "affidabilita": "alta", "fonte": "Scheda MEF 2026" },
+    { "id": "emr", "nome": "Emilia-Romagna", "scaglioni": [[15000, 1.33], [28000, 1.93], [50000, 2.78], [null, 3.33]], "affidabilita": "alta", "fonte": "Scheda MEF 2026" },
+    { "id": "fvg", "nome": "Friuli-Venezia Giulia", "scaglioni": [[null, 1.23]], "intero": [{ "max": 15000, "aliquota": 0.70 }], "affidabilita": "alta", "fonte": "0,70% sull'intero imponibile fino a 15.000 €, altrimenti 1,23%" },
+    { "id": "laz", "nome": "Lazio", "scaglioni": [[15000, 1.73], [28000, 3.33], [50000, 3.33], [null, 3.33]], "intero": [{ "max": 28000, "aliquota": 1.73 }], "detrazioni": [{ "min": 28000.01, "max": 30000, "importo": 60 }], "affidabilita": "alta", "fonte": "Regione Lazio, L.R. 20/2025" },
+    { "id": "lig", "nome": "Liguria", "scaglioni": [[28000, 1.23], [50000, 3.18], [null, 3.23]], "affidabilita": "alta", "fonte": "Scheda MEF (3 scaglioni)" },
+    { "id": "lom", "nome": "Lombardia", "scaglioni": [[15000, 1.23], [28000, 1.58], [50000, 1.72], [null, 1.73]], "affidabilita": "alta", "fonte": "Scheda MEF 2026" },
+    { "id": "mar", "nome": "Marche", "scaglioni": [[15000, 1.23], [28000, 1.53], [50000, 1.70], [null, 1.73]], "affidabilita": "media", "fonte": "Ricostruita da fonti secondarie" },
+    { "id": "mol", "nome": "Molise", "scaglioni": [[15000, 2.03], [28000, 2.23], [50000, 3.63], [null, 3.63]], "affidabilita": "media", "fonte": "Ricostruita da fonti secondarie (include maggiorazione piano di rientro)" },
+    { "id": "pie", "nome": "Piemonte", "scaglioni": [[15000, 1.62], [28000, 2.68], [50000, 3.31], [null, 3.33]], "affidabilita": "alta", "fonte": "Scheda MEF 2026 (aumenti 2026-2027)" },
+    { "id": "pug", "nome": "Puglia", "scaglioni": [[15000, 1.33], [28000, 2.13], [50000, 3.23], [null, 3.33]], "affidabilita": "alta", "fonte": "DPGR Puglia n. 3/2026 (rideterminazione giugno 2026)" },
+    { "id": "sar", "nome": "Sardegna", "scaglioni": [[null, 1.23]], "affidabilita": "alta", "fonte": "Aliquota unica" },
+    { "id": "sic", "nome": "Sicilia", "scaglioni": [[null, 1.23]], "affidabilita": "alta", "fonte": "Regione Siciliana, anno 2026" },
+    { "id": "tos", "nome": "Toscana", "scaglioni": [[15000, 1.42], [28000, 1.43], [50000, 3.32], [null, 3.33]], "affidabilita": "alta", "fonte": "Scheda MEF 2026" },
+    { "id": "tn", "nome": "Prov. aut. Trento", "scaglioni": [[50000, 1.23], [null, 1.73]], "esenzione": 30000, "perFiglio": { "importo": 246, "maxImp": 50000 }, "affidabilita": "alta", "fonte": "L.P. 11/2025: esenti fino a 30.000 €" },
+    { "id": "umb", "nome": "Umbria", "scaglioni": [[15000, 1.73], [28000, 3.02], [50000, 3.12], [null, 3.33]], "intero": [{ "max": 28000, "aliquota": 1.23 }], "detrazioni": [{ "min": 28000.01, "max": 50000, "importo": 150 }], "affidabilita": "alta", "fonte": "L.R. Umbria 2/2025 (anni 2025-2027)" },
+    { "id": "vda", "nome": "Valle d'Aosta", "scaglioni": [[null, 1.23]], "esenzione": 15000, "affidabilita": "media", "fonte": "1,23% con esenzione fino a 15.000 €" },
+    { "id": "ven", "nome": "Veneto", "scaglioni": [[null, 1.23]], "affidabilita": "alta", "fonte": "Regione Veneto (0,90% per disabili o con disabile a carico, non gestito)" }
+  ]
+}

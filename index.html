@@ -1,0 +1,1919 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Busta Paga 2026</title>
+<meta name="description" content="Che tassazione ha una somma e quanto resta netto: incentivi all'esodo, transazioni, risarcimenti, premi e stipendio, regole 2026">
+<meta name="theme-color" content="#14263f">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Busta Paga">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: colonna unica leggibile (max 760px); navigazione in basso su telefono, in alto su desktop. */
+:root {
+  --paper: #eef1f4; --card: #ffffff; --ink: #14263f; --muted: #5a6779; --line: #d9dfe6;
+  --accent: #0e7a69; --accent-soft: #dff1ec;
+  --sep: #2f5d8a; --sep-bg: #e1ebf5; --ord: #8a5a1c; --ord-bg: #f6ecdc; --sost: #5b4a9a; --sost-bg: #ebe6f6;
+  --ok: #17784a; --ok-bg: #e2f3e9; --no: #66727f; --no-bg: #eceff2; --si: #a23a2c; --si-bg: #f8e5e2; --dip: #7a5a0b; --dip-bg: #f6ecd2;
+  --font-display: "IBM Plex Sans Condensed", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --r: 12px; color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper: #0d1520; --card: #142030; --ink: #e5ebf2; --muted: #9aa8b8; --line: #263548; --accent: #3cc4ad; --accent-soft: #123a35;
+  --sep: #8fb7e3; --sep-bg: #16304a; --ord: #e2b26e; --ord-bg: #3a2c16; --sost: #b9a6ec; --sost-bg: #2a2346;
+  --ok: #5fd39a; --ok-bg: #12342a; --no: #9aa8b8; --no-bg: #1c2a3b; --si: #f08f80; --si-bg: #3d1f1b; --dip: #e2c46e; --dip-bg: #3a3016; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --paper: #0d1520; --card: #142030; --ink: #e5ebf2; --muted: #9aa8b8; --line: #263548; --accent: #3cc4ad; --accent-soft: #123a35;
+  --sep: #8fb7e3; --sep-bg: #16304a; --ord: #e2b26e; --ord-bg: #3a2c16; --sost: #b9a6ec; --sost-bg: #2a2346;
+  --ok: #5fd39a; --ok-bg: #12342a; --no: #9aa8b8; --no-bg: #1c2a3b; --si: #f08f80; --si-bg: #3d1f1b; --dip: #e2c46e; --dip-bg: #3a3016; color-scheme: dark; }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.5 var(--font-body); padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.2; text-wrap: balance; margin: 0; }
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+td, .res b, .k b, .vt b { font-variant-numeric: tabular-nums; }
+small { display: block; color: var(--muted); font-size: 12.5px; font-weight: 400; }
+a { color: var(--accent); }
+.muted { color: var(--muted); }
+[hidden] { display: none !important; }
+
+header.top { background: var(--ink); color: var(--paper); padding: 14px 16px 12px; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) header.top { background: #091019; color: var(--ink); } }
+:root[data-theme="dark"] header.top { background: #091019; color: var(--ink); }
+.top-inner { max-width: 760px; margin: 0 auto; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.top h1 { font-size: 21px; }
+.top .ver { font-size: 12px; opacity: .75; }
+
+nav.tabs { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; background: var(--card); border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(3, 1fr); padding-bottom: env(safe-area-inset-bottom); }
+nav.tabs a { display: grid; justify-items: center; gap: 2px; padding: 8px 4px 9px; text-decoration: none; color: var(--muted); font-size: 12.5px; font-weight: 500; }
+nav.tabs a svg { width: 24px; height: 24px; }
+nav.tabs a.on { color: var(--accent); }
+@media (min-width: 820px) {
+  body { padding-bottom: 32px; }
+  nav.tabs { position: static; display: flex; justify-content: center; gap: 4px; border-top: 0; border-bottom: 1px solid var(--line); }
+  nav.tabs a { display: flex; gap: 8px; align-items: center; font-size: 15px; padding: 12px 18px; border-bottom: 3px solid transparent; }
+  nav.tabs a.on { border-bottom-color: var(--accent); }
+  nav.tabs a svg { width: 20px; height: 20px; }
+}
+
+main { max-width: 760px; margin: 0 auto; padding: 16px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 16px; }
+.stack { display: grid; gap: 14px; }
+.intro h2 { font-size: 26px; }
+.intro p { margin: 6px 0 0; color: var(--muted); max-width: 60ch; }
+
+.search { position: relative; margin-top: 14px; }
+.search input { width: 100%; padding: 13px 14px 13px 42px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); font-size: 16px; }
+.search input:focus { border-color: var(--accent); }
+.search svg { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; color: var(--muted); }
+.guide-cta { display: flex; align-items: center; gap: 12px; margin-top: 12px; padding: 14px 16px; border-radius: 12px; background: var(--accent-soft); color: var(--ink); text-decoration: none; border: 1px solid transparent; }
+.guide-cta:hover { border-color: var(--accent); }
+.guide-cta b { display: block; font-size: 16px; }
+.guide-cta span { font-size: 13.5px; color: var(--muted); }
+.guide-cta .ico { flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; font-weight: 700; }
+:root[data-theme="dark"] .guide-cta .ico { color: #06201b; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .guide-cta .ico { color: #06201b; } }
+.cats { display: flex; gap: 8px; overflow-x: auto; margin: 16px -16px 0; padding: 0 16px 2px; scrollbar-width: none; }
+.cat { flex: none; border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 7px 13px; font-size: 14px; cursor: pointer; }
+.cat.on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.grp { font-family: var(--font-body); font-size: 12.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 20px 0 8px; }
+.cases { list-style: none; margin: 0; padding: 0; background: var(--card); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
+.cases li + li { border-top: 1px solid var(--line); }
+.case-row { display: grid; grid-template-columns: 1fr auto; grid-template-areas: "name chev" "pills chev"; gap: 5px 10px; padding: 12px 14px; color: inherit; text-decoration: none; align-items: center; }
+.case-row:hover { background: var(--paper); }
+.case-name { grid-area: name; font-weight: 500; }
+.case-pills { grid-area: pills; display: flex; flex-wrap: wrap; gap: 5px; }
+.chev { grid-area: chev; font-size: 24px; color: var(--muted); }
+.pill { font-size: 12px; font-weight: 500; padding: 2px 8px; border-radius: 999px; }
+.pill-ok { background: var(--ok-bg); color: var(--ok); } .pill-sep { background: var(--sep-bg); color: var(--sep); } .pill-ord { background: var(--ord-bg); color: var(--ord); }
+.pill-sost { background: var(--sost-bg); color: var(--sost); } .pill-dip { background: var(--dip-bg); color: var(--dip); } .pill-plain { background: var(--no-bg); color: var(--no); }
+.empty { color: var(--muted); margin: 20px 0; }
+
+.back { background: none; border: 0; color: var(--accent); padding: 4px 0; font-weight: 500; cursor: pointer; font-size: 15px; }
+.from-guide { background: var(--accent-soft); border-radius: 10px; padding: 8px 12px; font-size: 14px; margin: 8px 0 0; }
+.det-title { font-size: 26px; margin: 8px 0 14px; }
+.variants { border: 0; padding: 0; margin: 0 0 14px; display: grid; gap: 8px; }
+.variants legend { font-weight: 600; margin-bottom: 8px; font-size: 15px; }
+.variant { display: flex; gap: 10px; align-items: flex-start; padding: 11px 13px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); cursor: pointer; font-size: 15px; }
+.variant input { margin-top: 3px; accent-color: var(--accent); width: 18px; height: 18px; flex: none; }
+.variant.on { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.verdict { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 8px; }
+@media (max-width: 460px) { .verdict { grid-template-columns: 1fr 1fr; } .verdict .vt:first-child { grid-column: 1 / -1; } }
+.vt { border-radius: 10px; padding: 10px 12px; display: grid; gap: 1px; align-content: start; }
+.vt span { font-size: 12px; font-weight: 500; opacity: .85; }
+.vt b { font-size: 19px; font-family: var(--font-display); line-height: 1.15; }
+.vt small { color: inherit; opacity: .85; }
+.vt-ok { background: var(--ok-bg); color: var(--ok); } .vt-sep { background: var(--sep-bg); color: var(--sep); } .vt-ord { background: var(--ord-bg); color: var(--ord); }
+.vt-sost { background: var(--sost-bg); color: var(--sost); } .vt-si { background: var(--si-bg); color: var(--si); } .vt-no { background: var(--no-bg); color: var(--no); } .vt-dip { background: var(--dip-bg); color: var(--dip); }
+.breve { font-size: 16.5px; margin: 14px 0; max-width: 65ch; }
+.calc { margin-bottom: 14px; }
+.card h3 { font-size: 18px; margin-bottom: 12px; }
+.fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+.field { display: grid; gap: 4px; }
+.field > label, .field > .lab { font-size: 13.5px; font-weight: 500; color: var(--muted); }
+.field input, .field select { width: 100%; padding: 10px 11px; border: 1px solid var(--line); border-radius: 9px; background: var(--paper); min-height: 44px; font-size: 16px; }
+.field input:focus, .field select:focus { border-color: var(--accent); }
+.suffix { position: relative; }
+.suffix input { padding-right: 36px; }
+.suffix span { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+.suffix.big input { font-size: 22px; font-weight: 600; min-height: 52px; }
+.check { display: flex; align-items: center; gap: 9px; font-size: 15px; min-height: 44px; margin-top: 4px; }
+.check input { width: 20px; height: 20px; accent-color: var(--accent); flex: none; }
+.seg-ctl { display: inline-flex; background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 3px; gap: 3px; }
+.seg-ctl label { position: relative; flex: 1; }
+.seg-ctl input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.seg-ctl span { display: block; padding: 9px 14px; border-radius: 8px; text-align: center; font-weight: 500; color: var(--muted); }
+.seg-ctl input:checked + span { background: var(--card); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.14); }
+.seg-ctl input:focus-visible + span { outline: 2px solid var(--accent); }
+.seg-ctl.full { display: flex; width: 100%; }
+
+.kept { margin: 2px 0 0; font-size: 14px; color: var(--muted); }
+.res { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; align-items: end; }
+.res span { display: block; font-size: 13px; color: var(--muted); }
+.res b { font-size: 21px; }
+.res-n b { color: var(--accent); font-size: 28px; font-family: var(--font-display); }
+.res-p b { font-size: 16px; color: var(--muted); }
+.keepbar { height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; margin: 10px 0 4px; }
+.keepbar span { display: block; height: 100%; background: var(--accent); }
+.tbl { width: 100%; border-collapse: collapse; margin-top: 10px; }
+.tbl th, .tbl td { padding: 8px 0; border-bottom: 1px solid var(--line); text-align: left; font-weight: 400; vertical-align: top; }
+.tbl td { text-align: right; white-space: nowrap; padding-left: 12px; }
+.tbl tr.strong th, .tbl tr.strong td { font-weight: 600; }
+.tbl tr.sub th, .tbl tr.sub td { color: var(--muted); }
+.tbl tr.plus td { color: var(--sost); }
+.tbl tr.total th, .tbl tr.total td { font-weight: 700; border-top: 2px solid var(--ink); border-bottom: 0; color: var(--accent); }
+.tbl tr.total th { color: var(--ink); }
+.hint { font-size: 13.5px; color: var(--muted); margin: 8px 0 0; max-width: 70ch; }
+.att { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.norma { font-size: 13.5px; color: var(--muted); margin: 12px 0 0; }
+
+.step-n { color: var(--muted); font-size: 14px; margin: 10px 0 0; }
+.opts { display: grid; gap: 10px; margin-bottom: 14px; }
+.opt { display: flex; justify-content: space-between; align-items: center; gap: 10px; text-align: left; padding: 15px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); cursor: pointer; font-size: 16px; font-weight: 500; }
+.opt:hover { border-color: var(--accent); }
+.opt span { color: var(--muted); font-size: 22px; }
+.linkbtn { background: none; border: 0; color: var(--accent); cursor: pointer; padding: 0; font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
+
+.kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.k { background: var(--paper); border-radius: 10px; padding: 10px 12px; display: grid; gap: 2px; }
+.k span { font-size: 13px; color: var(--muted); }
+.k b { font-size: 20px; }
+.k em { font-style: normal; font-size: 12.5px; color: var(--muted); }
+.k.hero { grid-column: 1 / -1; background: var(--accent-soft); }
+.k.hero b { font-size: 34px; color: var(--accent); font-family: var(--font-display); }
+.stackbar { display: flex; height: 12px; border-radius: 6px; overflow: hidden; gap: 2px; margin: 14px 0 8px; }
+.seg-netto { background: var(--accent); } .seg-contr { background: var(--ord); } .seg-irpef { background: var(--sep); } .seg-add { background: var(--dip); }
+.legend { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13px; color: var(--muted); }
+.dot { display: inline-block; width: 9px; height: 9px; border-radius: 3px; margin-right: 5px; }
+.prof { display: flex; justify-content: space-between; gap: 10px; align-items: center; font-size: 13.5px; color: var(--muted); background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px; margin-top: 14px; }
+details.more { border-top: 1px solid var(--line); padding-top: 12px; margin-top: 4px; }
+details.more summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; padding: 4px 0; }
+details.more summary::after { content: "+"; color: var(--muted); }
+details.more[open] summary::after { content: "−"; }
+details.more[open] summary { margin-bottom: 10px; }
+.scroll { overflow-x: auto; }
+#ced { width: 100%; border-collapse: collapse; }
+#ced th, #ced td { padding: 7px 8px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; font-weight: 400; font-size: 14px; }
+#ced thead th { color: var(--muted); font-size: 12.5px; }
+#ced tbody th, #ced tfoot th, #ced thead th:first-child { text-align: left; }
+#ced td.n { color: var(--accent); font-weight: 600; }
+#ced tr.agg { background: var(--accent-soft); }
+#ced tfoot th, #ced tfoot td { font-weight: 700; border-top: 2px solid var(--ink); }
+.btn { border: 1px solid var(--line); background: var(--card); border-radius: 9px; padding: 9px 14px; cursor: pointer; font-weight: 500; min-height: 44px; }
+.btn:hover { border-color: var(--accent); }
+.tbl-p { width: 100%; border-collapse: collapse; }
+.tbl-p th, .tbl-p td { padding: 8px 6px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; font-weight: 400; font-size: 14.5px; }
+.tbl-p th { font-weight: 500; width: 40%; }
+#p-reg tr.sel { background: var(--accent-soft); }
+.rel { font-size: 12px; padding: 2px 7px; border-radius: 999px; }
+.rel-alta { background: var(--ok-bg); color: var(--ok); } .rel-media { background: var(--dip-bg); color: var(--dip); }
+.prose p, .prose li { max-width: 68ch; }
+.toast { position: fixed; left: 50%; bottom: 96px; transform: translate(-50%, 20px); background: var(--ink); color: var(--paper); padding: 10px 16px; border-radius: 9px; font-size: 14px; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; z-index: 30; }
+.toast.on { opacity: 1; transform: translate(-50%, 0); }
+@media (prefers-reduced-motion: reduce) { .toast { transition: none; } }
+footer { max-width: 760px; margin: 0 auto; padding: 4px 16px 20px; font-size: 12.5px; color: var(--muted); }
+
+nav.tabs { grid-template-columns: repeat(4, 1fr); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.btn { display: inline-flex; align-items: center; text-decoration: none; color: var(--ink); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+:root[data-theme="dark"] .btn.primary { color: #06201b; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn.primary { color: #06201b; } }
+.mini { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; margin-top: 14px; }
+.mini div { display: grid; } .mini span { font-size: 12.5px; color: var(--muted); } .mini b { font-variant-numeric: tabular-nums; }
+.chips { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { display: inline-flex; gap: 6px; padding: 4px 10px; border-radius: 999px; font-size: 12.5px; }
+.chip b { font-weight: 600; }
+.chip-ok { background: var(--ok-bg); color: var(--ok); } .chip-no { background: var(--si-bg); color: var(--si); } .chip-off { background: var(--no-bg); color: var(--no); }
+.seg-cred { background: var(--sost); }
+.sim-list { display: grid; gap: 12px; }
+.voce { border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: var(--r); padding: 12px 14px; }
+.voce header { display: flex; justify-content: space-between; gap: 8px; }
+.voce h3 { font-size: 16px; margin: 0; } .voce h3 a { color: inherit; }
+.voce header p { margin: 2px 0 6px; font-size: 13px; color: var(--muted); }
+.voce .res { margin-top: 10px; }
+.voce-det { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 3px; font-size: 14px; }
+.voce-det li { display: flex; justify-content: space-between; border-bottom: 1px dashed var(--line); padding-bottom: 3px; }
+.voce-det b { font-weight: 500; font-variant-numeric: tabular-nums; }
+.tag { font-style: normal; font-family: var(--font-body); font-size: 11px; font-weight: 500; background: var(--no-bg); color: var(--no); padding: 1px 6px; border-radius: 4px; vertical-align: 2px; }
+.icon-btn { border: 1px solid var(--line); background: transparent; border-radius: 9px; width: 36px; height: 36px; cursor: pointer; color: var(--muted); flex: none; }
+.icon-btn:hover { color: var(--si); border-color: var(--si); }
+.ovr { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+@media (max-width: 480px) { .ovr { grid-template-columns: 1fr 1fr; } }
+.rel-user { background: var(--no-bg); color: var(--no); }
+textarea#copy-fallback { width: 100%; min-height: 140px; margin-top: 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); padding: 8px; font: 13px/1.4 ui-monospace, monospace; }
+#ced { min-width: 600px; }
+@media (max-width: 380px) { nav.tabs a { font-size: 11.5px; } }
+</style>
+</head>
+<body>
+<header class="top"><div class="top-inner"><h1>Busta Paga 2026</h1><span class="ver">regole 2026 · dati v<span id="p-version-top"></span></span></div></header>
+<nav class="tabs" aria-label="Sezioni">
+  <a href="#tassazione" data-tab="tassazione"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Tassazione</a>
+  <a href="#stipendio" data-tab="stipendio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 10h6M7 14h4M16 14h1"/></svg>Stipendio</a>
+  <a href="#simulazione" data-tab="simulazione"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg>Simulazione</a>
+  <a href="#info" data-tab="info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg>Regole</a>
+</nav>
+
+<main>
+  <section class="panel" id="panel-tassazione" aria-label="Che tassazione ha">
+    <div id="v-lista">
+      <div class="intro"><h2>Che tassazione ha questa somma?</h2><p>Cerca la voce o scegli dall'elenco: vedi subito IRPEF, contributi e quanto resta netto.</p></div>
+      <div class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input type="search" id="q" placeholder="es. transazione, danno, esodo, preavviso" aria-label="Cerca una somma" autocomplete="off">
+      </div>
+      <a class="guide-cta" href="#guida" data-start-guide><span class="ico" aria-hidden="true">?</span><span><b>Non sai come classificarla?</b><span>Rispondi a 2 o 3 domande e ti porto alla scheda giusta</span></span></a>
+      <div class="cats" id="cats" role="group" aria-label="Categorie"></div>
+      <div id="lista"></div>
+      <div class="prof"><span id="prof-sum"></span><a href="#stipendio">Modifica</a></div>
+    </div>
+    <div id="det" hidden></div>
+    <div id="guida" hidden></div>
+  </section>
+
+  <section class="panel" id="panel-stipendio" aria-label="Stipendio" hidden>
+    <form id="form-stip" class="stack" autocomplete="off">
+      <div class="intro"><h2>Il tuo stipendio</h2><p>Questi dati servono anche per le somme particolari e la simulazione.</p></div>
+      <div class="card stack">
+        <div class="seg-ctl full" role="radiogroup" aria-label="Direzione del calcolo">
+          <label><input type="radio" name="modo" value="l2n" data-s="modo"><span>Dal lordo al netto</span></label>
+          <label><input type="radio" name="modo" value="n2l" data-s="modo"><span>Dal netto al lordo</span></label>
+        </div>
+        <div class="seg-ctl full" role="radiogroup" aria-label="CCNL">
+          <label><input type="radio" name="ccnl" value="credito" data-s="ccnl"><span>Credito</span></label>
+          <label><input type="radio" name="ccnl" value="assicurazioni" data-s="ccnl"><span>Assicurazioni</span></label>
+          <label><input type="radio" name="ccnl" value="altro" data-s="ccnl"><span>Altro</span></label>
+        </div>
+        <p class="hint" id="ccnl-nota" style="margin:0"></p>
+        <div id="blk-l2n" class="stack">
+          <div class="field"><span class="lab">Come inserisci la retribuzione</span>
+            <div class="seg-ctl full" role="radiogroup" aria-label="Inserimento">
+              <label><input type="radio" name="ins" value="livello" data-s="inserimento" id="opt-livello"><span>Livello ABI</span></label>
+              <label><input type="radio" name="ins" value="ral" data-s="inserimento"><span>RAL</span></label>
+              <label><input type="radio" name="ins" value="mensile" data-s="inserimento"><span>Mensile</span></label>
+            </div>
+          </div>
+          <div id="blk-livello" class="fields">
+            <div class="field" style="grid-column:1/-1"><label for="f-livello">Inquadramento (minimi dal 1/3/2026)</label><select id="f-livello" data-s="livello"></select></div>
+            <div class="field"><label for="f-scatti">Scatti di anzianità</label><input id="f-scatti" inputmode="numeric" data-s="scatti"></div>
+            <div class="field"><label for="f-altre">Altre voci fisse mensili</label><div class="suffix"><input id="f-altre" inputmode="decimal" data-s="altreFisse"><span>€</span></div></div>
+            <p class="hint" id="liv-info" style="grid-column:1/-1;margin:0"></p>
+          </div>
+          <div id="blk-ral" class="field"><label for="f-ral">RAL (lordo annuo fisso)</label><div class="suffix big"><input id="f-ral" inputmode="decimal" data-s="ral"><span>€</span></div></div>
+          <div id="blk-mensile" class="field"><label for="f-mensile">Lordo mensile</label><div class="suffix big"><input id="f-mensile" inputmode="decimal" data-s="mensile"><span>€</span></div></div>
+        </div>
+        <div id="blk-n2l" class="fields">
+          <div class="field"><label for="f-target">Netto desiderato</label><div class="suffix big"><input id="f-target" inputmode="decimal" data-s="target"><span>€</span></div></div>
+          <div class="field"><label for="f-tmodo">Il netto indicato è</label><select id="f-tmodo" data-s="targetModo"><option value="medio">medio al mese (annuo ÷ mensilità)</option><option value="mese">in busta in un mese tipo (mar–nov)</option><option value="annuo">annuo</option></select></div>
+        </div>
+        <div class="fields">
+          <div class="field"><label for="f-regione">Regione di residenza al 1° gennaio</label><select id="f-regione" data-s="regione"></select></div>
+          <div class="field"><label for="f-mens">Mensilità</label><input id="f-mens" inputmode="numeric" data-s="mensilita"></div>
+        </div>
+        <label class="check"><input type="checkbox" data-s="comScagl"> Il mio comune applica l'addizionale a scaglioni</label>
+        <div id="com-flat" class="fields">
+          <div class="field"><label for="f-com">Addizionale comunale</label><div class="suffix"><input id="f-com" inputmode="decimal" data-s="comAliq"><span>%</span></div></div>
+          <div class="field"><label for="f-comes">Esenzione fino a</label><div class="suffix"><input id="f-comes" inputmode="decimal" data-s="comEsenz"><span>€</span></div></div>
+        </div>
+        <div id="com-scagl">
+          <div class="ovr">
+            <div class="field"><label for="cs0">fino a 15.000</label><div class="suffix"><input id="cs0" class="com-sc" data-i="0" inputmode="decimal"><span>%</span></div></div>
+            <div class="field"><label for="cs1">15–28.000</label><div class="suffix"><input id="cs1" class="com-sc" data-i="1" inputmode="decimal"><span>%</span></div></div>
+            <div class="field"><label for="cs2">28–50.000</label><div class="suffix"><input id="cs2" class="com-sc" data-i="2" inputmode="decimal"><span>%</span></div></div>
+            <div class="field"><label for="cs3">oltre 50.000</label><div class="suffix"><input id="cs3" class="com-sc" data-i="3" inputmode="decimal"><span>%</span></div></div>
+          </div>
+          <div class="fields" style="margin-top:12px"><div class="field"><label for="f-comes2">Esenzione fino a</label><div class="suffix"><input id="f-comes2" inputmode="decimal" data-s="comEsenz"><span>€</span></div></div></div>
+        </div>
+        <p class="hint" style="margin:0">Aliquota del tuo comune: <a href="https://www.finanze.gov.it/it/fiscalita/fiscalita-regionale-e-locale/Addizionale-comunale-allIRPEF/" target="_blank" rel="noopener">finanze.gov.it, addizionale comunale</a>.</p>
+      </div>
+
+      <div class="card" id="s-res" aria-live="polite"></div>
+
+      <div class="card">
+        <details class="more" open style="border-top:0;padding-top:0;margin-top:0">
+          <summary>Come si arriva al netto</summary>
+          <table class="tbl" id="s-det"><tbody></tbody></table>
+          <div class="btn-row"><button type="button" class="btn" id="btn-copy">Copia riepilogo</button></div>
+          <textarea id="copy-fallback" hidden aria-label="Riepilogo da copiare"></textarea>
+        </details>
+        <details class="more">
+          <summary>Mese per mese</summary>
+          <div class="scroll"><table id="ced"><thead></thead><tbody></tbody><tfoot></tfoot></table></div>
+          <p class="hint" id="ced-congu"></p>
+          <p class="hint">Solo retribuzione fissa. IRPEF mensile sugli scaglioni del mese, con detrazioni e cuneo divisi in 12; tredicesima e quattordicesima senza detrazioni; conguaglio a dicembre. Addizionali dell'anno precedente ipotizzate uguali: regionale gen–nov, comunale a saldo gen–nov e acconto 30% mar–nov.</p>
+        </details>
+        <details class="more">
+          <summary>Famiglia</summary>
+          <div class="fields">
+            <label class="check"><input type="checkbox" data-s="coniuge"> Coniuge a carico</label>
+            <div class="field"><label for="f-figliu">Figli a carico sotto 21 anni</label><input id="f-figliu" inputmode="numeric" data-s="figliU21"></div>
+            <div class="field"><label for="f-figli21">Figli a carico 21–29 anni</label><input id="f-figli21" inputmode="numeric" data-s="figli21"></div>
+            <div class="field"><label for="f-altri">Genitori conviventi a carico</label><input id="f-altri" inputmode="numeric" data-s="altriFam"></div>
+          </div>
+          <p class="hint">Per i figli sotto i 21 anni non c'è detrazione IRPEF (c'è l'Assegno unico): contano per la soglia fringe benefit di 2.000 € e per alcune detrazioni regionali.</p>
+        </details>
+        <details class="more">
+          <summary>Contributi, fondi e opzioni avanzate</summary>
+          <div class="fields">
+            <div class="field"><label for="f-contratto">Contratto</label><select id="f-contratto" data-s="contratto"><option value="indet">Tempo indeterminato</option><option value="det">Tempo determinato</option></select></div>
+            <div class="field"><label for="f-giorni">Giorni di lavoro nell'anno</label><input id="f-giorni" inputmode="numeric" data-s="giorni"></div>
+            <div class="field"><label for="f-inps">Contributi INPS dipendente</label><div class="suffix"><input id="f-inps" inputmode="decimal" data-s="inpsPct"><span>%</span></div></div>
+            <div class="field"><label for="f-fondo">Fondo di solidarietà (tua quota)</label><div class="suffix"><input id="f-fondo" inputmode="decimal" data-s="fondoPct"><span>%</span></div></div>
+            <div class="field"><label for="f-prevdip">Fondo pensione: tuo contributo</label><div class="suffix"><input id="f-prevdip" inputmode="decimal" data-s="prevDipPct"><span>%</span></div></div>
+            <div class="field"><label for="f-prevdat">Fondo pensione: contributo azienda</label><div class="suffix"><input id="f-prevdat" inputmode="decimal" data-s="prevDatPct"><span>%</span></div></div>
+            <div class="field"><label for="f-cassa">Cassa sanitaria: tua quota annua</label><div class="suffix"><input id="f-cassa" inputmode="decimal" data-s="cassaDip"><span>€</span></div></div>
+            <div class="field"><label for="f-red">Reddito 2025 da lavoro dipendente</label><div class="suffix"><input id="f-red" inputmode="decimal" data-s="redditoPrec" placeholder="come il 2026"><span>€</span></div></div>
+            <div class="field"><label for="f-costo">Contributi a carico azienda (stima)</label><div class="suffix"><input id="f-costo" inputmode="decimal" data-s="costoPct"><span>%</span></div></div>
+            <div class="field"><label for="f-inail">INAIL (stima)</label><div class="suffix"><input id="f-inail" inputmode="decimal" data-s="inailPct"><span>%</span></div></div>
+          </div>
+          <label class="check"><input type="checkbox" data-s="massimale"> Soggetto al massimale contributivo (primo contributo dopo il 1995)</label>
+          <p class="hint">Fondo pensione in percentuale della retribuzione fissa; deducibile fino a 5.164,57 € insieme alla quota dell'azienda. Il reddito 2025 serve per i requisiti di premi all'1%, notturni al 15% e rinnovi al 5%.</p>
+        </details>
+      </div>
+    </form>
+  </section>
+
+  <section class="panel stack" id="panel-simulazione" aria-label="Simulazione" hidden>
+    <div class="intro"><h2>Più somme insieme</h2><p>Metti insieme stipendio e somme particolari per vedere l'effetto complessivo sul netto dell'anno.</p></div>
+    <div class="card" id="sim-tot"></div>
+    <div class="card">
+      <h3 style="display:flex;justify-content:space-between;align-items:baseline;gap:8px">Somme nella simulazione <button type="button" class="linkbtn" id="sim-clear">Rimuovi tutte</button></h3>
+      <div class="sim-list" id="sim-list"></div>
+      <div class="btn-row"><a class="btn primary" href="#tassazione">Aggiungi una somma</a></div>
+      <p class="hint" id="sim-prof"></p>
+    </div>
+  </section>
+
+  <section class="panel stack" id="panel-info" aria-label="Regole e fonti" hidden>
+    <div class="intro"><h2>Regole e fonti</h2></div>
+    <div class="card">
+      <h3>Dati in uso</h3>
+      <p style="margin:0">Versione <b id="p-version"></b>, aggiornata al <span id="p-agg"></span>. A ogni apertura l'app controlla se c'è un file dei parametri più recente.</p>
+      <div class="btn-row"><button type="button" class="btn" id="btn-update">Controlla aggiornamenti</button><button type="button" class="btn" id="btn-reset">Ripristina valori iniziali</button></div>
+      <p class="hint" id="upd-state" aria-live="polite"></p>
+    </div>
+    <div class="card"><h3>Parametri principali 2026</h3><table class="tbl-p"><tbody id="p-param"></tbody></table></div>
+    <div class="card"><h3>Addizionali regionali 2026</h3>
+      <div class="scroll"><table class="tbl-p" id="p-reg"><thead><tr><th scope="col">Regione</th><th scope="col">Aliquote (15k · 28k · 50k · oltre)</th><th scope="col">Dato</th></tr></thead><tbody></tbody></table></div>
+      <h3 style="font-size:16px;margin:18px 0 8px">Correggi le aliquote di <span id="ovr-nome"></span></h3>
+      <div class="ovr">
+        <div class="field"><label for="ov0">fino a 15.000</label><div class="suffix"><input id="ov0" class="ovr-in" inputmode="decimal"><span>%</span></div></div>
+        <div class="field"><label for="ov1">15–28.000</label><div class="suffix"><input id="ov1" class="ovr-in" inputmode="decimal"><span>%</span></div></div>
+        <div class="field"><label for="ov2">28–50.000</label><div class="suffix"><input id="ov2" class="ovr-in" inputmode="decimal"><span>%</span></div></div>
+        <div class="field"><label for="ov3">oltre 50.000</label><div class="suffix"><input id="ov3" class="ovr-in" inputmode="decimal"><span>%</span></div></div>
+      </div>
+      <div class="btn-row"><button type="button" class="btn" id="ovr-save">Salva aliquote</button><button type="button" class="btn" id="ovr-reset" hidden>Torna al dataset</button></div>
+      <p class="hint">“Media” indica aliquote ricostruite da fonti secondarie: verificale sulla <a href="https://www.finanze.gov.it/it/fiscalita/fiscalita-regionale-e-locale/Addizionale-regionale-allIRPEF/" target="_blank" rel="noopener">pagina del Dipartimento Finanze</a>. Le correzioni restano su questo dispositivo.</p>
+    </div>
+    <div class="card prose">
+      <h3>Come leggere le schede</h3>
+      <p><b>Ordinaria</b>: la somma si aggiunge allo stipendio e paga IRPEF all'aliquota più alta che raggiungi, più addizionali. <b>Separata</b>: è tassata da sola, con l'aliquota del TFR o con la media degli ultimi due anni, senza addizionali; l'Agenzia delle Entrate può poi ricalcolare. <b>Sostitutiva</b>: una percentuale fissa al posto di IRPEF e addizionali. <b>Esente</b>: non è reddito.</p>
+      <p>Quando la natura di una somma è incerta conta come è scritta nell'accordo o nella sentenza: per i casi importanti confrontati con il consulente del lavoro.</p>
+      <h3>Limiti noti</h3>
+      <ul>
+        <li>Non sono considerati oneri detraibili al 19% e redditi diversi dal lavoro dipendente.</li>
+        <li>Il costo aziendale usa un'aliquota datoriale stimata.</li>
+        <li>Le tabelle ANIA per livello e classe non sono incluse: per le assicurazioni inserisci RAL o lordo mensile.</li>
+        <li>L'aliquota TFR è stimata dalla RAL attuale; quella reale dipende dalla storia retributiva.</li>
+      </ul>
+      <h3>Fonti</h3>
+      <ul>
+        <li>TUIR artt. 6, 10, 17, 19, 21, 51; L. 199/2025 (Bilancio 2026); L. 207/2024.</li>
+        <li>Agenzia Entrate: circolari 29/E/2001, 8/E/2021, 10/E/2021, 15/E/2025, 3/E/2026; risposte 177/2021, 185/2022, 323/2022, 343 e 344/2022, 111/2025.</li>
+        <li>Cassazione: 8662/2019, 916/2020, 14842/2022, 8615/2023.</li>
+        <li>D.Lgs. 23/2015 art. 6; L. 300/1970 art. 18; DL 34/2020 art. 150; DL 73/2021 art. 47-bis; INPS circ. 6/2026.</li>
+        <li>Schede MEF addizionale regionale 2026; L.R. Lazio 20/2025, L.R. Umbria 2/2025, DPGR Puglia 3/2026, L.P. Trento 11/2025.</li>
+        <li>CCNL Credito ABI 23/11/2023 (minimi 1/3/2026); CCNL ANIA rinnovato il 13/5/2026.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+<footer>Stime informative con le regole dell'anno d'imposta 2026.</footer>
+<div class="toast" id="toast" role="status"></div>
+
+<script type="application/json" id="rates-fallback">{"version": "2026.10.30", "anno": 2026, "aggiornato": "30/10/2026", "note": "Parametri per l'anno d'imposta 2026 (L. 199/2025 - Legge di Bilancio 2026). Addizionali regionali da schede MEF/leggi regionali dove disponibili; le righe con affidabilita 'media' sono ricostruite da piu fonti secondarie e vanno verificate sul sito del Dipartimento Finanze.", "irpef": {"scaglioni": [[28000, 23], [50000, 33], [null, 43]]}, "detrazioneLavoro": {"fino15000": 1955, "minIndet": 1380, "minDet": 690, "base28": 1910, "extra28": 1190, "maggiorazione25_35": 65}, "cuneo": {"bonusSoglia": 20000, "bonusFasce": [[8500, 7.1], [15000, 5.3], [20000, 4.8]], "ulteriorePiena": 1000, "ulteriorePienaFino": 32000, "ulterioreFino": 40000}, "trattamentoIntegrativo": {"importo": 1200, "pieno": 15000, "fino": 28000}, "inps": {"dipendente": 9.19, "aggiuntiva": 1.0, "sogliaAggiuntiva": 56224, "massimale": 122295}, "fondoSolidarieta": {"credito": 0.067, "assicurazioni": 0.1, "altro": 0}, "previdenzaComplementareMax": 5164.57, "cassaSanitariaMax": 3615.2, "sostitutive": {"premioProduttivita": {"aliquota": 1, "limite": 5000, "redditoMax": 80000}, "notturniFestivi": {"aliquota": 15, "limite": 1500, "redditoMax": 40000}, "rinnoviContrattuali": {"aliquota": 5, "redditoMax": 33000}}, "fringeBenefit": {"soglia": 1000, "sogliaFigli": 2000}, "buoniPasto": {"elettronico": 10, "cartaceo": 4}, "tfrDivisore": 13.5, "ccnl": {"credito": {"nome": "CCNL Credito (ABI)", "mensilita": 13, "tabellaDal": "01/03/2026", "livelli": [{"id": "qd4", "nome": "Quadro direttivo 4° livello", "stipendio": 5160.06, "scatto": 95.31, "maxScatti": 7}, {"id": "qd3", "nome": "Quadro direttivo 3° livello", "stipendio": 4396.88, "scatto": 95.31, "maxScatti": 7}, {"id": "qd2", "nome": "Quadro direttivo 2° livello", "stipendio": 3965.48, "scatto": 41.55, "maxScatti": 8}, {"id": "qd1", "nome": "Quadro direttivo 1° livello", "stipendio": 3743.21, "scatto": 41.55, "maxScatti": 8}, {"id": "a34", "nome": "3ª area professionale 4° livello", "stipendio": 3341.9, "scatto": 41.55, "maxScatti": 8}, {"id": "a33", "nome": "3ª area professionale 3° livello", "stipendio": 3059.49, "scatto": 41.55, "maxScatti": 8}, {"id": "a32", "nome": "3ª area professionale 2° livello", "stipendio": 2890.41, "scatto": 41.55, "maxScatti": 8}, {"id": "a31", "nome": "3ª area professionale 1° livello", "stipendio": 2742.34, "scatto": 41.55, "maxScatti": 8}, {"id": "au", "nome": "Area unificata (ex 1ª e 2ª area)", "stipendio": 2479.45, "scatto": 29.07, "maxScatti": 8}], "nota": "Minimi tabellari mensili in vigore dal 1/3/2026 (ultima tranche del rinnovo 23/11/2023, scaduto il 31/3/2026, trattativa per il rinnovo in corso). Il rinnovo del 23/11/2023 e' stato firmato prima del 2024: gli aumenti ABI non rientrano nella flat tax 5% sui rinnovi."}, "assicurazioni": {"nome": "CCNL Assicurazioni (ANIA)", "mensilita": 14, "nota": "13ª a dicembre e 14ª entro giugno/luglio. Rinnovo firmato il 13/5/2026 (vigenza fino al 31/5/2028): gli incrementi pagati nel 2026 possono rientrare nella flat tax 5% sui rinnovi se il reddito 2025 da lavoro dipendente non supera 33.000 €. Inserisci la retribuzione dalla lettera di assunzione o dal cedolino: le tabelle ANIA per livello/classe non sono incluse."}, "altro": {"nome": "Altro CCNL", "mensilita": 13}}, "regioni": [{"id": "abr", "nome": "Abruzzo", "scaglioni": [[28000, 1.67], [50000, 2.87], [null, 3.33]], "affidabilita": "media", "fonte": "Schema a 3 scaglioni; aliquote ricostruite da fonti secondarie"}, {"id": "bas", "nome": "Basilicata", "scaglioni": [[null, 1.23]], "affidabilita": "media", "fonte": "Aliquota unica secondo piu fonti"}, {"id": "bz", "nome": "Prov. aut. Bolzano", "scaglioni": [[50000, 1.23], [null, 1.73]], "detrazioni": [{"min": 0, "max": 90000, "importo": 430.5}], "perFiglio": {"importo": 252, "maxImp": 70000}, "affidabilita": "media", "fonte": "Scheda MEF 2026 (via PMI.it): detrazione 430,50 € fino a 90.000 €; non gestita la detrazione aggiuntiva oltre 50.000 €"}, {"id": "cal", "nome": "Calabria", "scaglioni": [[null, 1.73]], "affidabilita": "media", "fonte": "Aliquota unica 1,73%"}, {"id": "cam", "nome": "Campania", "scaglioni": [[15000, 1.73], [28000, 2.96], [50000, 3.2], [null, 3.33]], "affidabilita": "alta", "fonte": "Scheda MEF 2026"}, {"id": "emr", "nome": "Emilia-Romagna", "scaglioni": [[15000, 1.33], [28000, 1.93], [50000, 2.78], [null, 3.33]], "affidabilita": "alta", "fonte": "Scheda MEF 2026"}, {"id": "fvg", "nome": "Friuli-Venezia Giulia", "scaglioni": [[null, 1.23]], "intero": [{"max": 15000, "aliquota": 0.7}], "affidabilita": "alta", "fonte": "0,70% sull'intero imponibile fino a 15.000 €, altrimenti 1,23%"}, {"id": "laz", "nome": "Lazio", "scaglioni": [[15000, 1.73], [28000, 3.33], [50000, 3.33], [null, 3.33]], "intero": [{"max": 28000, "aliquota": 1.73}], "detrazioni": [{"min": 28000.01, "max": 30000, "importo": 60}], "affidabilita": "alta", "fonte": "Regione Lazio, L.R. 20/2025"}, {"id": "lig", "nome": "Liguria", "scaglioni": [[28000, 1.23], [50000, 3.18], [null, 3.23]], "affidabilita": "alta", "fonte": "Scheda MEF (3 scaglioni)"}, {"id": "lom", "nome": "Lombardia", "scaglioni": [[15000, 1.23], [28000, 1.58], [50000, 1.72], [null, 1.73]], "affidabilita": "alta", "fonte": "Scheda MEF 2026"}, {"id": "mar", "nome": "Marche", "scaglioni": [[15000, 1.23], [28000, 1.53], [50000, 1.7], [null, 1.73]], "affidabilita": "media", "fonte": "Ricostruita da fonti secondarie"}, {"id": "mol", "nome": "Molise", "scaglioni": [[15000, 2.03], [28000, 2.23], [50000, 3.63], [null, 3.63]], "affidabilita": "media", "fonte": "Ricostruita da fonti secondarie (include maggiorazione piano di rientro)"}, {"id": "pie", "nome": "Piemonte", "scaglioni": [[15000, 1.62], [28000, 2.68], [50000, 3.31], [null, 3.33]], "affidabilita": "alta", "fonte": "Scheda MEF 2026 (aumenti 2026-2027)"}, {"id": "pug", "nome": "Puglia", "scaglioni": [[15000, 1.33], [28000, 2.13], [50000, 3.23], [null, 3.33]], "affidabilita": "alta", "fonte": "DPGR Puglia n. 3/2026 (rideterminazione giugno 2026)"}, {"id": "sar", "nome": "Sardegna", "scaglioni": [[null, 1.23]], "affidabilita": "alta", "fonte": "Aliquota unica"}, {"id": "sic", "nome": "Sicilia", "scaglioni": [[null, 1.23]], "affidabilita": "alta", "fonte": "Regione Siciliana, anno 2026"}, {"id": "tos", "nome": "Toscana", "scaglioni": [[15000, 1.42], [28000, 1.43], [50000, 3.32], [null, 3.33]], "affidabilita": "alta", "fonte": "Scheda MEF 2026"}, {"id": "tn", "nome": "Prov. aut. Trento", "scaglioni": [[50000, 1.23], [null, 1.73]], "esenzione": 30000, "perFiglio": {"importo": 246, "maxImp": 50000}, "affidabilita": "alta", "fonte": "L.P. 11/2025: esenti fino a 30.000 €"}, {"id": "umb", "nome": "Umbria", "scaglioni": [[15000, 1.73], [28000, 3.02], [50000, 3.12], [null, 3.33]], "intero": [{"max": 28000, "aliquota": 1.23}], "detrazioni": [{"min": 28000.01, "max": 50000, "importo": 150}], "affidabilita": "alta", "fonte": "L.R. Umbria 2/2025 (anni 2025-2027)"}, {"id": "vda", "nome": "Valle d'Aosta", "scaglioni": [[null, 1.23]], "esenzione": 15000, "affidabilita": "media", "fonte": "1,23% con esenzione fino a 15.000 €"}, {"id": "ven", "nome": "Veneto", "scaglioni": [[null, 1.23]], "affidabilita": "alta", "fonte": "Regione Veneto (0,90% per disabili o con disabile a carico, non gestito)"}]}</script>
+<script>/* Motore di calcolo busta paga - anno d'imposta 2026 (L. 199/2025).
+   Funzioni pure: nessun accesso al DOM. Usato sia dalla PWA sia dai test Node. */
+(function (root) {
+  'use strict';
+
+  const r2 = (x) => Math.round((x + Number.EPSILON) * 100) / 100;
+
+  function progressive(base, scaglioni) {
+    if (!(base > 0)) return 0;
+    let tax = 0, prev = 0;
+    for (const [up, rate] of scaglioni) {
+      const top = up == null ? Infinity : up;
+      if (base > prev) tax += (Math.min(base, top) - prev) * rate / 100;
+      prev = top;
+      if (base <= top) break;
+    }
+    return tax;
+  }
+
+  function marginal(base, scaglioni) {
+    for (const [up, rate] of scaglioni) {
+      if (up == null || base <= up) return rate;
+    }
+    return scaglioni[scaglioni.length - 1][1];
+  }
+
+  /* Detrazione lavoro dipendente, art. 13 TUIR (testo in vigore dal 2025). */
+  function detrLavoro(R, P, tipo, giorni) {
+    const d = P.detrazioneLavoro;
+    const g = (giorni == null ? 365 : giorni) / 365;
+    let det;
+    if (R <= 15000) det = d.fino15000;
+    else if (R <= 28000) det = d.base28 + d.extra28 * (28000 - R) / 13000;
+    else if (R <= 50000) det = d.base28 * (50000 - R) / 22000;
+    else det = 0;
+    if (R > 25000 && R <= 35000) det += d.maggiorazione25_35;
+    det *= g;
+    if (R <= 15000) det = Math.max(det, tipo === 'det' ? d.minDet : d.minIndet);
+    return Math.max(0, det);
+  }
+
+  /* Detrazione coniuge a carico, art. 12 c.1 lett. a) e b) TUIR. */
+  function detrConiuge(R) {
+    if (R <= 15000) return 800 - 110 * R / 15000;
+    if (R <= 40000) {
+      let d = 690;
+      if (R > 29000 && R <= 29200) d += 10;
+      else if (R > 29200 && R <= 34700) d += 20;
+      else if (R > 34700 && R <= 35000) d += 30;
+      else if (R > 35000 && R <= 35100) d += 20;
+      else if (R > 35100 && R <= 35200) d += 10;
+      return d;
+    }
+    if (R <= 80000) return 690 * (80000 - R) / 40000;
+    return 0;
+  }
+
+  /* Figli a carico dai 21 ai 29 anni (dal 2025), 950 € con coefficiente. */
+  function detrFigli(R, n, quota) {
+    if (!(n > 0)) return 0;
+    const q = 95000 + 15000 * (n - 1);
+    const k = (q - R) / q;
+    if (k <= 0) return 0;
+    return 950 * n * Math.min(1, k) * (quota == null ? 1 : quota);
+  }
+
+  /* Altri familiari a carico (dal 2025 solo ascendenti conviventi). */
+  function detrAltri(R, n) {
+    if (!(n > 0)) return 0;
+    const k = (80000 - R) / 80000;
+    return k > 0 ? 750 * n * k : 0;
+  }
+
+  /* Taglio del cuneo fiscale strutturale (L. 207/2024 c. 4-9, confermato per il 2026). */
+  function cuneo(Rcompl, Rld, P, giorni) {
+    const c = P.cuneo;
+    const g = (giorni == null ? 365 : giorni) / 365;
+    let bonus = 0, ulteriore = 0, pct = 0;
+    if (Rcompl <= c.bonusSoglia && Rld > 0) {
+      const annuo = Rld / g; // percentuale scelta sul reddito rapportato ad anno
+      for (const [up, p] of c.bonusFasce) { if (annuo <= up) { pct = p; break; } }
+      bonus = Rld * pct / 100;
+    } else if (Rcompl <= c.ulteriorePienaFino) {
+      ulteriore = c.ulteriorePiena * g;
+    } else if (Rcompl <= c.ulterioreFino) {
+      ulteriore = c.ulteriorePiena * (c.ulterioreFino - Rcompl) / (c.ulterioreFino - c.ulteriorePienaFino) * g;
+    }
+    return { bonus, ulteriore, pct };
+  }
+
+  function addRegionale(imp, reg, figli) {
+    if (!reg || !(imp > 0)) return 0;
+    if (reg.esenzione && imp <= reg.esenzione) return 0;
+    let tax;
+    const intero = (reg.intero || []).find((x) => imp <= x.max);
+    if (intero) tax = imp * intero.aliquota / 100;
+    else tax = progressive(imp, reg.scaglioni);
+    for (const d of reg.detrazioni || []) if (imp >= d.min && imp <= d.max) tax -= d.importo;
+    if (reg.perFiglio && figli > 0 && imp <= reg.perFiglio.maxImp) tax -= reg.perFiglio.importo * figli;
+    return Math.max(0, tax);
+  }
+
+  function addComunale(imp, com) {
+    if (!com || !(imp > 0)) return 0;
+    if (com.esenzione && imp <= com.esenzione) return 0;
+    if (com.scaglioni && com.scaglioni.length) return progressive(imp, com.scaglioni);
+    return imp * (Number(com.aliquota) || 0) / 100;
+  }
+
+  /* Catalogo dei titoli per le voci aggiuntive. */
+  const TITOLI = [
+    { id: 'straordinario', nome: 'Straordinario', regime: 'ordinaria', desc: 'Tassazione ordinaria (IRPEF a scaglioni + addizionali) e contributi INPS.' },
+    { id: 'notturno', nome: 'Maggiorazioni notturno, festivo, riposo, turni', regime: 'notturno', desc: 'Flat tax 15% fino a 1.500 € nel 2026 se il reddito 2025 da lavoro dipendente non supera 40.000 €.' },
+    { id: 'premio', nome: 'Premio di risultato / VAP (accordo aziendale)', regime: 'premio', desc: 'Imposta sostitutiva 1% fino a 5.000 € (2026-2027) se il reddito dell\'anno precedente non supera 80.000 €. Contributi INPS dovuti.' },
+    { id: 'welfare', nome: 'Premio convertito in welfare / flexible benefit', regime: 'welfare', desc: 'Beni e servizi art. 51 c. 2 TUIR: niente IRPEF e niente contributi. Il valore resta intero.' },
+    { id: 'rinnovo', nome: 'Aumento da rinnovo CCNL (firmato 2024-2026)', regime: 'rinnovo', desc: 'Flat tax 5% se il reddito 2025 non supera 33.000 €. Il rinnovo ABI del 23/11/2023 non rientra.' },
+    { id: 'incentivo', nome: 'Bonus individuale / sistema incentivante', regime: 'ordinaria', desc: 'Premio individuale non legato ad accordo collettivo: tassazione ordinaria.' },
+    { id: 'unatantum', nome: 'Una tantum / arretrati dell\'anno', regime: 'ordinaria', desc: 'Tassazione ordinaria.' },
+    { id: 'arretratiap', nome: 'Arretrati di anni precedenti', regime: 'separata', desc: 'Tassazione separata: stimata con l\'aliquota media IRPEF, senza addizionali.' },
+    { id: 'fissa', nome: 'Voce fissa mensile (superminimo, ad personam, indennità)', regime: 'fissa', desc: 'Importo mensile ripetuto su tutte le mensilità: aumenta la retribuzione annua.' },
+    { id: 'fringe', nome: 'Fringe benefit (buoni acquisto, utenze, affitto)', regime: 'fringe', desc: 'Esente fino a 1.000 € annui (2.000 € con figli a carico). Oltre soglia è tassato tutto.' },
+    { id: 'buonipasto', nome: 'Buoni pasto', regime: 'buonipasto', desc: 'Esenti fino a 10 € al giorno se elettronici, 4 € se cartacei. L\'eccedenza è tassata.' },
+    { id: 'ordinarianc', nome: 'Somma a tassazione ordinaria senza contributi', regime: 'ordinariaNC', desc: '', hidden: true },
+    { id: 'separatatfr', nome: 'Somma a tassazione separata (aliquota TFR)', regime: 'separataTFR', desc: '', hidden: true },
+    { id: 'trasferta', nome: 'Indennità di trasferta', regime: 'trasferta', desc: '', hidden: true },
+    { id: 'rimborso', nome: 'Rimborso spese documentate / trasferta', regime: 'esente', desc: 'Rimborsi analitici documentati: non tassati.' }
+  ];
+  const TITOLI_BY_ID = Object.fromEntries(TITOLI.map((t) => [t.id, t]));
+
+  function defaults(P) {
+    return {
+      fisso: 35000, mensilita: 13, voci: [], contratto: 'indet', giorni: 365,
+      inpsPct: P.inps.dipendente, fondoPct: P.fondoSolidarieta.credito, massimale: false,
+      prevDipPct: 0, prevDatPct: 0, cassaDip: 0,
+      coniuge: false, figliU21: 0, figli21: 0, altriFam: 0,
+      redditoPrec: null, regione: null, comune: { aliquota: 0.8, esenzione: 0 },
+      costoPct: 30, inailPct: 0.4
+    };
+  }
+
+  /* Calcolo annuo completo. */
+  function compute(inp, P) {
+    const I = Object.assign(defaults(P), inp);
+    const S = P.sostitutive;
+    const giorni = I.giorni || 365;
+    const figliTot = (I.figliU21 || 0) + (I.figli21 || 0);
+
+    // 1. classificazione voci
+    let ordNC = 0, arrNC = 0, tfrC = 0, tfrNC = 0, trasfEs = 0;
+    let ordCash = I.fisso, ordNatura = 0, premio = 0, nott = 0, rinn = 0, arrAP = 0;
+    let welfare = 0, esente = 0, fringe = 0, buoniVal = 0, buoniEcc = 0;
+    for (const v of I.voci || []) {
+      const t = TITOLI_BY_ID[v.titolo] || TITOLI_BY_ID.straordinario;
+      const L = Math.max(0, Number(v.lordo) || 0);
+      switch (t.regime) {
+        case 'ordinaria': ordCash += L; break;
+        case 'ordinariaNC': ordCash += L; ordNC += L; break;
+        case 'fissa': ordCash += L; break; // L già annualizzato
+        case 'premio': premio += L; break;
+        case 'notturno': nott += L; break;
+        case 'rinnovo': rinn += L; break;
+        case 'separata': if (v.noContr) arrNC += L; else arrAP += L; break;
+        case 'separataTFR': if (v.noContr) tfrNC += L; else tfrC += L; break;
+        case 'trasferta': { const gg = Number(v.giorni) || 0, val = Number(v.valore) || 0, sg = v.estero ? 77.47 : 46.48; trasfEs += Math.min(val, sg) * gg; ordCash += Math.max(0, val - sg) * gg; break; }
+        case 'welfare': welfare += L; break;
+        case 'esente': esente += L; break;
+        case 'fringe': fringe += L; break;
+        case 'buonipasto': {
+          const giorniBP = Number(v.giorni) || 0;
+          const val = Number(v.valore) || 0;
+          const soglia = v.cartaceo ? P.buoniPasto.cartaceo : P.buoniPasto.elettronico;
+          buoniVal += val * giorniBP;
+          buoniEcc += Math.max(0, val - soglia) * giorniBP;
+          break;
+        }
+      }
+    }
+    const sogliaFringe = figliTot > 0 ? P.fringeBenefit.sogliaFigli : P.fringeBenefit.soglia;
+    const fringeTax = fringe > sogliaFringe ? fringe : 0;
+    ordNatura = fringeTax + buoniEcc;
+
+    // 2. requisiti reddituali per le sostitutive
+    const stimaR = (ordCash + ordNatura + premio + nott + rinn) * (1 - (I.inpsPct + I.fondoPct) / 100);
+    const redPrec = I.redditoPrec != null && I.redditoPrec !== '' ? Number(I.redditoPrec) : stimaR;
+    const premioOk = redPrec <= S.premioProduttivita.redditoMax;
+    const nottOk = redPrec <= S.notturniFestivi.redditoMax;
+    const rinnOk = redPrec <= S.rinnoviContrattuali.redditoMax;
+    const premioAgev = premioOk ? Math.min(premio, S.premioProduttivita.limite) : 0;
+    const nottAgev = nottOk ? Math.min(nott, S.notturniFestivi.limite) : 0;
+    const rinnAgev = rinnOk ? rinn : 0;
+    const ordExtra = (premio - premioAgev) + (nott - nottAgev) + (rinn - rinnAgev);
+
+    // 3. contributi
+    const baseContr = ordCash + ordNatura + premio + nott + rinn + arrAP + tfrC - ordNC;
+    const baseIVS = I.massimale ? Math.min(baseContr, P.inps.massimale) : baseContr;
+    const inps = baseIVS * I.inpsPct / 100 + Math.max(0, baseIVS - P.inps.sogliaAggiuntiva) * P.inps.aggiuntiva / 100;
+    const fondo = baseContr * I.fondoPct / 100;
+    const contr = inps + fondo;
+    const c = baseContr > 0 ? contr / baseContr : 0;
+
+    // 4. imponibile IRPEF
+    const ordGross = ordCash + ordNatura + ordExtra;
+    const ordContr = (ordGross - ordNC) * c;
+    const prevDip = I.fisso * (I.prevDipPct || 0) / 100;
+    const prevDat = I.fisso * (I.prevDatPct || 0) / 100;
+    const prevDed = Math.min(prevDip + prevDat, P.previdenzaComplementareMax);
+    const cassaDed = Math.min(I.cassaDip || 0, P.cassaSanitariaMax);
+    const Rcompl = Math.max(0, ordGross - ordContr - cassaDed + prevDat);
+    const imponibile = Math.max(0, Rcompl - prevDed);
+
+    // 5. IRPEF
+    const irpefLorda = progressive(imponibile, P.irpef.scaglioni);
+    const detLav = detrLavoro(Rcompl, P, I.contratto, giorni);
+    const detCon = I.coniuge ? detrConiuge(Rcompl) : 0;
+    const detFig = detrFigli(Rcompl, I.figli21 || 0);
+    const detAlt = detrAltri(Rcompl, I.altriFam || 0);
+    const detFam = detCon + detFig + detAlt;
+    const cun = cuneo(Rcompl, Rcompl, P, giorni);
+    const detTot = detLav + detFam + cun.ulteriore;
+    const detUsate = Math.min(detTot, irpefLorda);
+    const irpefNetta = Math.max(0, irpefLorda - detTot);
+
+    // trattamento integrativo
+    const TI = P.trattamentoIntegrativo;
+    let trattInt = 0;
+    if (Rcompl <= TI.pieno) {
+      if (irpefLorda > detLav - 75 * giorni / 365) trattInt = TI.importo * giorni / 365;
+    } else if (Rcompl <= TI.fino) {
+      const diff = (detLav + detFam) - irpefLorda;
+      if (diff > 0) trattInt = Math.min(TI.importo, diff);
+    }
+
+    // 6. addizionali (dovute solo se è dovuta l'IRPEF)
+    const addReg = irpefNetta > 0 ? addRegionale(imponibile, I.regione, figliTot) : 0;
+    const addCom = irpefNetta > 0 ? addComunale(imponibile, I.comune) : 0;
+
+    // 7. imposte sostitutive e separata
+    const sostPremio = premioAgev * (1 - c) * S.premioProduttivita.aliquota / 100;
+    const sostNott = nottAgev * (1 - c) * S.notturniFestivi.aliquota / 100;
+    const sostRinn = rinnAgev * (1 - c) * S.rinnoviContrattuali.aliquota / 100;
+    const sostitutive = sostPremio + sostNott + sostRinn;
+    const aliqMedia = imponibile > 0 ? irpefLorda / imponibile : 0.23;
+    const separata = (arrAP * (1 - c) + arrNC) * Math.max(aliqMedia, 0.23) + (tfrC * (1 - c) + tfrNC) * (I.aliqTfr || 0.23);
+
+    // 8. netti
+    const cashGross = ordCash + premio + nott + rinn + arrAP + arrNC + tfrC + tfrNC + trasfEs + esente;
+    const valoreNatura = welfare + fringe + buoniVal;
+    const trattenute = contr + prevDip + (I.cassaDip || 0) + irpefNetta + addReg + addCom + sostitutive + separata;
+    const crediti = trattInt + cun.bonus;
+    const nettoCash = cashGross - trattenute + crediti;
+    const nettoEconomico = nettoCash + valoreNatura;
+
+    // 9. costo aziendale stimato
+    const costoContr = baseContr * ((I.costoPct || 0) + (I.inailPct || 0)) / 100;
+    const tfr = (I.fisso + Math.max(0, ordCash - I.fisso)) / P.tfrDivisore;
+    const costoAzienda = cashGross + valoreNatura + costoContr + tfr + prevDat;
+
+    return {
+      input: I,
+      lordoTotale: cashGross + valoreNatura,
+      cashGross, valoreNatura, baseContr, inps, fondo, contr, contrRate: c,
+      prevDip, prevDat, prevDed, cassaDip: I.cassaDip || 0, cassaDed,
+      Rcompl, imponibile, irpefLorda, aliquotaMarginale: marginal(imponibile, P.irpef.scaglioni),
+      aliquotaMedia: aliqMedia,
+      detLav, detCon, detFig, detAlt, detFam, ulteriore: cun.ulteriore, bonusCuneo: cun.bonus, bonusPct: cun.pct,
+      detTot, detUsate, irpefNetta, trattInt,
+      addReg, addCom, sostPremio, sostNott, sostRinn, sostitutive, separata,
+      premioOk, nottOk, rinnOk, premioAgev, nottAgev, rinnAgev, redPrec,
+      fringe, fringeTax, sogliaFringe, buoniVal, buoniEcc, welfare, esente,
+      trattenute, crediti, nettoCash, nettoEconomico,
+      costoContr, tfr, costoAzienda
+    };
+  }
+
+  /* Effetto di una singola voce: differenza tra il calcolo con e senza la voce. */
+  function evalVoce(inp, voce, P) {
+    const base = compute(Object.assign({}, inp, { voci: (inp.voci || []).filter((v) => v !== voce && v.id !== voce.id) }), P);
+    const con = compute(Object.assign({}, inp, { voci: (inp.voci || []).filter((v) => v.id !== voce.id).concat([voce]) }), P);
+    const d = (k) => con[k] - base[k];
+    const lordo = d('lordoTotale');
+    const netto = d('nettoEconomico');
+    return {
+      lordo, netto,
+      contributi: d('contr'),
+      irpef: d('irpefNetta') - d('trattInt') - d('bonusCuneo'),
+      addizionali: d('addReg') + d('addCom'),
+      sostitutive: d('sostitutive') + d('separata'),
+      percNetto: lordo > 0 ? netto / lordo : 0,
+      base, con
+    };
+  }
+
+  function bisect(f, target, lo, hi, iter) {
+    let a = lo, b = hi;
+    for (let i = 0; i < (iter || 70); i++) {
+      const m = (a + b) / 2;
+      if (f(m) < target) a = m; else b = m;
+    }
+    return (a + b) / 2;
+  }
+
+  /* Lordo di una voce che produce un dato netto incrementale. */
+  function voceDaNetto(inp, voceProto, nettoTarget, P) {
+    const f = (L) => evalVoce(inp, Object.assign({}, voceProto, { lordo: L }), P).netto;
+    let hi = Math.max(1000, nettoTarget * 3);
+    while (f(hi) < nettoTarget && hi < 5e6) hi *= 2;
+    return bisect(f, nettoTarget, 0, hi);
+  }
+
+  /* Cedolino mese per mese (solo retribuzione fissa), con conguaglio a dicembre. */
+  function piano(inp, P) {
+    const I = Object.assign(defaults(P), inp, { voci: [] });
+    const R = compute(I, P);
+    const mens = I.mensilita || 13;
+    const ord = I.fisso / mens;
+    const pays = [];
+    const nomi = ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'];
+    for (let m = 0; m < 12; m++) {
+      pays.push({ mese: nomi[m], m, tipo: 'ord', lordo: ord });
+      if (m === 5 && mens >= 14) pays.push({ mese: '14ª', m, tipo: 'agg', lordo: ord });
+      if (m === 11 && mens >= 13) pays.push({ mese: '13ª', m, tipo: 'agg', lordo: ord });
+    }
+    if (mens > 14) for (let k = 15; k <= mens; k++) pays.push({ mese: k + 'ª', m: 11, tipo: 'agg', lordo: ord });
+
+    const detMese = (R.detLav + R.detFam + R.ulteriore) / 12;
+    const tiMese = R.trattInt / 12;
+    const bonusMese = R.bonusCuneo / 12;
+    let cum = 0, irpefSum = 0;
+    const cassaMese = (I.cassaDip || 0) / 12;
+    for (const p of pays) {
+      const capIVS = I.massimale ? P.inps.massimale : Infinity;
+      const ivsPart = Math.max(0, Math.min(cum + p.lordo, capIVS) - Math.min(cum, capIVS));
+      const extraPart = Math.max(0, Math.min(cum + p.lordo, capIVS) - Math.max(cum, P.inps.sogliaAggiuntiva));
+      p.contributi = ivsPart * I.inpsPct / 100 + Math.max(0, extraPart) * P.inps.aggiuntiva / 100 + p.lordo * I.fondoPct / 100;
+      cum += p.lordo;
+      p.prev = p.lordo * (I.prevDipPct || 0) / 100;
+      p.cassa = p.tipo === 'ord' ? cassaMese : 0;
+      const imp = Math.max(0, p.lordo - p.contributi - p.prev - p.cassa);
+      const lorda = progressive(imp * 12, P.irpef.scaglioni) / 12;
+      if (p.tipo === 'ord') {
+        p.irpef = Math.max(0, lorda - detMese);
+        p.crediti = tiMese + bonusMese;
+      } else {
+        p.irpef = lorda;
+        p.crediti = 0;
+      }
+      irpefSum += p.irpef;
+      p.addReg = p.tipo === 'ord' && p.m <= 10 ? R.addReg / 11 : 0;
+      p.addCom = p.tipo === 'ord' ? ((p.m <= 10 ? R.addCom * 0.7 / 11 : 0) + (p.m >= 2 && p.m <= 10 ? R.addCom * 0.3 / 9 : 0)) : 0;
+    }
+    // conguaglio IRPEF a dicembre (sulla mensilità ordinaria)
+    const dic = pays.find((p) => p.tipo === 'ord' && p.m === 11);
+    const congu = R.irpefNetta - irpefSum;
+    dic.conguaglio = congu;
+    dic.irpef += congu;
+    for (const p of pays) {
+      p.addizionali = p.addReg + p.addCom;
+      p.netto = p.lordo - p.contributi - p.prev - p.cassa - p.irpef - p.addizionali + p.crediti;
+    }
+    const tot = pays.reduce((a, p) => {
+      for (const k of ['lordo', 'contributi', 'prev', 'cassa', 'irpef', 'addizionali', 'crediti', 'netto']) a[k] = (a[k] || 0) + p[k];
+      return a;
+    }, {});
+    const tipo = pays.find((p) => p.tipo === 'ord' && p.m === 2); // marzo: mese "pieno" con tutte le rate
+    return { pays, tot, R, conguaglio: congu, meseTipo: tipo };
+  }
+
+  /* Da netto a lordo: trova la retribuzione fissa annua che dà il netto richiesto. */
+  function lordoDaNetto(inp, target, modo, P) {
+    const mens = inp.mensilita || 13;
+    const f = (L) => {
+      const x = Object.assign({}, inp, { fisso: L });
+      if (modo === 'mese') return piano(x, P).meseTipo.netto;
+      const n = compute(x, P).nettoCash;
+      return modo === 'medio' ? n / mens : n;
+    };
+    let hi = Math.max(10000, target * (modo === 'annuo' ? 3 : mens * 3));
+    while (f(hi) < target && hi < 5e7) hi *= 2;
+    return bisect(f, target, 0, hi);
+  }
+
+  const api = { r2, progressive, marginal, detrLavoro, detrConiuge, detrFigli, detrAltri, cuneo,
+    addRegionale, addComunale, compute, evalVoce, voceDaNetto, piano, lordoDaNetto, defaults, TITOLI, TITOLI_BY_ID };
+  if (typeof module !== 'undefined' && module.exports) module.exports = api;
+  else root.PayEngine = api;
+})(typeof self !== 'undefined' ? self : this);
+</script>
+<script>/* Catalogo delle somme particolari: regime fiscale e contributivo (anno 2026). */
+(function (root) {
+  'use strict';
+  const CATS = [
+    { id: 'fine', nome: 'Fine del rapporto' },
+    { id: 'lite', nome: 'Cause, accordi e risarcimenti' },
+    { id: 'busta', nome: 'In busta paga' },
+    { id: 'rimborsi', nome: 'Rimborsi e restituzioni' }
+  ];
+
+  /* irpef: ordinaria | separata_tfr | separata_arretrati | esente | sost1 | sost15 | sost5 | fringe | buonipasto | trasferta | restituzione_lordo | restituzione_netto
+     contributi: true | false | 'dipende' */
+  const CASI = [
+    {
+      id: 'incentivo-esodo', esempio: 30000, cat: 'fine', nome: 'Incentivo all\'esodo',
+      sinonimi: 'buonuscita uscita incentivata esodo volontario prepensionamento risoluzione consensuale accordo di uscita',
+      varianti: [{
+        irpef: 'separata_tfr', contributi: false,
+        breve: 'Somma pagata una volta sola per favorire l\'uscita. Non si somma allo stipendio: è tassata a parte con la stessa aliquota del TFR e non paga contributi.',
+        attenzione: [
+          'L\'aliquota applicata dall\'azienda è provvisoria: l\'Agenzia delle Entrate poi riliquida con l\'aliquota media dei 5 anni precedenti e può chiedere una differenza o rimborsarla.',
+          'Resta a tassazione separata anche la parte pagata prima della cessazione, se è legata all\'uscita (interpello 177/2021).',
+          'Sopra 1 milione di euro complessivo la parte eccedente va a tassazione ordinaria.',
+          'Se viene versato al fondo pensione è comunque tassato prima (interpello 323/2022).'
+        ],
+        norma: 'Art. 17 c. 1 lett. a) e art. 19 c. 2 TUIR; esclusione dai contributi art. 6 c. 4 lett. b) D.Lgs. 314/1997.'
+      }]
+    },
+    {
+      id: 'fondo-credito', esempio: 3000, cat: 'fine', nome: 'Assegno straordinario Fondo di solidarietà del credito',
+      sinonimi: 'esodo bancario accompagnamento alla pensione fondo esuberi assegno di sostegno al reddito bancari inps',
+      varianti: [{
+        irpef: 'separata_tfr', contributi: false,
+        breve: 'L\'assegno che l\'INPS paga per conto del Fondo fino alla pensione è a tassazione separata con l\'aliquota del TFR. La tassazione è definitiva: l\'Agenzia non la ricalcola.',
+        attenzione: [
+          'Nessuna trattenuta contributiva: il Fondo versa la contribuzione correlata utile alla pensione.',
+          'Niente addizionali regionali e comunali.',
+          'L\'incentivo all\'esodo pagato dalla banca è una somma diversa: vedi la scheda Incentivo all\'esodo.'
+        ],
+        norma: 'Art. 47-bis c. 2 DL 73/2021; circolare Agenzia Entrate 10/E del 5/8/2021.'
+      }]
+    },
+    {
+      id: 'tfr', esempio: 40000, cat: 'fine', nome: 'TFR e anticipo del TFR',
+      sinonimi: 'liquidazione trattamento di fine rapporto anticipazione tfr',
+      varianti: [{
+        irpef: 'separata_tfr', contributi: false,
+        breve: 'Tassazione separata con un\'aliquota calcolata sul reddito di riferimento (TFR diviso gli anni di servizio, per 12). Nessun contributo a tuo carico.',
+        attenzione: [
+          'La rivalutazione annuale del TFR è già tassata a parte con l\'imposta sostitutiva del 17%: qui inserisci la sola quota capitale.',
+          'Il TFR versato al fondo pensione segue altre regole: alla prestazione si applica il 15%, che scende fino al 9% con gli anni di adesione.',
+          'L\'Agenzia delle Entrate riliquida poi con l\'aliquota media dei 5 anni precedenti.'
+        ],
+        norma: 'Art. 17 c. 1 lett. a) e art. 19 c. 1 TUIR.'
+      }]
+    },
+    {
+      id: 'preavviso', esempio: 9000, cat: 'fine', nome: 'Indennità sostitutiva del preavviso',
+      sinonimi: 'mancato preavviso preavviso non lavorato',
+      varianti: [{
+        irpef: 'separata_tfr', contributi: true,
+        breve: 'Paga il periodo di preavviso non lavorato: è retribuzione, quindi paga i contributi, ma si tassa a parte con l\'aliquota del TFR.',
+        attenzione: [
+          'Il preavviso lavorato è normale stipendio, a tassazione ordinaria.',
+          'Il periodo coperto dall\'indennità conta per la pensione.'
+        ],
+        norma: 'Art. 17 c. 1 lett. a) TUIR; art. 2118 c.c.'
+      }]
+    },
+    {
+      id: 'ferie', esempio: 2000, cat: 'fine', nome: 'Ferie e permessi non goduti pagati all\'uscita',
+      sinonimi: 'monetizzazione ferie residue rol ex festività indennità sostitutiva ferie',
+      varianti: [
+        {
+          label: 'Maturati nell\'anno dell\'uscita (o ancora entro 18 mesi)', irpef: 'ordinaria', contributi: true,
+          breve: 'Sono stipendio dell\'anno: tassazione ordinaria insieme alle altre voci e contributi pieni.',
+          attenzione: ['Dopo 18 mesi dalla fine dell\'anno di maturazione i contributi sono dovuti anche se le ferie non vengono pagate.'],
+          norma: 'Art. 51 TUIR.'
+        },
+        {
+          label: 'Di anni precedenti, non goduti per cause indipendenti dalla volontà delle parti', irpef: 'separata_arretrati', contributi: true,
+          breve: 'Sono arretrati di anni passati: tassazione separata con l\'aliquota media dei due anni precedenti, contributi dovuti.',
+          attenzione: ['Se il rinvio delle ferie è stato concordato tra azienda e dipendente si torna alla tassazione ordinaria.'],
+          norma: 'Art. 17 c. 1 lett. b) e art. 21 TUIR.'
+        }
+      ]
+    },
+    {
+      id: 'non-concorrenza', esempio: 10000, cat: 'fine', nome: 'Patto di non concorrenza',
+      sinonimi: 'corrispettivo patto non concorrenza non sollecitazione',
+      varianti: [
+        {
+          label: 'Pagato durante il rapporto (ad esempio ogni mese)', irpef: 'ordinaria', contributi: true,
+          breve: 'Fa parte della retribuzione: tassazione ordinaria e contributi.',
+          attenzione: ['Se il corrispettivo è troppo basso rispetto al vincolo il patto rischia di essere nullo, e le somme restano comunque reddito.'],
+          norma: 'Art. 51 TUIR; art. 2125 c.c.'
+        },
+        {
+          label: 'Pagato all\'uscita o dopo', irpef: 'separata_tfr', contributi: true,
+          breve: 'Somma legata alla cessazione: tassazione separata con l\'aliquota del TFR. Per l\'orientamento prevalente i contributi sono dovuti.',
+          attenzione: ['Sui contributi delle somme pagate dopo la cessazione le posizioni non sono uniformi: verifica con l\'ufficio paghe.'],
+          norma: 'Art. 17 c. 1 lett. a) TUIR; Agenzia Entrate risposta 111/2025.'
+        }
+      ]
+    },
+    {
+      id: 'transazione', esempio: 20000, cat: 'lite', nome: 'Transazione o conciliazione',
+      sinonimi: 'proposta transattiva accordo transattivo transazione novativa verbale di conciliazione sede protetta rinuncia impugnazione accordo sindacale chiusura vertenza',
+      varianti: [
+        {
+          label: 'All\'uscita, per rinunciare a impugnare il licenziamento o ad altre pretese', irpef: 'separata_tfr', contributi: false,
+          breve: 'Somme di una transazione legata alla risoluzione del rapporto: tassazione separata con l\'aliquota del TFR. Se non pagano retribuzioni non subiscono contributi.',
+          attenzione: [
+            'Il verbale deve dire a che titolo è pagata ogni somma: senza indicazioni il Fisco tende a considerare tutto reddito di lavoro.',
+            'La transazione non vincola l\'INPS, che può chiedere i contributi sulle somme che in realtà pagano retribuzioni (Cass. 8662/2019).',
+            'Se c\'è l\'offerta del Jobs Act per gli assunti dal 7/3/2015, la parte di legge è esente: vedi la scheda dedicata.'
+          ],
+          norma: 'Art. 17 c. 1 lett. a) TUIR; circolare 29/E/2001; risoluzione 135/E/2009.'
+        },
+        {
+          label: 'All\'uscita, per differenze di stipendio, straordinari o arretrati', irpef: 'separata_tfr', contributi: true,
+          breve: 'Resta a tassazione separata perché legata alla cessazione, ma sono retribuzioni: i contributi sono dovuti.',
+          attenzione: ['Conviene distinguere nel verbale la parte retributiva da quella per la rinuncia a impugnare: cambia il calcolo dei contributi.'],
+          norma: 'Art. 17 c. 1 lett. a) TUIR; art. 12 L. 153/1969.'
+        },
+        {
+          label: 'Durante il rapporto (il lavoro continua)', irpef: 'ordinaria', contributi: 'dipende', contrDefault: true,
+          breve: 'Se il rapporto prosegue non c\'è tassazione separata: le somme si sommano al reddito dell\'anno, anche se chiamate "transazione generale e novativa".',
+          attenzione: ['Contributi dovuti sulle somme che pagano differenze retributive o arretrati.', 'Vale anche per arretrati di anni precedenti pagati con la transazione (risposte 343 e 344/2022).'],
+          norma: 'Art. 51 TUIR; Agenzia Entrate risposte 343 e 344 del 23/6/2022.'
+        }
+      ]
+    },
+    {
+      id: 'conciliazione-jobs-act', esempio: 20000, cat: 'lite', nome: 'Offerta di conciliazione del Jobs Act',
+      sinonimi: 'art. 6 d.lgs. 23/2015 tutele crescenti assegno circolare offerta conciliativa licenziamento',
+      varianti: [{
+        irpef: 'esente', contributi: false,
+        breve: 'Per chi è assunto a tempo indeterminato dal 7 marzo 2015: se l\'azienda offre in sede protetta, con assegno circolare, una mensilità di retribuzione utile al TFR per anno di servizio (da 3 a 27, dimezzate nelle piccole imprese) e il lavoratore accetta, la somma non è tassata e non paga contributi.',
+        attenzione: [
+          'È esente solo la somma calcolata con la formula di legge: le somme aggiunte per chiudere altre pretese seguono la propria tassazione, di solito separata.',
+          'L\'offerta va fatta entro il termine per impugnare il licenziamento (60 giorni) in una sede protetta.',
+          'Accettando si chiude ogni contestazione sul licenziamento; la NASpI resta possibile.'
+        ],
+        norma: 'Art. 6 D.Lgs. 23/2015 (importi aggiornati dal DL 87/2018).'
+      }]
+    },
+    {
+      id: 'licenziamento', esempio: 30000, cat: 'lite', nome: 'Indennità per licenziamento illegittimo',
+      sinonimi: 'sentenza licenziamento articolo 18 jobs act tutele crescenti reintegra indennità risarcitoria',
+      varianti: [
+        {
+          label: 'Indennità senza reintegra (es. art. 3 D.Lgs. 23/2015, art. 18 c. 5-7)', irpef: 'separata_tfr', contributi: false,
+          breve: 'Il rapporto resta chiuso e il giudice liquida un\'indennità: tassazione separata con l\'aliquota del TFR, senza contributi.',
+          attenzione: ['Le spese legali riconosciute si scorporano dall\'imponibile.'],
+          norma: 'Art. 17 c. 1 lett. a) TUIR; art. 3 D.Lgs. 23/2015; art. 18 L. 300/1970.'
+        },
+        {
+          label: 'Reintegra: indennità per i mesi di estromissione', irpef: 'separata_arretrati', contributi: true,
+          breve: 'Con la reintegra l\'indennità sostituisce gli stipendi persi: contributi dovuti. La parte di anni precedenti va a tassazione separata, quella dell\'anno in corso in tassazione ordinaria.',
+          attenzione: ['Dall\'indennità si detrae quanto percepito da altri lavori nel periodo (aliunde perceptum).'],
+          norma: 'Art. 18 c. 2 e 4 L. 300/1970; art. 17 c. 1 lett. b) TUIR.'
+        },
+        {
+          label: 'Indennità sostitutiva della reintegra (15 mensilità)', irpef: 'separata_tfr', contributi: false,
+          breve: 'Il lavoratore sceglie di non rientrare: tassazione separata con l\'aliquota del TFR, senza contributi.',
+          attenzione: ['Le spese legali riconosciute si scorporano dall\'imponibile.'],
+          norma: 'Art. 18 c. 3 L. 300/1970; art. 17 c. 1 lett. a) TUIR.'
+        }
+      ]
+    },
+    {
+      id: 'risarcimento', esempio: 15000, cat: 'lite', nome: 'Risarcimento del danno (sentenza o accordo)',
+      sinonimi: 'danni accertati in giudizio demansionamento mobbing danno biologico danno morale esistenziale perdita di chance danno professionale lucro cessante danno emergente',
+      varianti: [
+        {
+          label: 'Ripaga un reddito perso (lucro cessante)', irpef: 'separata_arretrati', contributi: 'dipende', contrDefault: false,
+          breve: 'Se il risarcimento sostituisce stipendi o guadagni non percepiti è tassato come il reddito che sostituisce: di solito tassazione separata, perché riferito ad anni passati.',
+          attenzione: [
+            'Se il danno riguarda l\'anno in corso si va in tassazione ordinaria.',
+            'Contributi dovuti se la somma corrisponde in realtà a retribuzioni non pagate.'
+          ],
+          norma: 'Art. 6 c. 2 TUIR; Cass. 14842/2022.'
+        },
+        {
+          label: 'Ripara un danno alla persona (biologico, morale, esistenziale, invalidità permanente)', irpef: 'esente', contributi: false,
+          breve: 'Non sostituisce un reddito: non è tassato e non paga contributi.',
+          attenzione: ['Sono sempre esenti le somme per invalidità permanente o morte, anche se calcolate sul reddito perso.', 'Il titolo deve risultare dalla sentenza o dall\'accordo.'],
+          norma: 'Art. 6 c. 2 TUIR.'
+        },
+        {
+          label: 'Ripara un danno al patrimonio o alla professionalità (danno emergente, perdita di chance)', irpef: 'esente', contributi: false,
+          breve: 'Il danno emergente non è reddito: ad esempio la lesione della professionalità da demansionamento o la perdita di chance, se provate.',
+          attenzione: [
+            'Serve che la natura del danno sia specificata e provata: senza indicazioni la Cassazione (ord. 8615/2023) ha considerato tassabile il risarcimento per demansionamento.',
+            'L\'Agenzia ha riconosciuto la non imponibilità della perdita di chance (risposta 185/2022).'
+          ],
+          norma: 'Art. 6 c. 2 TUIR; Agenzia Entrate risposta 185/2022; Cass. 8615/2023.'
+        }
+      ]
+    },
+    {
+      id: 'arretrati', esempio: 5000, cat: 'lite', nome: 'Arretrati di anni precedenti',
+      sinonimi: 'differenze retributive sentenza ricostruzione carriera inquadramento superiore mansioni superiori emolumenti arretrati',
+      varianti: [{
+        irpef: 'separata_arretrati', contributi: true,
+        breve: 'Stipendi di anni passati pagati in ritardo per cause non dipendenti dalle parti (sentenza, rinnovo contrattuale, ricostruzione di carriera): tassazione separata con l\'aliquota media dei due anni precedenti, contributi dovuti.',
+        attenzione: [
+          'Se il ritardo è fisiologico (ad esempio competenze di dicembre pagate entro il 12 gennaio) si resta in tassazione ordinaria.',
+          'Se gli arretrati sono pagati con una transazione mentre il rapporto prosegue, l\'Agenzia applica la tassazione ordinaria.',
+          'Interessi e rivalutazione hanno una scheda dedicata.'
+        ],
+        norma: 'Art. 17 c. 1 lett. b) e art. 21 TUIR.'
+      }]
+    },
+    {
+      id: 'interessi', esempio: 800, cat: 'lite', nome: 'Interessi e rivalutazione su crediti di lavoro',
+      sinonimi: 'interessi legali moratori rivalutazione monetaria accessori sentenza',
+      varianti: [
+        {
+          label: 'Interessi (legali o moratori)', irpef: 'separata_arretrati', contributi: false,
+          breve: 'Gli interessi su crediti di lavoro sono reddito della stessa categoria del credito: seguono la sua tassazione (di solito separata), senza contributi.',
+          attenzione: ['Se il credito principale è esente (ad esempio un danno alla persona) sono esenti anche gli interessi.'],
+          norma: 'Art. 6 c. 2 TUIR; Cass. ord. 916/2020.'
+        },
+        {
+          label: 'Rivalutazione monetaria', irpef: 'separata_arretrati', contributi: false,
+          breve: 'Nella prassi dei sostituti d\'imposta la rivalutazione segue la tassazione del credito principale. Alcune decisioni di merito l\'hanno ritenuta non tassabile: l\'orientamento non è univoco.',
+          attenzione: ['Caso da valutare con il consulente fiscale prima di decidere se trattenere le imposte.'],
+          norma: 'Art. 6 c. 2 TUIR; art. 429 c. 3 c.p.c.'
+        }
+      ]
+    },
+    {
+      id: 'spese-legali', esempio: 3000, cat: 'lite', nome: 'Spese legali riconosciute al lavoratore',
+      sinonimi: 'compenso avvocato parcella spese di lite liquidate dal giudice',
+      varianti: [{
+        irpef: 'esente', contributi: false,
+        breve: 'Il rimborso delle spese legali sostenute non è reddito. Nelle somme a tassazione separata (indennità di licenziamento, transazioni) le spese legali documentate si sottraggono dall\'imponibile.',
+        attenzione: ['Serve la documentazione (parcella o liquidazione del giudice); un importo forfettario non giustificato è tassato.'],
+        norma: 'Art. 6 c. 2 e art. 17 TUIR; prassi Agenzia Entrate.'
+      }]
+    },
+    {
+      id: 'straordinario', esempio: 500, cat: 'busta', nome: 'Straordinario',
+      sinonimi: 'lavoro straordinario ore extra',
+      varianti: [{
+        irpef: 'ordinaria', contributi: true,
+        breve: 'Si somma allo stipendio: contributi e IRPEF all\'aliquota marginale, più addizionali. Può ridurre detrazioni e taglio del cuneo.',
+        attenzione: ['Le maggiorazioni per notturno, festivo e turni hanno una scheda dedicata con la flat tax del 15% nel 2026.'],
+        norma: 'Art. 51 TUIR.'
+      }]
+    },
+    {
+      id: 'premio-risultato', esempio: 2000, cat: 'busta', nome: 'Premio di risultato (VAP, premio aziendale)',
+      sinonimi: 'vap premio di produttività premio aziendale accordo integrativo partecipazione agli utili',
+      varianti: [{
+        irpef: 'sost1', contributi: true,
+        breve: 'Nel 2026 e 2027 imposta sostitutiva dell\'1% fino a 5.000 € se il reddito da lavoro dipendente dell\'anno prima non supera 80.000 €. Contributi dovuti.',
+        attenzione: ['Serve un accordo aziendale o territoriale con obiettivi misurabili.', 'Convertito in welfare non è tassato e non paga contributi entro lo stesso limite di 5.000 €.', 'Oltre il limite, o senza requisiti, tassazione ordinaria.'],
+        norma: 'Art. 1 c. 182-189 L. 208/2015; art. 1 c. 9 L. 199/2025.'
+      }]
+    },
+    {
+      id: 'notturni', esempio: 1000, cat: 'busta', nome: 'Maggiorazioni per notturno, festivo, riposo e turni',
+      sinonimi: 'indennità turno lavoro notturno festivo reperibilità flat tax 15',
+      varianti: [{
+        irpef: 'sost15', contributi: true,
+        breve: 'Solo per il 2026: imposta sostitutiva del 15% fino a 1.500 € se il reddito 2025 da lavoro dipendente non supera 40.000 €. Contributi dovuti.',
+        attenzione: ['Riguarda le maggiorazioni e indennità previste dal CCNL, non la paga base delle ore.', 'Oltre 1.500 € tassazione ordinaria.'],
+        norma: 'Art. 1 c. 10-11 L. 199/2025; circolare Agenzia Entrate 3/E 2026.'
+      }]
+    },
+    {
+      id: 'rinnovo', esempio: 1200, cat: 'busta', nome: 'Aumenti da rinnovo del CCNL',
+      sinonimi: 'incrementi contrattuali rinnovo contratto flat tax 5 arretrati rinnovo',
+      varianti: [{
+        irpef: 'sost5', contributi: true,
+        breve: 'Imposta sostitutiva del 5% sugli incrementi pagati nel 2026 da rinnovi firmati tra il 2024 e il 2026, se il reddito 2025 non supera 33.000 €.',
+        attenzione: ['Il rinnovo ABI del 23/11/2023 è precedente al 2024 e non rientra; il rinnovo ANIA del 13/5/2026 sì.', 'Esclusi scatti di anzianità, una tantum e TFR.'],
+        norma: 'Art. 1 c. 7 L. 199/2025.'
+      }]
+    },
+    {
+      id: 'bonus', esempio: 3000, cat: 'busta', nome: 'Bonus individuale, una tantum, sistema incentivante',
+      sinonimi: 'bonus manageriale mbo incentivo individuale gratifica premio individuale una tantum',
+      varianti: [{
+        irpef: 'ordinaria', contributi: true,
+        breve: 'Premi decisi individualmente e non legati a un accordo collettivo: tassazione ordinaria e contributi.',
+        attenzione: ['L\'una tantum prevista da un rinnovo contrattuale è comunque esclusa dalla flat tax del 5%.'],
+        norma: 'Art. 51 TUIR.'
+      }]
+    },
+    {
+      id: 'voce-fissa', esempio: 100, cat: 'busta', nome: 'Voce fissa mensile (superminimo, ad personam, indennità)',
+      sinonimi: 'aumento di stipendio assegno ad personam superminimo indennità di ruolo indennità di funzione aumento di merito promozione',
+      varianti: [{
+        irpef: 'fissa', contributi: true,
+        breve: 'Un importo che si ripete ogni mese, su tutte le mensilità: aumenta la retribuzione annua e segue la tassazione ordinaria. Inserisci l\'importo mensile.',
+        attenzione: ['Un aumento può farti perdere parte delle detrazioni e del taglio del cuneo: il netto in più può essere meno della metà del lordo.', 'Entra anche nella base del TFR e dei contributi per la pensione.'],
+        norma: 'Art. 51 TUIR.'
+      }]
+    },
+    {
+      id: 'welfare', esempio: 1000, cat: 'busta', nome: 'Welfare aziendale e flexible benefit',
+      sinonimi: 'piattaforma welfare rimborso spese scolastiche asilo trasporto pubblico previdenza assistenza sanitaria',
+      varianti: [{
+        irpef: 'esente', contributi: false,
+        breve: 'Servizi e rimborsi previsti dall\'art. 51 c. 2 TUIR (istruzione, trasporto pubblico, assistenza familiari, cultura e simili) non sono tassati e non pagano contributi.',
+        attenzione: ['Buoni acquisto e utenze rientrano invece nei fringe benefit, con il limite di 1.000 o 2.000 €.', 'Fondo pensione e cassa sanitaria hanno limiti propri (5.164,57 € e 3.615,20 €).'],
+        norma: 'Art. 51 c. 2 e 3 TUIR.'
+      }]
+    },
+    {
+      id: 'fringe', esempio: 800, cat: 'busta', nome: 'Fringe benefit (buoni acquisto, utenze, affitto)',
+      sinonimi: 'buoni regalo gift card bollette affitto interessi mutuo auto aziendale',
+      varianti: [{
+        irpef: 'fringe', contributi: true,
+        breve: 'Esenti fino a 1.000 € l\'anno, 2.000 € con figli a carico (2025-2027). Se si supera la soglia è tassato tutto l\'importo, non solo l\'eccedenza.',
+        attenzione: ['Il limite comprende tutti i benefit dell\'anno ricevuti dallo stesso datore.', 'Auto aziendale e prestiti agevolati hanno regole di valutazione proprie.'],
+        norma: 'Art. 51 c. 3 TUIR; art. 1 c. 390-391 L. 207/2024.'
+      }]
+    },
+    {
+      id: 'buoni-pasto', esempio: 0, cat: 'busta', nome: 'Buoni pasto',
+      sinonimi: 'ticket restaurant mensa',
+      varianti: [{
+        irpef: 'buonipasto', contributi: true,
+        breve: 'Dal 2026 esenti fino a 10 € al giorno se elettronici, 4 € se cartacei. Si tassa solo l\'eccedenza.',
+        attenzione: ['La soglia dei buoni pasto non si somma a quella dei fringe benefit.'],
+        norma: 'Art. 51 c. 2 lett. c) TUIR; art. 1 c. 14 L. 199/2025.'
+      }]
+    },
+    {
+      id: 'trasferta', esempio: 1000, cat: 'rimborsi', nome: 'Trasferte e rimborsi spese',
+      sinonimi: 'diaria indennità di trasferta nota spese rimborso chilometrico vitto alloggio taxi',
+      varianti: [
+        {
+          label: 'Rimborso analitico (a piè di lista)', irpef: 'esente', contributi: false,
+          breve: 'Le spese documentate per trasferte di lavoro sono rimborsate senza tasse né contributi.',
+          attenzione: ['Vitto, alloggio, taxi e NCC in Italia devono essere pagati con strumenti tracciabili, altrimenti il rimborso è tassato (dal 2025).', 'Fuori dal comune di lavoro; dentro il comune sono esenti solo i trasporti documentati.'],
+          norma: 'Art. 51 c. 5 TUIR; L. 207/2024; circolare Agenzia Entrate 15/E/2025.'
+        },
+        {
+          label: 'Indennità forfettaria (diaria)', irpef: 'trasferta', contributi: true,
+          breve: 'Esente fino a 46,48 € al giorno in Italia e 77,47 € all\'estero; l\'eccedenza è tassata e paga contributi.',
+          attenzione: ['Se insieme alla diaria si rimborsano anche vitto o alloggio, le soglie si riducono (rimborso misto).'],
+          norma: 'Art. 51 c. 5 TUIR.'
+        }
+      ]
+    },
+    {
+      id: 'restituzione', esempio: 1500, cat: 'rimborsi', nome: 'Restituzione di somme pagate per errore',
+      sinonimi: 'indebito recupero somme non dovute ripetizione storno trattenuta errore cedolino',
+      varianti: [
+        {
+          label: 'Somme dell\'anno in corso', irpef: 'restituzione_lordo', contributi: true,
+          breve: 'Si restituisce l\'importo lordo: l\'azienda ricalcola contributi e IRPEF nel conguaglio, quindi il costo effettivo per te è più basso del lordo.',
+          attenzione: ['Il recupero può essere rateizzato in busta paga con accordo.'],
+          norma: 'Art. 2033 c.c.; art. 23 DPR 600/1973.'
+        },
+        {
+          label: 'Somme tassate in anni precedenti', irpef: 'restituzione_netto', contributi: true,
+          breve: 'Dal 2020 si restituisce al netto delle ritenute IRPEF subite; la somma non è più deducibile e all\'azienda spetta un credito d\'imposta del 30%.',
+          attenzione: ['Per i provvedimenti di restituzione definiti prima del 19/5/2020 vale ancora la restituzione al lordo.', 'I contributi si regolano a parte con l\'INPS.'],
+          norma: 'Art. 10 c. 2-bis TUIR; art. 150 DL 34/2020; circolare Agenzia Entrate 8/E/2021.'
+        }
+      ]
+    }
+  ];
+
+  /* Domande della procedura guidata. */
+  const GUIDA = [
+    { id: 'quando', domanda: 'Quando viene pagata la somma?', opzioni: [
+      { v: 'durante', t: 'Durante il rapporto di lavoro' },
+      { v: 'fine', t: 'All\'uscita o dopo la fine del rapporto' }
+    ] },
+    { id: 'cosa', domanda: 'Per che cosa viene pagata?', opzioni: [
+      { v: 'lavoro', t: 'Lavoro svolto o stipendio non pagato' },
+      { v: 'uscita', t: 'Per l\'uscita (incentivo, accordo di esodo)' },
+      { v: 'lite', t: 'Per chiudere una lite o rinunciare a fare causa' },
+      { v: 'giudice', t: 'L\'ha decisa un giudice dopo un licenziamento' },
+      { v: 'danno', t: 'Per risarcire un danno' },
+      { v: 'accessori', t: 'Interessi o rivalutazione su somme arretrate' },
+      { v: 'spese', t: 'Per rimborsare spese' }
+    ] },
+    { id: 'dettaglio', domanda: '', opzioni: [] }
+  ];
+
+  function dettaglio(r) {
+    switch (r.cosa) {
+      case 'lavoro': return { domanda: 'A quando si riferisce?', opzioni: [
+        { v: 'anno', t: 'All\'anno in corso' }, { v: 'prec', t: 'Ad anni precedenti' }, { v: 'ferie', t: 'Sono ferie o permessi non goduti' }, { v: 'preavviso', t: 'È il preavviso non lavorato' }] };
+      case 'uscita': return { domanda: 'Chi la paga?', opzioni: [
+        { v: 'azienda', t: 'L\'azienda' }, { v: 'fondo', t: 'L\'INPS per il Fondo di solidarietà del credito' }] };
+      case 'lite': return { domanda: 'Che tipo di accordo è?', opzioni: [
+        { v: 'jobsact', t: 'Offerta del Jobs Act con assegno circolare (assunti dal 7/3/2015)' }, { v: 'rinuncia', t: 'Transazione per rinunciare a impugnare' }, { v: 'retrib', t: 'Transazione su differenze di stipendio' }] };
+      case 'giudice': return { domanda: 'Cosa ha deciso il giudice?', opzioni: [
+        { v: 'indennita', t: 'Solo un\'indennità, senza rientro' }, { v: 'reintegra', t: 'Il rientro al lavoro con indennità' }, { v: 'sostitutiva', t: 'Il lavoratore ha scelto le 15 mensilità al posto del rientro' }] };
+      case 'danno': return { domanda: 'Che cosa risarcisce?', opzioni: [
+        { v: 'reddito', t: 'Stipendi o guadagni persi' }, { v: 'persona', t: 'Salute, sofferenza, vita personale' }, { v: 'patrimonio', t: 'Professionalità, chance perse, spese sostenute' }] };
+      case 'accessori': return { domanda: 'Di cosa si tratta?', opzioni: [
+        { v: 'interessi', t: 'Interessi' }, { v: 'rivalutazione', t: 'Rivalutazione monetaria' }] };
+      case 'spese': return { domanda: 'Che spese sono?', opzioni: [
+        { v: 'trasferta', t: 'Trasferte di lavoro' }, { v: 'legali', t: 'Spese legali di una causa' }] };
+    }
+    return null;
+  }
+
+  function esito(r) {
+    const fine = r.quando === 'fine';
+    switch (r.cosa) {
+      case 'lavoro':
+        if (r.dettaglio === 'ferie') return { id: 'ferie', v: 0 };
+        if (r.dettaglio === 'preavviso') return { id: 'preavviso', v: 0 };
+        if (r.dettaglio === 'prec') return { id: 'arretrati', v: 0 };
+        return { id: 'straordinario', v: 0 };
+      case 'uscita': return r.dettaglio === 'fondo' ? { id: 'fondo-credito', v: 0 } : { id: 'incentivo-esodo', v: 0 };
+      case 'lite':
+        if (r.dettaglio === 'jobsact') return { id: 'conciliazione-jobs-act', v: 0 };
+        if (!fine) return { id: 'transazione', v: 2 };
+        return { id: 'transazione', v: r.dettaglio === 'retrib' ? 1 : 0 };
+      case 'giudice': return { id: 'licenziamento', v: r.dettaglio === 'reintegra' ? 1 : (r.dettaglio === 'sostitutiva' ? 2 : 0) };
+      case 'danno': return { id: 'risarcimento', v: r.dettaglio === 'persona' ? 1 : (r.dettaglio === 'patrimonio' ? 2 : 0) };
+      case 'accessori': return { id: 'interessi', v: r.dettaglio === 'rivalutazione' ? 1 : 0 };
+      case 'spese': return r.dettaglio === 'legali' ? { id: 'spese-legali', v: 0 } : { id: 'trasferta', v: 0 };
+    }
+    return { id: 'straordinario', v: 0 };
+  }
+
+  const api = { CATS, CASI, GUIDA, dettaglio, esito };
+  if (typeof module !== 'undefined' && module.exports) module.exports = api;
+  else root.Casi = api;
+})(typeof self !== 'undefined' ? self : this);
+</script>
+<script>/* Busta Paga 2026 - v3: somme particolari + stipendio completo + simulazione */
+(function () {
+  'use strict';
+  const E = window.PayEngine;
+  const C = window.Casi;
+  const $ = (s, el) => (el || document).querySelector(s);
+  const $$ = (s, el) => Array.from((el || document).querySelectorAll(s));
+  const STORE = 'bp2026-v3';
+  const STORE_DATA = 'bp2026-rates-v1';
+
+  const fE = new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const fE0 = new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
+  const fN = new Intl.NumberFormat('it-IT', { maximumFractionDigits: 2 });
+  const eur = (x) => fE.format(Math.abs(x) < 0.005 ? 0 : x);
+  const eur0 = (x) => fE0.format(x);
+  const pct = (x, d) => new Intl.NumberFormat('it-IT', { maximumFractionDigits: d == null ? 1 : d }).format(x) + '%';
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+  function parseNum(s) {
+    if (typeof s === 'number') return s;
+    let t = String(s == null ? '' : s).trim().replace(/[€%\s]/g, '');
+    if (!t) return 0;
+    if (t.includes(',')) t = t.replace(/\./g, '').replace(',', '.');
+    else if (/^\d{1,3}(\.\d{3})+$/.test(t)) t = t.replace(/\./g, '');
+    const n = parseFloat(t);
+    return isFinite(n) ? n : 0;
+  }
+  const showNum = (n) => (n === '' || n == null) ? '' : fN.format(n);
+  const setText = (id, t) => { const el = document.getElementById(id); if (el) el.textContent = t; };
+
+  let P = JSON.parse(document.getElementById('rates-fallback').textContent);
+  try { const c = JSON.parse(localStorage.getItem(STORE_DATA) || 'null'); if (c && c.version > P.version) P = c; } catch (e) { /* */ }
+
+  const DEFAULT = {
+    tab: 'tassazione', modo: 'l2n', ccnl: 'credito', inserimento: 'livello', livello: 'a34', scatti: 2, altreFisse: 0,
+    ral: 44525, mensile: 3425, mensilita: 13, target: 2300, targetModo: 'medio',
+    regione: 'lom', comAliq: 0.8, comEsenz: 0, comScagl: false, comSc: [0.8, 0.8, 0.8, 0.8],
+    coniuge: false, figliU21: 0, figli21: 0, altriFam: 0, prevDipPct: 0, prevDatPct: 0, cassaDip: 0,
+    contratto: 'indet', giorni: 365, inpsPct: 9.19, fondoPct: 0.067, massimale: false, redditoPrec: '', costoPct: 30, inailPct: 0.4,
+    aliqTfrMan: '', regOverride: {},
+    calc: { imp: {}, wc: {}, mode: 'lordo', figli: false, bpVal: 8, bpGg: 210, bpCart: false, trImp: 60, trGg: 10, trEstero: false },
+    sim: [
+      { id: 's1', caso: 'premio-risultato', v: 0, mode: 'lordo', importo: 2000, esempio: true },
+      { id: 's2', caso: 'straordinario', v: 0, mode: 'netto', importo: 300, esempio: true }
+    ],
+    cat: 'tutte', q: ''
+  };
+  let S;
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORE) || '{}');
+    S = Object.assign(JSON.parse(JSON.stringify(DEFAULT)), saved);
+    S.calc = Object.assign({}, DEFAULT.calc, saved.calc || {});
+  } catch (e) { S = JSON.parse(JSON.stringify(DEFAULT)); }
+  const save = () => { try { localStorage.setItem(STORE, JSON.stringify(S)); } catch (e) { /* */ } };
+
+  /* ================= profilo e motore ================= */
+  const livelli = () => (P.ccnl.credito && P.ccnl.credito.livelli) || [];
+  const ccnlCfg = () => P.ccnl[S.ccnl] || P.ccnl.altro;
+  function regioneCfg() {
+    const r = P.regioni.find((x) => x.id === S.regione) || P.regioni[0];
+    const o = S.regOverride && S.regOverride[r.id];
+    return o ? Object.assign({}, r, { scaglioni: o, intero: [], esenzione: 0, override: true }) : r;
+  }
+  function comuneCfg() {
+    if (S.comScagl) { const s = S.comSc.map(Number); return { esenzione: Number(S.comEsenz) || 0, scaglioni: [[15000, s[0]], [28000, s[1]], [50000, s[2]], [null, s[3]]] }; }
+    return { aliquota: Number(S.comAliq) || 0, esenzione: Number(S.comEsenz) || 0 };
+  }
+  function aliqTfrOf(f) {
+    const man = parseNum(S.aliqTfrMan);
+    if (man > 0) return { a: man / 100, rif: null, manuale: true };
+    const rif = f * 12 / P.tfrDivisore;
+    return { a: rif > 0 ? E.progressive(rif, P.irpef.scaglioni) / rif : 0.23, rif, manuale: false };
+  }
+  function baseInput(fisso, voci) {
+    return {
+      fisso, mensilita: Number(S.mensilita) || 13, voci: voci || [], contratto: S.contratto,
+      giorni: Math.min(365, Math.max(1, Number(S.giorni) || 365)),
+      inpsPct: Number(S.inpsPct), fondoPct: Number(S.fondoPct), massimale: !!S.massimale,
+      prevDipPct: Number(S.prevDipPct) || 0, prevDatPct: Number(S.prevDatPct) || 0, cassaDip: Number(S.cassaDip) || 0,
+      coniuge: !!S.coniuge, figliU21: Number(S.figliU21) || 0, figli21: Number(S.figli21) || 0, altriFam: Number(S.altriFam) || 0,
+      redditoPrec: S.redditoPrec === '' ? null : Number(S.redditoPrec),
+      regione: regioneCfg(), comune: comuneCfg(), costoPct: Number(S.costoPct) || 0, inailPct: Number(S.inailPct) || 0,
+      aliqTfr: aliqTfrOf(fisso).a
+    };
+  }
+  function fissoInput() {
+    const m = Number(S.mensilita) || 13;
+    if (S.inserimento === 'livello' && S.ccnl === 'credito') {
+      const l = livelli().find((x) => x.id === S.livello) || livelli()[0];
+      const sc = Math.min(Number(S.scatti) || 0, l.maxScatti);
+      const mese = l.stipendio + sc * l.scatto + (Number(S.altreFisse) || 0);
+      return { fisso: mese * m, mese, livello: l };
+    }
+    if (S.inserimento === 'mensile') return { fisso: (Number(S.mensile) || 0) * m, mese: Number(S.mensile) || 0 };
+    return { fisso: Number(S.ral) || 0, mese: (Number(S.ral) || 0) / m };
+  }
+  let FC = null;
+  function fisso() {
+    if (S.modo !== 'n2l') return fissoInput().fisso;
+    const key = JSON.stringify([S.target, S.targetModo, S.mensilita, S.regione, S.regOverride, S.comAliq, S.comEsenz, S.comScagl, S.comSc, S.coniuge, S.figliU21, S.figli21, S.altriFam, S.prevDipPct, S.prevDatPct, S.cassaDip, S.inpsPct, S.fondoPct, S.contratto, S.giorni, S.massimale, P.version]);
+    if (FC && FC.key === key) return FC.v;
+    const v = E.lordoDaNetto(baseInput(0, []), Number(S.target) || 0, S.targetModo, P);
+    FC = { key, v };
+    return v;
+  }
+  function ctx() { const f = fisso(); const inp = baseInput(f, []); return { fisso: f, inp, R: E.compute(inp, P) }; }
+  function aliqArr(cx) { const R = cx.R; return R.imponibile > 0 ? Math.max(0.23, R.irpefLorda / R.imponibile) : 0.23; }
+  function contrRate(cx) { const x = cx.fisso > P.inps.sogliaAggiuntiva ? P.inps.aggiuntiva : 0; return (Number(S.inpsPct) + Number(S.fondoPct) + x) / 100; }
+
+  /* ================= verdetti ================= */
+  function verdetto(v) {
+    const c = v.contributi === true ? ['Sì', 'si'] : v.contributi === false ? ['No', 'no'] : ['Dipende', 'dip'];
+    const M = {
+      ordinaria: [['Ordinaria', 'si somma allo stipendio', 'ord'], c, ['Sì', 'si']],
+      fissa: [['Ordinaria', 'ogni mese con lo stipendio', 'ord'], c, ['Sì', 'si']],
+      separata_tfr: [['Separata', 'aliquota del TFR', 'sep'], c, ['No', 'no']],
+      separata_arretrati: [['Separata', 'aliquota media ultimi 2 anni', 'sep'], c, ['No', 'no']],
+      esente: [['Esente', 'non è reddito', 'ok'], c, ['No', 'no']],
+      sost1: [['1% sostitutiva', 'fino a 5.000 €', 'sost'], c, ['No', 'no']],
+      sost15: [['15% sostitutiva', 'fino a 1.500 €', 'sost'], c, ['No', 'no']],
+      sost5: [['5% sostitutiva', 'sugli aumenti', 'sost'], c, ['No', 'no']],
+      fringe: [['Esente fino a soglia', '1.000 € o 2.000 € con figli', 'ok'], ['Oltre soglia', 'dip'], ['Oltre soglia', 'dip']],
+      buonipasto: [['Esente fino a 10 €/giorno', '4 € se cartacei', 'ok'], ['Sull\'eccedenza', 'dip'], ['Sull\'eccedenza', 'dip']],
+      trasferta: [['Esente fino a 46,48 €/giorno', '77,47 € all\'estero', 'ok'], ['Sull\'eccedenza', 'dip'], ['Sull\'eccedenza', 'dip']],
+      restituzione_lordo: [['Restituisci il lordo', 'IRPEF ricalcolata a conguaglio', 'ord'], ['Ricalcolati', 'dip'], ['Ricalcolate', 'dip']],
+      restituzione_netto: [['Restituisci il netto', 'senza l\'IRPEF trattenuta', 'sep'], ['A parte', 'dip'], ['—', 'no']]
+    };
+    const m = M[v.irpef];
+    return { irpef: { t: m[0][0], s: m[0][1], tone: m[0][2] }, contr: { t: m[1][0], tone: m[1][1] }, add: { t: m[2][0], tone: m[2][1] } };
+  }
+  function chipLista(caso) {
+    if (caso.varianti.length > 1) return `<span class="pill pill-dip">${caso.varianti.length} casi diversi</span>`;
+    const v = caso.varianti[0]; const vd = verdetto(v);
+    const contr = v.contributi === false ? 'no INPS' : v.contributi === true ? 'INPS sì' : '';
+    return `<span class="pill pill-${vd.irpef.tone}">${vd.irpef.t}</span>${contr && !['fringe', 'buonipasto', 'trasferta'].includes(v.irpef) ? `<span class="pill pill-plain">${contr}</span>` : ''}`;
+  }
+
+  /* ================= calcolo somma singola ================= */
+  const NETTO_OK = ['ordinaria', 'fissa', 'separata_tfr', 'separata_arretrati', 'esente', 'sost1', 'sost15', 'sost5'];
+  const findCaso = (id) => C.CASI.find((c) => c.id === id);
+  let CUR = { id: null, v: 0, daGuida: false };
+  const wcKey = () => CUR.id + ':' + CUR.v;
+  const getWC = (v) => (S.calc.wc && wcKey() in S.calc.wc) ? S.calc.wc[wcKey()] : (v.contrDefault == null ? true : v.contrDefault);
+  const getImp = () => (S.calc.imp && CUR.id in S.calc.imp) ? S.calc.imp[CUR.id] : ((findCaso(CUR.id) || {}).esempio || 1000);
+  const useContr = (v, wc) => v.contributi === true || (v.contributi === 'dipende' && wc);
+
+  function calcCaso(v, L, cx, opt) {
+    const o = Object.assign({ wc: true, figli: false, bpVal: 0, bpGg: 0, bpCart: false, trImp: 0, trGg: 0, trEstero: false }, opt);
+    const r = { lordo: L, netto: L, righe: [], note: [] };
+    const uc = useContr(v, o.wc);
+    const ev = (voce, inp) => E.evalVoce(inp || cx.inp, Object.assign({ id: '__x' }, voce), P);
+    const righeEv = (e) => {
+      if (Math.abs(e.contributi) > 0.005) r.righe.push(['Contributi INPS', e.contributi]);
+      if (Math.abs(e.sostitutive) > 0.005) r.righe.push(['Imposta sostitutiva', e.sostitutive]);
+      if (Math.abs(e.irpef) > 0.005) r.righe.push(['IRPEF (con effetto su detrazioni e cuneo)', e.irpef]);
+      if (Math.abs(e.addizionali) > 0.005) r.righe.push(['Addizionali regionale e comunale', e.addizionali]);
+    };
+    const mens = Number(S.mensilita) || 13;
+    switch (v.irpef) {
+      case 'ordinaria': {
+        const e = ev({ titolo: uc ? 'straordinario' : 'ordinarianc', lordo: L }); r.netto = e.netto; righeEv(e);
+        r.note.push(`Aggiunta a una RAL di ${eur0(cx.fisso)}: aliquota marginale IRPEF ${cx.R.aliquotaMarginale}%.`); break;
+      }
+      case 'fissa': {
+        const e = ev({ titolo: 'fissa', lordo: L * mens }); r.lordo = L * mens; r.netto = e.netto; righeEv(e);
+        r.note.push(`Al mese: ${eur(L)} lordi → ${eur(e.netto / mens)} netti in media (× ${mens} mensilità).`); break;
+      }
+      case 'separata_tfr': case 'separata_arretrati': {
+        const c = uc ? contrRate(cx) : 0; const contr = L * c;
+        const al = v.irpef === 'separata_tfr' ? aliqTfrOf(cx.fisso) : { a: aliqArr(cx) };
+        const tax = (L - contr) * al.a; r.netto = L - contr - tax;
+        if (contr) r.righe.push(['Contributi INPS', contr]);
+        r.righe.push([`IRPEF a tassazione separata (${pct(al.a * 100, 2)})`, tax]);
+        if (v.irpef === 'separata_tfr') r.note.push(al.manuale ? 'Aliquota inserita da te.' : `Aliquota stimata dal reddito di riferimento di circa ${eur0(al.rif)} (RAL × 12 ÷ 13,5). Se conosci quella esatta inseriscila qui sotto.`);
+        else r.note.push('Aliquota stimata come media IRPEF del reddito attuale; la norma usa la media dei due anni precedenti.');
+        r.note.push('Niente addizionali regionali e comunali.'); break;
+      }
+      case 'esente': r.note.push('Nessuna trattenuta: ricevi tutto l\'importo.'); break;
+      case 'sost1': case 'sost15': case 'sost5': {
+        const tit = { sost1: 'premio', sost15: 'notturno', sost5: 'rinnovo' }[v.irpef];
+        const e = ev({ titolo: tit, lordo: L }); r.netto = e.netto; righeEv(e);
+        const ok = { sost1: e.con.premioOk, sost15: e.con.nottOk, sost5: e.con.rinnOk }[v.irpef];
+        const sg = { sost1: '80.000', sost15: '40.000', sost5: '33.000' }[v.irpef];
+        r.note.push(ok ? `Requisito di reddito rispettato (reddito considerato ${eur0(e.con.redPrec)}, soglia ${sg} €).` : `Con il reddito considerato (${eur0(e.con.redPrec)}) superi la soglia di ${sg} €: tassazione ordinaria.`); break;
+      }
+      case 'fringe': {
+        const inp = Object.assign({}, cx.inp, { figliU21: o.figli ? Math.max(1, cx.inp.figliU21) : 0, figli21: o.figli ? cx.inp.figli21 : 0 });
+        const e = ev({ titolo: 'fringe', lordo: L }, inp); r.netto = e.netto; righeEv(e);
+        const sg = o.figli ? P.fringeBenefit.sogliaFigli : P.fringeBenefit.soglia;
+        r.note.push(L <= sg ? `Sotto la soglia di ${eur0(sg)}: esente.` : `Supera la soglia di ${eur0(sg)}: è tassato l'intero valore, con imposte trattenute dallo stipendio.`); break;
+      }
+      case 'buonipasto': {
+        r.lordo = o.bpVal * o.bpGg;
+        const e = ev({ titolo: 'buonipasto', valore: o.bpVal, giorni: o.bpGg, cartaceo: o.bpCart }); r.netto = e.netto; righeEv(e);
+        const sg = o.bpCart ? P.buoniPasto.cartaceo : P.buoniPasto.elettronico;
+        r.note.push(o.bpVal <= sg ? `Buono entro la soglia di ${eur(sg)}: esente.` : `Tassati ${eur(o.bpVal - sg)} per buono oltre la soglia di ${eur(sg)}.`); break;
+      }
+      case 'trasferta': {
+        r.lordo = o.trImp * o.trGg;
+        const e = ev({ titolo: 'trasferta', valore: o.trImp, giorni: o.trGg, estero: o.trEstero }); r.netto = e.netto; righeEv(e);
+        const sg = o.trEstero ? 77.47 : 46.48;
+        r.note.push(o.trImp > sg ? `Esenti ${eur(sg)} al giorno; tassati ${eur((o.trImp - sg) * o.trGg)} di eccedenza.` : `Entro ${eur(sg)} al giorno: esente.`); break;
+      }
+      case 'restituzione_lordo': {
+        const e = ev({ titolo: 'straordinario', lordo: L }); r.netto = e.netto; r.restituisci = L;
+        r.note.push(`Restituisci ${eur(L)}; con il conguaglio recuperi circa ${eur(L - e.netto)} tra contributi, IRPEF e addizionali. Il costo effettivo per te è circa ${eur(e.netto)}.`); break;
+      }
+      case 'restituzione_netto': {
+        const irpef = L * (1 - contrRate(cx)) * cx.R.aliquotaMarginale / 100;
+        r.restituisci = L - irpef; r.netto = L - irpef;
+        r.righe.push([`IRPEF trattenuta a suo tempo (stima al ${cx.R.aliquotaMarginale}%)`, irpef]);
+        r.note.push(`Da restituire circa ${eur(L - irpef)} invece di ${eur(L)}. Il valore esatto è la ritenuta indicata nella CU dell'anno.`); break;
+      }
+    }
+    return r;
+  }
+  function solve(f, target) {
+    let lo = 0, hi = Math.max(1000, target * 3);
+    while (f(hi) < target && hi < 5e7) hi *= 2;
+    for (let i = 0; i < 60; i++) { const m = (lo + hi) / 2; if (f(m) < target) lo = m; else hi = m; }
+    return (lo + hi) / 2;
+  }
+  const optsCalc = (v) => ({ wc: getWC(v), figli: !!S.calc.figli, bpVal: parseNum(S.calc.bpVal), bpGg: parseNum(S.calc.bpGg), bpCart: !!S.calc.bpCart, trImp: parseNum(S.calc.trImp), trGg: parseNum(S.calc.trGg), trEstero: !!S.calc.trEstero });
+
+  /* ================= simulazione (più somme insieme) ================= */
+  function protoVoce(sv) {
+    const caso = findCaso(sv.caso); if (!caso) return null;
+    const v = caso.varianti[sv.v] || caso.varianti[0];
+    const uc = useContr(v, sv.wc == null ? (v.contrDefault == null ? true : v.contrDefault) : sv.wc);
+    const p = { id: sv.id };
+    switch (v.irpef) {
+      case 'ordinaria': p.titolo = uc ? 'straordinario' : 'ordinarianc'; break;
+      case 'fissa': p.titolo = 'fissa'; break;
+      case 'separata_tfr': p.titolo = 'separatatfr'; p.noContr = !uc; break;
+      case 'separata_arretrati': p.titolo = 'arretratiap'; p.noContr = !uc; break;
+      case 'esente': p.titolo = 'rimborso'; break;
+      case 'sost1': p.titolo = 'premio'; break;
+      case 'sost15': p.titolo = 'notturno'; break;
+      case 'sost5': p.titolo = 'rinnovo'; break;
+      case 'fringe': p.titolo = 'fringe'; break;
+      case 'buonipasto': p.titolo = 'buonipasto'; p.valore = sv.bpVal; p.giorni = sv.bpGg; p.cartaceo = sv.bpCart; p.lordo = sv.bpVal * sv.bpGg; break;
+      case 'trasferta': p.titolo = 'trasferta'; p.valore = sv.trImp; p.giorni = sv.trGg; p.estero = sv.trEstero; p.lordo = sv.trImp * sv.trGg; break;
+      default: return null;
+    }
+    return { p, v, caso };
+  }
+  function risolviSim(f) {
+    const mens = Number(S.mensilita) || 13;
+    const out = S.sim.map((sv) => {
+      const x = protoVoce(sv); if (!x) return null;
+      if (x.p.lordo == null) x.p.lordo = x.v.irpef === 'fissa' ? (Number(sv.importo) || 0) * mens : (Number(sv.importo) || 0);
+      return x.p;
+    });
+    for (let pass = 0; pass < 2; pass++) {
+      S.sim.forEach((sv, i) => {
+        const x = protoVoce(sv);
+        if (!x || !out[i] || sv.mode !== 'netto' || !NETTO_OK.includes(x.v.irpef)) return;
+        const target = x.v.irpef === 'fissa' ? (Number(sv.importo) || 0) * mens : (Number(sv.importo) || 0);
+        out[i].lordo = E.voceDaNetto(baseInput(f, out.filter(Boolean)), out[i], target, P);
+      });
+    }
+    return out.filter(Boolean);
+  }
+
+  /* ================= vista elenco ================= */
+  const norm = (s) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  function renderLista() {
+    const words = norm(S.q || '').split(/\s+/).filter(Boolean);
+    const match = (c) => {
+      if (S.cat !== 'tutte' && c.cat !== S.cat) return false;
+      if (!words.length) return true;
+      const hay = norm(c.nome + ' ' + c.sinonimi + ' ' + c.varianti.map((v) => (v.label || '') + ' ' + v.breve).join(' '));
+      return words.every((w) => hay.includes(w));
+    };
+    $('#cats').innerHTML = [{ id: 'tutte', nome: 'Tutte' }].concat(C.CATS).map((c) => `<button type="button" class="cat${S.cat === c.id ? ' on' : ''}" data-cat="${c.id}" aria-pressed="${S.cat === c.id}">${c.nome}</button>`).join('');
+    let html = '', n = 0;
+    for (const cat of C.CATS) {
+      const items = C.CASI.filter((c) => c.cat === cat.id && match(c));
+      if (!items.length) continue;
+      n += items.length;
+      html += `<h3 class="grp">${cat.nome}</h3><ul class="cases">` + items.map((c) => `<li><a href="#c-${c.id}" class="case-row"><span class="case-name">${c.nome}</span><span class="case-pills">${chipLista(c)}</span><span class="chev" aria-hidden="true">›</span></a></li>`).join('') + '</ul>';
+    }
+    $('#lista').innerHTML = n ? html : `<p class="empty">Nessuna scheda per “${esc(S.q)}”. Prova un'altra parola o usa la procedura guidata.</p>`;
+    setText('prof-sum', profiloTesto(ctx()));
+  }
+  function profiloTesto(cx) { return `Calcoli su RAL ${eur0(cx.fisso)} · ${regioneCfg().nome} · comunale ${S.comScagl ? 'a scaglioni' : fN.format(S.comAliq) + '%'}`; }
+
+  /* ================= vista dettaglio ================= */
+  function renderDettaglio() {
+    const caso = findCaso(CUR.id); if (!caso) return;
+    const v = caso.varianti[CUR.v] || caso.varianti[0];
+    const vd = verdetto(v);
+    const cx = ctx();
+    const nettoOk = NETTO_OK.includes(v.irpef);
+    const mode = nettoOk ? S.calc.mode : 'lordo';
+    const varHtml = caso.varianti.length > 1 ? `<fieldset class="variants"><legend>Qual è il tuo caso?</legend>${caso.varianti.map((x, i) => `<label class="variant${i === CUR.v ? ' on' : ''}"><input type="radio" name="variante" value="${i}"${i === CUR.v ? ' checked' : ''}><span>${x.label}</span></label>`).join('')}</fieldset>` : '';
+    let campi;
+    if (v.irpef === 'buonipasto') campi = `<div class="fields"><div class="field"><label for="c-bpval">Valore del buono</label><div class="suffix"><input id="c-bpval" data-c="bpVal" inputmode="decimal" value="${showNum(S.calc.bpVal)}"><span>€</span></div></div><div class="field"><label for="c-bpgg">Buoni nell'anno</label><input id="c-bpgg" data-c="bpGg" inputmode="numeric" value="${showNum(S.calc.bpGg)}"></div><label class="check"><input type="checkbox" data-c="bpCart"${S.calc.bpCart ? ' checked' : ''}> Cartacei</label></div>`;
+    else if (v.irpef === 'trasferta') campi = `<div class="fields"><div class="field"><label for="c-trimp">Diaria al giorno</label><div class="suffix"><input id="c-trimp" data-c="trImp" inputmode="decimal" value="${showNum(S.calc.trImp)}"><span>€</span></div></div><div class="field"><label for="c-trgg">Giorni di trasferta</label><input id="c-trgg" data-c="trGg" inputmode="numeric" value="${showNum(S.calc.trGg)}"></div><label class="check"><input type="checkbox" data-c="trEstero"${S.calc.trEstero ? ' checked' : ''}> All'estero</label></div>`;
+    else {
+      const lab = v.irpef.startsWith('restituzione') ? 'Somma da restituire (lordo)' : (v.irpef === 'fissa' ? 'Importo mensile' : 'Importo');
+      campi = `<div class="fields"><div class="field"><label for="c-imp">${lab}</label><div class="suffix big"><input id="c-imp" data-c="importo" inputmode="decimal" value="${showNum(getImp())}"><span>€</span></div></div>${nettoOk ? `<div class="field"><span class="lab">L'importo è</span><div class="seg-ctl" role="radiogroup" aria-label="Lordo o netto"><label><input type="radio" name="c-mode" value="lordo" data-c="mode"${mode === 'lordo' ? ' checked' : ''}><span>Lordo</span></label><label><input type="radio" name="c-mode" value="netto" data-c="mode"${mode === 'netto' ? ' checked' : ''}><span>Netto</span></label></div></div>` : ''}</div>`;
+      if (v.irpef === 'fringe') campi += `<label class="check"><input type="checkbox" data-c="figli"${S.calc.figli ? ' checked' : ''}> Ho figli fiscalmente a carico (soglia 2.000 €)</label>`;
+    }
+    if (v.contributi === 'dipende') campi += `<label class="check"><input type="checkbox" data-c="withContr"${getWC(v) ? ' checked' : ''}> La somma paga retribuzioni: applica i contributi</label>`;
+    const aliqField = v.irpef === 'separata_tfr' ? `<details class="more"><summary>Conosci l'aliquota TFR esatta?</summary><div class="fields"><div class="field"><label for="c-aliq">Aliquota dal cedolino del TFR o dalla CU</label><div class="suffix"><input id="c-aliq" data-s="aliqTfrMan" inputmode="decimal" placeholder="stimata" value="${S.aliqTfrMan === '' ? '' : showNum(parseNum(S.aliqTfrMan))}"><span>%</span></div></div></div></details>` : '';
+    const addable = !v.irpef.startsWith('restituzione');
+    $('#det').innerHTML = `
+      <button type="button" class="back" data-back>‹ Tutte le somme</button>
+      ${CUR.daGuida ? '<p class="from-guide">Risultato della procedura guidata. Se non ti ritrovi, cambia caso qui sotto.</p>' : ''}
+      <h2 class="det-title">${caso.nome}</h2>
+      ${varHtml}
+      <div class="verdict">
+        <div class="vt vt-${vd.irpef.tone}"><span>IRPEF</span><b>${vd.irpef.t}</b><small>${vd.irpef.s}</small></div>
+        <div class="vt vt-${vd.contr.tone}"><span>Contributi INPS</span><b>${vd.contr.t}</b></div>
+        <div class="vt vt-${vd.add.tone}"><span>Addizionali</span><b>${vd.add.t}</b></div>
+      </div>
+      <p class="breve">${v.breve}</p>
+      <section class="calc card" aria-label="Calcolo">
+        <h3>Quanto resta</h3>
+        <form id="calc-form" autocomplete="off">${campi}</form>
+        <div id="calc-out" aria-live="polite"></div>
+        ${aliqField}
+        ${addable ? '<div class="btn-row"><button type="button" class="btn primary" id="add-sim">Aggiungi alla simulazione</button><a class="btn" href="#simulazione">Apri simulazione</a></div>' : ''}
+        <p class="hint">${profiloTesto(cx)}. <a href="#stipendio">Cambia i tuoi dati</a></p>
+      </section>
+      <section class="card">
+        <h3>Attenzione a</h3>
+        <ul class="att">${v.attenzione.map((a) => `<li>${a}</li>`).join('')}</ul>
+        <p class="norma"><b>Riferimenti:</b> ${v.norma}</p>
+      </section>`;
+    renderCalcOut();
+  }
+  function renderCalcOut() {
+    const caso = findCaso(CUR.id); if (!caso) return;
+    const v = caso.varianti[CUR.v] || caso.varianti[0];
+    const cx = ctx(); const o = optsCalc(v);
+    let L = parseNum(getImp());
+    if (S.calc.mode === 'netto' && NETTO_OK.includes(v.irpef)) {
+      const target = v.irpef === 'fissa' ? L * (Number(S.mensilita) || 13) : L;
+      L = solve((x) => calcCaso(v, x, cx, o).netto, target);
+    }
+    const r = calcCaso(v, L, cx, o);
+    const out = $('#calc-out');
+    if (!(r.lordo > 0)) { out.innerHTML = '<p class="muted">Inserisci un importo per vedere il calcolo.</p>'; return; }
+    const kept = r.netto / r.lordo;
+    let head;
+    if (v.irpef === 'restituzione_lordo') head = `<div class="res"><div><span>Restituisci</span><b>${eur(r.restituisci)}</b></div><div class="res-n"><span>Costo effettivo per te</span><b>${eur(r.netto)}</b></div></div>`;
+    else if (v.irpef === 'restituzione_netto') head = `<div class="res"><div><span>Importo lordo</span><b>${eur(r.lordo)}</b></div><div class="res-n"><span>Da restituire</span><b>${eur(r.restituisci)}</b></div></div>`;
+    else head = `<div class="res"><div><span>Lordo${v.irpef === 'fissa' ? ' annuo' : ''}</span><b>${eur(r.lordo)}</b></div><div class="res-n"><span>Netto${v.irpef === 'fissa' ? ' annuo' : ''}</span><b>${eur(r.netto)}</b></div></div><div class="keepbar" aria-hidden="true"><span style="width:${Math.max(0, Math.min(100, kept * 100))}%"></span></div><p class="kept">Ti resta il <b>${pct(kept * 100, 0)}</b> del lordo</p>`;
+    const righe = r.righe.length ? `<table class="tbl"><tbody>${r.righe.map(([k, x]) => `<tr><th scope="row">${k}</th><td>${x >= 0 ? '− ' : '+ '}${eur(Math.abs(x))}</td></tr>`).join('')}</tbody></table>` : '';
+    out.innerHTML = head + righe + r.note.map((n) => `<p class="hint">${n}</p>`).join('');
+  }
+  function aggiungiSim() {
+    const caso = findCaso(CUR.id); const v = caso.varianti[CUR.v] || caso.varianti[0];
+    const sv = { id: 's' + Date.now().toString(36), caso: CUR.id, v: CUR.v, mode: NETTO_OK.includes(v.irpef) ? S.calc.mode : 'lordo', importo: parseNum(getImp()), wc: getWC(v),
+      bpVal: parseNum(S.calc.bpVal), bpGg: parseNum(S.calc.bpGg), bpCart: !!S.calc.bpCart, trImp: parseNum(S.calc.trImp), trGg: parseNum(S.calc.trGg), trEstero: !!S.calc.trEstero };
+    if (v.irpef === 'fringe' && S.calc.figli && !(Number(S.figliU21) + Number(S.figli21))) toast('Ricorda di indicare i figli a carico nei dati dello stipendio');
+    S.sim.push(sv); save();
+    toast('Aggiunta alla simulazione: ' + caso.nome);
+  }
+
+  /* ================= procedura guidata ================= */
+  let G = { step: 0, r: {} };
+  function renderGuida() {
+    const steps = [C.GUIDA[0], C.GUIDA[1]];
+    const det = G.r.cosa ? C.dettaglio(G.r) : null;
+    if (det) steps.push(Object.assign({ id: 'dettaglio' }, det));
+    const s = steps[G.step];
+    $('#guida').innerHTML = `<button type="button" class="back" data-back>‹ Tutte le somme</button>
+      <p class="step-n">Domanda ${G.step + 1}</p><h2 class="det-title">${s.domanda}</h2>
+      <div class="opts">${s.opzioni.map((o) => `<button type="button" class="opt" data-opt="${o.v}" data-k="${s.id}">${o.t}<span aria-hidden="true">›</span></button>`).join('')}</div>
+      ${G.step > 0 ? '<button type="button" class="linkbtn" data-gback>Torna alla domanda precedente</button>' : ''}`;
+  }
+
+  /* ================= stipendio ================= */
+  let LAST = null;
+  function renderStipendio() {
+    const cx = ctx(); const fx = fissoInput();
+    const { R } = cx; const mens = Number(S.mensilita) || 13; const n2l = S.modo === 'n2l';
+    const plan = E.piano(cx.inp, P);
+    const marg = E.evalVoce(cx.inp, { id: '__m', titolo: 'straordinario', lordo: 100 }, P);
+    LAST = { cx, plan };
+    document.body.classList.toggle('mode-n2l', n2l);
+    const meseL = n2l ? cx.fisso / mens : fx.mese;
+    $('#s-res').innerHTML = `
+      <div class="kpis">
+        ${n2l ? `<div class="k hero"><span>RAL necessaria</span><b>${eur0(cx.fisso)}</b><em>${eur(meseL)} lordi × ${mens}</em></div>` : `<div class="k hero"><span>Netto medio al mese</span><b>${eur(R.nettoCash / mens)}</b><em>netto annuo ÷ ${mens} mensilità</em></div>`}
+        <div class="k"><span>${n2l ? 'Netto medio al mese' : 'In busta (mar–nov)'}</span><b>${n2l ? eur(R.nettoCash / mens) : eur(plan.meseTipo.netto)}</b></div>
+        <div class="k"><span>Netto annuo</span><b>${eur0(R.nettoCash)}</b></div>
+        ${n2l ? `<div class="k"><span>In busta (mar–nov)</span><b>${eur(plan.meseTipo.netto)}</b></div>` : `<div class="k"><span>RAL</span><b>${eur0(cx.fisso)}</b><em>${eur(meseL)} × ${mens}</em></div>`}
+        <div class="k"><span>Costo azienda (stima)</span><b>${eur0(R.costoAzienda)}</b></div>
+      </div>
+      <div class="stackbar" aria-hidden="true">${[['netto', R.nettoCash - R.crediti], ['contr', R.contr + R.prevDip + R.cassaDip], ['irpef', R.irpefNetta], ['add', R.addReg + R.addCom]].map(([k, x]) => `<span class="seg seg-${k}" style="flex-grow:${Math.max(0.001, x / (R.cashGross || 1))}"></span>`).join('')}</div>
+      <ul class="legend"><li><i class="dot seg-netto"></i>Netto ${pct(R.nettoCash / (R.cashGross || 1) * 100)}</li><li><i class="dot seg-contr"></i>Contributi e fondi ${eur0(R.contr + R.prevDip + R.cassaDip)}</li><li><i class="dot seg-irpef"></i>IRPEF ${eur0(R.irpefNetta)}</li><li><i class="dot seg-add"></i>Addizionali ${eur0(R.addReg + R.addCom)}</li>${R.crediti > 0 ? `<li><i class="dot seg-cred"></i>Bonus cuneo e trattamento integrativo +${eur0(R.crediti)}</li>` : ''}</ul>
+      <div class="mini">
+        <div><span>Su 100 € lordi in più restano</span><b>${eur(marg.netto)}</b></div>
+        <div><span>Aliquota IRPEF marginale</span><b>${R.aliquotaMarginale}%</b></div>
+        <div><span>Trattenute sul lordo</span><b>${pct((R.cashGross - R.nettoCash) / (R.cashGross || 1) * 100)}</b></div>
+        <div><span>Aliquota TFR stimata</span><b>${pct(aliqTfrOf(cx.fisso).a * 100, 2)}</b></div>
+      </div>
+      <ul class="chips">${[
+        chip(R.bonusCuneo > 0 ? 'ok' : 'off', 'Bonus cuneo', R.bonusCuneo > 0 ? eur0(R.bonusCuneo) : 'oltre 20.000 €'),
+        chip(R.ulteriore > 0 ? 'ok' : 'off', 'Ulteriore detrazione', R.ulteriore > 0 ? eur0(R.ulteriore) : (R.Rcompl <= 20000 ? 'non spetta' : 'oltre 40.000 €')),
+        chip(R.premioOk ? 'ok' : 'no', 'Premi all\'1%', R.premioOk ? 'requisito ok' : 'reddito > 80.000 €'),
+        chip(R.nottOk ? 'ok' : 'no', 'Notturni al 15%', R.nottOk ? 'requisito ok' : 'reddito > 40.000 €'),
+        chip(R.rinnOk ? 'ok' : 'no', 'Rinnovi al 5%', R.rinnOk ? 'requisito ok' : 'reddito > 33.000 €')].join('')}</ul>
+      <p class="hint">Requisiti verificati su ${S.redditoPrec === '' ? 'una stima del reddito 2025 uguale al 2026' : 'reddito 2025 indicato: ' + eur0(Number(S.redditoPrec))}.</p>`;
+
+    const row = (l, x, cls, note) => `<tr class="${cls || ''}"><th scope="row">${l}${note ? `<small>${note}</small>` : ''}</th><td>${x}</td></tr>`;
+    const neg = (x) => x > 0.004 ? '− ' + eur(x) : eur(0);
+    const reg = regioneCfg();
+    let h = row('Retribuzione lorda annua', eur(R.cashGross), 'strong');
+    h += row('Contributi INPS', neg(R.inps), '', `${fN.format(S.inpsPct)}%` + (R.baseContr > P.inps.sogliaAggiuntiva ? ` + 1% oltre ${eur0(P.inps.sogliaAggiuntiva)}` : ''));
+    if (R.fondo > 0) h += row('Fondo di solidarietà', neg(R.fondo), '', fN.format(S.fondoPct) + '%');
+    if (R.prevDip > 0) h += row('Fondo pensione (tua quota)', neg(R.prevDip), '', 'deducibile');
+    if (R.cassaDip > 0) h += row('Cassa sanitaria', neg(R.cassaDip), '', 'deducibile');
+    h += row('Imponibile IRPEF', eur(R.imponibile), 'sub');
+    h += row('IRPEF lorda', eur(R.irpefLorda), '', 'aliquota marginale ' + R.aliquotaMarginale + '%');
+    h += row('Detrazione lavoro dipendente', neg(R.detLav));
+    if (R.detFam > 0) h += row('Detrazioni familiari', neg(R.detFam));
+    if (R.ulteriore > 0) h += row('Ulteriore detrazione (cuneo fiscale)', neg(R.ulteriore), '', 'redditi 20.000–40.000 €');
+    h += row('IRPEF netta', neg(R.irpefNetta), 'sub');
+    h += row('Addizionale regionale', neg(R.addReg), '', reg.nome + (reg.override ? ' (aliquote tue)' : ''));
+    h += row('Addizionale comunale', neg(R.addCom), '', S.comScagl ? 'a scaglioni' : fN.format(S.comAliq) + '%' + (Number(S.comEsenz) ? `, esenzione fino a ${eur0(S.comEsenz)}` : ''));
+    if (R.bonusCuneo > 0) h += row('Bonus cuneo fiscale (esente)', '+ ' + eur(R.bonusCuneo), 'plus', R.bonusPct + '% del reddito');
+    if (R.trattInt > 0) h += row('Trattamento integrativo', '+ ' + eur(R.trattInt), 'plus');
+    h += row('Netto annuo', eur(R.nettoCash), 'total');
+    $('#s-det tbody').innerHTML = h;
+
+    const showPrev = plan.pays.some((p) => p.prev > 0 || p.cassa > 0), showCred = plan.pays.some((p) => p.crediti > 0);
+    $('#ced thead').innerHTML = `<tr><th scope="col">Mese</th><th scope="col">Lordo</th><th scope="col">Contributi</th>${showPrev ? '<th scope="col">Fondi</th>' : ''}<th scope="col">IRPEF</th><th scope="col">Addizionali</th>${showCred ? '<th scope="col">Bonus</th>' : ''}<th scope="col">Netto</th></tr>`;
+    const tr = (p, cls) => `<tr class="${cls || ''}"><th scope="row">${p.mese}${p.conguaglio ? '<small>con conguaglio</small>' : ''}</th><td>${eur(p.lordo)}</td><td>${eur(p.contributi)}</td>${showPrev ? `<td>${eur(p.prev + p.cassa)}</td>` : ''}<td>${eur(p.irpef)}</td><td>${eur(p.addizionali)}</td>${showCred ? `<td>${eur(p.crediti)}</td>` : ''}<td class="n">${eur(p.netto)}</td></tr>`;
+    $('#ced tbody').innerHTML = plan.pays.map((p) => tr(p, p.tipo === 'agg' ? 'agg' : '')).join('');
+    $('#ced tfoot').innerHTML = tr(Object.assign({ mese: 'Totale' }, plan.tot), 'total');
+    const cg = plan.conguaglio;
+    setText('ced-congu', Math.abs(cg) < 1 ? 'Conguaglio IRPEF di dicembre trascurabile.' : (cg > 0 ? `A dicembre il conguaglio trattiene ${eur(cg)} di IRPEF in più.` : `A dicembre il conguaglio restituisce ${eur(-cg)} di IRPEF.`));
+    if (fx.livello) setText('liv-info', `${fx.livello.nome}: ${eur(fx.livello.stipendio)} + scatti da ${eur(fx.livello.scatto)} (massimo ${fx.livello.maxScatti})`);
+    save();
+  }
+  const chip = (st, l, v) => `<li class="chip chip-${st}"><span>${l}</span><b>${v}</b></li>`;
+
+  /* ================= simulazione ================= */
+  function renderSim() {
+    const f = fisso();
+    const voci = risolviSim(f);
+    const inpTot = baseInput(f, voci);
+    const Rf = E.compute(baseInput(f, []), P);
+    const Rt = E.compute(inpTot, P);
+    const mens = Number(S.mensilita) || 13;
+    setText('sim-prof', profiloTesto(ctx()));
+    if (!S.sim.length) {
+      $('#sim-list').innerHTML = '<p class="empty">Nessuna somma nella simulazione. Apri una scheda in “Che tassazione ha?” e tocca “Aggiungi alla simulazione”.</p>';
+    } else {
+      $('#sim-list').innerHTML = S.sim.map((sv, i) => {
+        const x = protoVoce(sv); if (!x) return '';
+        const voce = voci.find((q) => q.id === sv.id);
+        const e = E.evalVoce(inpTot, voce, P);
+        const isNat = ['fringe', 'buonipasto'].includes(x.v.irpef);
+        const ins = x.v.irpef === 'buonipasto' ? `${sv.bpGg} buoni da ${eur(sv.bpVal)}` : x.v.irpef === 'trasferta' ? `${sv.trGg} giorni da ${eur(sv.trImp)}` : `${eur(sv.importo)}${x.v.irpef === 'fissa' ? ' al mese' : ''} ${sv.mode === 'netto' ? 'netti' : 'lordi'}`;
+        const det = [];
+        if (Math.abs(e.contributi) > 0.005) det.push(['Contributi', e.contributi]);
+        if (Math.abs(e.irpef) > 0.005) det.push(['IRPEF e detrazioni', e.irpef]);
+        if (Math.abs(e.addizionali) > 0.005) det.push(['Addizionali', e.addizionali]);
+        if (Math.abs(e.sostitutive) > 0.005) det.push(['Imposta sostitutiva o separata', e.sostitutive]);
+        const vd = verdetto(x.v);
+        return `<article class="voce"><header><div><h3><a href="#c-${x.caso.id}">${x.caso.nome}</a>${sv.esempio ? ' <em class="tag">esempio</em>' : ''}</h3><p>${x.v.label ? x.v.label + ' · ' : ''}inserito ${ins}</p><span class="pill pill-${vd.irpef.tone}">${vd.irpef.t}</span></div><button type="button" class="icon-btn" data-del="${i}" aria-label="Rimuovi ${esc(x.caso.nome)}">✕</button></header>
+          <div class="res"><div><span>Lordo</span><b>${eur(e.lordo)}</b></div><div class="res-n"><span>${isNat ? 'Valore netto' : 'Netto'}</span><b>${eur(e.netto)}</b></div></div>
+          <p class="kept">Resta il <b>${pct(e.lordo > 0 ? e.netto / e.lordo * 100 : 0, 0)}</b>${x.v.irpef === 'fissa' ? ` · al mese ${eur(e.netto / mens)} netti` : ''}</p>
+          ${det.length ? `<ul class="voce-det">${det.map(([k, q]) => `<li>${k}<b>${q >= 0 ? '− ' : '+ '}${eur(Math.abs(q))}</b></li>`).join('')}</ul>` : '<p class="hint">Nessuna trattenuta.</p>'}</article>`;
+      }).join('');
+    }
+    $('#sim-tot').innerHTML = `
+      <div class="kpis">
+        <div class="k hero"><span>Netto annuo con tutte le somme</span><b>${eur0(Rt.nettoEconomico)}</b><em>di cui somme extra ${eur0(Rt.nettoEconomico - Rf.nettoEconomico)} nette su ${eur0(Rt.lordoTotale - Rf.lordoTotale)} lorde</em></div>
+        <div class="k"><span>Solo stipendio</span><b>${eur0(Rf.nettoCash)}</b></div>
+        <div class="k"><span>Costo azienda totale (stima)</span><b>${eur0(Rt.costoAzienda)}</b></div>
+      </div>
+      <p class="hint">Ogni somma è calcolata come differenza tra il netto annuo con e senza di essa, con tutte le altre presenti: include la perdita di detrazioni e del cuneo quando il reddito sale. Le somme inserite al netto vengono ricalcolate a ogni modifica.</p>`;
+    save();
+  }
+
+  /* ================= regole ================= */
+  function expand4(sc) {
+    return [15000, 28000, 50000, Infinity].map((lim) => { const pr = lim === Infinity ? 1e9 : lim - 1; for (const [u, a] of sc) if (u == null || pr <= u) return a; return sc[sc.length - 1][1]; });
+  }
+  function renderInfo() {
+    setText('p-version', P.version); setText('p-agg', P.aggiornato);
+    const S2 = P.sostitutive;
+    $('#p-param').innerHTML = [
+      ['Scaglioni IRPEF', P.irpef.scaglioni.map(([u, r], i, a) => `${r}% ${u == null ? 'oltre ' + eur0(a[i - 1][0]) : 'fino a ' + eur0(u)}`).join(' · ')],
+      ['Contributi INPS dipendente', `${P.inps.dipendente}% (+${P.inps.aggiuntiva}% oltre ${eur0(P.inps.sogliaAggiuntiva)}); massimale ${eur0(P.inps.massimale)}`],
+      ['Bonus cuneo (reddito fino a 20.000 €)', P.cuneo.bonusFasce.map(([u, p]) => `${p}% fino a ${eur0(u)}`).join(', ')],
+      ['Ulteriore detrazione cuneo', `${eur0(P.cuneo.ulteriorePiena)} fino a ${eur0(P.cuneo.ulteriorePienaFino)}, a scalare fino a ${eur0(P.cuneo.ulterioreFino)}`],
+      ['Premi di risultato', `${S2.premioProduttivita.aliquota}% fino a ${eur0(S2.premioProduttivita.limite)} (reddito anno precedente fino a ${eur0(S2.premioProduttivita.redditoMax)})`],
+      ['Notturno, festivo, turni', `${S2.notturniFestivi.aliquota}% fino a ${eur0(S2.notturniFestivi.limite)} (reddito 2025 fino a ${eur0(S2.notturniFestivi.redditoMax)})`],
+      ['Aumenti da rinnovi CCNL 2024-2026', `${S2.rinnoviContrattuali.aliquota}% (reddito 2025 fino a ${eur0(S2.rinnoviContrattuali.redditoMax)})`],
+      ['Fringe benefit esenti', `${eur0(P.fringeBenefit.soglia)} · ${eur0(P.fringeBenefit.sogliaFigli)} con figli`],
+      ['Buoni pasto esenti', `${eur(P.buoniPasto.elettronico)} elettronici · ${eur(P.buoniPasto.cartaceo)} cartacei al giorno`],
+      ['Trasferte', 'diaria esente 46,48 € al giorno in Italia, 77,47 € all\'estero'],
+      ['Previdenza complementare deducibile', eur(P.previdenzaComplementareMax)],
+      ['Fondo solidarietà (quota dipendente)', `credito ${fN.format(P.fondoSolidarieta.credito)}%, assicurazioni ${fN.format(P.fondoSolidarieta.assicurazioni)}%`]
+    ].map(([k, v]) => `<tr><th scope="row">${k}</th><td>${v}</td></tr>`).join('');
+    $('#p-reg tbody').innerHTML = P.regioni.map((r) => {
+      const o = S.regOverride && S.regOverride[r.id];
+      const ex = [];
+      if (!o && r.esenzione) ex.push('esenti fino a ' + eur0(r.esenzione));
+      if (!o && r.intero && r.intero.length) ex.push(r.intero.map((x) => `${fN.format(x.aliquota)}% su tutto fino a ${eur0(x.max)}`).join(', '));
+      if (r.detrazioni && r.detrazioni.length) ex.push(r.detrazioni.map((d) => `detrazione ${eur(d.importo)}`).join(', '));
+      if (r.perFiglio) ex.push(`${eur0(r.perFiglio.importo)} per figlio`);
+      return `<tr${r.id === S.regione ? ' class="sel"' : ''}><th scope="row">${r.nome}</th><td>${(o || r.scaglioni).map(([u, a]) => fN.format(a) + '%').join(' · ')}${ex.length ? `<small>${ex.join('; ')}</small>` : ''}</td><td><span class="rel rel-${o ? 'user' : r.affidabilita}">${o ? 'tua' : r.affidabilita}</span></td></tr>`;
+    }).join('');
+    const r = P.regioni.find((x) => x.id === S.regione);
+    setText('ovr-nome', r.nome);
+    const cur = S.regOverride && S.regOverride[S.regione];
+    const four = cur ? cur.map((x) => x[1]) : expand4(r.scaglioni);
+    $$('.ovr-in').forEach((el, i) => { el.value = showNum(four[i]); });
+    $('#ovr-reset').hidden = !cur;
+  }
+
+  /* ================= routing ================= */
+  const TABS = ['tassazione', 'stipendio', 'simulazione', 'info'];
+  function route() {
+    const h = location.hash.slice(1);
+    let tab = 'tassazione', view = 'lista';
+    if (TABS.includes(h)) tab = h;
+    else if (h.startsWith('c-') && findCaso(h.slice(2))) { view = 'det'; if (CUR.id !== h.slice(2)) CUR = { id: h.slice(2), v: 0, daGuida: false }; }
+    else if (h === 'guida') view = 'guida';
+    S.tab = tab;
+    $$('nav.tabs a').forEach((a) => { const on = a.dataset.tab === tab; a.classList.toggle('on', on); if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+    $$('.panel').forEach((p) => { p.hidden = p.id !== 'panel-' + tab; });
+    if (tab === 'tassazione') {
+      $('#v-lista').hidden = view !== 'lista'; $('#det').hidden = view !== 'det'; $('#guida').hidden = view !== 'guida';
+      if (view === 'lista') renderLista(); if (view === 'det') renderDettaglio(); if (view === 'guida') renderGuida();
+    }
+    if (tab === 'stipendio') { syncStip(); renderStipendio(); }
+    if (tab === 'simulazione') renderSim();
+    if (tab === 'info') renderInfo();
+    window.scrollTo(0, 0);
+    save();
+  }
+
+  /* ================= form stipendio ================= */
+  function syncStip() {
+    $$('#form-stip [data-s]').forEach((el) => {
+      const v = S[el.dataset.s];
+      if (el.type === 'checkbox') el.checked = !!v;
+      else if (el.type === 'radio') el.checked = String(v) === el.value;
+      else if (el.tagName === 'SELECT') el.value = v;
+      else el.value = el.dataset.s === 'redditoPrec' && v === '' ? '' : showNum(v);
+    });
+    $$('.com-sc').forEach((el, i) => { el.value = showNum(S.comSc[i]); });
+    const n2l = S.modo === 'n2l', cred = S.ccnl === 'credito';
+    if (!cred && S.inserimento === 'livello') { S.inserimento = 'ral'; $$('input[name="ins"]').forEach((el) => { el.checked = el.value === 'ral'; }); }
+    $('#opt-livello').disabled = !cred;
+    $('#blk-l2n').hidden = n2l; $('#blk-n2l').hidden = !n2l;
+    $('#blk-livello').hidden = S.inserimento !== 'livello' || !cred;
+    $('#blk-ral').hidden = S.inserimento !== 'ral';
+    $('#blk-mensile').hidden = S.inserimento !== 'mensile';
+    $('#com-flat').hidden = !!S.comScagl; $('#com-scagl').hidden = !S.comScagl;
+    setText('ccnl-nota', ccnlCfg().nota || '');
+  }
+
+  let tmr; const later = (fn) => { clearTimeout(tmr); tmr = setTimeout(fn, 110); };
+  function bind() {
+    $('#f-regione').innerHTML = P.regioni.map((r) => `<option value="${r.id}">${r.nome}</option>`).join('');
+    $('#f-livello').innerHTML = livelli().map((l) => `<option value="${l.id}">${l.nome}</option>`).join('');
+    syncStip();
+    $('#q').value = S.q || '';
+    $('#q').addEventListener('input', (e) => { S.q = e.target.value; renderLista(); });
+    $('#cats').addEventListener('click', (e) => { const b = e.target.closest('[data-cat]'); if (b) { S.cat = b.dataset.cat; renderLista(); } });
+
+    const onCalc = (el, soft) => {
+      if (el.dataset.s === 'aliqTfrMan') { S.aliqTfrMan = el.value.trim() === '' ? '' : parseNum(el.value); later(renderCalcOut); save(); return; }
+      const k = el.dataset.c; if (!k) return;
+      if (el.type === 'checkbox') S.calc[k] = el.checked;
+      else if (el.type === 'radio') { if (!el.checked) return; S.calc[k] = el.value; }
+      else S.calc[k] = parseNum(el.value);
+      if (k === 'importo') S.calc.imp[CUR.id] = parseNum(el.value);
+      if (k === 'withContr') S.calc.wc[wcKey()] = el.checked;
+      if (soft) later(renderCalcOut); else renderCalcOut();
+      save();
+    };
+    $('#det').addEventListener('change', (e) => { if (e.target.name === 'variante') { CUR.v = Number(e.target.value); renderDettaglio(); return; } onCalc(e.target); });
+    $('#det').addEventListener('input', (e) => { if (e.target.dataset.c || e.target.dataset.s) onCalc(e.target, true); });
+    $('#det').addEventListener('submit', (e) => e.preventDefault());
+
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('[data-back]')) location.hash = '#tassazione';
+      if (e.target.closest('#add-sim')) aggiungiSim();
+      const o = e.target.closest('[data-opt]');
+      if (o) {
+        G.r[o.dataset.k] = o.dataset.opt;
+        if (G.step === 0) { G.step = 1; renderGuida(); }
+        else if (G.step === 1 && C.dettaglio(G.r)) { G.step = 2; renderGuida(); }
+        else { const res = C.esito(G.r); CUR = { id: res.id, v: res.v, daGuida: true }; location.hash = '#c-' + res.id; }
+      }
+      if (e.target.closest('[data-gback]')) { G.step = Math.max(0, G.step - 1); if (G.step < 2) delete G.r.dettaglio; if (G.step < 1) delete G.r.cosa; renderGuida(); }
+      if (e.target.closest('[data-start-guide]')) G = { step: 0, r: {} };
+      const d = e.target.closest('[data-del]');
+      if (d) { S.sim.splice(Number(d.dataset.del), 1); renderSim(); }
+    });
+    $('#sim-clear').addEventListener('click', () => { S.sim = []; renderSim(); });
+
+    $('#form-stip').addEventListener('submit', (e) => e.preventDefault());
+    const onStip = (e) => {
+      const el = e.target;
+      if (el.classList.contains('com-sc')) { S.comSc[Number(el.dataset.i)] = parseNum(el.value); return later(renderStipendio); }
+      const k = el.dataset.s; if (!k) return;
+      if (el.type === 'checkbox') S[k] = el.checked;
+      else if (el.type === 'radio') { if (!el.checked) return; S[k] = el.value; }
+      else if (el.tagName === 'SELECT') S[k] = el.value;
+      else S[k] = k === 'redditoPrec' && el.value.trim() === '' ? '' : parseNum(el.value);
+      if (k === 'ccnl') { const c = ccnlCfg(); S.mensilita = c.mensilita; S.fondoPct = P.fondoSolidarieta[S.ccnl] || 0; if (S.ccnl === 'credito') S.inserimento = 'livello'; }
+      if (['ccnl', 'modo', 'inserimento', 'comScagl'].includes(k)) syncStip();
+      later(renderStipendio);
+    };
+    $('#form-stip').addEventListener('input', onStip);
+    $('#form-stip').addEventListener('change', onStip);
+    $('#form-stip').addEventListener('focusout', (e) => { const el = e.target; if (el.dataset.s && el.tagName === 'INPUT' && !['checkbox', 'radio'].includes(el.type) && !(el.dataset.s === 'redditoPrec' && el.value.trim() === '')) el.value = showNum(S[el.dataset.s]); });
+    $('#btn-copy').addEventListener('click', copia);
+
+    $('#ovr-save').addEventListener('click', () => {
+      const v = $$('.ovr-in').map((el) => parseNum(el.value));
+      S.regOverride[S.regione] = [[15000, v[0]], [28000, v[1]], [50000, v[2]], [null, v[3]]];
+      renderInfo(); toast('Aliquote regionali salvate su questo dispositivo');
+    });
+    $('#ovr-reset').addEventListener('click', () => { delete S.regOverride[S.regione]; renderInfo(); toast('Ripristinate le aliquote del dataset'); });
+    $('#btn-update').addEventListener('click', () => aggiorna(true));
+    $('#btn-reset').addEventListener('click', () => { S = JSON.parse(JSON.stringify(DEFAULT)); S.tab = 'info'; FC = null; syncStip(); renderInfo(); save(); toast('Valori iniziali ripristinati'); });
+    window.addEventListener('hashchange', route);
+  }
+
+  function copia() {
+    const { cx, plan } = LAST; const R = cx.R; const mens = Number(S.mensilita) || 13;
+    const f = cx.fisso; const voci = risolviSim(f); const inpTot = baseInput(f, voci);
+    const lines = [
+      `Simulazione busta paga ${P.anno} — ${ccnlCfg().nome}`,
+      `RAL ${eur(f)} su ${mens} mensilità (${eur(f / mens)} lordi al mese) · ${regioneCfg().nome}, comunale ${S.comScagl ? 'a scaglioni' : fN.format(S.comAliq) + '%'}`,
+      `Contributi ${eur(R.contr)} · IRPEF netta ${eur(R.irpefNetta)} · Addizionali ${eur(R.addReg + R.addCom)}`,
+      `Netto annuo ${eur(R.nettoCash)} · medio mensile ${eur(R.nettoCash / mens)} · in busta mar–nov ${eur(plan.meseTipo.netto)}`
+    ];
+    S.sim.forEach((sv) => { const x = protoVoce(sv); const voce = voci.find((q) => q.id === sv.id); if (!x || !voce) return; const e = E.evalVoce(inpTot, voce, P); lines.push(`+ ${x.caso.nome}${x.v.label ? ' (' + x.v.label + ')' : ''}: ${eur(e.lordo)} lordi → ${eur(e.netto)} netti`); });
+    lines.push('Stima indicativa, parametri fiscali 2026 versione ' + P.version + '.');
+    const text = lines.join('\n');
+    const fb = () => { const ta = $('#copy-fallback'); ta.hidden = false; ta.value = text; ta.select(); toast('Seleziona e copia il testo'); };
+    try { navigator.clipboard.writeText(text).then(() => toast('Riepilogo copiato'), fb); } catch (e) { fb(); }
+  }
+
+  let toastT;
+  function toast(m) { const t = $('#toast'); t.textContent = m; t.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('on'), 2400); }
+  async function aggiorna(man) {
+    setText('upd-state', 'Controllo in corso…');
+    try {
+      const res = await fetch('rates.json?t=' + Date.now(), { cache: 'no-store' });
+      if (!res.ok) throw new Error(res.status);
+      const n = await res.json();
+      if (!n.version || !n.regioni) throw new Error('file non valido');
+      if (n.version > P.version) { P = n; try { localStorage.setItem(STORE_DATA, JSON.stringify(P)); } catch (e) { /* */ } FC = null; toast('Parametri aggiornati alla versione ' + P.version); route(); }
+      else if (man) toast('Parametri già aggiornati');
+      setText('upd-state', 'Ultimo controllo: ' + new Date().toLocaleString('it-IT') + ' · versione ' + P.version);
+    } catch (e) { setText('upd-state', 'Controllo non riuscito, in uso la versione ' + P.version + '.'); if (man) toast('Impossibile controllare ora'); }
+    setText('p-version-top', P.version);
+  }
+
+  bind();
+  if (!location.hash) { try { history.replaceState(null, '', '#tassazione'); } catch (e) { /* */ } }
+  route();
+  setText('p-version-top', P.version);
+  aggiorna(false);
+  if ('serviceWorker' in navigator) { try { navigator.serviceWorker.register('sw.js').catch(() => {}); } catch (e) { /* */ } }
+})();
+</script>
+</body>
+</html>
