@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lordo X Netto – Regime fiscale e contributivo delle somme erogate ai dipendenti</title>
+<meta name="description" content="Applicazione web per determinare il regime fiscale e contributivo delle somme corrisposte ai lavoratori dipendenti, con calcolo del netto, lordizzazione e costo azienda secondo la disciplina 2026. Si installa sullo smartphone direttamente dal browser e funziona anche offline.">
+<meta name="theme-color" content="#14263F">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="canonical" href="https://sevengem27.github.io/Lordo-X-Netto/presentazione.html">
+
+<!-- Anteprima del link quando la pagina viene condivisa (WhatsApp, e-mail, Teams, LinkedIn…) -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="Lordo X Netto">
+<meta property="og:title" content="Lordo X Netto – Dal lordo al netto e al costo azienda">
+<meta property="og:description" content="Applicazione web per determinare il regime fiscale e contributivo delle somme corrisposte ai lavoratori dipendenti, con calcolo del netto, lordizzazione e costo azienda secondo la disciplina 2026. Si installa sullo smartphone direttamente dal browser e funziona anche offline.">
+<meta property="og:url" content="https://sevengem27.github.io/Lordo-X-Netto/presentazione.html">
+<meta property="og:image" content="https://sevengem27.github.io/Lordo-X-Netto/icon-512.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta name="twitter:card" content="summary">
+
+<style>
+html{scroll-behavior:smooth}
+*{box-sizing:border-box}
+img{max-width:100%}
+body{margin:0;background:#FFFFFF}
+a{color:#14263F}a:hover{color:#0E7A69}
+.pulsante-primario:hover{filter:brightness(0.92)}
+.pulsante-secondario:hover{background:#E4EAF2}
+.scheda-correlata:hover{border-color:#B8C4D3}
+.voce-menu{text-decoration:none}
+.voce-menu:hover{text-decoration:underline}
+p{text-align:justify;-webkit-hyphens:auto;hyphens:auto}
+@media (max-width: 760px){
+  .secondo-telefono{display:none !important}
+  .menu-voci{display:none !important}
+  .titolo-hero{font-size:38px !important}
+  .titolo-sezione{font-size:30px !important}
+  .sezione{padding-left:20px !important;padding-right:20px !important}
+  .scheda{padding:24px !important}
+}
+</style>
+</head>
+<body>
+<div style="width: 100%; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1C2434; background: #FFFFFF">
+
+<!-- Intestazione -->
+<header class="sezione" style="box-sizing: border-box; padding: 20px 48px; border-bottom: 1px solid #E2E8F0; background: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="#inizio" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #14263F">
+<img src="icon-192.png" alt="" style="width: 44px; height: 44px; border-radius: 11px">
+<span style="font-size: 20px; font-weight: 800; letter-spacing: -0.01em">Lordo <span style="color: #0E7A69">×</span> Netto</span>
+</a>
+<nav aria-label="Navigazione principale" style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px">
+<div class="menu-voci" style="display: flex; gap: 28px">
+<a class="voce-menu" href="#funzionalita" style="font-size: 15px; font-weight: 500; color: #3A475A">Funzionalità</a>
+<a class="voce-menu" href="#come-funziona" style="font-size: 15px; font-weight: 500; color: #3A475A">Come funziona</a>
+<a class="voce-menu" href="#installazione" style="font-size: 15px; font-weight: 500; color: #3A475A">Installazione</a>
+<a class="voce-menu" href="#strumenti" style="font-size: 15px; font-weight: 500; color: #3A475A">Altri strumenti</a>
+</div>
+<a class="pulsante-primario" href="https://sevengem27.github.io/Lordo-X-Netto/" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 10px; background: #0E7A69; color: #FFFFFF; font-size: 15px; font-weight: 700; text-decoration: none">Apri l'app</a>
+</nav>
+</div>
+</header>
+
+<!-- Hero -->
+<section id="inizio" class="sezione" style="box-sizing: border-box; padding: 88px 48px 96px; background: #EEF1F4">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 64px">
+<div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 28px">
+<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-align: left; -webkit-hyphens: manual; hyphens: manual; color: #0E7A69">Fiscalità del lavoro dipendente · Periodo d'imposta 2026</p>
+<h1 class="titolo-hero" style="margin: 0; font-size: 56px; line-height: 1.08; font-weight: 800; letter-spacing: -0.025em; color: #14263F">Dal lordo al netto, fino al costo azienda, per ogni somma erogata.</h1>
+<p style="margin: 0; max-width: 580px; font-size: 19px; line-height: 1.6; color: #3A475A">Lordo X Netto è un'applicazione web progressiva che qualifica il regime fiscale e contributivo delle somme corrisposte al lavoratore, in costanza di rapporto, alla cessazione e successivamente, e ne determina il netto, la lordizzazione e il costo per l'azienda.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 14px">
+<a class="pulsante-primario" href="https://sevengem27.github.io/Lordo-X-Netto/" style="display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 26px; border-radius: 12px; background: #0E7A69; color: #FFFFFF; font-size: 16px; font-weight: 700; text-decoration: none">Apri Lordo X Netto
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+</a>
+<a class="pulsante-secondario" href="#installazione" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; border-radius: 12px; background: #FFFFFF; border: 1.5px solid #CBD5E1; color: #14263F; font-size: 16px; font-weight: 700; text-decoration: none">Come installarla</a>
+</div>
+<ul style="margin: 8px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 12px 28px">
+<li style="display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 500; color: #3A475A">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E7A69" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
+Accesso libero, senza registrazione</li>
+<li style="display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 500; color: #3A475A">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E7A69" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
+Utilizzabile anche offline</li>
+<li style="display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 500; color: #3A475A">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E7A69" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
+Dati trattati solo sul dispositivo</li>
+</ul>
+</div>
+<div style="flex: 1 1 440px; min-width: 0; display: flex; justify-content: center; align-items: flex-start; gap: 28px">
+<div style="width: 250px; flex-shrink: 0; border: 10px solid #0B1626; border-radius: 42px; overflow: hidden; background: #EEF2F7; box-shadow: 0 30px 60px -20px rgba(11, 22, 38, 0.45)">
+<img src="presentazione/app-elenco.webp" alt="Schermata di Lordo X Netto: ricerca, qualificazione guidata ed elenco delle fattispecie con il relativo regime" style="display: block; width: 100%; height: 520px; object-fit: cover; object-position: top">
+</div>
+<div class="secondo-telefono" style="width: 250px; flex-shrink: 0; margin-top: 64px; border: 10px solid #0B1626; border-radius: 42px; overflow: hidden; background: #EEF2F7; box-shadow: 0 30px 60px -20px rgba(11, 22, 38, 0.45)">
+<img src="presentazione/app-risultato.webp" alt="Schermata di Lordo X Netto: esito del calcolo su un premio di risultato con netto, ritenute e costo azienda" style="display: block; width: 100%; height: 520px; object-fit: cover; object-position: top">
+</div>
+</div>
+</div>
+</section>
+
+<!-- Riferimenti normativi -->
+<section class="sezione" aria-label="Riferimenti normativi" style="box-sizing: border-box; padding: 40px 48px; background: #14263F; color: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 24px 48px">
+<p style="margin: 0; flex: 0 0 auto; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-align: left; -webkit-hyphens: manual; hyphens: manual; color: #C9D4E6">Riferimenti normativi</p>
+<div style="flex: 1 1 240px; min-width: 0; display: flex; gap: 16px; align-items: flex-start">
+<svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#8FDCCB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path><path d="M9 13h6"></path><path d="M9 17h6"></path></svg>
+<div>
+<p style="margin: 0 0 4px; font-size: 17px; font-weight: 700; text-align: left">TUIR (DPR 917/1986)</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.5; color: #D5DDEB; text-align: left">Artt. 6, 7, 17, 19, 21, 51 e 67: reddito di lavoro dipendente, tassazione separata, esclusioni</p>
+</div>
+</div>
+<div style="flex: 1 1 240px; min-width: 0; display: flex; gap: 16px; align-items: flex-start">
+<svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#8FDCCB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path><path d="M9 13h6"></path><path d="M9 17h6"></path></svg>
+<div>
+<p style="margin: 0 0 4px; font-size: 17px; font-weight: 700; text-align: left">Legge di Bilancio 2026</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.5; color: #D5DDEB; text-align: left">L. 199/2025: scaglioni IRPEF, imposte sostitutive su premi, maggiorazioni e rinnovi contrattuali</p>
+</div>
+</div>
+<div style="flex: 1 1 240px; min-width: 0; display: flex; gap: 16px; align-items: flex-start">
+<svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#8FDCCB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path><path d="M9 13h6"></path><path d="M9 17h6"></path></svg>
+<div>
+<p style="margin: 0 0 4px; font-size: 17px; font-weight: 700; text-align: left">Prassi AdE e INPS</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.5; color: #D5DDEB; text-align: left">Circolari 2/E e 3/E del 2026, D.Lgs. 252/2005, D.Lgs. 148/2015 e addizionali regionali vigenti</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Funzionalità -->
+<section id="funzionalita" class="sezione" style="box-sizing: border-box; padding: 104px 48px; background: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px">
+<div style="max-width: 760px; display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-align: left; -webkit-hyphens: manual; hyphens: manual; color: #0E7A69">Funzionalità</p>
+<h2 class="titolo-sezione" style="margin: 0; font-size: 40px; line-height: 1.15; font-weight: 800; letter-spacing: -0.02em; color: #14263F">Ogni somma, con il suo trattamento</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #3A475A">Per ciascuna erogazione l'app individua il regime applicabile e quantifica ritenute, netto e oneri a carico del datore di lavoro, con i parametri del periodo d'imposta 2026.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px">
+
+<div style="box-sizing: border-box; padding: 32px; border: 1px solid #E2E8F0; border-radius: 16px; background: #FFFFFF; display: flex; flex-direction: column; gap: 14px">
+<div style="width: 48px; height: 48px; border-radius: 12px; background: #DFF1EC; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E7A69" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13"></path><path d="M8 12h13"></path><path d="M8 18h13"></path><path d="M3 6h.01"></path><path d="M3 12h.01"></path><path d="M3 18h.01"></path></svg>
+</div>
+<h3 style="margin: 0; font-size: 19px; font-weight: 700; color: #14263F">Catalogo di 34 fattispecie</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #4B5768">Retribuzione corrente, prestazioni e ammortizzatori, cessazione del rapporto, contenzioso e risarcimenti, azionariato e previdenza complementare, rimborsi e mobilità.</p>
+</div>
+
+<div style="box-sizing: border-box; padding: 32px; border: 1px solid #E2E8F0; border-radius: 16px; background: #FFFFFF; display: flex; flex-direction: column; gap: 14px">
+<div style="width: 48px; height: 48px; border-radius: 12px; background: #DFF1EC; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E7A69" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"></path><path d="M5 7h14"></path><path d="M5 7l-3 7a4 4 0 0 0 6 0z"></path><path d="M19 7l-3 7a4 4 0 0 0 6 0z"></path><path d="M8 21h8"></path></svg>
+</div>
+<h3 style="margin: 0; font-size: 19px; font-weight: 700; color: #14263F">Regime fiscale e contributivo</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #4B5768">Tassazione ordinaria, separata o sostitutiva, esclusione da imponibile, imponibilità contributiva e addizionali, con i riferimenti normativi e i profili di attenzione di ciascuna voce.</p>
+</div>
+
+<div style="box-sizing: border-box; padding: 32px; border: 1px solid #E2E8F0; border-radius: 16px; background: #FFFFFF; display: flex; flex-direction: column; gap: 14px">
+<div style="width: 48px; height: 48px; border-radius: 12px; background: #DFF1EC; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E7A69" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h11l-3-3"></path><path d="M17 17H6l3 3"></path></svg>
+</div>
+<h3 style="margin: 0; font-size: 19px; font-weight: 700; color: #14263F">Nettizzazione e lordizzazione</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #4B5768">Dal lordo al netto o dal netto al lordo, a partire dalla RAL: l'effetto su detrazioni e cuneo fiscale è incluso, le addizionali sono calcolate sul domicilio fiscale.</p>
+</div>
+
+<div style="box-sizing: border-box; padding: 32px; border: 1px solid #E2E8F0; border-radius: 16px; background: #FFFFFF; display: flex; flex-direction: column; gap: 14px">
+<div style="width: 48px; height: 48px; border-radius: 12px; background: #DFF1EC; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E7A69" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><path d="M3 13h18"></path></svg>
+</div>
+<h3 style="margin: 0; font-size: 19px; font-weight: 700; color: #14263F">Costo azienda</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #4B5768">Contributi c/datore e premio INAIL con aliquote modificabili, quota TFR per le somme utili e trattamento delle prestazioni a carico di INPS, INAIL e fondi.</p>
+</div>
+
+<div style="box-sizing: border-box; padding: 32px; border: 1px solid #E2E8F0; border-radius: 16px; background: #FFFFFF; display: flex; flex-direction: column; gap: 14px">
+<div style="width: 48px; height: 48px; border-radius: 12px; background: #DFF1EC; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E7A69" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path><path d="M12 11v6"></path><path d="M9 14l3 3 3-3"></path></svg>
+</div>
+<h3 style="margin: 0; font-size: 19px; font-weight: 700; color: #14263F">Report in PDF</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #4B5768">Regime applicabile, dati di input, esito del calcolo, costo azienda e riferimenti normativi in un documento pronto per l'archiviazione o per la pratica.</p>
+</div>
+
+<div style="box-sizing: border-box; padding: 32px; border: 1px solid #E2E8F0; border-radius: 16px; background: #FFFFFF; display: flex; flex-direction: column; gap: 14px">
+<div style="width: 48px; height: 48px; border-radius: 12px; background: #DFF1EC; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E7A69" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><rect x="9" y="10" width="6" height="5" rx="1"></rect><path d="M10 10V8.5a2 2 0 0 1 4 0V10"></path></svg>
+</div>
+<h3 style="margin: 0; font-size: 19px; font-weight: 700; color: #14263F">Riservatezza e parametri aggiornati</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #4B5768">I calcoli sono eseguiti sul dispositivo e nessun dato viene conservato. A ogni avvio l'app verifica i parametri fiscali più recenti; una volta aperta funziona anche senza connessione.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- Come funziona -->
+<section id="come-funziona" class="sezione" style="box-sizing: border-box; padding: 104px 48px; background: #EEF1F4">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px">
+<div style="max-width: 760px; display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-align: left; -webkit-hyphens: manual; hyphens: manual; color: #0E7A69">Come funziona</p>
+<h2 class="titolo-sezione" style="margin: 0; font-size: 40px; line-height: 1.15; font-weight: 800; letter-spacing: -0.02em; color: #14263F">Tre passaggi, un esito chiaro</h2>
+</div>
+<ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px">
+<li style="display: flex; flex-direction: column; gap: 14px; padding-top: 24px; border-top: 3px solid #14263F">
+<span style="font-size: 15px; font-weight: 800; letter-spacing: 0.06em; color: #0E7A69">01</span>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; color: #14263F">Individuare la fattispecie</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #4B5768">Ricercare la voce, sceglierla dall'elenco per categoria o ricorrere alla qualificazione guidata in tre passaggi: momento, titolo e natura dell'erogazione.</p>
+</li>
+<li style="display: flex; flex-direction: column; gap: 14px; padding-top: 24px; border-top: 3px solid #14263F">
+<span style="font-size: 15px; font-weight: 800; letter-spacing: 0.06em; color: #0E7A69">02</span>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; color: #14263F">Indicare RAL e importo</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #4B5768">Importo lordo o netto e retribuzione annua lorda; facoltativi il domicilio fiscale, l'aliquota TFR effettiva e i parametri del costo azienda.</p>
+</li>
+<li style="display: flex; flex-direction: column; gap: 14px; padding-top: 24px; border-top: 3px solid #14263F">
+<span style="font-size: 15px; font-weight: 800; letter-spacing: 0.06em; color: #0E7A69">03</span>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; color: #14263F">Consultare l'esito</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #4B5768">Netto o lordo, dettaglio delle ritenute, rapporto netto/lordo e costo azienda, con i profili di attenzione e l'esportazione in PDF.</p>
+</li>
+</ol>
+</div>
+</section>
+
+<!-- Installazione -->
+<section id="installazione" class="sezione" style="box-sizing: border-box; padding: 104px 48px; background: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px">
+<div style="max-width: 800px; display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-align: left; -webkit-hyphens: manual; hyphens: manual; color: #0E7A69">Installazione</p>
+<h2 class="titolo-sezione" style="margin: 0; font-size: 40px; line-height: 1.15; font-weight: 800; letter-spacing: -0.02em; color: #14263F">Installare Lordo X Netto sul proprio smartphone</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #3A475A">Lordo X Netto non richiede il download da App Store o Google Play: si installa direttamente dal browser e si apre a schermo intero, come un'applicazione nativa. Le nuove versioni vengono caricate automaticamente, senza necessità di reinstallarla.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px">
+
+<div class="scheda" style="box-sizing: border-box; padding: 36px; border: 1px solid #E2E8F0; border-radius: 18px; background: #FFFFFF; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; align-items: center; gap: 14px">
+<div style="width: 48px; height: 48px; border-radius: 12px; background: #E8EDF5; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#14263F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"></rect><path d="M11 18h2"></path></svg>
+</div>
+<div>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; color: #14263F">iPhone e iPad</h3>
+<p style="margin: 2px 0 0; font-size: 15px; color: #4B5768; text-align: left">Con il browser Safari</p>
+</div>
+</div>
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 18px">
+<li style="display: flex; gap: 14px; align-items: flex-start">
+<span style="flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: #14263F; color: #FFFFFF; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center">1</span>
+<p style="margin: 3px 0 0; font-size: 16px; line-height: 1.55; color: #2F3B4E">Aprire il collegamento all'app in <strong>Safari</strong>.</p>
+</li>
+<li style="display: flex; gap: 14px; align-items: flex-start">
+<span style="flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: #14263F; color: #FFFFFF; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center">2</span>
+<p style="margin: 3px 0 0; font-size: 16px; line-height: 1.55; color: #2F3B4E">Toccare il pulsante <strong>Condividi</strong>, il quadrato con la freccia rivolta verso l'alto. Nelle versioni più recenti di iOS si trova nel menu con i tre puntini, in basso a destra.</p>
+</li>
+<li style="display: flex; gap: 14px; align-items: flex-start">
+<span style="flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: #14263F; color: #FFFFFF; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center">3</span>
+<p style="margin: 3px 0 0; font-size: 16px; line-height: 1.55; color: #2F3B4E">Selezionare <strong>Aggiungi alla schermata Home</strong>. Se la voce non è visibile, scorrere l'elenco fino in fondo e aggiungerla da <strong>Modifica azioni</strong>.</p>
+</li>
+<li style="display: flex; gap: 14px; align-items: flex-start">
+<span style="flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: #14263F; color: #FFFFFF; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center">4</span>
+<p style="margin: 3px 0 0; font-size: 16px; line-height: 1.55; color: #2F3B4E">Confermare con <strong>Aggiungi</strong>: l'icona di Lordo X Netto comparirà nella schermata Home.</p>
+</li>
+</ol>
+</div>
+
+<div class="scheda" style="box-sizing: border-box; padding: 36px; border: 1px solid #E2E8F0; border-radius: 18px; background: #FFFFFF; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; align-items: center; gap: 14px">
+<div style="width: 48px; height: 48px; border-radius: 12px; background: #E8EDF5; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#14263F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"></rect><path d="M6 5h12"></path><path d="M6 18h12"></path></svg>
+</div>
+<div>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; color: #14263F">Android</h3>
+<p style="margin: 2px 0 0; font-size: 15px; color: #4B5768; text-align: left">Con il browser Google Chrome</p>
+</div>
+</div>
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 18px">
+<li style="display: flex; gap: 14px; align-items: flex-start">
+<span style="flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: #14263F; color: #FFFFFF; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center">1</span>
+<p style="margin: 3px 0 0; font-size: 16px; line-height: 1.55; color: #2F3B4E">Aprire il collegamento all'app in <strong>Google Chrome</strong>.</p>
+</li>
+<li style="display: flex; gap: 14px; align-items: flex-start">
+<span style="flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: #14263F; color: #FFFFFF; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center">2</span>
+<p style="margin: 3px 0 0; font-size: 16px; line-height: 1.55; color: #2F3B4E">Toccare il menu con i <strong>tre puntini verticali</strong>, in alto a destra.</p>
+</li>
+<li style="display: flex; gap: 14px; align-items: flex-start">
+<span style="flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: #14263F; color: #FFFFFF; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center">3</span>
+<p style="margin: 3px 0 0; font-size: 16px; line-height: 1.55; color: #2F3B4E">Selezionare <strong>Installa app</strong> oppure <strong>Aggiungi a schermata Home</strong>, a seconda della versione del browser.</p>
+</li>
+<li style="display: flex; gap: 14px; align-items: flex-start">
+<span style="flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: #14263F; color: #FFFFFF; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center">4</span>
+<p style="margin: 3px 0 0; font-size: 16px; line-height: 1.55; color: #2F3B4E">Confermare l'installazione: Lordo X Netto sarà disponibile tra le applicazioni del dispositivo.</p>
+</li>
+</ol>
+</div>
+
+<div class="scheda" style="box-sizing: border-box; padding: 36px; border-radius: 18px; background: #14263F; color: #FFFFFF; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; text-align: center">
+<div style="padding: 14px; border-radius: 14px; background: #FFFFFF">
+<img width="168" height="168" src="presentazione/qr-lordo-x-netto.svg" alt="Codice QR per aprire Lordo X Netto" style="display: block; width: 168px; height: 168px">
+</div>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700">Inquadrare il codice</h3>
+<p style="margin: 0; max-width: 300px; font-size: 16px; line-height: 1.55; color: #D5DDEB">Aprire la fotocamera dello smartphone e inquadrare il codice per accedere a Lordo X Netto, quindi seguire le istruzioni per il proprio dispositivo.</p>
+<a href="https://sevengem27.github.io/Lordo-X-Netto/" style="font-size: 15px; font-weight: 600; color: #FFFFFF">sevengem27.github.io/Lordo-X-Netto</a>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- Altri strumenti -->
+<section id="strumenti" class="sezione" style="box-sizing: border-box; padding: 0 48px 104px; background: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px">
+<div style="max-width: 760px; display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-align: left; -webkit-hyphens: manual; hyphens: manual; color: #0E7A69">Altri strumenti</p>
+<h2 class="titolo-sezione" style="margin: 0; font-size: 40px; line-height: 1.15; font-weight: 800; letter-spacing: -0.02em; color: #14263F">Dal calcolo dell'indennità alla sua tassazione</h2>
+</div>
+<div class="scheda-correlata scheda" style="box-sizing: border-box; padding: 36px; border: 1px solid #E2E8F0; border-radius: 18px; background: #EEF1F4; display: flex; flex-wrap: wrap; align-items: center; gap: 28px 40px">
+<img loading="lazy" src="https://sevengem27.github.io/IndenniTool/icon-192.png" alt="" width="88" height="88" style="flex-shrink: 0; width: 88px; height: 88px; border-radius: 50%">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<h3 style="margin: 0; font-size: 24px; font-weight: 800; color: #14263F">IndenniTool</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #3A475A">Determina le mensilità di preavviso e le indennità di fine rapporto secondo il CCNL del credito, per ogni categoria contrattuale e causa di risoluzione. Quantificata l'indennità, Lordo X Netto ne individua il regime fiscale e contributivo, il netto e il costo azienda.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a class="pulsante-primario" href="https://sevengem27.github.io/IndenniTool/presentazione.html" style="display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 22px; border-radius: 12px; background: #14263F; color: #FFFFFF; font-size: 15px; font-weight: 700; text-decoration: none">Scopri IndenniTool
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+</a>
+<a class="pulsante-secondario" href="https://sevengem27.github.io/IndenniTool/" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border-radius: 12px; background: #FFFFFF; border: 1.5px solid #CBD5E1; color: #14263F; font-size: 15px; font-weight: 700; text-decoration: none">Apri l'app</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Avvertenza -->
+<section class="sezione" aria-label="Avvertenza" style="box-sizing: border-box; padding: 0 48px 96px; background: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 28px 32px; border-radius: 14px; background: #EEF1F4; display: flex; gap: 16px; align-items: flex-start">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4B5768" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+<p style="margin: 0; font-size: 14px; line-height: 1.65; color: #4B5768"><strong style="color: #2F3B4E">Avvertenza.</strong> Lordo X Netto è uno strumento di supporto al calcolo basato sulla disciplina fiscale e previdenziale vigente per il periodo d'imposta 2026. I risultati hanno valore indicativo e non costituiscono parere fiscale, legale o consulenza professionale vincolante. Le stime presuppongono l'assenza di familiari a carico, di oneri deducibili e detraibili e di redditi ulteriori rispetto a quelli indicati; l'aliquota TFR e la contribuzione c/datore sono stimate in assenza dei valori effettivi.</p>
+</div>
+</section>
+
+<!-- Piè di pagina -->
+<footer class="sezione" style="box-sizing: border-box; padding: 32px 48px; border-top: 1px solid #E2E8F0; background: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<div style="display: flex; align-items: center; gap: 12px">
+<img loading="lazy" src="icon-192.png" alt="" style="width: 32px; height: 32px; border-radius: 8px">
+<p style="margin: 0; font-size: 14px; color: #4B5768">© 2026 M. Monferrini. Tutti i diritti riservati.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 24px"><a href="https://sevengem27.github.io/IndenniTool/presentazione.html" style="font-size: 14px; font-weight: 600; color: #14263F">IndenniTool</a><a href="https://sevengem27.github.io/Lordo-X-Netto/" style="font-size: 14px; font-weight: 600; color: #14263F">Apri Lordo X Netto</a></div>
+</div>
+</footer>
+
+</div>
+</body>
+</html>
