@@ -1,6 +1,6 @@
 /* Service worker: app shell in cache, parametri fiscali sempre dalla rete quando possibile. */
-const CACHE = 'lordoxnetto-2026-v6';
-const SHELL = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './rates.json'];
+const CACHE = 'lordoxnetto-2026-v7';
+const SHELL = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png', './rates.json'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting()));
